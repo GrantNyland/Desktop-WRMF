@@ -1,0 +1,480 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{5CADBCE4-0971-426A-B6FD-4823BF09CF01}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="Package\WRMFCommon.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="DLLProjects\AccessControl\AccessControl.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="DLLProjects\Changes\Changes.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="DLLProjects\FileEditor\FileEditor.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="DLLProjects\FieldProperties\FieldProperties.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="DLLProjects\GridEditor\GridEditor.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="DLLProjects\GridOutputEditor\GridOutputEditor.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="DLLProjects\Graphics\WRMFGraphics.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="DLLProjects\Language\LanguageManager.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="DLLProjects\MainForm\MainForm.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="DLLProjects\MetaData\MetaData.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="DLLProjects\ModelCapability\ModelCapability.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="DLLProjects\MSAccessDatabaseLayer\MSAccessDatabaseLayer.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="DLLProjects\PrintManager\PrintManager.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="DLLProjects\SplashScreens\WRMFSplashScreen.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="DLLProjects\StudyDocuments\StudyDocuments.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="DLLProjects\StudySelection\StudySelection.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="DLLProjects\WeatherEvents\WeatherEvents.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="DLLProjects\HydroNetworkVisualiser\HydroNetworkVisualiser.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="DLLProjects\DailyDiversionPreProcessor\DailyDiversionPreProcessor.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="DLLProjects\PreProcessorDamSedimentation\SedimentationPreProcessor.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="DLLProjects\PreProcessorIFR\IFRPreProcessor.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="DLLProjects\ModelRainfallData\ModelRainfallData.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="DLLProjects\ModelDDTS\ModelDDTS.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="DLLProjects\ModelRWH\ModelRWH.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="DLLProjects\ModelStomsa\ModelStomsa.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="DLLProjects\HydrologyModel\HydrologyModel.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="DLLProjects\ModelHydrology\ModelHydrology.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="DLLProjects\ModelYield\ModelYield.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="DLLProjects\ModelPlanning\ModelPlanning.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="DLLProjects\ModelYRC\ModelYRC.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="DLLProjects\YieldReliabilityCurve\YieldReliabilityCurve.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="DLLProjects\OutputComparison\OutputComparison.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="DLLProjects\OutputReview\OutputReview.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="DLLProjects\TimeSeriesComparitor\TimeSeriesComparitor.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="DLLProjects\ViewDataGraphs\ViewDataGraph.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="DLLProjects\ViewOutputGraphs\ViewOutputGraph.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Executable\WRMF.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="WRMFCommon">
+        <MSBuild Projects="Package\WRMFCommon.dproj"/>
+    </Target>
+    <Target Name="WRMFCommon:Clean">
+        <MSBuild Projects="Package\WRMFCommon.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="WRMFCommon:Make">
+        <MSBuild Projects="Package\WRMFCommon.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="AccessControl">
+        <MSBuild Projects="DLLProjects\AccessControl\AccessControl.dproj"/>
+    </Target>
+    <Target Name="AccessControl:Clean">
+        <MSBuild Projects="DLLProjects\AccessControl\AccessControl.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="AccessControl:Make">
+        <MSBuild Projects="DLLProjects\AccessControl\AccessControl.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Changes">
+        <MSBuild Projects="DLLProjects\Changes\Changes.dproj"/>
+    </Target>
+    <Target Name="Changes:Clean">
+        <MSBuild Projects="DLLProjects\Changes\Changes.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Changes:Make">
+        <MSBuild Projects="DLLProjects\Changes\Changes.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="FileEditor">
+        <MSBuild Projects="DLLProjects\FileEditor\FileEditor.dproj"/>
+    </Target>
+    <Target Name="FileEditor:Clean">
+        <MSBuild Projects="DLLProjects\FileEditor\FileEditor.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="FileEditor:Make">
+        <MSBuild Projects="DLLProjects\FileEditor\FileEditor.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="FieldProperties">
+        <MSBuild Projects="DLLProjects\FieldProperties\FieldProperties.dproj"/>
+    </Target>
+    <Target Name="FieldProperties:Clean">
+        <MSBuild Projects="DLLProjects\FieldProperties\FieldProperties.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="FieldProperties:Make">
+        <MSBuild Projects="DLLProjects\FieldProperties\FieldProperties.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="GridEditor">
+        <MSBuild Projects="DLLProjects\GridEditor\GridEditor.dproj"/>
+    </Target>
+    <Target Name="GridEditor:Clean">
+        <MSBuild Projects="DLLProjects\GridEditor\GridEditor.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="GridEditor:Make">
+        <MSBuild Projects="DLLProjects\GridEditor\GridEditor.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="GridOutputEditor">
+        <MSBuild Projects="DLLProjects\GridOutputEditor\GridOutputEditor.dproj"/>
+    </Target>
+    <Target Name="GridOutputEditor:Clean">
+        <MSBuild Projects="DLLProjects\GridOutputEditor\GridOutputEditor.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="GridOutputEditor:Make">
+        <MSBuild Projects="DLLProjects\GridOutputEditor\GridOutputEditor.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="WRMFGraphics">
+        <MSBuild Projects="DLLProjects\Graphics\WRMFGraphics.dproj"/>
+    </Target>
+    <Target Name="WRMFGraphics:Clean">
+        <MSBuild Projects="DLLProjects\Graphics\WRMFGraphics.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="WRMFGraphics:Make">
+        <MSBuild Projects="DLLProjects\Graphics\WRMFGraphics.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="LanguageManager">
+        <MSBuild Projects="DLLProjects\Language\LanguageManager.dproj"/>
+    </Target>
+    <Target Name="LanguageManager:Clean">
+        <MSBuild Projects="DLLProjects\Language\LanguageManager.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="LanguageManager:Make">
+        <MSBuild Projects="DLLProjects\Language\LanguageManager.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="MainForm">
+        <MSBuild Projects="DLLProjects\MainForm\MainForm.dproj"/>
+    </Target>
+    <Target Name="MainForm:Clean">
+        <MSBuild Projects="DLLProjects\MainForm\MainForm.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="MainForm:Make">
+        <MSBuild Projects="DLLProjects\MainForm\MainForm.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="MetaData">
+        <MSBuild Projects="DLLProjects\MetaData\MetaData.dproj"/>
+    </Target>
+    <Target Name="MetaData:Clean">
+        <MSBuild Projects="DLLProjects\MetaData\MetaData.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="MetaData:Make">
+        <MSBuild Projects="DLLProjects\MetaData\MetaData.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="ModelCapability">
+        <MSBuild Projects="DLLProjects\ModelCapability\ModelCapability.dproj"/>
+    </Target>
+    <Target Name="ModelCapability:Clean">
+        <MSBuild Projects="DLLProjects\ModelCapability\ModelCapability.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ModelCapability:Make">
+        <MSBuild Projects="DLLProjects\ModelCapability\ModelCapability.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="MSAccessDatabaseLayer">
+        <MSBuild Projects="DLLProjects\MSAccessDatabaseLayer\MSAccessDatabaseLayer.dproj"/>
+    </Target>
+    <Target Name="MSAccessDatabaseLayer:Clean">
+        <MSBuild Projects="DLLProjects\MSAccessDatabaseLayer\MSAccessDatabaseLayer.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="MSAccessDatabaseLayer:Make">
+        <MSBuild Projects="DLLProjects\MSAccessDatabaseLayer\MSAccessDatabaseLayer.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="PrintManager">
+        <MSBuild Projects="DLLProjects\PrintManager\PrintManager.dproj"/>
+    </Target>
+    <Target Name="PrintManager:Clean">
+        <MSBuild Projects="DLLProjects\PrintManager\PrintManager.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="PrintManager:Make">
+        <MSBuild Projects="DLLProjects\PrintManager\PrintManager.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="WRMFSplashScreen">
+        <MSBuild Projects="DLLProjects\SplashScreens\WRMFSplashScreen.dproj"/>
+    </Target>
+    <Target Name="WRMFSplashScreen:Clean">
+        <MSBuild Projects="DLLProjects\SplashScreens\WRMFSplashScreen.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="WRMFSplashScreen:Make">
+        <MSBuild Projects="DLLProjects\SplashScreens\WRMFSplashScreen.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="StudyDocuments">
+        <MSBuild Projects="DLLProjects\StudyDocuments\StudyDocuments.dproj"/>
+    </Target>
+    <Target Name="StudyDocuments:Clean">
+        <MSBuild Projects="DLLProjects\StudyDocuments\StudyDocuments.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="StudyDocuments:Make">
+        <MSBuild Projects="DLLProjects\StudyDocuments\StudyDocuments.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="StudySelection">
+        <MSBuild Projects="DLLProjects\StudySelection\StudySelection.dproj"/>
+    </Target>
+    <Target Name="StudySelection:Clean">
+        <MSBuild Projects="DLLProjects\StudySelection\StudySelection.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="StudySelection:Make">
+        <MSBuild Projects="DLLProjects\StudySelection\StudySelection.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="WeatherEvents">
+        <MSBuild Projects="DLLProjects\WeatherEvents\WeatherEvents.dproj"/>
+    </Target>
+    <Target Name="WeatherEvents:Clean">
+        <MSBuild Projects="DLLProjects\WeatherEvents\WeatherEvents.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="WeatherEvents:Make">
+        <MSBuild Projects="DLLProjects\WeatherEvents\WeatherEvents.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="HydroNetworkVisualiser">
+        <MSBuild Projects="DLLProjects\HydroNetworkVisualiser\HydroNetworkVisualiser.dproj"/>
+    </Target>
+    <Target Name="HydroNetworkVisualiser:Clean">
+        <MSBuild Projects="DLLProjects\HydroNetworkVisualiser\HydroNetworkVisualiser.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="HydroNetworkVisualiser:Make">
+        <MSBuild Projects="DLLProjects\HydroNetworkVisualiser\HydroNetworkVisualiser.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="DailyDiversionPreProcessor">
+        <MSBuild Projects="DLLProjects\DailyDiversionPreProcessor\DailyDiversionPreProcessor.dproj"/>
+    </Target>
+    <Target Name="DailyDiversionPreProcessor:Clean">
+        <MSBuild Projects="DLLProjects\DailyDiversionPreProcessor\DailyDiversionPreProcessor.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="DailyDiversionPreProcessor:Make">
+        <MSBuild Projects="DLLProjects\DailyDiversionPreProcessor\DailyDiversionPreProcessor.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="SedimentationPreProcessor">
+        <MSBuild Projects="DLLProjects\PreProcessorDamSedimentation\SedimentationPreProcessor.dproj"/>
+    </Target>
+    <Target Name="SedimentationPreProcessor:Clean">
+        <MSBuild Projects="DLLProjects\PreProcessorDamSedimentation\SedimentationPreProcessor.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="SedimentationPreProcessor:Make">
+        <MSBuild Projects="DLLProjects\PreProcessorDamSedimentation\SedimentationPreProcessor.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="IFRPreProcessor">
+        <MSBuild Projects="DLLProjects\PreProcessorIFR\IFRPreProcessor.dproj"/>
+    </Target>
+    <Target Name="IFRPreProcessor:Clean">
+        <MSBuild Projects="DLLProjects\PreProcessorIFR\IFRPreProcessor.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="IFRPreProcessor:Make">
+        <MSBuild Projects="DLLProjects\PreProcessorIFR\IFRPreProcessor.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="ModelRainfallData">
+        <MSBuild Projects="DLLProjects\ModelRainfallData\ModelRainfallData.dproj"/>
+    </Target>
+    <Target Name="ModelRainfallData:Clean">
+        <MSBuild Projects="DLLProjects\ModelRainfallData\ModelRainfallData.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ModelRainfallData:Make">
+        <MSBuild Projects="DLLProjects\ModelRainfallData\ModelRainfallData.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="ModelDDTS">
+        <MSBuild Projects="DLLProjects\ModelDDTS\ModelDDTS.dproj"/>
+    </Target>
+    <Target Name="ModelDDTS:Clean">
+        <MSBuild Projects="DLLProjects\ModelDDTS\ModelDDTS.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ModelDDTS:Make">
+        <MSBuild Projects="DLLProjects\ModelDDTS\ModelDDTS.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="ModelRWH">
+        <MSBuild Projects="DLLProjects\ModelRWH\ModelRWH.dproj"/>
+    </Target>
+    <Target Name="ModelRWH:Clean">
+        <MSBuild Projects="DLLProjects\ModelRWH\ModelRWH.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ModelRWH:Make">
+        <MSBuild Projects="DLLProjects\ModelRWH\ModelRWH.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="ModelStomsa">
+        <MSBuild Projects="DLLProjects\ModelStomsa\ModelStomsa.dproj"/>
+    </Target>
+    <Target Name="ModelStomsa:Clean">
+        <MSBuild Projects="DLLProjects\ModelStomsa\ModelStomsa.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ModelStomsa:Make">
+        <MSBuild Projects="DLLProjects\ModelStomsa\ModelStomsa.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="HydrologyModel">
+        <MSBuild Projects="DLLProjects\HydrologyModel\HydrologyModel.dproj"/>
+    </Target>
+    <Target Name="HydrologyModel:Clean">
+        <MSBuild Projects="DLLProjects\HydrologyModel\HydrologyModel.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="HydrologyModel:Make">
+        <MSBuild Projects="DLLProjects\HydrologyModel\HydrologyModel.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="ModelHydrology">
+        <MSBuild Projects="DLLProjects\ModelHydrology\ModelHydrology.dproj"/>
+    </Target>
+    <Target Name="ModelHydrology:Clean">
+        <MSBuild Projects="DLLProjects\ModelHydrology\ModelHydrology.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ModelHydrology:Make">
+        <MSBuild Projects="DLLProjects\ModelHydrology\ModelHydrology.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="ModelYield">
+        <MSBuild Projects="DLLProjects\ModelYield\ModelYield.dproj"/>
+    </Target>
+    <Target Name="ModelYield:Clean">
+        <MSBuild Projects="DLLProjects\ModelYield\ModelYield.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ModelYield:Make">
+        <MSBuild Projects="DLLProjects\ModelYield\ModelYield.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="ModelPlanning">
+        <MSBuild Projects="DLLProjects\ModelPlanning\ModelPlanning.dproj"/>
+    </Target>
+    <Target Name="ModelPlanning:Clean">
+        <MSBuild Projects="DLLProjects\ModelPlanning\ModelPlanning.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ModelPlanning:Make">
+        <MSBuild Projects="DLLProjects\ModelPlanning\ModelPlanning.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="ModelYRC">
+        <MSBuild Projects="DLLProjects\ModelYRC\ModelYRC.dproj"/>
+    </Target>
+    <Target Name="ModelYRC:Clean">
+        <MSBuild Projects="DLLProjects\ModelYRC\ModelYRC.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ModelYRC:Make">
+        <MSBuild Projects="DLLProjects\ModelYRC\ModelYRC.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="YieldReliabilityCurve">
+        <MSBuild Projects="DLLProjects\YieldReliabilityCurve\YieldReliabilityCurve.dproj"/>
+    </Target>
+    <Target Name="YieldReliabilityCurve:Clean">
+        <MSBuild Projects="DLLProjects\YieldReliabilityCurve\YieldReliabilityCurve.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="YieldReliabilityCurve:Make">
+        <MSBuild Projects="DLLProjects\YieldReliabilityCurve\YieldReliabilityCurve.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="OutputComparison">
+        <MSBuild Projects="DLLProjects\OutputComparison\OutputComparison.dproj"/>
+    </Target>
+    <Target Name="OutputComparison:Clean">
+        <MSBuild Projects="DLLProjects\OutputComparison\OutputComparison.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="OutputComparison:Make">
+        <MSBuild Projects="DLLProjects\OutputComparison\OutputComparison.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="OutputReview">
+        <MSBuild Projects="DLLProjects\OutputReview\OutputReview.dproj"/>
+    </Target>
+    <Target Name="OutputReview:Clean">
+        <MSBuild Projects="DLLProjects\OutputReview\OutputReview.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="OutputReview:Make">
+        <MSBuild Projects="DLLProjects\OutputReview\OutputReview.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="TimeSeriesComparitor">
+        <MSBuild Projects="DLLProjects\TimeSeriesComparitor\TimeSeriesComparitor.dproj"/>
+    </Target>
+    <Target Name="TimeSeriesComparitor:Clean">
+        <MSBuild Projects="DLLProjects\TimeSeriesComparitor\TimeSeriesComparitor.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="TimeSeriesComparitor:Make">
+        <MSBuild Projects="DLLProjects\TimeSeriesComparitor\TimeSeriesComparitor.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="ViewDataGraph">
+        <MSBuild Projects="DLLProjects\ViewDataGraphs\ViewDataGraph.dproj"/>
+    </Target>
+    <Target Name="ViewDataGraph:Clean">
+        <MSBuild Projects="DLLProjects\ViewDataGraphs\ViewDataGraph.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ViewDataGraph:Make">
+        <MSBuild Projects="DLLProjects\ViewDataGraphs\ViewDataGraph.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="ViewOutputGraph">
+        <MSBuild Projects="DLLProjects\ViewOutputGraphs\ViewOutputGraph.dproj"/>
+    </Target>
+    <Target Name="ViewOutputGraph:Clean">
+        <MSBuild Projects="DLLProjects\ViewOutputGraphs\ViewOutputGraph.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ViewOutputGraph:Make">
+        <MSBuild Projects="DLLProjects\ViewOutputGraphs\ViewOutputGraph.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="WRMF">
+        <MSBuild Projects="Executable\WRMF.dproj"/>
+    </Target>
+    <Target Name="WRMF:Clean">
+        <MSBuild Projects="Executable\WRMF.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="WRMF:Make">
+        <MSBuild Projects="Executable\WRMF.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="WRMFCommon;AccessControl;Changes;FileEditor;FieldProperties;GridEditor;GridOutputEditor;WRMFGraphics;LanguageManager;MainForm;MetaData;ModelCapability;MSAccessDatabaseLayer;PrintManager;WRMFSplashScreen;StudyDocuments;StudySelection;WeatherEvents;HydroNetworkVisualiser;DailyDiversionPreProcessor;SedimentationPreProcessor;IFRPreProcessor;ModelRainfallData;ModelDDTS;ModelRWH;ModelStomsa;HydrologyModel;ModelHydrology;ModelYield;ModelPlanning;ModelYRC;YieldReliabilityCurve;OutputComparison;OutputReview;TimeSeriesComparitor;ViewDataGraph;ViewOutputGraph;WRMF"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="WRMFCommon:Clean;AccessControl:Clean;Changes:Clean;FileEditor:Clean;FieldProperties:Clean;GridEditor:Clean;GridOutputEditor:Clean;WRMFGraphics:Clean;LanguageManager:Clean;MainForm:Clean;MetaData:Clean;ModelCapability:Clean;MSAccessDatabaseLayer:Clean;PrintManager:Clean;WRMFSplashScreen:Clean;StudyDocuments:Clean;StudySelection:Clean;WeatherEvents:Clean;HydroNetworkVisualiser:Clean;DailyDiversionPreProcessor:Clean;SedimentationPreProcessor:Clean;IFRPreProcessor:Clean;ModelRainfallData:Clean;ModelDDTS:Clean;ModelRWH:Clean;ModelStomsa:Clean;HydrologyModel:Clean;ModelHydrology:Clean;ModelYield:Clean;ModelPlanning:Clean;ModelYRC:Clean;YieldReliabilityCurve:Clean;OutputComparison:Clean;OutputReview:Clean;TimeSeriesComparitor:Clean;ViewDataGraph:Clean;ViewOutputGraph:Clean;WRMF:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="WRMFCommon:Make;AccessControl:Make;Changes:Make;FileEditor:Make;FieldProperties:Make;GridEditor:Make;GridOutputEditor:Make;WRMFGraphics:Make;LanguageManager:Make;MainForm:Make;MetaData:Make;ModelCapability:Make;MSAccessDatabaseLayer:Make;PrintManager:Make;WRMFSplashScreen:Make;StudyDocuments:Make;StudySelection:Make;WeatherEvents:Make;HydroNetworkVisualiser:Make;DailyDiversionPreProcessor:Make;SedimentationPreProcessor:Make;IFRPreProcessor:Make;ModelRainfallData:Make;ModelDDTS:Make;ModelRWH:Make;ModelStomsa:Make;HydrologyModel:Make;ModelHydrology:Make;ModelYield:Make;ModelPlanning:Make;ModelYRC:Make;YieldReliabilityCurve:Make;OutputComparison:Make;OutputReview:Make;TimeSeriesComparitor:Make;ViewDataGraph:Make;ViewOutputGraph:Make;WRMF:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

@@ -1,0 +1,179 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{C4B8611B-58BB-4B85-8B2B-9FB0D5D87005}</ProjectGuid>
+        <MainSource>WRMF.dpr</MainSource>
+        <Base>True</Base>
+        <TargetedPlatforms>3</TargetedPlatforms>
+        <AppType>Application</AppType>
+        <FrameworkType>VCL</FrameworkType>
+        <ProjectVersion>18.1</ProjectVersion>
+        <Config Condition="'$(Config)'==''">Release</Config>
+        <Platform Condition="'$(Platform)'==''">Win64</Platform>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Config)'=='Base' or '$(Base)'!=''">
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Config)'=='Release' or '$(Cfg_1)'!=''">
+        <Cfg_1>true</Cfg_1>
+        <CfgParent>Base</CfgParent>
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="('$(Platform)'=='Win32' and '$(Cfg_1)'=='true') or '$(Cfg_1_Win32)'!=''">
+        <Cfg_1_Win32>true</Cfg_1_Win32>
+        <CfgParent>Cfg_1</CfgParent>
+        <Cfg_1>true</Cfg_1>
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Config)'=='Debug' or '$(Cfg_2)'!=''">
+        <Cfg_2>true</Cfg_2>
+        <CfgParent>Base</CfgParent>
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="('$(Platform)'=='Win32' and '$(Cfg_2)'=='true') or '$(Cfg_2_Win32)'!=''">
+        <Cfg_2_Win32>true</Cfg_2_Win32>
+        <CfgParent>Cfg_2</CfgParent>
+        <Cfg_2>true</Cfg_2>
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Config)'=='MergedDLLs' or '$(Cfg_3)'!=''">
+        <Cfg_3>true</Cfg_3>
+        <CfgParent>Base</CfgParent>
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="('$(Platform)'=='Win32' and '$(Cfg_3)'=='true') or '$(Cfg_3_Win32)'!=''">
+        <Cfg_3_Win32>true</Cfg_3_Win32>
+        <CfgParent>Cfg_3</CfgParent>
+        <Cfg_3>true</Cfg_3>
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="('$(Platform)'=='Win64' and '$(Cfg_3)'=='true') or '$(Cfg_3_Win64)'!=''">
+        <Cfg_3_Win64>true</Cfg_3_Win64>
+        <CfgParent>Cfg_3</CfgParent>
+        <Cfg_3>true</Cfg_3>
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Base)'!=''">
+        <DCC_UnitSearchPath>DatabaseLayer;Framework;GUI;..\Package\Dcp\$(Platform)\$(Config);$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
+        <SanitizedProjectName>WRMF</SanitizedProjectName>
+    </PropertyGroup>
+    <Import Project="..\BaseWRMF.optset" Condition="'$(Cfg_1)'!='' And Exists('..\BaseWRMF.optset')"/>
+    <Import Project="..\BaseWRMF_Release.optset" Condition="'$(Cfg_1)'!='' And Exists('..\BaseWRMF_Release.optset')"/>
+    <PropertyGroup Condition="'$(Cfg_1)'!=''">
+        <BRCC_OutputDir>dcu\$(Platform)\$(Config)</BRCC_OutputDir>
+        <DCC_DcuOutput>dcu\$(Platform)\$(Config)</DCC_DcuOutput>
+        <DCC_ExeOutput>..\Deployment\$(Platform)\$(Config)</DCC_ExeOutput>
+        <DCC_UnitSearchPath>.\DatabaseLayer;.\Framework;.\GUI;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
+        <UsePackages>true</UsePackages>
+        <DCC_UsePackage>WRMFCommon;$(DCC_UsePackage)</DCC_UsePackage>
+        <CfgDependentOn>..\BaseWRMF.optset;..\BaseWRMF_Release.optset</CfgDependentOn>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Cfg_1_Win32)'!=''">
+        <VerInfo_Locale>7177</VerInfo_Locale>
+        <Manifest_File>(None)</Manifest_File>
+    </PropertyGroup>
+    <Import Project="..\BaseWRMF.optset" Condition="'$(Cfg_2)'!='' And Exists('..\BaseWRMF.optset')"/>
+    <Import Project="..\BaseWRMF_Debug.optset" Condition="'$(Cfg_2)'!='' And Exists('..\BaseWRMF_Debug.optset')"/>
+    <PropertyGroup Condition="'$(Cfg_2)'!=''">
+        <BRCC_OutputDir>dcu\$(Platform)\$(Config)</BRCC_OutputDir>
+        <DCC_DcuOutput>dcu\$(Platform)\$(Config)</DCC_DcuOutput>
+        <DCC_ExeOutput>..\Deployment\$(Platform)\$(Config)</DCC_ExeOutput>
+        <UsePackages>false</UsePackages>
+        <DCC_UsePackage>tee;teeUI;$(DCC_UsePackage)</DCC_UsePackage>
+        <CfgDependentOn>..\BaseWRMF.optset;..\BaseWRMF_Debug.optset</CfgDependentOn>
+    </PropertyGroup>
+    <Import Project="..\BaseWRMF.optset" Condition="'$(Cfg_3)'!='' And Exists('..\BaseWRMF.optset')"/>
+    <Import Project="..\BaseWRMF_Debug.optset" Condition="'$(Cfg_3)'!='' And Exists('..\BaseWRMF_Debug.optset')"/>
+    <PropertyGroup Condition="'$(Cfg_3)'!=''">
+        <DCC_Define>MERGE_DLLS;$(DCC_Define)</DCC_Define>
+        <BRCC_OutputDir>dcu\$(Platform)\$(Config)</BRCC_OutputDir>
+        <DCC_DcuOutput>dcu\$(Platform)\$(Config)</DCC_DcuOutput>
+        <DCC_ExeOutput>..\Deployment\$(Platform)\$(Config)</DCC_ExeOutput>
+        <DCC_UnitSearchPath>..\Package\DatabaseAgents;..\Package\DatabaseLayer;..\Package\DataObject;..\Package\DelphiGeneric;..\Package\FileAgents;..\Package\FileSelection;..\Package\Framework;..\Package\GUI;..\Package\Interfaces;..\Package\Lib;..\Package\ModelData;..\Package\ModelData_Yield;..\Package\YRC;..\Package\ZipLibrary;..\DLLProjects\AccessControl;..\DLLProjects\Changes;..\DLLProjects\DailyDiversionPreProcessor;..\DLLProjects\FieldProperties;..\DLLProjects\FileEditor;..\DLLProjects\GridEditor;..\DLLProjects\GridOutputEditor;..\DLLProjects\HydrologyModel;..\DLLProjects\HydrologyModel\Components;..\DLLProjects\HydrologyModel\HydroCom;..\DLLProjects\HydrologyModel\HydroDialogs;..\DLLProjects\HydrologyModel\HydroXMLAgents;..\DLLProjects\HydroNetworkVisualiser;..\DLLProjects\Language;..\DLLProjects\MainForm;..\DLLProjects\MetaData;..\DLLProjects\ModelCapability;..\DLLProjects\ModelDDTS;..\DLLProjects\ModelDDTS\GUI;..\DLLProjects\ModelHydrology;..\DLLProjects\ModelPlanning;..\DLLProjects\ModelRainfallData;..\DLLProjects\ModelRainfallData\GUI;..\DLLProjects\ModelRainfallData\Implementation;..\DLLProjects\ModelRainfallData\Interface;..\DLLProjects\ModelRWH;..\DLLProjects\ModelRWH\GUI;..\DLLProjects\ModelRWH\Lib;..\DLLProjects\ModelStomsa;..\DLLProjects\ModelStomsa\StomsaComponents;..\DLLProjects\ModelYield;..\DLLProjects\ModelYRC;..\DLLProjects\MSAccessDatabaseLayer;..\DLLProjects\OutputComparison;..\DLLProjects\OutputReview;..\DLLProjects\PreProcessorDamSedimentation;..\DLLProjects\PreProcessorIFR;..\DLLProjects\PrintManager;..\DLLProjects\SplashScreens;..\DLLProjects\StudyDocuments;..\DLLProjects\StudySelection;..\DLLProjects\TimeSeriesComparitor;..\DLLProjects\ViewDataGraphs;..\DLLProjects\ViewOutputGraphs;..\DLLProjects\VisioNetworkVisualiser;..\DLLProjects\WeatherEvents;..\DLLProjects\YieldReliabilityCurve;..\DLLProjects\YieldReliabilityCurve\Series;..\DLLProjects\YieldReliabilityCurve\YRCFramework;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
+        <UsePackages>false</UsePackages>
+        <DCC_UsePackage>tee;teeUI;$(DCC_UsePackage)</DCC_UsePackage>
+        <CfgDependentOn>..\BaseWRMF.optset;..\BaseWRMF_Debug.optset</CfgDependentOn>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Cfg_3_Win32)'!=''">
+        <DCC_ImageBase>04000000</DCC_ImageBase>
+        <VerInfo_Locale>7177</VerInfo_Locale>
+        <Debugger_SymbolSourcePath>..\Deployment\Win32\MergedDLLs;$(Debugger_SymbolSourcePath)</Debugger_SymbolSourcePath>
+        <Manifest_File>(None)</Manifest_File>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Cfg_3_Win64)'!=''">
+        <VerInfo_Locale>7177</VerInfo_Locale>
+        <Manifest_File>(None)</Manifest_File>
+    </PropertyGroup>
+    <Import Project="..\BaseWRMF.optset" Condition="'$(Base)'!=''"/>
+    <Import Project="..\BaseWRMF_Release.optset" Condition="'$(Cfg_1)'!=''"/>
+    <Import Project="..\BaseWRMF_Debug.optset" Condition="'$(Cfg_2)'!=''"/>
+    <ItemGroup>
+        <DelphiCompile Include="$(MainSource)">
+            <MainSource>MainSource</MainSource>
+        </DelphiCompile>
+        <RcCompile Include="..\WRMFVersion.rc">
+            <Form>WRMFVersion.res</Form>
+        </RcCompile>
+        <RcCompile Include="..\DLLProjects\Graphics\WRMFGraphicsx.rc">
+            <Form>WRMFGraphicsx.res</Form>
+        </RcCompile>
+        <RcCompile Include="..\DLLProjects\Graphics\RainfallDataGraphics.rc">
+            <Form>RainfallDataGraphics.res</Form>
+        </RcCompile>
+        <RcCompile Include="..\DLLProjects\ModelStomsa\StomsaSQL.rc">
+            <Form>StomsaSQL.res</Form>
+        </RcCompile>
+        <BuildConfiguration Include="Base">
+            <Key>Base</Key>
+        </BuildConfiguration>
+        <BuildConfiguration Include="Debug">
+            <Key>Cfg_2</Key>
+            <CfgParent>Base</CfgParent>
+            <DependentOn>..\BaseWRMF.optset;..\BaseWRMF_Debug.optset</DependentOn>
+        </BuildConfiguration>
+        <BuildConfiguration Include="Release">
+            <Key>Cfg_1</Key>
+            <CfgParent>Base</CfgParent>
+            <DependentOn>..\BaseWRMF.optset;..\BaseWRMF_Release.optset</DependentOn>
+        </BuildConfiguration>
+        <BuildConfiguration Include="MergedDLLs">
+            <Key>Cfg_3</Key>
+            <CfgParent>Base</CfgParent>
+            <DependentOn>..\BaseWRMF.optset;..\BaseWRMF_Debug.optset</DependentOn>
+        </BuildConfiguration>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Delphi.Personality.12</Borland.Personality>
+        <BorlandProject>
+            <Delphi.Personality>
+                <Source>
+                    <Source Name="MainSource">WRMF.dpr</Source>
+                </Source>
+                <Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\dcloffice2k240.bpl">Microsoft Office 2000 Sample Automation Server Wrapper Components</Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\dclofficexp240.bpl">Microsoft Office XP Sample Automation Server Wrapper Components</Excluded_Packages>
+                </Excluded_Packages>
+            </Delphi.Personality>
+            <Platforms>
+                <Platform value="Android">False</Platform>
+                <Platform value="iOSDevice32">False</Platform>
+                <Platform value="iOSDevice64">False</Platform>
+                <Platform value="iOSSimulator">False</Platform>
+                <Platform value="OSX32">False</Platform>
+                <Platform value="Win32">True</Platform>
+                <Platform value="Win64">True</Platform>
+            </Platforms>
+            <Deployment Version="3">
+                <DeployFile LocalName="..\Deployment\Win32\MergedDLLs\WRMF.exe" Configuration="MergedDLLs" Class="ProjectOutput">
+                    <Platform Name="Win32">
+                        <RemoteName>WRMF.exe</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+            <ModelSupport>False</ModelSupport>
+        </BorlandProject>
+        <ProjectFileVersion>12</ProjectFileVersion>
+    </ProjectExtensions>
+    <Import Project="$(BDS)\Bin\CodeGear.Delphi.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Delphi.Targets')"/>
+    <Import Project="$(APPDATA)\Embarcadero\$(BDSAPPDATABASEDIR)\$(PRODUCTVERSION)\UserTools.proj" Condition="Exists('$(APPDATA)\Embarcadero\$(BDSAPPDATABASEDIR)\$(PRODUCTVERSION)\UserTools.proj')"/>
+    <Import Project="$(MSBuildProjectName).deployproj" Condition="Exists('$(MSBuildProjectName).deployproj')"/>
+</Project>

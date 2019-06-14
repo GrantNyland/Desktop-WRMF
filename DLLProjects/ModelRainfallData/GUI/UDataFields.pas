@@ -1,0 +1,113 @@
+unit UDataFields;
+
+interface
+const
+  CMonthlyField : array[ 0..16 ] of string =
+  (
+    'Station',
+    'Year',
+    'Oct',
+    'Nov',
+    'Dec',
+    'Jan',
+    'Feb',
+    'Mar',
+    'Apr',
+    'May',
+    'Jun',
+    'Jul',
+    'Aug',
+    'Sep',
+    'Avar',
+    'Sdt Dev',
+    'MAP'
+   );
+
+   CHodroMonths : array [ 0..11 ] of string =
+   (
+    'Oct',
+    'Nov',
+    'Dec',
+    'Jan',
+    'Feb',
+    'Mar',
+    'Apr',
+    'May',
+    'Jun',
+    'Jul',
+    'Aug',
+    'Sep'
+    );
+
+   CDailyField : array [ 0..64 ] of string =
+   (
+    'Station',
+    'Year',
+    'Month',
+    'Patch01',
+    'Value01',
+    'Patch02',
+    'Value02',
+    'Patch03',
+    'Value03',
+    'Patch04',
+    'Value04',
+    'Patch05',
+    'Value05',
+    'Patch06',
+    'Value06',
+    'Patch07',
+    'Value07',
+    'Patch08',
+    'Value08',
+    'Patch09',
+    'Value09',
+    'Patch10',
+    'Value10',
+    'Patch11',
+    'Value11',
+    'Patch12',
+    'Value12',
+    'Patch13',
+    'Value13',
+    'Patch14',
+    'Value14',
+    'Patch15',
+    'Value15',
+    'Patch16',
+    'Value16',
+    'Patch17',
+    'Value17',
+    'Patch18',
+    'Value18',
+    'Patch19',
+    'Value19',
+    'Patch20',
+    'Value20',
+    'Patch21',
+    'Value21',
+    'Patch22',
+    'Value22',
+    'Patch23',
+    'Value23',
+    'Patch24',
+    'Value24',
+    'Patch25',
+    'Value25',
+    'Patch26',
+    'Value26',
+    'Patch27',
+    'Value27',
+    'Patch28',
+    'Value28',
+    'Patch29',
+    'Value29',
+    'Patch30',
+    'Value30',
+    'Patch31',
+    'Value31'
+   );
+
+implementation
+
+end.

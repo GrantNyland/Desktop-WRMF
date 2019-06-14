@@ -1,0 +1,413 @@
+object fmGraph: TfmGraph
+  Left = 0
+  Top = 0
+  Width = 692
+  Height = 497
+  TabOrder = 0
+  object PageControl1: TPageControl
+    Left = 0
+    Top = 0
+    Width = 692
+    Height = 497
+    ActivePage = TabSheet1
+    Align = alClient
+    TabOrder = 0
+    object TabSheet1: TTabSheet
+      Caption = 'Graphs'
+      object Panel1: TPanel
+        Left = 0
+        Top = 0
+        Width = 186
+        Height = 469
+        Align = alLeft
+        BevelOuter = bvNone
+        TabOrder = 0
+        DesignSize = (
+          186
+          469)
+        object Bevel1: TBevel
+          Left = 0
+          Top = 0
+          Width = 186
+          Height = 40
+          Align = alTop
+        end
+        object Label1: TLabel
+          Left = 2
+          Top = 43
+          Width = 35
+          Height = 13
+          Caption = 'Gauge:'
+        end
+        object btnCreate: TSpeedButton
+          Left = 4
+          Top = 4
+          Width = 31
+          Height = 31
+          Hint = 'Create New Window'
+          Flat = True
+          Glyph.Data = {
+            96010000424D9601000000000000760000002800000018000000180000000100
+            0400000000002001000000000000000000001000000000000000000000000000
+            80000080000000808000800000008000800080800000C0C0C000808080000000
+            FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00777777777777
+            7777777777777777777777777777777777777777000000000000000077777777
+            0FFFFFFFFFFFFFF0777777770FFFFFFFFFFFFFF0777777770FFFFFFFFFFFFFF0
+            777777770FFFFFFFFFFFFFF0777777770FFFFFFFFFFFFFF0777777770FFFFFFF
+            FFFFFFF0777777770FFFFFFFFFFFFFF0777777770FFFFFFFFFFFFFF077777777
+            0FFFFFFFFFFFFFF0777777770FFFFFFFFFFFFFF0777777770FFFFFFFFFFFFFF0
+            777777770FFFFFFFFFFFFFF0777777770FFFFFFFFFFFFFF0777777770FFFFFFF
+            FF000000777777770FFFFFFFFF088807777777770FFFFFFFFF08807777777777
+            0FFFFFFFFF080777777777770FFFFFFFFF007777777777770000000000077777
+            7777777777777777777777777777777777777777777777777777}
+          ParentShowHint = False
+          ShowHint = True
+          OnClick = btnCreateClick
+        end
+        object btnPrint: TSpeedButton
+          Left = 37
+          Top = 4
+          Width = 31
+          Height = 31
+          Hint = 'Print Current Window'
+          Flat = True
+          Glyph.Data = {
+            96010000424D9601000000000000760000002800000018000000180000000100
+            0400000000002001000000000000000000001000000000000000000000000000
+            80000080000000808000800000008000800080800000C0C0C000808080000000
+            FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00777777777777
+            7777777777777777777777777777777777777777777777777777777777777777
+            7777777777777777777777777777777777777777777777777700000000000777
+            777777777077777777707077777777770000000000000707777777770777777B
+            BB77000777777777077777788877070777777777000000000000077077777777
+            077777777770707077777777700000000007070077777777770FFFFFFFF07070
+            777777777770F00000F00007777777777770FFFFFFFF07777777777777770F00
+            000F07777777777777770FFFFFFFF07777777777777770000000007777777777
+            7777777777777777777777777777777777777777777777777777777777777777
+            7777777777777777777777777777777777777777777777777777}
+          ParentShowHint = False
+          ShowHint = True
+          OnClick = btnPrintClick
+        end
+        object btnDownload: TSpeedButton
+          Left = 70
+          Top = 4
+          Width = 31
+          Height = 31
+          Hint = 'Download Current Graph'
+          Flat = True
+          Glyph.Data = {
+            FE0A0000424DFE0A00000000000036000000280000001E0000001E0000000100
+            180000000000C80A0000CE0E0000D80E00000000000000000000FFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000FFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000FFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFF0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFF0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFF0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000FFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000FFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000000000000000000000
+            00000000000000000000000000000000000000000000000000000000FFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000FFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFF000000008484008484000000000000000000
+            000000000000000000C6C6C6C6C6C6000000008484000000FFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000FFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFF00000000848400848400000000000000000000000000
+            0000000000C6C6C6C6C6C6000000008484000000FFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFF0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFF0000000084840084840000000000000000000000000000000000
+            00C6C6C6C6C6C6000000008484000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFF0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFF000000008484008484000000000000000000000000000000000000000000
+            000000000000008484000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFF0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000
+            0000848400848400848400848400848400848400848400848400848400848400
+            8484008484000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF000000008484
+            0084840000000000000000000000000000000000000000000000000084840084
+            84000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000FFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF000000008484000000C6
+            C6C6C6C6C6C6C6C6C6C6C6C6C6C6C6C6C6C6C6C6C6C6C6000000008484000000
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000FFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF000000008484000000C6C6C6C6C6
+            C6C6C6C6C6C6C6C6C6C6C6C6C6C6C6C6C6C6C6000000008484000000FFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000FFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFF000000008484000000C6C6C6C6C6C6C6C6C6
+            C6C6C6C6C6C6C6C6C6C6C6C6C6C6C6000000008484000000FFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000FFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFF000000008484000000C6C6C6C6C6C6C6C6C6C6C6C6C6
+            C6C6C6C6C6C6C6C6C6C6C6000000008484000000FFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFF0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFF000000008484000000C6C6C6C6C6C6C6C6C6C6C6C6C6C6C6C6C6
+            C6C6C6C6C6C6C6000000000000000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFF0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFF000000008484000000C6C6C6C6C6C6C6C6C6C6C6C6C6C6C6C6C6C6C6C6C6
+            C6C6C6000000C6C6C6000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFF0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000
+            0000000000000000000000000000000000000000000000000000000000000000
+            0000000000000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000FFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000FFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000FFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000FFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFF0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFF0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFF0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            0000}
+          ParentShowHint = False
+          ShowHint = True
+          OnClick = btnDownloadClick
+        end
+        object lblCorrelateGauges: TLabel
+          Left = 2
+          Top = 309
+          Width = 88
+          Height = 13
+          Anchors = [akLeft, akBottom]
+          Caption = 'Correlating Gauge:'
+        end
+        object Label4: TLabel
+          Left = 2
+          Top = 419
+          Width = 78
+          Height = 13
+          Anchors = [akLeft, akBottom]
+          Caption = 'Diamond X Size:'
+        end
+        object Label5: TLabel
+          Left = 2
+          Top = 448
+          Width = 78
+          Height = 13
+          Anchors = [akLeft, akBottom]
+          Caption = 'Diamond Y Size:'
+        end
+        object cmbGauges: TComboBox
+          Left = 10
+          Top = 60
+          Width = 130
+          Height = 21
+          Hint = 'Select Gauge'
+          Style = csDropDownList
+          ItemHeight = 13
+          ParentShowHint = False
+          ShowHint = True
+          TabOrder = 0
+          OnChange = cmbGaugesChange
+        end
+        object lstCorrelations: TListBox
+          Left = 10
+          Top = 325
+          Width = 171
+          Height = 80
+          Anchors = [akLeft, akRight, akBottom]
+          ItemHeight = 13
+          TabOrder = 1
+          OnClick = lstCorrelationsClick
+        end
+        object SpinEditDimondXSize: TSpinEdit
+          Left = 87
+          Top = 416
+          Width = 55
+          Height = 22
+          Anchors = [akLeft, akBottom]
+          MaxValue = 0
+          MinValue = 0
+          TabOrder = 2
+          Value = 0
+          OnChange = SpinEditDimondXSizeChange
+        end
+        object SpinEditDimondYSize: TSpinEdit
+          Left = 87
+          Top = 444
+          Width = 55
+          Height = 22
+          Anchors = [akLeft, akBottom]
+          MaxValue = 0
+          MinValue = 0
+          TabOrder = 3
+          Value = 0
+          OnChange = SpinEditDimondYSizeChange
+        end
+        object GroupBox1: TGroupBox
+          Left = 2
+          Top = 88
+          Width = 179
+          Height = 221
+          Anchors = [akLeft, akTop, akRight, akBottom]
+          TabOrder = 4
+          DesignSize = (
+            179
+            221)
+          object Label6: TLabel
+            Left = 6
+            Top = 16
+            Width = 61
+            Height = 13
+            Caption = 'Graph Group'
+          end
+          object Label2: TLabel
+            Left = 6
+            Top = 64
+            Width = 59
+            Height = 13
+            Caption = 'Graph Type:'
+          end
+          object cmbGraphGroup: TComboBox
+            Left = 3
+            Top = 33
+            Width = 125
+            Height = 21
+            Hint = 'Select Gauge'
+            Style = csDropDownList
+            ItemHeight = 13
+            ParentShowHint = False
+            ShowHint = True
+            TabOrder = 0
+            OnChange = cmbGraphGroupChange
+          end
+          object lstGraph: TListBox
+            Left = 6
+            Top = 88
+            Width = 166
+            Height = 123
+            Anchors = [akLeft, akTop, akRight, akBottom]
+            ItemHeight = 13
+            TabOrder = 1
+            OnClick = lstGraphClick
+          end
+        end
+        object btnLegend: TButton
+          Left = 103
+          Top = 4
+          Width = 43
+          Height = 31
+          Hint = 'Show box-plot legend'
+          Caption = 'Legend'
+          Enabled = False
+          TabOrder = 5
+          OnClick = btnLegendClick
+        end
+        object btnDataSelection: TButton
+          Left = 147
+          Top = 4
+          Width = 37
+          Height = 31
+          Hint = 'Select % line series'
+          Caption = 'Data'
+          Enabled = False
+          TabOrder = 6
+          OnClick = btnDataSelectionClick
+        end
+      end
+      object chtAllPurpose: TChart
+        Left = 186
+        Top = 0
+        Width = 498
+        Height = 469
+        BackWall.Brush.Color = clWhite
+        BackWall.Brush.Style = bsClear
+        Legend.Visible = False
+        RightWall.Visible = True
+        Title.Text.Strings = (
+          'TChart')
+        View3D = False
+        View3DWalls = False
+        Align = alClient
+        BevelOuter = bvNone
+        TabOrder = 1
+        Visible = False
+        AutoSize = True
+        OnDblClick = chtAllPurposeDblClick
+      end
+    end
+    object TabSheet2: TTabSheet
+      Caption = 'Statistics'
+      ImageIndex = 1
+      object Panel2: TPanel
+        Left = 0
+        Top = 0
+        Width = 684
+        Height = 41
+        Align = alTop
+        BevelInner = bvLowered
+        TabOrder = 0
+        object Label3: TLabel
+          Left = 32
+          Top = 16
+          Width = 31
+          Height = 13
+          Caption = 'Files:'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'MS Sans Serif'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object cmbFiles: TComboBox
+          Left = 67
+          Top = 13
+          Width = 236
+          Height = 21
+          ItemHeight = 13
+          TabOrder = 0
+          OnChange = cmbFilesChange
+        end
+      end
+      object RichEdit1: TRichEdit
+        Left = 0
+        Top = 41
+        Width = 684
+        Height = 428
+        Align = alClient
+        ScrollBars = ssBoth
+        TabOrder = 1
+      end
+    end
+  end
+  object dlgPrintSingleGraph: TPrintDialog
+    Left = 584
+  end
+  object dlgSaveChart: TSavePictureDialog
+    DefaultExt = '.BMP'
+    Filter = 
+      'Bitmap (*.bmp)|*.bmp|Enhanced Metafile (*.emf)|*.emf|Metafile (*' +
+      '.wmf)|*.wmf'
+    Options = [ofOverwritePrompt, ofHideReadOnly, ofCreatePrompt, ofEnableSizing]
+    Left = 632
+    Top = 1
+  end
+end

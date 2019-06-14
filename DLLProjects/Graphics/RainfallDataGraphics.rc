@@ -1,0 +1,72 @@
+;
+; Rainfalldata model symbols
+;
+
+RDCREATEREPORT                  BITMAP         RainfallDataModelSymbols\CreateReport.bmp
+RDCREATEFILES                   BITMAP         RainfallDataModelSymbols\CreateFiles.bmp
+RDCREATEPATFILES                BITMAP         RainfallDataModelSymbols\CreatePATFiles.bmp
+RDCREATESPLIT                   BITMAP         RainfallDataModelSymbols\CreateSplit.bmp
+RDUpdateSplit                   BITMAP         RainfallDataModelSymbols\UpdateSplit.bmp
+RDDELETESPLIT                   BITMAP         RainfallDataModelSymbols\DeleteSplit.bmp
+RDCREATEPATCH                   BITMAP         RainfallDataModelSymbols\CreatePatch.bmp
+RDDELETEPATCH                   BITMAP         RainfallDataModelSymbols\DeletePatch.bmp
+RDRENAMEPATCH                   BITMAP         RainfallDataModelSymbols\RenamePatch.bmp
+RDADDGAUGETOPATCH               BITMAP         RainfallDataModelSymbols\AddGaugeToPatch.bmp
+RDREMOVEGAUGEFROMPATCH          BITMAP         RainfallDataModelSymbols\RemoveGaugeFromPatch.bmp
+RDSELECTRAWFLAGS                BITMAP         RainfallDataModelSymbols\SelectRAWFlags.bmp
+RDADMINTOGGLEGRID               BITMAP         RainfallDataModelSymbols\DataGrid.bmp
+RDADMINTOGGLEGRAPH              BITMAP         RainfallDataModelSymbols\BarChart.bmp
+RDADMINTOGGLETREE               BITMAP         RainfallDataModelSymbols\DIRECTRY.BMP
+RDGRAPHTOGGLEGRID               BITMAP         RainfallDataModelSymbols\DataGrid.bmp
+RDGRAPHTOGGLEGRAPH              BITMAP         RainfallDataModelSymbols\BarChart.bmp
+RDGRAPHTOGGLETREE               BITMAP         RainfallDataModelSymbols\DIRECTRY.BMP
+RDSTATSTOGGLEGRID               BITMAP         RainfallDataModelSymbols\DataGrid.bmp
+RDSTATSTOGGLEGRAPH              BITMAP         RainfallDataModelSymbols\BarChart.bmp
+RDSTATSTOGGLETREE               BITMAP         RainfallDataModelSymbols\DIRECTRY.BMP
+RDZONETOGGLETREE                BITMAP         RainfallDataModelSymbols\DIRECTRY.BMP
+RDGAUGETOGGLETREE               BITMAP         RainfallDataModelSymbols\DIRECTRY.BMP
+RDADDGAUGETOZONE                BITMAP         RainfallDataModelSymbols\AddGaugeToPatch.bmp
+RDREMOVEGAUGEFROMZONE           BITMAP         RainfallDataModelSymbols\RemoveGaugeFromPatch.bmp
+RDFLAGDATABLOCK                 BITMAP         RainfallDataModelSymbols\FlagData.bmp
+RDUNFLAGDATABLOCK               BITMAP         RainfallDataModelSymbols\UnFlagData.bmp
+RDFLAGSETUP                     BITMAP         RainfallDataModelSymbols\FlagSetup.bmp
+RDFLAGCLICK                     BITMAP         RainfallDataModelSymbols\FlagClick.bmp
+RDFIRSTWEATHERRECORD            BITMAP         RainfallDataModelSymbols\FirstWeatherRecord.bmp
+RDPRIORWEATHERRECORD            BITMAP         RainfallDataModelSymbols\PriorWeatherRecord.bmp
+RDNEXTWEATHERRECORD             BITMAP         RainfallDataModelSymbols\NextWeatherRecord.bmp
+RDLASTWEATHERRECORD             BITMAP         RainfallDataModelSymbols\LastWeatherRecord.bmp
+RDWEATHEREVENTS                 BITMAP         RainfallDataModelSymbols\WeatherEvent.bmp
+RDHIGHLIGHTOUTLIERS             BITMAP         RainfallDataModelSymbols\HighLight.bmp
+CLPATCHCHANGELISTS              BITMAP         Buttons\CLPatchChangelists.bmp
+RDIMPORTUSERDATA                BITMAP         Buttons\ImportFiles.BMP
+RDCLEARUSERDATA                 BITMAP         Buttons\ClearModelData.bmp
+CSTATIONFILTER                  BITMAP         Buttons\CStationFilter.bmp
+RDCreateCatchmentZone           BITMAP         RainfallDataModelSymbols\RDCreateCatchmentZone.BMP
+RDDeleteCatchmentZone           BITMAP         RainfallDataModelSymbols\RDDeleteCatchmentZone.bmp
+RDAVRGRAINFALL                  BITMAP         RainfallDataModelSymbols\AvRainfallGrid.bmp
+RDINPUTRAINFALL                 BITMAP         RainfallDataModelSymbols\InputRainfallGrid.bmp
+RDRESULT                        BITMAP         RainfallDataModelSymbols\ResultGrid.bmp
+
+RDEXPORTDATA                    BITMAP         Buttons\ExportData.bmp
+
+;UnCheckOrange                  BITMAP YieldModelSymbols\UnCheckOrange.BMP
+AVGMAP300                       BITMAP RainfallDataModelSymbols\AVGMAP300.BMP
+UnCheckBrown                    BITMAP YieldModelSymbols\UnCheckBrown.BMP
+;AVGMAP500                      BITMAP RainfallDataModelSymbols\AVGMAP500.BMP
+AVGMAP600                       BITMAP RainfallDataModelSymbols\AVGMAP600.BMP
+AVGMAP700                       BITMAP RainfallDataModelSymbols\AVGMAP700.BMP
+AVGMAP800                       BITMAP RainfallDataModelSymbols\AVGMAP800.BMP
+AVGMAP1000                      BITMAP RainfallDataModelSymbols\AVGMAP1000.BMP
+AVGMAP1500                      BITMAP RainfallDataModelSymbols\AVGMAP1500.BMP
+
+ELEV_GEO200                     BITMAP RainfallDataModelSymbols\ELEV_GEO200.BMP
+ELEV_GEO400                     BITMAP RainfallDataModelSymbols\ELEV_GEO400.BMP
+ELEV_GEO800                     BITMAP RainfallDataModelSymbols\ELEV_GEO800.BMP
+ELEV_GEO1200                    BITMAP RainfallDataModelSymbols\ELEV_GEO1200.BMP
+ELEV_GEO1600                    BITMAP RainfallDataModelSymbols\ELEV_GEO1600.BMP
+UnCheckRed                      BITMAP YieldModelSymbols\UnCheckRed.BMP
+ELEV_GEO2000                    BITMAP RainfallDataModelSymbols\ELEV_GEO2000.BMP
+ELEV_GEO2400                    BITMAP RainfallDataModelSymbols\ELEV_GEO2400.BMP
+ELEV_GEO2800                    BITMAP RainfallDataModelSymbols\ELEV_GEO2800.BMP
+
+ISOHYETS                        BITMAP YieldModelSymbols\ISOHYETS2.BMP

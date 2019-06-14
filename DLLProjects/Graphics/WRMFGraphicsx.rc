@@ -1,0 +1,264 @@
+;
+;
+;   Network Visualiser Scrolling denotion cursors
+;
+NVCURSOR01             CURSOR          Cursors\NVRightArrow.cur
+NVCURSOR02             CURSOR          Cursors\NVDownArrow.cur
+NVCURSOR03             CURSOR          Cursors\NVLeftArrow.cur
+NVCURSOR04             CURSOR          Cursors\NVUpArrow.cur
+NVCURSOR05             CURSOR          Cursors\NVUpDownArrow.cur
+;
+;
+;
+;
+; General bitmaps
+;
+BACKGROUND         BITMAP   General\Background.bmp
+CHANNELSWITCH      BITMAP   General\ChannelSwitch.bmp
+BOXPLOTLEGEND      BITMAP   General\ExceedanceLegend.bmp
+WRPMBoxPlotLegend  BITMAP   General\WRPMBoxPlotLegend.bmp 
+
+;
+; Button Bitmaps
+;
+ARROWDOWN                               BITMAP Buttons\ArrowDown.bmp
+ARROWUP                                 BITMAP Buttons\ArrowUp.bmp
+ADD                                     BITMAP Buttons\Add.BMP
+ALLOCDEF                                BITMAP YieldModelSymbols\AllocDef.BMP
+SWITCHDEF                               BITMAP YieldModelSymbols\SwitchDef.bmp
+BATCHWRITE                              BITMAP Buttons\BatchWrite.BMP
+CALCULATOR                              BITMAP Buttons\Calculator.BMP
+CANCEL                                  BITMAP Buttons\Cancel.BMP
+CATCHADD                                BITMAP Buttons\CatchAdd.bmp
+CATCHREMOVE                             BITMAP Buttons\CatchRemove.bmp
+CLEARMODELDATA                          BITMAP Buttons\ClearModelData.bmp
+ClearDailyFlowDataFromCSVFile           BITMAP Buttons\ClearDailyFlowDataFromCSVFile.bmp
+ClearDailyInstreamFlowFile              BITMAP Buttons\ClearDailyInstreamFlowFile.bmp
+ClearFlowDiversionRelation              BITMAP Buttons\ClearFlowDiversionRelation.bmp
+ClearFile14                             BITMAP Buttons\ClearFile14.BMP
+ClearWRYMData                           BITMAP Buttons\ClearWRYMData.bmp
+CEACTIVATE                              BITMAP Buttons\ChangeElementActivate.bmp
+CEDEACTIVATE                            BITMAP Buttons\ChangeElementDeactivate.bmp
+CGCHANGEGROUP                           BITMAP Buttons\ChangeGroup.bmp
+CGCREATENEW                             BITMAP Buttons\ChangeGroupAdd.bmp
+CGDELETE                                BITMAP Buttons\ChangeGroupDelete.bmp
+CGACTIVATE                              BITMAP Buttons\ChangeGroupActivate.bmp
+CGDEACTIVATE                            BITMAP Buttons\ChangeGroupDeactivate.bmp
+CLAPPLY                                 BITMAP Buttons\ChangeListApply.bmp
+CLIMPORT                                BITMAP Buttons\ChangeListImport.bmp
+CLEXPORT                                BITMAP Buttons\ChangeListExport.bmp
+CLCHANGELIST                            BITMAP Buttons\ChangeList.bmp
+CLALIEN                                 BITMAP Buttons\ChangeListAlien.bmp
+CLCREATENEW                             BITMAP Buttons\ChangeListAdd.bmp
+CLDELETE                                BITMAP Buttons\ChangeListDelete.bmp
+CLCOPY                                  BITMAP Buttons\ChangeListCopy.bmp
+CLMOVEUP                                BITMAP Buttons\ChangeListUp.bmp
+CLMOVEDOWN                              BITMAP Buttons\ChangeListDown.bmp
+CLACTIVATE                              BITMAP Buttons\ChangeListActivate.bmp
+CLDEACTIVATE                            BITMAP Buttons\ChangeListDeactivate.bmp
+CLPARAMETER                             BITMAP Buttons\ChangeParameter.bmp
+CPCREATENEW                             BITMAP Buttons\ChangeParameterAdd.bmp
+CPDELETE                                BITMAP Buttons\ChangeParameterDelete.bmp
+CPEDIT                                  BITMAP Buttons\ChangeParameterEdit.bmp
+CPOK                                    BITMAP Buttons\ChangeParameterOK.bmp
+CPCANCEL                                BITMAP Buttons\ChangeParameterCancel.bmp
+CPCLOSE                                 BITMAP Buttons\ChangeParameterClose.bmp
+CLOVERRIDE                              BITMAP Buttons\ChangeOverride.bmp
+COLOR                                   BITMAP Buttons\Color.bmp
+COPY                                    BITMAP Buttons\Copy.BMP
+COPYTOCLIPBOARD                         BITMAP Buttons\CopyToClipboard.BMP
+CREATEALLOCDEF                          BITMAP Buttons\CreateAllocDef.BMP
+CopyChannel                             BITMAP Buttons\CopyChannel.BMP
+CREATECHANNEL                           BITMAP Buttons\CreateChannel.BMP
+CREATENODEWITHINFLOW                    BITMAP Buttons\CreateNodeWithInflow.BMP
+CREATENODEWITHOUTINFLOW                 BITMAP Buttons\CreateNodeWithoutInflow.BMP
+CREATERESERVOIR                         BITMAP Buttons\CreateReservoir.BMP
+CREATESWITCHDEF                         BITMAP Buttons\CreateSwitchDef.BMP
+CREATEDAILYDIVERSION                    BITMAP Buttons\CREATEDAILYDIVERSION.BMP
+CREATEDDTSDAM                           BITMAP Buttons\CREATEDDTSDAM.BMP
+CREATEDAMSEDIMENTATION                  BITMAP Buttons\CREATEDAMSEDIMENTATION.BMP
+CREATEIFRSITE                           BITMAP Buttons\CreateIFRSite.BMP
+CreateDirectory                         BITMAP Buttons\CreateDirectory.BMP
+
+DELETE                                  BITMAP Buttons\Delete.BMP
+DELETEALLOCDEF                          BITMAP Buttons\DeleteAllocDef.BMP
+DELETECHANNEL                           BITMAP Buttons\DeleteChannel.BMP
+DELETEDAILYDIVERSION                    BITMAP Buttons\DELETEDAILYDIVERSION.BMP
+DELETENODEWITHINFLOW                    BITMAP Buttons\DeleteNodeWithInflow.BMP
+DELETENODEWITHOUTINFLOW                 BITMAP Buttons\DeleteNodeWithoutInflow.BMP
+DELETERESERVOIR                         BITMAP Buttons\DeleteReservoir.BMP
+DELETESWITCHDEF                         BITMAP Buttons\DeleteSwitchDef.BMP
+DELETEDAMSEDIMENTATION                  BITMAP Buttons\DELETEDAMSEDIMENTATION.BMP
+DELETEIFRSITE                           BITMAP Buttons\DeleteIFRSite.BMP
+DUMMY                                   BITMAP Buttons\Dummy.BMP
+EDIT                                    BITMAP Buttons\Edit.BMP
+EXPORTFILE                              BITMAP Buttons\ExportFile.BMP
+EXPORTFILES                             BITMAP Buttons\ExportFiles.BMP
+EXPORTTOFILE                            BITMAP Buttons\ExportToFile.BMP
+FGFIELDGROUP                            BITMAP Buttons\FieldGroup.bmp
+FIRSTRECORD                             BITMAP Buttons\FirstRecord.BMP
+FULLSCREEN                              BITMAP Buttons\FullScreen.BMP
+GENERATEFILES                           BITMAP Buttons\GenerateFiles.BMP
+GenerateFlowDiversionRelation           BITMAP Buttons\GenerateFlowDiversionRelation.BMP
+GenerateWRYMData                        BITMAP Buttons\GenerateWRYMData.bmp
+GISVIEWER                               BITMAP Buttons\GISViewer.BMP
+HELPCONTENTS                            BITMAP Buttons\HelpContents.BMP
+HELPWHATISTHIS                          BITMAP Buttons\HelpWhatIsThis.BMP
+
+IGNORE                                  BITMAP Buttons\Ignore.BMP
+IMPORTFILE                              BITMAP Buttons\ImportFile.BMP
+IMPORTFILES                             BITMAP Buttons\ImportFiles.BMP
+ImportFile14                            BITMAP Buttons\ImportFile14.BMP
+ImportDailyFlowDataFromCSVFile          BITMAP Buttons\ImportDailyFlowDataFromCSVFile.BMP
+ImportDailyInstreamFlowFile             BITMAP Buttons\ImportDailyInstreamFlowFile.BMP
+IMPORTSUMOUT                            BITMAP Buttons\ImportSumOut.BMP
+LASTRECORD                              BITMAP Buttons\LastRecord.BMP
+METADATACREATENEW                       BITMAP Buttons\MetaDataAdd.bmp
+METADATADELETE                          BITMAP Buttons\MetaDataDelete.bmp
+METADATAEDIT                            BITMAP Buttons\MetaDataEdit.bmp
+MININETWORK                             BITMAP Buttons\MiniNetwork.BMP
+NEW                                     BITMAP Buttons\New.BMP
+NEXTRECORD                              BITMAP Buttons\NextRecord.BMP
+NOENTRY                                 BITMAP Buttons\NoEntry.BMP
+OK                                      BITMAP Buttons\OK.BMP
+OUTPUTREVIEWPREVRECORD                  BITMAP Buttons\PrevRec.bmp
+OUTPUTREVIEWPREVSIGRECORD               BITMAP Buttons\PrevSigRec.bmp
+OUTPUTREVIEWFIRSTRECORD                 BITMAP Buttons\FirstRec.bmp
+OUTPUTREVIEWNEXTRECORD                  BITMAP Buttons\NextRec.bmp
+OUTPUTREVIEWNEXTSIGRECORD               BITMAP Buttons\NextSigRec.bmp
+OUTPUTREVIEWLASTRECORD                  BITMAP Buttons\LastRec.bmp
+OutputComparitorShowChartLegendDialog   BITMAP Buttons\OutputComparitorShowChartLegendDialog.bmp
+
+OUTPUTREVIEWRISELECT                    BITMAP Buttons\RISelect.bmp
+
+PRINT                                   BITMAP Buttons\Print.BMP
+PRINTPREVIEW                            BITMAP Buttons\PrintPreview.BMP
+PRINTSETTINGS                           BITMAP Buttons\PrintSettings.BMP
+PRIORRECORD                             BITMAP Buttons\PriorRecord.BMP
+TIMECOMPARITORADDSERIES                 BITMAP Buttons\AddSeries.BMP
+TIMECOMPARITORADDCHART                  BITMAP Buttons\AddChart.BMP
+TIMECOMPARITORREMOVESERIES              BITMAP Buttons\RemoveSeries.BMP
+TIMECOMPARITORREMOVECHART               BITMAP Buttons\RemoveChart.BMP
+TIMECOMPARITORSAVEVIEW                  BITMAP Buttons\SaveTimeSeriesView.BMP
+TIMECOMPARITORCHARTNAME                 BITMAP Buttons\ChartNameTimeSeries.bmp
+TIMECOMPARITORCREATECHART               BITMAP Buttons\CreateChartTimeSeries.bmp
+TIMECOMPARITORRENAMECHART               BITMAP Buttons\RenameChartTimeSeries.bmp
+TIMECOMPARITORDELETECHART               BITMAP Buttons\DeleteChartTimeSeries.bmp
+TIMECOMPARITORCREATEVIEW                BITMAP Buttons\CreateViewTimeSeries.bmp
+TIMECOMPARITORRENAMEVIEW                BITMAP Buttons\RenameViewTimeSeries.bmp
+RenameDailyDiversion                    BITMAP Buttons\RenameDailyDiversion.BMP
+TIMECOMPARITORDELETEVIEW                BITMAP Buttons\DeleteViewTimeSeries.bmp
+TIMECOMPARITORSHOWCHARTLEGENDDIALOG     BITMAP Buttons\TimeComparitorShowChartLegendDialog.bmp
+REPORT                                  BITMAP Buttons\Report.BMP
+RETRY                                   BITMAP Buttons\Retry.BMP
+ROTATEVIEW                              BITMAP Buttons\RotateView.BMP
+RUNMODEL                                BITMAP Buttons\RunModel.BMP
+SELECTALL                               BITMAP Buttons\SelectAll.BMP
+SAVE                                    BITMAP Buttons\Save.BMP
+SAVEIFRSITE                             BITMAP Buttons\SaveIFRSite.BMP
+SAVEDAMSEDIMENTATION                    BITMAP Buttons\SAVEDAMSEDIMENTATION.BMP
+SAVEALL                                 BITMAP Buttons\SaveAll.BMP
+SAVEFILE                                BITMAP Buttons\SaveFile.BMP
+SAVEOUTPUTFILES                         BITMAP Buttons\SaveOutputFiles.bmp
+SELECTFILES                             BITMAP Buttons\SelectFiles.BMP
+SMALLCLOCK                              BITMAP Buttons\SmallClock.BMP
+SPANNER                                 BITMAP Buttons\Spanner.BMP
+TEST                                    BITMAP Buttons\Test.BMP
+TOGGLELAYOUT                            BITMAP Buttons\ToggleLayout.BMP
+TSCTOGGLEVIEW                           BITMAP Buttons\TSCToggleView.bmp
+UNDO                                    BITMAP Buttons\Undo.BMP
+VALIDATEFILE                            BITMAP Buttons\ValidateFile.BMP
+VALIDATEFILES                           BITMAP Buttons\ValidateFiles.BMP
+VALIDATEMODELDATA                       BITMAP Buttons\ValidateModelData.bmp
+YRCLOADFROMDB                           BITMAP Buttons\YRCLoadFromDB.BMP
+YRCDELETETARGETDRAFT                    BITMAP Buttons\YRCDeleteTargetDraft.bmp
+YRCCHARTPRINTMODE                       BITMAP Buttons\YRCChartPrintMode.bmp
+YRCLOADFROMFILE                         BITMAP Buttons\YRCLoadFromFile.BMP
+YRCLOADFROMCOEFFILE                     BITMAP Buttons\YRCLoadFromCoefFile.BMP
+YRCTOGGLECHARTMODE                      BITMAP Buttons\YRCToggleChartMode.BMP
+YRCTOGGLEPLANEMODE                      BITMAP Buttons\YRCTogglePlaneMode.BMP
+YRCTOGGLECURVEMANIPULATION              BITMAP Buttons\YRCToggleCurveManipulation.BMP
+YRCRESETCHARTDATA                       BITMAP Buttons\YRCResetChartData.BMP
+YRCSAVECHART                            BITMAP Buttons\YRCSavechart.BMP
+YRCDELETECHART                          BITMAP Buttons\YRCDeleteChart.BMP
+YRCFYNewChart                           BITMAP Buttons\YRCFYNewChart.BMP
+YRCFYOpenChart                          BITMAP Buttons\YRCFYOpenChart.BMP
+YRCFYSaveChart                          BITMAP Buttons\YRCFYSaveChart.BMP
+YRCFYAddSeries                          BITMAP Buttons\YRCFYAddSeries.BMP
+YRCFYDeleteSeries                       BITMAP Buttons\YRCFYDeleteSeries.BMP
+
+ZOOMIN                                  BITMAP Buttons\ZoomIn.BMP
+ZOOMOUT                                 BITMAP Buttons\ZoomOut.BMP
+VNVNEWDRAWINGGROUP                      BITMAP Buttons\VNVNewDrawingGroup.BMP
+VNVDELETEDRAWINGGROUP                   BITMAP Buttons\VNVDeleteDrawingGroup.BMP
+VNVRENAMEDRAWINGGROUP                   BITMAP Buttons\RenameViewTimeSeries.bmp
+VNVNEWDRAWING                           BITMAP Buttons\VNVNewDrawing.BMP
+VNVDELETEDRAWING                        BITMAP Buttons\VNVDeleteDrawing.BMP
+VNVRENAMEDRAWING                        BITMAP Buttons\RenameChartTimeSeries.bmp
+VNVEDITDRAWING                          BITMAP Buttons\VNVEditDrawing.BMP
+VNVVIEWDRAWING                          BITMAP Buttons\SHOW.BMP
+VNVCOPYDRAWING                          BITMAP Buttons\COPY.BMP
+VIEWDATAGRAPH                           BITMAP Buttons\ViewDataGraph.bmp
+VIEWDATAGRID                            BITMAP Buttons\ViewDataGrid.bmp
+
+;
+; Yield model symbols
+;
+
+CHECKCYAN                               BITMAP YieldModelSymbols\CheckCyan.BMP
+CHECKGRAY                               BITMAP YieldModelSymbols\CheckGray.BMP
+CHECKYELLOW                             BITMAP YieldModelSymbols\CheckYellow.BMP
+DEMANDCHANNEL                           BITMAP YieldModelSymbols\DemandChannel.BMP
+DIVERSIONCHANNEL                        BITMAP YieldModelSymbols\DiversionChannel.BMP
+DONTPRINTOUTPUT                         BITMAP YieldModelSymbols\DontPrintOutput.BMP
+DONTPRINTOUTPUT2                        BITMAP YieldModelSymbols\DontPrintOutput2.BMP
+ERRORCHANNEL                            BITMAP YieldModelSymbols\ErrorChannel.BMP
+GENERALCHANNEL                          BITMAP YieldModelSymbols\GeneralChannel.BMP
+IFRCHANNEL                              BITMAP YieldModelSymbols\IFRCHANNEL.BMP
+INFLOWCHANNEL                           BITMAP YieldModelSymbols\InflowChannel.BMP
+IRRIGATIONCHANNEL                       BITMAP YieldModelSymbols\IrrigationChannel.BMP
+LINKCHANNEL                             BITMAP YieldModelSymbols\LinkChannel.BMP
+LOSSCHANNEL                             BITMAP YieldModelSymbols\LossChannel.BMP
+MASTERCHANNEL                           BITMAP YieldModelSymbols\MasterChannel.BMP
+MINFLOWCHANNEL                          BITMAP YieldModelSymbols\MinFlowChannel.BMP
+MINMAXCHANNEL                           BITMAP YieldModelSymbols\MinMaxChannel.BMP
+NODE                                    BITMAP YieldModelSymbols\Node.BMP
+NODENOIN                                BITMAP YieldModelSymbols\NodeNoIn.BMP
+PFCCHANNEL                              BITMAP YieldModelSymbols\PFCCHANNEL.BMP
+POWERCHANNEL                            BITMAP YieldModelSymbols\PowerChannel.BMP
+PRINTOUTPUT                             BITMAP YieldModelSymbols\PrintOutput.BMP
+PUMPINGCHANNEL                          BITMAP YieldModelSymbols\PumpingChannel.BMP
+RESERVOIR                               BITMAP YieldModelSymbols\Reservoir.BMP
+ROOTLINES                               BITMAP YieldModelSymbols\RootLines.BMP
+CHECKWHITE                              BITMAP YieldModelSymbols\CheckWhite.BMP
+UNCHECKWHITE                            BITMAP YieldModelSymbols\UnCheckWhite.BMP
+UNCHECKCYAN                             BITMAP YieldModelSymbols\UnCheckCyan.BMP
+UNCHECKGRAY                             BITMAP YieldModelSymbols\UnCheckGray.BMP
+UNCHECKYELLOW                           BITMAP YieldModelSymbols\UnCheckYellow.BMP
+
+
+
+StomsaFileSave                          BITMAP Buttons\StomsaFileSave.BMP
+StomsaFileClose                         BITMAP Buttons\StomsaFileClose.BMP
+StomsaFileMerge                         BITMAP Buttons\StomsaFileMerge.BMP
+StomsaFileNew                           BITMAP Buttons\StomsaFileNew.BMP
+StomsaFileOpen                          BITMAP Buttons\StomsaFileOpen.BMP
+StomsaFileOpenParam                     BITMAP Buttons\StomsaFileOpenParam.BMP
+StomsaFileImport                        BITMAP Buttons\StomsaFileImport.BMP
+StomsaFileExport                        BITMAP Buttons\StomsaFileExport.BMP
+
+;
+; Map Win GIS
+;
+
+
+SelectionTool                           BITMAP Buttons\SelectionTool.BMP
+ZoomFullExtender                        BITMAP Buttons\ZoomFullExtender.BMP
+ZoomIn2X                                BITMAP Buttons\ZoomIn2X.BMP
+ZoomMode                                BITMAP Buttons\ZoomMode.BMP
+ZoomOut2X                               BITMAP Buttons\ZoomOut2X.BMP
+ZoomPrevious                            BITMAP Buttons\ZoomPrevious.BMP
+PanMode                                 BITMAP Buttons\PanMode.BMP
+Saicon                                  BITMAP YieldModelSymbols\Saicon.BMP
+
+

@@ -1,0 +1,7 @@
+;
+; Bitmaps
+;
+ABOUTLOGO       BITMAP  ABOUTLOGO.BMP
+SPLASHSCREENNV  BITMAP  SplashScreenNV.BMP
+
+

@@ -13,20 +13,9 @@
     <PropertyGroup Condition="'$(Config)'=='Base' or '$(Base)'!=''">
         <Base>true</Base>
     </PropertyGroup>
-    <PropertyGroup Condition="('$(Platform)'=='Win32' and '$(Base)'=='true') or '$(Base_Win32)'!=''">
-        <Base_Win32>true</Base_Win32>
-        <CfgParent>Base</CfgParent>
-        <Base>true</Base>
-    </PropertyGroup>
     <PropertyGroup Condition="'$(Config)'=='Release' or '$(Cfg_1)'!=''">
         <Cfg_1>true</Cfg_1>
         <CfgParent>Base</CfgParent>
-        <Base>true</Base>
-    </PropertyGroup>
-    <PropertyGroup Condition="('$(Platform)'=='Win32' and '$(Cfg_1)'=='true') or '$(Cfg_1_Win32)'!=''">
-        <Cfg_1_Win32>true</Cfg_1_Win32>
-        <CfgParent>Cfg_1</CfgParent>
-        <Cfg_1>true</Cfg_1>
         <Base>true</Base>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Config)'=='Debug' or '$(Cfg_2)'!=''">
@@ -35,21 +24,14 @@
         <Base>true</Base>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base)'!=''">
-        <GenDll>true</GenDll>
         <SanitizedProjectName>AccessControl</SanitizedProjectName>
-    </PropertyGroup>
-    <PropertyGroup Condition="'$(Base_Win32)'!=''">
-        <DCC_UnitSearchPath>$(BDSBIN)\..\..\..\..\Steema Software\TeeChartPro\Compiled\Delphi24.win32\Lib;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
+        <GenDll>true</GenDll>
     </PropertyGroup>
     <Import Project="..\..\BaseWRMF.optset" Condition="'$(Cfg_1)'!='' And Exists('..\..\BaseWRMF.optset')"/>
     <Import Project="..\..\BaseWRMF_Release.optset" Condition="'$(Cfg_1)'!='' And Exists('..\..\BaseWRMF_Release.optset')"/>
     <Import Project="..\..\BaseWRMF_DLL.optset" Condition="'$(Cfg_1)'!='' And Exists('..\..\BaseWRMF_DLL.optset')"/>
     <PropertyGroup Condition="'$(Cfg_1)'!=''">
         <CfgDependentOn>..\..\BaseWRMF.optset;..\..\BaseWRMF_Release.optset;..\..\BaseWRMF_DLL.optset</CfgDependentOn>
-    </PropertyGroup>
-    <PropertyGroup Condition="'$(Cfg_1_Win32)'!=''">
-        <VerInfo_Locale>7177</VerInfo_Locale>
-        <Manifest_File>(None)</Manifest_File>
     </PropertyGroup>
     <Import Project="..\..\BaseWRMF.optset" Condition="'$(Cfg_2)'!='' And Exists('..\..\BaseWRMF.optset')"/>
     <Import Project="..\..\BaseWRMF_Debug.optset" Condition="'$(Cfg_2)'!='' And Exists('..\..\BaseWRMF_Debug.optset')"/>
@@ -94,10 +76,6 @@
                 <Source>
                     <Source Name="MainSource">AccessControl.dpr</Source>
                 </Source>
-                <Excluded_Packages>
-                    <Excluded_Packages Name="$(BDSBIN)\dcloffice2k240.bpl">Microsoft Office 2000 Sample Automation Server Wrapper Components</Excluded_Packages>
-                    <Excluded_Packages Name="$(BDSBIN)\dclofficexp240.bpl">Microsoft Office XP Sample Automation Server Wrapper Components</Excluded_Packages>
-                </Excluded_Packages>
             </Delphi.Personality>
             <Platforms>
                 <Platform value="iOSDevice64">False</Platform>

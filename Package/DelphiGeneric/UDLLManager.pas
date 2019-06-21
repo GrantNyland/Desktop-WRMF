@@ -494,6 +494,7 @@ begin
         end;
       end;
     end;
+    Result := LLoadResult;
 
   // Report exception.
   except on E: Exception do HandleError(E, OPNAME); end;

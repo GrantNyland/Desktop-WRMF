@@ -78,20 +78,15 @@ uses
   Windows,
   winapi.shellapi,
   UUtilities,
-  //ULicencing,
   UStudyArea,
   UDLLOperations,
   UAbstractComponent,
-  //UFunctionTimer,
   USystemModelManager,
-  //UYieldModelManager,
-  UErrorHandlingOperations,
-  UAppModulesWithDatabase,
-  UHTMLHelp,
 {$IFDEF MERGE_DLLS}
   UMainFormManager,
 {$ENDIF}
-  D6OnHelpFix;
+  UAppModulesWithDatabase,
+  UErrorHandlingOperations;
 
 { TAppModulesConstructor }
 
@@ -129,8 +124,8 @@ begin
   //StartFunctionTimer;
   //ProcessFunctionCall(OPNAME);
   try
-    if GOCXMode then
-      ShowMessage('Establishing connection to COM server in order to access model data...Press OK to continue.');
+//    if GOCXMode then
+//      ShowMessage('Establishing connection to COM server in order to access model data...Press OK to continue.');
     // Load the images resource DLL.
     if FCanProceed then
     begin
@@ -179,7 +174,7 @@ begin
               IniFile.WriteString('USER','AutoLogon','N');
             end;
           end;
-          
+
           // Launch the initialisation process.
           if Initialise then
             // Refresh the current state.
@@ -210,7 +205,7 @@ begin
   try
     if Assigned(FModel) then
       FScenarioLockManager.ReleaseLock;
-      
+
     if Assigned(FIniFile) then
     begin
       if GOCXMode then
@@ -665,7 +660,7 @@ begin
     ChDir(ExtractFilePath(ApplicationExeName) + 'Stomsa\');
     Result :=  CreateDLLObject(ExtractFilePath(ApplicationExeName) + 'Stomsa\ModelStomsa.dll',
       TAbstractAppObject(FModel), self, True, OPNAME);
-      
+
   except on E: Exception do HandleError(E, OPNAME) end;
 end;
 

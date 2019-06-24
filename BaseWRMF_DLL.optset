@@ -1,10 +1,10 @@
 ﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
     <PropertyGroup>
         <GenDll>true</GenDll>
-        <BRCC_OutputDir>..\dcu\$(Platform)\$(Config)</BRCC_OutputDir>
-        <DCC_DcuOutput>..\dcu\$(Platform)\$(Config)</DCC_DcuOutput>
-        <DCC_ExeOutput>..\..\Deployment\$(Platform)\$(Config)\Bin</DCC_ExeOutput>
-        <DCC_UnitSearchPath>..\..\Package\Dcp\$(Platform)\$(Config);$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
+        <BRCC_OutputDir>..\dcu\$(Config)</BRCC_OutputDir>
+        <DCC_DcuOutput>..\dcu\$(Config)</DCC_DcuOutput>
+        <DCC_ExeOutput>..\..\Deployment\$(Config)\Bin</DCC_ExeOutput>
+        <DCC_UnitSearchPath>..\..\Package\Dcp\$(Config);$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
         <UsePackages>true</UsePackages>
         <DCC_UsePackage>WRMFCommon;$(DCC_UsePackage)</DCC_UsePackage>
     </PropertyGroup>

@@ -5,10 +5,10 @@ echo .
 echo --------------------------------------------------------------------------------
 echo .
 
-del /S /F C:\Users\Public\Documents\Embarcadero\Studio\18.0\Bpl\*.bpl
-del /S /F C:\Users\Public\Documents\Embarcadero\Studio\18.0\Bpl\*.rsm
-del /S /F C:\Users\Public\Documents\Embarcadero\Studio\18.0\Dcp\*.dcu
-del /S /F C:\Users\Public\Documents\Embarcadero\Studio\18.0\Dcp\*.dcp
+del /S /F C:\Users\Public\Public Documents\Embarcadero\Studio\18.0\Bpl\*.bpl
+del /S /F C:\Users\Public\Public Documents\Embarcadero\Studio\18.0\Bpl\*.rsm
+del /S /F C:\Users\Public\Public Documents\Embarcadero\Studio\18.0\Dcp\*.dcu
+del /S /F C:\Users\Public\Public Documents\Embarcadero\Studio\18.0\Dcp\*.dcp
 
 del /S /F *.~*
 del /S /F *.cfg
@@ -19,6 +19,7 @@ del /S /F *.dsm
 del /S /F *.rsm
 del /S /F *.res
 del /S /F *.ddp
+del /S /F *.dof
 del /S /F *.dproj.local
 del /S /F *.identcache
 del /S /F *.stat

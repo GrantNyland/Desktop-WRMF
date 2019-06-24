@@ -15,12 +15,12 @@ package WRMFCommon;
 {$OPTIMIZATION OFF}
 {$OVERFLOWCHECKS OFF}
 {$RANGECHECKS OFF}
-{$REFERENCEINFO ON}
+{$DEFINITIONINFO ON}
 {$SAFEDIVIDE OFF}
 {$STACKFRAMES ON}
 {$TYPEDADDRESS OFF}
 {$VARSTRINGCHECKS ON}
-{$WRITEABLECONST OFF}
+{$WRITEABLECONST ON}
 {$MINENUMSIZE 1}
 {$IMAGEBASE $400000}
 {$DEFINE DEBUG}
@@ -94,6 +94,8 @@ contains
   UWRPMSysFileManager,
   UFileSelectionManager,
   UAppModulesWithDatabase,
+  UAppModulesConstructionGeneric,
+  UAppModulesConstructionMain,
   UDataTabSheetManager,
   UDataViewerSheet,
   UDataModelMenuItemManager,
@@ -102,8 +104,12 @@ contains
   UDbTableProperty,
   UDbTablePropertyList,
   UDbTablePropertyManager,
+  UGlobalData,
+  UHydrologyFileType,
+  UHydrologyFileTypeManager,
   UInstalledFileInfoObjectList,
   UResultsTabSheetManager,
+  UScenarioLockManager,
   USystemModelManager,
   EMailLabel,
   UHintComboBox,

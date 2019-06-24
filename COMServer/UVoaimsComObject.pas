@@ -49,6 +49,7 @@ implementation
 uses
   ComServ,
   SysUtils,
+  Dialogs,
   UAbstractObject,
   UAppModulesConstructionGeneric,
   UErrorHandlingOperations;
@@ -85,7 +86,6 @@ var
   LCanProceed: boolean;
 begin
   Result := False;
-  //AResult := False;
   try
     if Assigned(GAppModules) then
       Result := True
@@ -96,16 +96,14 @@ begin
       GAppModules := TAppModulesConstructorMain.Create(LCanProceed);
       if not LCanProceed then
       begin
-         FreeAndNil(GAppModules);
-      end
-      else
-      begin
-      if Assigned(GAppModules) then
-      begin
-        GAppModules.IniFile.WriteString('USER','AutoLogon','N');
-        GAppModules.IniFile.WriteString('STUDY','AutoStudy','N');
-        Result := True
-      end;
+        FreeAndNil(GAppModules);
+      end else begin
+        if Assigned(GAppModules) then
+        begin
+          GAppModules.IniFile.WriteString('USER','AutoLogon','N');
+          GAppModules.IniFile.WriteString('STUDY','AutoStudy','N');
+          Result := True
+        end;
       end;
     end;
   except on E: Exception do HandleError(E, OPNAME) end;

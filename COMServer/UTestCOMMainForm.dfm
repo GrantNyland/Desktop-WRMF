@@ -1,10 +1,10 @@
 object frmMain: TfrmMain
   Left = 234
   Top = 138
-  Width = 782
-  Height = 578
-  ActiveControl = cmbDemandCentres
+  ActiveControl = edtStudy
   Caption = 'Test COM Server'
+  ClientHeight = 515
+  ClientWidth = 951
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -21,18 +21,20 @@ object frmMain: TfrmMain
   object pgctrlMain: TPageControl
     Left = 0
     Top = 0
-    Width = 774
-    Height = 514
-    ActivePage = tsDemandCenter
+    Width = 951
+    Height = 485
+    ActivePage = tsSetup
     Align = alClient
     TabOrder = 0
     OnChange = pgctrlMainChange
+    ExplicitWidth = 120
+    ExplicitHeight = 514
     object tsSetup: TTabSheet
       Caption = 'Setup'
       object pnlTop: TPanel
         Left = 0
         Top = 0
-        Width = 766
+        Width = 943
         Height = 129
         Align = alTop
         BevelInner = bvLowered
@@ -176,7 +178,7 @@ object frmMain: TfrmMain
             Width = 80
             Height = 21
             TabOrder = 0
-            Text = '1234'
+            Text = 'Administrator'
           end
           object edtPassword: TEdit
             Left = 67
@@ -184,7 +186,7 @@ object frmMain: TfrmMain
             Width = 80
             Height = 21
             TabOrder = 1
-            Text = '1234'
+            Text = 'wrmf'
           end
         end
         object GroupBox3: TGroupBox
@@ -222,28 +224,46 @@ object frmMain: TfrmMain
       object PnlClient: TPanel
         Left = 0
         Top = 0
-        Width = 766
-        Height = 386
+        Width = 943
+        Height = 357
         Align = alClient
         BevelInner = bvLowered
         TabOrder = 0
         object srtgrdFileData: TStringGrid
           Left = 2
           Top = 2
-          Width = 762
-          Height = 382
+          Width = 939
+          Height = 353
           Align = alClient
           ColCount = 14
           DefaultRowHeight = 18
           FixedCols = 0
           RowCount = 2
           TabOrder = 0
+          ColWidths = (
+            64
+            64
+            64
+            64
+            64
+            64
+            64
+            64
+            64
+            64
+            64
+            64
+            64
+            64)
+          RowHeights = (
+            18
+            18)
         end
       end
       object pnlBottom: TPanel
         Left = 0
-        Top = 386
-        Width = 766
+        Top = 357
+        Width = 943
         Height = 100
         Align = alBottom
         BevelInner = bvLowered
@@ -301,7 +321,6 @@ object frmMain: TfrmMain
           Width = 145
           Height = 21
           Enabled = False
-          ItemHeight = 13
           TabOrder = 2
           OnChange = cmbboxSFRChange
         end
@@ -338,14 +357,17 @@ object frmMain: TfrmMain
     object tsDemandCenter: TTabSheet
       Caption = 'Demand Center'
       ImageIndex = 2
+      ExplicitWidth = 112
+      ExplicitHeight = 486
       object Panel1: TPanel
         Left = 0
         Top = 0
-        Width = 766
+        Width = 943
         Height = 41
         Align = alTop
         BevelInner = bvLowered
         TabOrder = 0
+        ExplicitWidth = 112
         object Label1: TLabel
           Left = 24
           Top = 16
@@ -365,7 +387,6 @@ object frmMain: TfrmMain
           Width = 250
           Height = 21
           Style = csDropDownList
-          ItemHeight = 13
           TabOrder = 0
           OnChange = cmbDemandCentresChange
         end
@@ -373,15 +394,17 @@ object frmMain: TfrmMain
       object Panel2: TPanel
         Left = 0
         Top = 41
-        Width = 766
-        Height = 445
+        Width = 943
+        Height = 416
         Align = alClient
         BevelInner = bvLowered
         TabOrder = 1
+        ExplicitWidth = 112
+        ExplicitHeight = 445
         object GroupBox4: TGroupBox
           Left = 2
           Top = 2
-          Width = 762
+          Width = 939
           Height = 79
           Align = alTop
           Caption = 'Demand Centre'
@@ -392,6 +415,7 @@ object frmMain: TfrmMain
           Font.Style = [fsBold]
           ParentFont = False
           TabOrder = 0
+          ExplicitWidth = 108
           object Label3: TLabel
             Left = 16
             Top = 23
@@ -442,7 +466,7 @@ object frmMain: TfrmMain
         object GroupBox5: TGroupBox
           Left = 2
           Top = 81
-          Width = 762
+          Width = 939
           Height = 80
           Align = alTop
           Caption = 'Consumptive Channel'
@@ -453,6 +477,7 @@ object frmMain: TfrmMain
           Font.Style = [fsBold]
           ParentFont = False
           TabOrder = 1
+          ExplicitWidth = 108
           object Label5: TLabel
             Left = 16
             Top = 20
@@ -549,7 +574,7 @@ object frmMain: TfrmMain
         object GroupBox6: TGroupBox
           Left = 2
           Top = 161
-          Width = 762
+          Width = 939
           Height = 112
           Align = alTop
           Caption = 'Reclaimation Channel'
@@ -560,6 +585,7 @@ object frmMain: TfrmMain
           Font.Style = [fsBold]
           ParentFont = False
           TabOrder = 2
+          ExplicitWidth = 108
           object Label9: TLabel
             Left = 16
             Top = 51
@@ -667,8 +693,8 @@ object frmMain: TfrmMain
         object GroupBox7: TGroupBox
           Left = 2
           Top = 273
-          Width = 762
-          Height = 170
+          Width = 939
+          Height = 141
           Align = alClient
           Caption = 'Return Flow Channels'
           Font.Charset = DEFAULT_CHARSET
@@ -678,11 +704,13 @@ object frmMain: TfrmMain
           Font.Style = [fsBold]
           ParentFont = False
           TabOrder = 3
+          ExplicitWidth = 108
+          ExplicitHeight = 170
           object strgrdReturnFlowChanells: TStringGrid
             Left = 2
             Top = 18
-            Width = 758
-            Height = 150
+            Width = 935
+            Height = 121
             Align = alClient
             ColCount = 6
             DefaultColWidth = 100
@@ -690,6 +718,18 @@ object frmMain: TfrmMain
             RowCount = 2
             Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goRowSizing, goColSizing]
             TabOrder = 0
+            ExplicitWidth = 104
+            ExplicitHeight = 150
+            ColWidths = (
+              100
+              100
+              100
+              100
+              100
+              100)
+            RowHeights = (
+              20
+              20)
           end
         end
       end
@@ -697,8 +737,8 @@ object frmMain: TfrmMain
   end
   object pnlMessg: TPanel
     Left = 0
-    Top = 514
-    Width = 774
+    Top = 485
+    Width = 951
     Height = 30
     Align = alBottom
     Caption = 'No user is currently logged on'
@@ -709,5 +749,7 @@ object frmMain: TfrmMain
     Font.Style = [fsBold]
     ParentFont = False
     TabOrder = 1
+    ExplicitTop = -30
+    ExplicitWidth = 120
   end
 end

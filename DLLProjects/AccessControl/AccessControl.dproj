@@ -3,8 +3,8 @@
         <ProjectGuid>{20D00A2F-4429-45AB-A675-BE3501A05AFC}</ProjectGuid>
         <MainSource>AccessControl.dpr</MainSource>
         <Base>True</Base>
-        <Config Condition="'$(Config)'==''">Release</Config>
-        <TargetedPlatforms>3</TargetedPlatforms>
+        <Config Condition="'$(Config)'==''">Debug</Config>
+        <TargetedPlatforms>2</TargetedPlatforms>
         <AppType>Library</AppType>
         <FrameworkType>VCL</FrameworkType>
         <ProjectVersion>18.1</ProjectVersion>
@@ -37,8 +37,8 @@
     <Import Project="..\..\BaseWRMF_Debug.optset" Condition="'$(Cfg_2)'!='' And Exists('..\..\BaseWRMF_Debug.optset')"/>
     <Import Project="..\..\BaseWRMF_DLL.optset" Condition="'$(Cfg_2)'!='' And Exists('..\..\BaseWRMF_DLL.optset')"/>
     <PropertyGroup Condition="'$(Cfg_2)'!=''">
-        <Debugger_CWD>D:\Projects\WRMF\Delphi\Deployment\Win64\Debug\</Debugger_CWD>
-        <Debugger_HostApplication>D:\Projects\WRMF\Delphi\Deployment\Win64\Debug\WRMF.exe</Debugger_HostApplication>
+        <Debugger_CWD>..\..\Deployment\Debug\</Debugger_CWD>
+        <Debugger_HostApplication>..\..\Deployment\Debug\WRMF.exe</Debugger_HostApplication>
         <CfgDependentOn>..\..\BaseWRMF.optset;..\..\BaseWRMF_Debug.optset;..\..\BaseWRMF_DLL.optset</CfgDependentOn>
     </PropertyGroup>
     <Import Project="..\..\BaseWRMF.optset" Condition="'$(Base)'!=''"/>
@@ -80,12 +80,10 @@
             <Platforms>
                 <Platform value="iOSDevice64">False</Platform>
                 <Platform value="OSX32">False</Platform>
-                <Platform value="Win32">True</Platform>
+                <Platform value="Win32">False</Platform>
                 <Platform value="Win64">True</Platform>
             </Platforms>
         </BorlandProject>
         <ProjectFileVersion>12</ProjectFileVersion>
     </ProjectExtensions>
-    <Import Project="$(BDS)\Bin\CodeGear.Delphi.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Delphi.Targets')"/>
-    <Import Project="$(APPDATA)\Embarcadero\$(BDSAPPDATABASEDIR)\$(PRODUCTVERSION)\UserTools.proj" Condition="Exists('$(APPDATA)\Embarcadero\$(BDSAPPDATABASEDIR)\$(PRODUCTVERSION)\UserTools.proj')"/>
 </Project>

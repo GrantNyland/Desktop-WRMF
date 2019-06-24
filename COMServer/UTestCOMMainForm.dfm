@@ -27,8 +27,6 @@ object frmMain: TfrmMain
     Align = alClient
     TabOrder = 0
     OnChange = pgctrlMainChange
-    ExplicitWidth = 120
-    ExplicitHeight = 514
     object tsSetup: TTabSheet
       Caption = 'Setup'
       object pnlTop: TPanel
@@ -109,7 +107,7 @@ object frmMain: TfrmMain
             Width = 173
             Height = 21
             TabOrder = 0
-            Text = 'Training'
+            Text = 'TestStomsa6'
           end
           object edtModel: TEdit
             Left = 67
@@ -117,7 +115,7 @@ object frmMain: TfrmMain
             Width = 173
             Height = 21
             TabOrder = 1
-            Text = 'WRYM'
+            Text = 'Stomsa'
           end
           object edtSubArea: TEdit
             Left = 67
@@ -125,7 +123,7 @@ object frmMain: TfrmMain
             Width = 173
             Height = 21
             TabOrder = 2
-            Text = 'Caledon-Modder'
+            Text = 'Gerald'
           end
           object edtScenario: TEdit
             Left = 67
@@ -133,7 +131,7 @@ object frmMain: TfrmMain
             Width = 173
             Height = 21
             TabOrder = 3
-            Text = 'DemandCentre'
+            Text = 'Gerald'
           end
         end
         object GroupBox2: TGroupBox
@@ -357,8 +355,6 @@ object frmMain: TfrmMain
     object tsDemandCenter: TTabSheet
       Caption = 'Demand Center'
       ImageIndex = 2
-      ExplicitWidth = 112
-      ExplicitHeight = 486
       object Panel1: TPanel
         Left = 0
         Top = 0
@@ -367,7 +363,6 @@ object frmMain: TfrmMain
         Align = alTop
         BevelInner = bvLowered
         TabOrder = 0
-        ExplicitWidth = 112
         object Label1: TLabel
           Left = 24
           Top = 16
@@ -399,8 +394,6 @@ object frmMain: TfrmMain
         Align = alClient
         BevelInner = bvLowered
         TabOrder = 1
-        ExplicitWidth = 112
-        ExplicitHeight = 445
         object GroupBox4: TGroupBox
           Left = 2
           Top = 2
@@ -415,7 +408,6 @@ object frmMain: TfrmMain
           Font.Style = [fsBold]
           ParentFont = False
           TabOrder = 0
-          ExplicitWidth = 108
           object Label3: TLabel
             Left = 16
             Top = 23
@@ -477,7 +469,6 @@ object frmMain: TfrmMain
           Font.Style = [fsBold]
           ParentFont = False
           TabOrder = 1
-          ExplicitWidth = 108
           object Label5: TLabel
             Left = 16
             Top = 20
@@ -585,7 +576,6 @@ object frmMain: TfrmMain
           Font.Style = [fsBold]
           ParentFont = False
           TabOrder = 2
-          ExplicitWidth = 108
           object Label9: TLabel
             Left = 16
             Top = 51
@@ -704,8 +694,6 @@ object frmMain: TfrmMain
           Font.Style = [fsBold]
           ParentFont = False
           TabOrder = 3
-          ExplicitWidth = 108
-          ExplicitHeight = 170
           object strgrdReturnFlowChanells: TStringGrid
             Left = 2
             Top = 18
@@ -718,8 +706,6 @@ object frmMain: TfrmMain
             RowCount = 2
             Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goRowSizing, goColSizing]
             TabOrder = 0
-            ExplicitWidth = 104
-            ExplicitHeight = 150
             ColWidths = (
               100
               100
@@ -749,7 +735,5 @@ object frmMain: TfrmMain
     Font.Style = [fsBold]
     ParentFont = False
     TabOrder = 1
-    ExplicitTop = -30
-    ExplicitWidth = 120
   end
 end

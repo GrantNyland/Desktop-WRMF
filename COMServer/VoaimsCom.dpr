@@ -14,7 +14,7 @@ exports
 
 {$R *.TLB}
 
-{$R '\WRMFVersion.res' '..\WRMFVersion.rc'}
+{$R 'WRMFVersion.res' '..\WRMFVersion.rc'}
 {$IFDEF MERGE_DLLS}
 {$R 'StomsaSQL.res' '..\DLLProjects\ModelStomsa\StomsaSQL.rc'}
 {$ENDIF}

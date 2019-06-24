@@ -89,11 +89,13 @@ const OPNAME = 'TStomsaModelManager.CreateMemberObjects';
 begin
   try
     inherited CreateMemberObjects;
-    FMenuItemManager        := TStomsaMenuItemManager.Create(FAppModules);
-    FDLLManager             := TStomsaDLLManager.Create;
-    FModelGUIManager        := TStomsaGUIManager.Create(FAppModules);
-
-    CreateFileEditManager;
+    FDLLManager := TStomsaDLLManager.Create;
+    if not FAppModules.GlobalData.COMServerMode then
+    begin
+      FMenuItemManager := TStomsaMenuItemManager.Create(FAppModules);
+      FModelGUIManager := TStomsaGUIManager.Create(FAppModules);
+      CreateFileEditManager;
+    end;
     CreateFileSelectionManager;
     CreateFileActionManager;
   except on E: Exception do HandleError(E, OPNAME); end;
@@ -115,7 +117,6 @@ const OPNAME = 'TStomsaModelManager.Initialise';
 begin
   Result := inherited Initialise;
   try
-    ShowMessage(OPNAME);
     if Assigned(FMenuItemManager) then
       Result := Result and FMenuItemManager.Initialise;
     if Assigned(FDLLManager) then

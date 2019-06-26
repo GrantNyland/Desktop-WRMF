@@ -126,8 +126,8 @@ uses
   VCLTee.TeeProcs,
   UUtilities,
   UAbstractModelData,
+  UYRCModelDataObject,
   UAbstractFileNamesObject,
-  UAbstractYRCModelDataObject,
   UErrorHandlingOperations;
 
 procedure TYRCChart.CreateMemberObjects;
@@ -603,8 +603,7 @@ const OPNAME = 'TYRCChart.YRCGraphDataObject';
 begin
   Result := nil;
   try
-    Result := TAbstractYRCModelDataObject(FAppModules.Model.ModelData).YRCGraphDataObject;
-  // Handle exceptions.
+    Result := TYRCModelDataObject(FAppModules.Model.ModelData).YRCGraphDataObject;
   except on E: Exception do HandleError(E, OPNAME); end;
 end;
 

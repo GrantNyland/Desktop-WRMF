@@ -33,8 +33,8 @@ end;
 implementation
 uses
    UUtilities,
-   UFilesLineTypeObject,
-   UErrorHandlingOperations, UBasicObjects,
+   UBasicObjects,
+   UErrorHandlingOperations,
    UFilesActionYieldManager;
 
 function TFileHydroPowerAllocationControlAgent.ReadModelDataFromFile(AFileName: TAbstractModelFileName;

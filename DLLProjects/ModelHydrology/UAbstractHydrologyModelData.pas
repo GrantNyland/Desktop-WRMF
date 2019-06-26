@@ -140,7 +140,6 @@ type
   TAbstractHygrologyModelDataObject = class(TAbstractModelData)
   protected
 //    function GetParamSetup: TAbstractParamSetup; virtual; abstract;
-    function GetFilesLineTypes: TAbstractFilesLineTypes; virtual; abstract;
     function GetFileNamesObject: TAbstractModelFileNameList; virtual; abstract;
 //    function GetConfigurationsData: TAbstractConfigurationsData; virtual; abstract;
   public
@@ -156,7 +155,6 @@ type
 //    property NetworkFeaturesData: TAbstractNetworkFeaturesData read GetNetworkFeaturesData;
     property ModelCalendar: AbstractModelCalendar read GetModelCalendar;
 //    property ParamSetup: TAbstractParamSetup read GetParamSetup;
-    property FilesLineTypes: TAbstractFilesLineTypes read GetFilesLineTypes;
     property FileNamesObject: TAbstractModelFileNameList read GetFileNamesObject;
   //  property ConfigurationsData: TAbstractConfigurationsData read GetConfigurationsData;
 //    property YRCGraphDataObject : TAbstractYRCGraphDataObject read GetYRCGraphDataObject;

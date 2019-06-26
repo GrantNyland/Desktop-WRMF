@@ -32,9 +32,8 @@ Type
 implementation
 uses
    UUtilities,
-   UFilesLineTypeObject,
-   UErrorHandlingOperations,
    UBasicObjects,
+   UErrorHandlingOperations,
    UFilesActionYieldManager;
 
 function TFileMonthlyWaterRequirementAgent.ReadModelDataFromFile(AFileName: TAbstractModelFileName;

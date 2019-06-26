@@ -11,11 +11,11 @@ unit VoaimsCom_TLB;
 // manual modifications will be lost.
 // ************************************************************************ //
 
-// $Rev: 45604 $
-// File generated on 2016/11/21 12:22:12 PM from Type Library described below.
+// $Rev: 52393 $
+// File generated on 2019/06/25 13:13:12 from Type Library described below.
 
 // ************************************************************************  //
-// Type Lib: R:\WRMF\Source\DLLProjects\COMServer\VoaimsCom (1)
+// Type Lib: D:\Projects\WRMF\Delphi\Package\Interfaces\VoaimsCom (1)
 // LIBID: {F13D4EA3-3431-41BD-9AC3-B590D97717D6}
 // LCID: 0
 // Helpfile:
@@ -23,6 +23,8 @@ unit VoaimsCom_TLB;
 // DepndLst:
 //   (1) v2.0 stdole, (C:\Windows\SysWOW64\stdole2.tlb)
 // SYS_KIND: SYS_WIN32
+// Errors:
+//   Hint: Symbol 'Type' renamed to 'type_'
 // ************************************************************************ //
 {$TYPEDADDRESS OFF} // Unit must be compiled without type-checked pointers.
 {$WARN SYMBOL_PLATFORM OFF}
@@ -196,6 +198,8 @@ const
   IID_IPlanningOpenCast: TGUID = '{342ED78F-8F33-4323-9DFD-FBCD4312B2B8}';
   IID_ILoadGeneration: TGUID = '{3B8AAE03-D9FD-42D6-9449-9C149FF7E411}';
   IID_IPlanningSlurryDump: TGUID = '{21806A78-10B8-459B-91E0-3F301315D060}';
+  IID_IStomsaModel: TGUID = '{A32BFC5A-95EF-44DA-9948-BF9410394B5A}';
+  IID_IStomsaModelData: TGUID = '{31F169BD-B832-4959-BB23-75A6847EB296}';
 
 // *********************************************************************//
 // Declaration of Enumerations defined in Type Library
@@ -499,7 +503,9 @@ type
 // Forward declaration of types defined in TypeLibrary
 // *********************************************************************//
   IVoaimsComObject = interface;
+  IVoaimsComObjectDisp = dispinterface;
   IYieldModel = interface;
+  IYieldModelDisp = dispinterface;
   IYieldModelData = interface;
   IYieldModelDataDisp = dispinterface;
   IRunConfigurationData = interface;
@@ -788,6 +794,10 @@ type
   ILoadGenerationDisp = dispinterface;
   IPlanningSlurryDump = interface;
   IPlanningSlurryDumpDisp = dispinterface;
+  IStomsaModel = interface;
+  IStomsaModelDisp = dispinterface;
+  IStomsaModelData = interface;
+  IStomsaModelDataDisp = dispinterface;
 
 // *********************************************************************//
 // Declaration of CoClasses defined in Type Library
@@ -798,7 +808,7 @@ type
 
 // *********************************************************************//
 // Interface: IVoaimsComObject
-// Flags:     (256) OleAutomation
+// Flags:     (320) Dual OleAutomation
 // GUID:      {E32AC184-D23F-486C-B868-55DD59687AEF}
 // *********************************************************************//
   IVoaimsComObject = interface(IUnknown)
@@ -830,8 +840,38 @@ type
   end;
 
 // *********************************************************************//
+// DispIntf:  IVoaimsComObjectDisp
+// Flags:     (320) Dual OleAutomation
+// GUID:      {E32AC184-D23F-486C-B868-55DD59687AEF}
+// *********************************************************************//
+  IVoaimsComObjectDisp = dispinterface
+    ['{E32AC184-D23F-486C-B868-55DD59687AEF}']
+    function Logon(const AUserID: WideString; const APassword: WideString): WordBool; dispid 101;
+    function SelectStudy(const AModel: WideString; const AStudy: WideString;
+                         const ASubArea: WideString; const AScenario: WideString): WordBool; dispid 102;
+    property YieldModel: IYieldModel readonly dispid 103;
+    function Initialise: WordBool; dispid 104;
+    property INIFileName: WideString readonly dispid 105;
+    function HandleVNVEvent(const AVisioApp: IUnknown; const AVisioDoc: IUnknown;
+                            AVisioEventCode: Integer; const ASourceObj: IUnknown;
+                            AEventID: Integer; AEventSeqNum: Integer; const ASubjectObj: IUnknown;
+                            AMoreInfo: OleVariant): WordBool; dispid 107;
+    function ProcessVNVSpecial(const AParameter: WideString): WordBool; dispid 108;
+    function IsServerInitialised: WordBool; dispid 109;
+    function IsUserLoggedOn: WordBool; dispid 110;
+    function IsStudySelected: WordBool; dispid 111;
+    function LoggedOnUserName: WideString; dispid 112;
+    function SelectedStudyKeys: WideString; dispid 113;
+    function UnlockScenario(const AStudyAreaCode: WideString; const AModelCode: WideString;
+                            const ASubAreaCode: WideString; const AScenarioCode: WideString): WordBool; dispid 114;
+    function CloseScenario: WordBool; dispid 115;
+    function Logoff: WordBool; dispid 116;
+    property PlanningModel: IPlanningModel readonly dispid 106;
+  end;
+
+// *********************************************************************//
 // Interface: IYieldModel
-// Flags:     (256) OleAutomation
+// Flags:     (320) Dual OleAutomation
 // GUID:      {17E8AE84-5FF8-4703-9131-EC8BC8D964B8}
 // *********************************************************************//
   IYieldModel = interface(IUnknown)
@@ -979,6 +1019,155 @@ type
     property YieldModelData: IYieldModelData read Get_YieldModelData;
     property WRYMRunOptions: IWRYMRunOptions read Get_WRYMRunOptions;
     property YieldModelIterationTracker: IYieldModelIterationTracker read Get_YieldModelIterationTracker;
+  end;
+
+// *********************************************************************//
+// DispIntf:  IYieldModelDisp
+// Flags:     (320) Dual OleAutomation
+// GUID:      {17E8AE84-5FF8-4703-9131-EC8BC8D964B8}
+// *********************************************************************//
+  IYieldModelDisp = dispinterface
+    ['{17E8AE84-5FF8-4703-9131-EC8BC8D964B8}']
+    function DoValidateAllFiles: WordBool; dispid 101;
+    function DoExportAllFiles: WordBool; dispid 102;
+    function DoImportAllFiles: WordBool; dispid 103;
+    function DoClearModelData: WordBool; dispid 104;
+    function DoWizardNewReservoir: WordBool; dispid 105;
+    function DoWizardNewNodeWithInflow: WordBool; dispid 106;
+    function DoInvokeWizard: WordBool; dispid 107;
+    function DoWizardRunYieldHistoric: WordBool; dispid 108;
+    function DoWizardRunYieldStochastic: WordBool; dispid 109;
+    function DoWizardNewChannel(const AUpDownNodeNumbers: WideString): WordBool; dispid 110;
+    property YieldModelData: IYieldModelData readonly dispid 111;
+    function Validate(var AErrors: WideString; const AContext: WideString): WordBool; dispid 112;
+    function DoExportAllFilesAndRunModel(ASilent: WordBool): WordBool; dispid 113;
+    function GetYieldChannelYield: Double; dispid 114;
+    function DoRunModel: WordBool; dispid 115;
+    function DoCreateReservoir: IReservoirData; dispid 116;
+    function DoDeleteReservoir(AReservoirNumber: Integer): WordBool; dispid 117;
+    function DoCreateNodeWithInflow: IReservoirData; dispid 118;
+    function DoDeleteNodeWithInflow(ANodeNumber: Integer): WordBool; dispid 119;
+    function DoCreateNodeWithoutInflow: IReservoirData; dispid 120;
+    function DoDeleteNodeWithoutInflow(ANodeNumber: Integer): WordBool; dispid 121;
+    function DoCreateChannel(AUpStreamNodeNumber: Integer; ADownStreamNodeNumber: Integer): IGeneralFlowChannel; dispid 122;
+    function DoDeleteChannel(AChannelNumber: Integer): WordBool; dispid 123;
+    function DoConvertChannel(AChannelNumber: Integer): WordBool; dispid 124;
+    function DoCreateMinimumFlowFeature(AChannelNumber: Integer): IMinimumFlowConstraint; dispid 125;
+    function DoCreateMinMaxFlowFeature(AChannelNumber: Integer): IMinMaxFlowConstraint; dispid 126;
+    function DoCreatePumpingFeature(AChannelNumber: Integer): IPumpingFeature; dispid 127;
+    function DoCreateLossFeature(AChannelNumber: Integer): ILossFeature; dispid 128;
+    function DoCreateSpecifiedDemandFeature(AChannelNumber: Integer): ISpecifiedDemandFeature; dispid 129;
+    function DoCreateDiversionFeature(AChannelNumber: Integer): IDiversionFeature; dispid 130;
+    function DoCreateSpecifiedInflowFeature(AChannelNumber: Integer): ISpecifiedInflowFeature; dispid 131;
+    function DoCreateIFRFeature(AChannelNumber: Integer; AIFRType: TIFRFeatureReferenceFlowType): IIFRFeature; dispid 132;
+    function DoCreatePhysicalFlowConstraint(AChannelNumber: Integer): IPhysicalFlowConstraint; dispid 133;
+    function DoCreateIrrigationArea: IIrrigationArea; dispid 134;
+    function DoCreatePowerPlant: IPowerPlant; dispid 135;
+    function DoDeletePumpingFeature(AChannelNumber: Integer): WordBool; dispid 136;
+    function DoDeleteIFRFeature(AChannelNumber: Integer): WordBool; dispid 137;
+    function DoDeletePhysicalFlowConstraint(AChannelNumber: Integer): WordBool; dispid 138;
+    function DoDeleteIrrigationArea(AFeatureID: Integer): WordBool; dispid 139;
+    function DoDeletePowerPlant(AFeatureID: Integer): WordBool; dispid 140;
+    function DoCreateMasterControlFeature(AChannelNumber: Integer): IMasterControlFeature; dispid 141;
+    function DoDeleteMasterControlFeature(AChannelNumber: Integer): WordBool; dispid 142;
+    function DoCreateWaterDemandFeature(AChannelNumber: Integer): IWaterDemandFeature; dispid 143;
+    function DoDeleteWaterDemandFeature(AChannelNumber: Integer): WordBool; dispid 144;
+    function ViewInputReservoirDialog(AResevoirNumber: Integer): WordBool; dispid 145;
+    function ViewInputNodeWithInflowDialog(ANodeNumber: Integer): WordBool; dispid 146;
+    function ViewInputChannelDialog(AChannelNumber: Integer): WordBool; dispid 147;
+    function HandleVNVEvent(const AVisioApp: IUnknown; const AVisioDoc: IUnknown;
+                            AVisioEventCode: Integer; const ASourceObj: IUnknown;
+                            AEventID: Integer; AEventSeqNum: Integer; const ASubjectObj: IUnknown;
+                            AMoreInfo: OleVariant): WordBool; dispid 148;
+    function ProcessVNVSpecial(const AParameter: WideString): WordBool; dispid 150;
+    function DoCreateIrrigationBlock: IIrrigationBlock; dispid 151;
+    function DoDeleteIrrigationBlock(AFeatureID: Integer): WordBool; dispid 152;
+    function DoCreateWetland: IWetland; dispid 153;
+    function DoDeleteWetland(AFeatureID: Integer): WordBool; dispid 154;
+    function ViewInputIrrigationBlockDialog(AIrrigationBlockNr: Integer): WordBool; dispid 155;
+    function ViewInputWetlandDialog(AWetlandNr: Integer): WordBool; dispid 156;
+    function DoCreateYMDemandCentre: IYMDemandCentre; dispid 157;
+    function DoDeleteYMDemandCentre(ANodeNumber: Integer): WordBool; dispid 158;
+    function DoCreateSFRSubCatchment: IStreamFlowReduction; dispid 160;
+    function DoDeleteSFRSubCatchment(AIdentifier: Integer): WordBool; dispid 161;
+    function ViewInputDemandCentreDialog(AYMDemandCentreNr: Integer): WordBool; dispid 162;
+    function ReadFirmYieldFromDebugFile: Double; dispid 165;
+    function DoCreateMine: IMine; dispid 166;
+    function DoDeleteMine(AMineNumber: Integer): WordBool; dispid 167;
+    function DoCreateOpenCast(AMineNumber: Integer): IOpenCast; dispid 168;
+    function DoDeleteOpenCast(AMineNumber: Integer; AOpenCastIdentifier: Integer): WordBool; dispid 169;
+    function DoCreateUnderGround(AMineNumber: Integer): IUnderground; dispid 170;
+    function DoDeleteUnderGround(AMineNumber: Integer; AUnderGroundIdentifier: Integer): WordBool; dispid 171;
+    function DoCreateSlurryDump(AMineNumber: Integer): ISlurryDump; dispid 172;
+    function DoDeleteSlurryDump(AMineNumber: Integer; ASlurryDumpIdentifier: Integer): WordBool; dispid 173;
+    function ViewInputConfigurationDialog(const AViewName: WideString): WordBool; dispid 174;
+    function ImportOutputFiles: WordBool; dispid 175;
+    function ViewInputNodeWithoutInflowDialog(ANodeNumber: Integer): WordBool; dispid 176;
+    function ViewInputPowerPlantDialog(APowerPlantNumber: Integer): WordBool; dispid 177;
+    function ViewInputIrrigationAreaDialog(AIrrigationAreaNumber: Integer): WordBool; dispid 178;
+    function ViewInputStreamFlowReductionDialog(AStreamFlowReductionNumber: Integer): WordBool; dispid 179;
+    function ViewInputMineDialog(AMineNodeNr: Integer): WordBool; dispid 180;
+    function ViewInputMinePCDDamDialog(APCDDamNr: Integer): WordBool; dispid 181;
+    function ViewInputMineUndergroundDamDialog(AUndergroundDamNr: Integer): WordBool; dispid 182;
+    function ViewInputMasterControlChannelDialog(AChannelNumber: Integer): WordBool; dispid 183;
+    function ViewOutputMasterControlChannelDialog(AChannelNumber: Integer): WordBool; dispid 184;
+    function ViewOutputReservoirDialog(AResevoirNumber: Integer): WordBool; dispid 185;
+    function ViewOutputNodeWithInflowDialog(ANodeNumber: Integer): WordBool; dispid 186;
+    function ViewOutputNodeWithoutInflowDialog(ANodeNumber: Integer): WordBool; dispid 187;
+    function ViewOutputChannelDialog(AChannelNumber: Integer): WordBool; dispid 188;
+    function ViewOutputPowerPlantDialog(APowerPlantNumber: Integer): WordBool; dispid 189;
+    function ViewOutputIrrigationAreaDialog(AIrrigationAreaNumber: Integer): WordBool; dispid 190;
+    function ViewOutputIrrigationBlockDialog(AIrrigationBlockNr: Integer): WordBool; dispid 191;
+    function ViewOutputWetlandDialog(AWetlandNr: Integer): WordBool; dispid 192;
+    function ViewOutputStreamFlowReductionDialog(AStreamFlowReductionNumber: Integer): WordBool; dispid 193;
+    function ViewOutputDemandCentreDialog(AYMDemandCentreNr: Integer): WordBool; dispid 194;
+    function ViewOutputMineDialog(AMineNodeNr: Integer): WordBool; dispid 195;
+    function ViewOutputMinePCDDamDialog(APCDDamNr: Integer): WordBool; dispid 196;
+    function ViewOutputMineUndergroundDamDialog(AUndergroundDamNr: Integer): WordBool; dispid 197;
+    property WRYMRunOptions: IWRYMRunOptions readonly dispid 149;
+    property YieldModelIterationTracker: IYieldModelIterationTracker readonly dispid 159;
+    function DoCreateDroughtRestriction: IDroughtRestriction; dispid 163;
+    function DoDeleteDroughtRestriction(AIdentifier: Integer): WordBool; dispid 164;
+    function DoCopyIFRFeature(AChannelNumber: Integer): IIFRFeature; dispid 198;
+    function DoCopyChannel(AChannelNumber: Integer): IGeneralFlowChannel; dispid 199;
+    function DoCopyMinimumFlowFeature(AChannelNumber: Integer): IMinimumFlowConstraint; dispid 200;
+    function DoCopyMinMaxFlowFeature(AChannelNumber: Integer): IMinMaxFlowConstraint; dispid 201;
+    function DoCopyLossFeature(AChannelNumber: Integer): ILossFeature; dispid 202;
+    function DoCopySpecifiedDemandFeature(AChannelNumber: Integer): ISpecifiedDemandFeature; dispid 203;
+    function DoCopyDiversionFeature(AChannelNumber: Integer): IDiversionFeature; dispid 204;
+    function DoCopySpecifiedInflowFeature(AChannelNumber: Integer): ISpecifiedInflowFeature; dispid 205;
+    function CopyPhysicalFlowConstraint(AChannelNumber: Integer): IPhysicalFlowConstraint; dispid 206;
+    function DoCopyMasterControlFeature(AChannelNumber: Integer): IMasterControlFeature; dispid 207;
+    function DoCopyPumpingFeature(AChannelNumber: Integer): IPumpingFeature; dispid 208;
+    function DoCopyWaterDemandFeature(AChannelNumber: Integer): IWaterDemandFeature; dispid 209;
+    function DoCopyPowerPlant(AChannelNumber: Integer): IPowerPlant; dispid 210;
+    function DoCopyIrrigationArea(AFeatureID: Integer): IIrrigationArea; dispid 211;
+    function DoCopyIrrigationBlock(AFeatureID: Integer): IIrrigationBlock; dispid 212;
+    function DoCopyWetland(AWetlandID: Integer): IWetland; dispid 213;
+    function DoCopySFRSubCatchment(AStreamFlowReductionID: Integer): IStreamFlowReduction; dispid 214;
+    function DoCopyYMDemandCentre(ANodeNumber: Integer): IYMDemandCentre; dispid 215;
+    function DoCopyMine(AMineNumber: Integer): IMine; dispid 216;
+    function DoCopyReservoir(AReservoirNumber: Integer): IReservoirData; dispid 217;
+    function DoRunStorageVsYield(AReservoirNumber: Integer;
+                                 const AStartingStorageCommaText: WideString;
+                                 var AMinTargetDraftCommaText: WideString;
+                                 var AMaxTargetDraftCommaText: WideString;
+                                 var AYieldCommaText: WideString): WordBool; dispid 218;
+    function DoCreateGroundWater: IGroundWater; dispid 219;
+    function DoDeleteGroundWater(AGroundWaterID: Integer): WordBool; dispid 220;
+    function DoCopyReservoirFromScenario: WordBool; dispid 221;
+    function DoCopyChannelFromScenario: WordBool; dispid 222;
+    function DoCopyIrrigationAreaFromScenario: WordBool; dispid 223;
+    function DoCopyPowerPlantFromScenario: WordBool; dispid 224;
+    function DoCopyIrrigationBlockFromScenario: WordBool; dispid 225;
+    function DoCopyWetlandFromScenario: WordBool; dispid 226;
+    function DoCopyYMDemandCentreFromScenario: WordBool; dispid 227;
+    function DoCopySFRFromScenario: WordBool; dispid 228;
+    function DoCopyMineFromScenario: WordBool; dispid 229;
+    function DoCopyGroundWaterFromScenario: WordBool; dispid 230;
+    function ViewInputGroundwaterDialog(AAquiferNodeNr: Integer): WordBool; dispid 231;
+    function ViewOutputGroundwaterDialog(AAquiferNodeNr: Integer): WordBool; dispid 232;
+    function StudyPropertiesCommaText: WideString; dispid 233;
   end;
 
 // *********************************************************************//
@@ -4102,6 +4291,8 @@ type
     function Get_MatrixC(ARow: Integer; ACol: Integer): Double; safecall;
     function Get_KeyGaugeCount: Integer; safecall;
     function Get_KeyGaugeNoByIndex(AIndex: Integer): Integer; safecall;
+    function Get_HydrologyFolder: WideString; safecall;
+    procedure Set_HydrologyFolder(const Value: WideString); safecall;
     property ReferenceCount: Integer read Get_ReferenceCount;
     property ReferenceDataByIndex[AIndex: Integer]: IParamReference read Get_ReferenceDataByIndex;
     property ReferenceDataByCatchNumber[ARefNumber: Integer]: IParamReference read Get_ReferenceDataByCatchNumber;
@@ -4112,6 +4303,7 @@ type
     property MatrixC[ARow: Integer; ACol: Integer]: Double read Get_MatrixC;
     property KeyGaugeCount: Integer read Get_KeyGaugeCount;
     property KeyGaugeNoByIndex[AIndex: Integer]: Integer read Get_KeyGaugeNoByIndex;
+    property HydrologyFolder: WideString read Get_HydrologyFolder write Set_HydrologyFolder;
   end;
 
 // *********************************************************************//
@@ -4133,6 +4325,7 @@ type
     property MatrixC[ARow: Integer; ACol: Integer]: Double readonly dispid 110;
     property KeyGaugeCount: Integer readonly dispid 111;
     property KeyGaugeNoByIndex[AIndex: Integer]: Integer readonly dispid 112;
+    property HydrologyFolder: WideString dispid 113;
   end;
 
 // *********************************************************************//
@@ -9159,6 +9352,45 @@ type
     property PCDAnalysisStartVolume: Double dispid 108;
     property RechargeFactor[AIndex: Integer]: Double dispid 109;
     function Validate(var AErrors: WideString; const AContext: WideString): WordBool; dispid 110;
+  end;
+
+// *********************************************************************//
+// Interface: IStomsaModel
+// Flags:     (320) Dual OleAutomation
+// GUID:      {A32BFC5A-95EF-44DA-9948-BF9410394B5A}
+// *********************************************************************//
+  IStomsaModel = interface(IUnknown)
+    ['{A32BFC5A-95EF-44DA-9948-BF9410394B5A}']
+    function Get_StomsaModelData: IStomsaModelData; safecall;
+    property StomsaModelData: IStomsaModelData read Get_StomsaModelData;
+  end;
+
+// *********************************************************************//
+// DispIntf:  IStomsaModelDisp
+// Flags:     (320) Dual OleAutomation
+// GUID:      {A32BFC5A-95EF-44DA-9948-BF9410394B5A}
+// *********************************************************************//
+  IStomsaModelDisp = dispinterface
+    ['{A32BFC5A-95EF-44DA-9948-BF9410394B5A}']
+    property StomsaModelData: IStomsaModelData readonly dispid 101;
+  end;
+
+// *********************************************************************//
+// Interface: IStomsaModelData
+// Flags:     (320) Dual OleAutomation
+// GUID:      {31F169BD-B832-4959-BB23-75A6847EB296}
+// *********************************************************************//
+  IStomsaModelData = interface(IUnknown)
+    ['{31F169BD-B832-4959-BB23-75A6847EB296}']
+  end;
+
+// *********************************************************************//
+// DispIntf:  IStomsaModelDataDisp
+// Flags:     (320) Dual OleAutomation
+// GUID:      {31F169BD-B832-4959-BB23-75A6847EB296}
+// *********************************************************************//
+  IStomsaModelDataDisp = dispinterface
+    ['{31F169BD-B832-4959-BB23-75A6847EB296}']
   end;
 
 // *********************************************************************//

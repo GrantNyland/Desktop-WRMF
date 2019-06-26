@@ -41,9 +41,9 @@ implementation
 
 uses
   UUtilities,
-  UFilesLineTypeObject,
+  UPathsObject,
   UYieldModelDataObject,
-  UErrorHandlingOperations, UPathsObject;
+  UErrorHandlingOperations;
 
 
 function TPlotFileAgent.ReadDataFromFile(ADataType: TOutputDataType;AFileName: TAbstractModelFileName;AContainer: TStrings;
@@ -301,4 +301,4 @@ begin
   except on E: Exception do HandleError(E, OPNAME) end;
 end;
 
-end. 
+end.

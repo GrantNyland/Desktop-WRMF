@@ -43,9 +43,9 @@ type
 
 implementation
 
-uses UUtilities,
-     UFilesLineTypeObject,
-     UErrorHandlingOperations;
+uses
+  UUtilities,
+  UErrorHandlingOperations;
 
 procedure TMonthlyDamLevelsFileAgent.CreateMemberObjects;
 const OPNAME = 'TMonthlyDamLevelsFileAgent.CreateMemberObjects';

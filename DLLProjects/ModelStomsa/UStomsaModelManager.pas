@@ -17,13 +17,15 @@ uses
   UStomsaDLLManager,
   UStomsaGUIManager,
   UStomsaMenuItemManager,
+  UStomsaModelDataObject,
   USystemModelManager;
 
 type
   TStomsaModelManager = class(TSystemModelManager)
   protected
-    FMenuItemManager            : TStomsaMenuItemManager;
+    FModelData                  : TStomsaModelDataObject;
     FDLLManager                 : TStomsaDLLManager;
+    FMenuItemManager            : TStomsaMenuItemManager;
     FModelGUIManager            : TStomsaGUIManager;
     FFileEditManager            : TAbstractFileEditManager;
     FFileSelectionManager       : TFileSelectionManager;
@@ -89,8 +91,9 @@ const OPNAME = 'TStomsaModelManager.CreateMemberObjects';
 begin
   try
     inherited CreateMemberObjects;
+    FModelData := TStomsaModelDataObject.Create(FAppModules);
     FDLLManager := TStomsaDLLManager.Create;
-    if not FAppModules.GlobalData.COMServerMode then
+    if (not FAppModules.GlobalData.COMServerMode) then
     begin
       FMenuItemManager := TStomsaMenuItemManager.Create(FAppModules);
       FModelGUIManager := TStomsaGUIManager.Create(FAppModules);
@@ -106,6 +109,7 @@ const OPNAME = 'TStomsaModelManager.DestroyMemberObjects';
 begin
   inherited DestroyMemberObjects;
   try
+    FreeAndNil(FModelData);
     FreeAndNil(FDLLManager);
     FreeAndNil(FMenuItemManager);
     FreeAndNil(FModelGUIManager);
@@ -117,10 +121,10 @@ const OPNAME = 'TStomsaModelManager.Initialise';
 begin
   Result := inherited Initialise;
   try
-    if Assigned(FMenuItemManager) then
-      Result := Result and FMenuItemManager.Initialise;
     if Assigned(FDLLManager) then
       Result := Result and FDLLManager.LoadAll;
+    if Assigned(FMenuItemManager) then
+      Result := Result and FMenuItemManager.Initialise;
     if Assigned(FModelGUIManager) then
       Result := Result and FModelGUIManager.Initialise;
     if Assigned(FFileEditManager) then
@@ -154,7 +158,6 @@ const OPNAME = 'TStomsaModelManager.StudyHasChanged';
 begin
   Result := inherited StudyHasChanged;
   try
-    ShowMessage(OPNAME);
     if Assigned(FMenuItemManager) then
       Result := Result and FMenuItemManager.StudyHasChanged;
     if Assigned(FModelGUIManager) then
@@ -174,7 +177,8 @@ const OPNAME = 'TStomsaModelManager.ModelData';
 begin
   Result := nil;
   try
-    Result := fmData.DataStorage;
+    Result := FModelData;
+//    Result := fmData.DataStorage;
   except on E: Exception do HandleError ( E, OPNAME ) end;
 end;
 
@@ -387,7 +391,7 @@ begin
     ShowMessage(FAppModules.StudyArea.DataFilesPath);
     if Assigned(fmData) then
     begin
-      fmData.DataStorage.FileNamesObject.PopulateHydrologyPaths(FAppModules.StudyArea.DataFilesPath);
+      fmData.DataStorage.CastFileNamesObject.PopulateHydrologyPaths(FAppModules.StudyArea.DataFilesPath);
       Result := SelectModelFileNames;
       Result := Result and DisplayModelFileNames;
       LoadData;
@@ -405,7 +409,7 @@ begin
     begin
       Result := True;
     end else begin
-      Result := FFileSelectionManager.PopulateFileNames(nil, fmData.DataStorage.FileNamesObject);
+      Result := FFileSelectionManager.PopulateFileNames(nil, fmData.DataStorage.CastFileNamesObject);
     end;
   except on E: Exception do HandleError(E, OPNAME) end;
 end;
@@ -418,7 +422,7 @@ begin
     if Assigned(FFileEditManager) and Assigned(FFileEditManager.TabSheet) then
     begin
        Result := FFileSelectionManager.PopulateTreeView(TTreeViewTabSheet(FFileEditManager.TabSheet).TreeView,
-                 fmData.DataStorage.FileNamesObject);
+                 fmData.DataStorage.CastFileNamesObject);
     end;
   except on E: Exception do HandleError(E, OPNAME) end;
 end;
@@ -432,7 +436,7 @@ begin
     LPath := FAppModules.StudyArea.DataFilesPath;
     //if SelectDirectory(LPath,[sdAllowCreate, sdPerformCreate, sdPrompt],0) then
     //begin
-      fmData.DataStorage.FileNamesObject.PopulateHydrologyPaths(LPath);
+      fmData.DataStorage.CastFileNamesObject.PopulateHydrologyPaths(LPath);
       FAppModules.GlobalData.SetIncludeHydrologyFiles(True);
       FModelFilesActionManager.DoExportAllFiles;
     //end;

@@ -1,7 +1,7 @@
 object frmMain: TfrmMain
   Left = 234
   Top = 138
-  ActiveControl = edtStudy
+  ActiveControl = Stomsa
   Caption = 'Test COM Server'
   ClientHeight = 515
   ClientWidth = 951
@@ -23,7 +23,7 @@ object frmMain: TfrmMain
     Top = 0
     Width = 951
     Height = 485
-    ActivePage = tsSetup
+    ActivePage = Stomsa
     Align = alClient
     TabOrder = 0
     OnChange = pgctrlMainChange
@@ -718,6 +718,18 @@ object frmMain: TfrmMain
               20)
           end
         end
+      end
+    end
+    object Stomsa: TTabSheet
+      Caption = 'Stomsa'
+      ImageIndex = 3
+      object Edit1: TEdit
+        Left = 11
+        Top = 16
+        Width = 430
+        Height = 21
+        TabOrder = 0
+        Text = 'Hydro Files Folder'
       end
     end
   end

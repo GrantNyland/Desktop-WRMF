@@ -47,10 +47,8 @@ uses
   Contnrs,
   DateUtils,
   UUtilities,
-  //ShellApi,
   UDosFunctions,
   UFileNameConstants,
-  UFilesLineTypeObject,
   UErrorHandlingOperations;
 
 function TRunPlanningModelAgent.CheckInputFiles(ADataFileObjects:TDataFileObjects; AProgressFunction: TProgressUpdateFuntion): boolean;

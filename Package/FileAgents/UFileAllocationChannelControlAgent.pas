@@ -32,8 +32,8 @@ Type
 implementation
 uses
    UUtilities,
-   UFilesLineTypeObject,
-   UErrorHandlingOperations, UBasicObjects,
+   UBasicObjects,
+   UErrorHandlingOperations,
    UFilesActionYieldManager;
 
 function TFileAllocationChannelControlAgent.ReadModelDataFromFile(AFileName: TAbstractModelFileName;

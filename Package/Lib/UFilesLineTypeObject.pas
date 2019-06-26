@@ -36,7 +36,7 @@ type
     constructor Create;
     destructor Destroy; override;
     function FilesCount: integer; override;
-    function AddFile(AFileNameObject: TFileNameObject):TFileLineTypesObject;
+    function AddFile(AFileNameObject: TAbstractModelFileName): TAbstractFileLineTypesObject; override;
     procedure Clear;
     function GetFileLineType(AFileObject: TAbstractModelFileName; ALineNumber: Integer): string; override;
   end;
@@ -170,7 +170,7 @@ begin
     LObject := TFileLineTypesObject.Create;
     FFilesLineTypeList.Add(LObject);
 
-    //Add directory File; 
+    //Add directory File;
     LObject := TFileLineTypesObject.Create;
     FFilesLineTypeList.Add(LObject);
 
@@ -186,10 +186,9 @@ begin
   except on E: Exception do HandleError(E, OPNAME) end;
 end;
 
-function TFilesLineTypes.AddFile(AFileNameObject: TFileNameObject): TFileLineTypesObject;
+function TFilesLineTypes.AddFile(AFileNameObject: TAbstractModelFileName): TAbstractFileLineTypesObject;
 const OPNAME = 'TFilesLineTypes.AddFile';
-var
-  LFileLineTypesObject: TFileLineTypesObject;
+var LFileLineTypesObject: TFileLineTypesObject;
 begin
   Result := nil;
   try

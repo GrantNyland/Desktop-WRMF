@@ -12,7 +12,6 @@ uses
   UYRCGraphDataObject,
   VoaimsCom_TLB,
   UReservoirData,
-  UFilesLineTypeObject,
   UReservoirPenaltyStructureData,
   UReservoirZoneElevationData,
   UWetland,
@@ -483,7 +482,7 @@ Begin
     end;
   except on E: Exception do HandleError(E, OPNAME) end;
 
-end;                                         
+end;
 
 function GetWetlandViewDataItems(AViewID      : string;
                                  AItemsList   : TViewModelDataItemsList;

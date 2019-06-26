@@ -42,7 +42,6 @@ implementation
 uses
   Math,
   SysUtils,
-  UAbstractYRCModelDataObject,
   UYRCContainerAbstractSeries,
   UErrorHandlingOperations;
 

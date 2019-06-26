@@ -72,6 +72,8 @@ type
     chkboxDCRPChannelPlantExist: TCheckBox;
     GroupBox7: TGroupBox;
     strgrdReturnFlowChanells: TStringGrid;
+    Stomsa: TTabSheet;
+    Edit1: TEdit;
     procedure btnLogonClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -164,6 +166,12 @@ begin
     FVoaimsComServer.SelectStudy(LModel,LStudy,LSubArea,LScenario);
     cmbboxSFR.Enabled := FVoaimsComServer.IsStudySelected;
     if cmbboxSFR.Enabled then
+    begin
+      FSFRInitilalised := False;
+      FDemandCentreInitilalised := False;
+      pnlMessg.Caption := '(' + 'Study='+LStudy+ ' Model='+LModel+ ' SubArea='+LSubArea+ ' Scenario='+LScenario + ') is the selected study';
+    end;
+    if (FVoaimsComServer.) then
     begin
       FSFRInitilalised := False;
       FDemandCentreInitilalised := False;

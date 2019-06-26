@@ -28,8 +28,7 @@ uses
   UYieldModelDataObject,
   UFileselectionManager,
   UGenericModelLinkClasses,
-  UFilesActionAbstractManager,
-  UAbstractYRCModelDataObject;
+  UFilesActionAbstractManager;
 
 type
   TModelYRCManager = class(TSystemModelManager)
@@ -131,7 +130,7 @@ uses
   UYieldFileSelectionManager,
   UYRCModelDatasetConstructor,
   UErrorHandlingOperations;
-  
+
 procedure TModelYRCManager.CreateMemberObjects;
 const OPNAME = 'TModelYRCManager.CreateMemberObjects';
 begin
@@ -319,7 +318,7 @@ begin
     Result := True;
    if Assigned(FModelData) and
       Assigned(YieldModelData.FileNamesObject) and
-      Assigned(YieldModelData.YRCGraphDataObject) and//axp
+      Assigned(YieldModelData.CastYRCGraphDataObject) and//axp
 //axp
       Assigned(YieldModelData.FileNamesObject.ConfigFileNames) and
       Assigned(YieldModelData.FileNamesObject.ParamFileNames) and
@@ -342,7 +341,7 @@ begin
       Assigned(YieldModelData.FileNamesObject.DirectoryFileNames.FileNameObject[00]) then
 
    begin
-     Result := 
+     Result :=
               YieldModelData.FileNamesObject.ConfigFileNames.FileNameObject[00].SavedInDB or
               YieldModelData.FileNamesObject.ConfigFileNames.FileNameObject[01].SavedInDB or
               YieldModelData.FileNamesObject.ConfigFileNames.FileNameObject[02].SavedInDB or

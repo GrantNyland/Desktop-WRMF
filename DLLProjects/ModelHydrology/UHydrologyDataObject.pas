@@ -19,7 +19,6 @@ uses
   UBasicObjects,
   UConstants,
   UFileNames,
-  UFilesLineTypeObject,
   UAbstractHydrologyModelData,
   UViewModelDataObject,
   UParameterData;
@@ -42,23 +41,6 @@ type
     function Initialise: boolean; override;
   end;
 
-{  THydrologyDataObject = class ( TAbstractHygrologyModelDataObject )
-  protected
-    FHydrologyFileLine   : THydrologyFileLine;
-    FParamSetup          : TParamSetup;
-    procedure CreateMemberObjects; override;
-    procedure DestroyMemberObjects; override;
-    function GetFilesLineTypes: TAbstractFilesLineTypes; override;
-    function GetFileNamesObject: TAbstractModelFileNameList; override;
-  public
-    procedure Reset;
-    function GetViewDataItems ( AViewId: string; AItemsList:TViewModelDataItemsList; var AHandled:boolean ): boolean;override;
-    function GetHydrologyFilesForCatchment ( ACatchmentRef: integer;AFilesNamesContainer: TStringList ): boolean; override;
-    function GetHydrologyFileDataSet ( AHydrologyFileName: string;ADataSet:TAbstractModelDataset ): boolean; override;
-    function GetDatasetFileDataSet ( ADemandFileName: string;ADataSet:TAbstractModelDataset ): boolean; override;
-
-  end;
-   }
   THydrologyFileObject = class(TAbstractDataObject)
   protected
     procedure CreateMemberObjects; override;
@@ -246,7 +228,7 @@ procedure THydrologyFileObject.Reset;
 const OPNAME = 'THydrologyFileObject.Reset';
 begin
   try
-     Initialise;
+    Initialise;
   except on E: Exception do HandleError(E, OPNAME) end;
 end;
 
@@ -290,7 +272,7 @@ const OPNAME = 'THydrologyFileLine.Reset';
 begin
   inherited;
   try
-     Initialise;
+    Initialise;
   except on E: Exception do HandleError(E, OPNAME) end;
 end;
 
@@ -308,79 +290,8 @@ procedure THydrologyFilesObject.Reset;
 const OPNAME = 'THydrologyFilesObject.Reset';
 begin
   try
-     Initialise;
+    Initialise;
   except on E: Exception do HandleError(E, OPNAME) end;
 end;
 
-{ THydrologyDataObject }
-{
-procedure THydrologyDataObject.CreateMemberObjects;
-const OPNAME = 'THydrologyDataObject.CreateMemberObjects';
-begin
-  inherited;
-    FHydrologyFileLine   := THydrologyFileLine.Create;
-    FParamSetup          := TParamSetup.Create ( AppModules );
-end;
-
-procedure THydrologyDataObject.DestroyMemberObjects;
-const OPNAME = 'THydrologyDataObject.DestroyMemberObjects';
-begin
-  inherited;
-
-end;
-
-function THydrologyDataObject.GetDatasetFileDataSet( ADemandFileName: string;
-                                                     ADataSet: TAbstractModelDataset ): boolean;
-const OPNAME = 'THydrologyDataObject.GetDatasetFileDataSet';
-begin
-
-end;
-
-function THydrologyDataObject.GetFileNamesObject: TAbstractModelFileNameList;
-const OPNAME = 'THydrologyDataObject.GetFileNamesObject';
-begin
-
-end;
-
-function THydrologyDataObject.GetFilesLineTypes: TAbstractFilesLineTypes;
-const OPNAME = 'THydrologyDataObject.GetFilesLineTypes';
-begin
-
-end;
-
-function THydrologyDataObject.GetHydrologyFileDataSet ( AHydrologyFileName: string;
-                                                        ADataSet: TAbstractModelDataset ): boolean;
-const OPNAME = 'THydrologyDataObject.GetHydrologyFileDataSet';
-begin
-
-end;
-
-function THydrologyDataObject.GetHydrologyFilesForCatchment( ACatchmentRef: integer;
-                                                             AFilesNamesContainer: TStringList ): boolean;
-const OPNAME = 'THydrologyDataObject.GetHydrologyFilesForCatchment';
-var
-  LParamReference : TAbstractParamReference;
-begin
-  Result := False;
-  try
-
-  except on E: Exception do HandleError(E, OPNAME) end;
-
-
-end;
-
-function THydrologyDataObject.GetViewDataItems ( AViewId: string;
-                                                 AItemsList: TViewModelDataItemsList;
-                                                 var AHandled: boolean ): boolean;
-const OPNAME = 'THydrologyDataObject.GetViewDataItems';
-begin
-
-end;
-
-procedure THydrologyDataObject.Reset;
-const OPNAME = 'THydrologyDataObject.Reset';
-begin
-
-end;
- }
 end.

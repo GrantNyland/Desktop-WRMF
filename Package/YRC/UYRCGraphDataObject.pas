@@ -462,7 +462,7 @@ uses
   UDataSetType,
   UConstants,
   USumOutDataObjects,
-  UAbstractYRCModelDataObject,
+  UYRCModelDataObject,
   UErrorHandlingOperations;
 
 function IsPointsEqual(const AYRCPoint1, AYRCPoint2 : TYRCPoint):boolean;
@@ -4044,7 +4044,7 @@ var
 begin
   Result := False;
   try
-    LPlottingBase := TAbstractYRCModelDataObject(FAppModules.Model.ModelData).YRCGraphDataObject.PlottingBase;
+    LPlottingBase := TYRCModelDataObject(FAppModules.Model.ModelData).YRCGraphDataObject.PlottingBase;
     if(LPlottingBase > 0) then
     begin
       SetLength(FAssurancePointArrayObject.FYRCRecordPointArray,Length(AAssuranceIntervalArraySaved));

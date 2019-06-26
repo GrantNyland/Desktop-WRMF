@@ -129,7 +129,6 @@ contains
   UAbstractModelObjects,
   UAbstractObject,
   UAbstractYRCData,
-  UAbstractYRCModelDataObject,
   UDataComponent,
   UDataEditComponent,
   UDataSetType,

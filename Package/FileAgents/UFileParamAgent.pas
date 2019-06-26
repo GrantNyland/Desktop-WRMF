@@ -40,9 +40,10 @@ type
 
 implementation
 
-uses UUtilities,
-     UFilesLineTypeObject,
-     UErrorHandlingOperations;
+uses
+  UUtilities,
+  UFilesLineTypeObject,
+  UErrorHandlingOperations;
 
 procedure TFileParamAgent.CreateMemberObjects;
 const OPNAME = 'TFileParamAgent.CreateMemberObjects';

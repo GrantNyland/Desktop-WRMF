@@ -15,6 +15,7 @@ uses
 
   UAbstractObject,
   UGrowthFactorData,
+  UFilesLineTypeObject,
   UGrowthFactorsExcelData,
   UYieldModelDataObject,
   UViewModelDataObject,
@@ -26,14 +27,11 @@ uses
   UWQConstraintData,
   UWRPMPostProcessorData,
   UMultiResChannelCurtailmentData,
-
   UAbstractFileNamesObject,
   UPlanningMineData,
-  UFilesLineTypeObject,
-
   VoaimsCom_TLB;
-type
 
+type
   TPlanningModelDataObject = class(TYieldModelDataObject, IPlanningModelData)
   protected
     FAllocationDefinitionsList    : TAllocationDefinitionsList;
@@ -49,7 +47,6 @@ type
     FChannelsWithOutputList       : TStringList;
     FSubSystemWithOutputList      : TStringList;
     FOutputFilesListsLoaded       : boolean;
-    FFilesLineTypes               : TFilesLineTypes;
     FMultiCurtailList             : TMultiResChannelCurtailmentList;
 
     procedure CreateMemberObjects; override;
@@ -71,7 +68,6 @@ type
     function Get_SwitchDefinitionsList     : ISwitchDefinitionsList; safecall;
     function Get_TariffCalculationData: ITariffCalculationData; safecall;
     procedure LoadOutputFilesLists;
-    function GetFilesLineTypes: TAbstractFilesLineTypes;override;
 
   public
     procedure Reset;
@@ -91,9 +87,6 @@ type
     property CastWRPMPostProcessorData        : TWRPMPostProcessorData            read FWRPMPostProcessorData;
     property CastWQConstriantData             : TWQConstriantData                 read FWQConstriantData;
     property CastMultiRestrictionData         : TMultiResChannelCurtailmentList   read FMultiCurtailList;
-
-    property CastFilesLineTypes               : TFilesLineTypes                   read FFilesLineTypes;
-
   end;
 
 implementation
@@ -121,9 +114,6 @@ begin
     FWRPMPostProcessorData         := TWRPMPostProcessorData.Create(FAppModules);
     FWQConstriantData              := TWQConstriantData.Create(FAppModules);
     FMultiCurtailList              := TMultiResChannelCurtailmentList.Create(FAppModules);
-
-    FFilesLineTypes             := TFilesLineTypes.Create;
-
     FReservoirsWithOutputList      := TStringList.Create;
     FChannelsWithOutputList        := TStringList.Create;
     FSubSystemWithOutputList       := TStringList.Create;
@@ -150,21 +140,9 @@ begin
     FreeAndNil(FReservoirsWithOutputList);
     FreeAndNil(FChannelsWithOutputList);
     FreeAndNil(FWQConstriantData);
-    FreeAndNil(FFilesLineTypes);
     FreeAndNil(FMultiCurtailList);
-
   except on E: Exception do HandleError(E, OPNAME) end;
 end;
-
-function TPlanningModelDataObject.GetFilesLineTypes: TAbstractFilesLineTypes;
-const OPNAME = 'TPlanningModelDataObject.GetFilesLineTypes';
-begin
-  Result := nil;
-  try
-    Result := FFilesLineTypes;
-  except on E: Exception do HandleError(E, OPNAME) end;
-end;
-
 
 function TPlanningModelDataObject._AddRef: Integer;
 const OPNAME = 'TPlanningModelDataObject._AddRef';
@@ -194,7 +172,7 @@ begin
     FYRCGraphDataObject.Reset;
     FGrowthFactors.Initialise;
     FExelGrowthFactors.Initialise;
-    FDisbenefitFunction.Initialise;                            
+    FDisbenefitFunction.Initialise;
     FNetworkFeaturesData.Initialise;
     FNetworkElementData.Initialise;
     FReturnFlowChannel.Initialise;
@@ -216,8 +194,6 @@ begin
     Reset;
     Result := FNetworkElementData.Initialise;
     Result := Result AND FNetworkFeaturesData.Initialise;
-    Result := Result and  FFileNamesObject.Initialise;
-    //Result := Result and FYRCGraphDataObject.Initialise;
     Result := Result and FParamSetup.Initialise;
     Result := Result and FOutputData.Initialise;
     Result := Result and FGrowthFactors.Initialise;
@@ -401,9 +377,9 @@ Begin
     if(AViewID <> '') AND Assigned(AItemsList) then
     begin
       LSysPrefix := UpperCase(FDataFilePaths.DataFilePrefix)+ 'SYS';
-      for LIndex := 0 to FFileNamesObject.CastOutputFileNames.Count - 1 do
+      for LIndex := 0 to CastFileNamesObject.CastOutputFileNames.Count - 1 do
       begin
-        LFileName := FFileNamesObject.CastOutputFileNames.CastFileObject[LIndex];
+        LFileName := CastFileNamesObject.CastOutputFileNames.CastFileObject[LIndex];
         if Assigned(LFileName) and FileExists(LFileName.FileName) then
         begin
           LName := UpperCase(ExtractFileName(LFileName.ShortName));
@@ -481,9 +457,9 @@ Begin
     if(AViewID <> '') AND Assigned(AItemsList) then
     begin
       LSysPrefix := UpperCase(FDataFilePaths.DataFilePrefix)+ 'SYS';
-      for LIndex := 0 to FFileNamesObject.CastOutputFileNames.Count - 1 do
+      for LIndex := 0 to CastFileNamesObject.CastOutputFileNames.Count - 1 do
       begin
-        LFileName := FFileNamesObject.CastOutputFileNames.CastFileObject[LIndex];
+        LFileName := CastFileNamesObject.CastOutputFileNames.CastFileObject[LIndex];
         if Assigned(LFileName) and FileExists(LFileName.FileName) then
         begin
           LName := UpperCase(ExtractFileName(LFileName.ShortName));
@@ -520,9 +496,9 @@ Begin
     if(AViewID <> '') AND Assigned(AItemsList) then
     begin
       LSysPrefix := UpperCase(FDataFilePaths.DataFilePrefix)+ 'RES';
-      for LIndex := 0 to FFileNamesObject.CastOutputFileNames.Count - 1 do
+      for LIndex := 0 to CastFileNamesObject.CastOutputFileNames.Count - 1 do
       begin
-        LFileName := FFileNamesObject.CastOutputFileNames.CastFileObject[LIndex];
+        LFileName := CastFileNamesObject.CastOutputFileNames.CastFileObject[LIndex];
         if Assigned(LFileName) and FileExists(LFileName.FileName) then
         begin
           LName := UpperCase(ExtractFileName(LFileName.ShortName));

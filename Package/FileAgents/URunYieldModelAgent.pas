@@ -57,7 +57,6 @@ uses
   UAbstractComponent,
   UYieldModelServerAgent,
   UFileNameConstants,
-  UFilesLineTypeObject,
   UYieldModelDataObject,
   UErrorHandlingOperations;
 
@@ -294,7 +293,7 @@ begin
     //LPath    := IncludeTrailingPathDelimiter(ExtractFilePath(ApplicationExeName))+ 'bin\';
     //LDllName := LPath + 'WRYM_761_Wrapper.dll';
     LPath    := IncludeTrailingPathDelimiter(ExtractFilePath(ApplicationExeName));
-    LDllName := LPath + 'WRYM\WRYM_4.exe';    
+    LDllName := LPath + 'WRYM\WRYM_4.exe';
     if not FileExists(LDllName) then
     begin
       LMessage := FAppModules.Language.GetString('TRunYieldModelAgent.strDLLNotExist');

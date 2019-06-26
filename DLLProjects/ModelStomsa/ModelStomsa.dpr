@@ -10,14 +10,14 @@ uses
   UStomsaModelManager,
   UErrorHandlingOperations;
 
-function ConstructDLLObject(var pao_Object: TObject; AAppModules: TAppModules; AImagesInstance: integer): boolean;  export; stdcall;
+function ConstructDLLObject(var AObject: TObject; AAppModules: TAppModules; AImagesInstance: integer): boolean; export; stdcall;
 const OPNAME = 'ModelStomsa.ConstructDLLObject';
 begin
-  pao_Object := nil;
+  AObject := nil;
   Result := False;
   try
     HImagesInstance := AImagesInstance;
-    pao_Object := TStomsaModelManager.Create(AAppModules);
+    AObject := TStomsaModelManager.Create(AAppModules);
     Result := True;
   except on E: Exception do HandleErrorFunction(E, OPNAME, Result); end;
 end;

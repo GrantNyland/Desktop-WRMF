@@ -33,7 +33,6 @@ uses
   VCL.Controls,
   VCL.Dialogs,
   UUtilities,
-  UFilesLineTypeObject,
   VoaimsCom_TLB,
   UErrorHandlingOperations, UBasicObjects;
 
@@ -172,7 +171,7 @@ begin
           end;
         end;
       end;
-      
+
       // Read Data...
       LReplaceNegativeWithZero := False;
       LNegativeValueFound      := False;
@@ -241,7 +240,7 @@ begin
                 Exit;
               LNegativeValueFound := True;
             end;
-            
+
             if LReplaceNegativeWithZero then
               LReadReal := 0;
           end;

@@ -241,8 +241,8 @@ type
     procedure SetSaltsWashoffPath(APath: string);override;
 
   public
-    procedure Reset;
-    function Initialise: boolean;override;
+    procedure Reset; override;
+    function Initialise: boolean; override;
 
     function FilesCount: integer; override;
     function FilesSavedInDatabaseCount: integer;override;
@@ -942,7 +942,7 @@ begin
     FreeAndNil(FOutputFileNames);
     FreeAndNil(FDamLevelsFileNames);
     FreeAndNil(FDailyDataFlowFileNames);
-    FreeAndNil(FDailyInstreamFlowFileNames);        
+    FreeAndNil(FDailyInstreamFlowFileNames);
 
     FreeAndNil(FAllocationDefinitionFileNames);
     FreeAndNil(FReservoirImplementationFileNames);
@@ -980,17 +980,17 @@ end;
 procedure TModelFileNames.Reset;
 const OPNAME = 'TModelFileNames.Reset';
 var
-  LFileNameObject: TFileNameObject;
   LCount: integer;
+  LFileNameObject: TFileNameObject;
 begin
   try
-    FFileNamePrefix            := '';
-    FInputFilesPath            := '';
-    FOutputFilesPath           := '';
-    FHydrologyFilesPath        := '';
-    FDemandFilesPath           := '';
-    FDamLevelsPath             := '';
-    FSaltsWashoffPath          := '';
+    FFileNamePrefix     := '';
+    FInputFilesPath     := '';
+    FOutputFilesPath    := '';
+    FHydrologyFilesPath := '';
+    FDemandFilesPath    := '';
+    FDamLevelsPath      := '';
+    FSaltsWashoffPath   := '';
     FConfigFileNames.Clear;
     FParamFileNames.Clear;
     FAltParamFileNames.Clear;
@@ -1141,9 +1141,6 @@ begin
     LFileNameObject.FFileName := '*CUR.dat';
     FCurtailFileNames.Add(LFileNameObject);
 
-    
-
-
     FDirectoryFileNames.CaptionStr := 'ViewData.FileDirectory';
     FParamFileNames.CaptionStr     := 'ViewData.FileParam';
     FAltParamFileNames.CaptionStr  := 'ViewData.AltFileParam';
@@ -1173,7 +1170,6 @@ begin
     FMineFileNames.CaptionStr                    := 'ViewData.FileMine';
     FMineRainfallFileNames.CaptionStr            := 'ViewData.FileMineRanfall';
     FSaltsWashoffFileNames.CaptionStr            := 'ViewData.FileSaltsWashoff';
-
 
   except on E: Exception do HandleError(E, OPNAME) end;
 end;

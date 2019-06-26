@@ -85,7 +85,7 @@ uses
   VCL.Printers,
   UConstants,
   UMainMenuEventType,
-  UAbstractYRCModelDataObject,
+  UYRCModelDataObject,
   UErrorHandlingOperations;
 
 
@@ -188,7 +188,7 @@ const OPNAME = 'TYRCFirmYieldSheet.YRCGraphDataObject';
 begin
   Result := nil;
   try
-    Result := TAbstractYRCModelDataObject(FAppModules.Model.ModelData).YRCGraphDataObject;
+    Result := TYRCModelDataObject(FAppModules.Model.ModelData).YRCGraphDataObject;
   // Handle exceptions.
   except on E: Exception do HandleError(E, OPNAME); end;
 end;

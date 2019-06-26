@@ -15,7 +15,6 @@ uses
   VCL.Controls,
   contnrs,
   UAbstractFileNamesObject,
-  UAbstractYRCModelDataObject,
   UAbstractModelData,
   UDataFileObjects,
   UProgressDialog,
@@ -108,7 +107,7 @@ uses
   UErrorHandlingOperations,
   VCL.FileCtrl,
   Math;
-  
+
 
 { TFilesActionAbstractManager }
 
@@ -382,7 +381,7 @@ begin
       FGlobalDataIndex.Reset;
       FGlobalDataIndex.StopOnFirstErrIndex        := 0;
       FGlobalDataIndex.IncludeHydrologyFilesIndex := 1;
-      FGlobalDataIndex.IncludeDemandFilesIndex    := 2; 
+      FGlobalDataIndex.IncludeDemandFilesIndex    := 2;
 
       if CheckModelFilesAreComplete(FProgressDialog.ShowProgress) then
       begin

@@ -121,7 +121,6 @@ type
     FDamSedimentationDataList  : TDamSedimentationDataList;
     procedure CreateMemberObjects; override;
     procedure DestroyMemberObjects; override;
-    function GetFilesLineTypes: TAbstractFilesLineTypes; override;
     function GetFileNamesObject: TAbstractModelFileNameList; override;
   public
     function LoadData : boolean;
@@ -770,14 +769,6 @@ end;
 
 function TDamSedimentationModelData.GetFileNamesObject: TAbstractModelFileNameList;
 const OPNAME = 'TDamSedimentationModelData.GetFileNamesObject';
-begin
-  Result := nil;
-  try
-  except on E: Exception do HandleError(E, OPNAME); end;
-end;
-
-function TDamSedimentationModelData.GetFilesLineTypes: TAbstractFilesLineTypes;
-const OPNAME = 'TDamSedimentationModelData.GetFilesLineTypes';
 begin
   Result := nil;
   try

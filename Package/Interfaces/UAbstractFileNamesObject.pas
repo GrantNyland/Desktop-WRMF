@@ -153,6 +153,7 @@ type
     procedure SetSaltsWashoffPath(APath: string);virtual; abstract;
 
   public
+    procedure Reset; virtual; abstract;
     function FilesCount: integer; virtual; abstract;
     function FilesSavedInDatabaseCount: integer; virtual; abstract;
     function SelectedCount: integer; virtual; abstract;
@@ -230,9 +231,9 @@ type
     function GetFileLineTypesObject(AFileObject: TAbstractModelFileName): TAbstractFileLineTypesObject; virtual; abstract;
   public
     function FilesCount: integer; virtual; abstract;
-    function GetFileLineType(AFileObject: TAbstractModelFileName; ALineNumber: Integer): string;virtual; abstract;
-    property FileLineTypesObject[AFileObject: TAbstractModelFileName]: TAbstractFileLineTypesObject
-      read GetFileLineTypesObject;
+    function AddFile(AFileNameObject: TAbstractModelFileName): TAbstractFileLineTypesObject; virtual; abstract;
+    function GetFileLineType(AFileObject: TAbstractModelFileName; ALineNumber: Integer): string; virtual; abstract;
+    property FileLineTypesObject[AFileObject: TAbstractModelFileName]: TAbstractFileLineTypesObject read GetFileLineTypesObject;
   end;
 
 implementation

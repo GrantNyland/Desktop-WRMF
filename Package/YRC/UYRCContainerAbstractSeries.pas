@@ -23,7 +23,7 @@ uses
   UAbstractObject,
   UAbstractComponent,
   UAbstractModelData,
-  UAbstractYRCModelDataObject;
+  UYRCModelDataObject;
 
 type
   TGetSeriesColour  = function (ASeriesIndex: integer): TColor of object;
@@ -128,8 +128,7 @@ const OPNAME = 'TYRCContainerAbstractSeries.YRCGraphDataObject';
 begin
   Result := nil;
   try
-    Result := TAbstractYRCModelDataObject(FAppModules.Model.ModelData).YRCGraphDataObject;
-  // Handle exceptions.
+    Result := TYRCModelDataObject(FAppModules.Model.ModelData).YRCGraphDataObject;
   except on E: Exception do HandleError(E, OPNAME); end;
 end;
 

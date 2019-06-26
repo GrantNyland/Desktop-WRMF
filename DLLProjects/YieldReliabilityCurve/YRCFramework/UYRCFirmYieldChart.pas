@@ -71,7 +71,7 @@ uses
   UUtilities,
   UAbstractModelData,
   UAbstractFileNamesObject,
-  UAbstractYRCModelDataObject,
+  UYRCModelDataObject,
   UErrorHandlingOperations;
 
 procedure TYRCFirmYieldChart.CreateMemberObjects;
@@ -291,7 +291,7 @@ const OPNAME = 'TYRCFirmYieldChart.YRCGraphDataObject';
 begin
   Result := nil;
   try
-    Result := TAbstractYRCModelDataObject(FAppModules.Model.ModelData).YRCGraphDataObject;
+    Result := TYRCModelDataObject(FAppModules.Model.ModelData).YRCGraphDataObject;
   except on E: Exception do HandleError(E, OPNAME); end;
 end;
 

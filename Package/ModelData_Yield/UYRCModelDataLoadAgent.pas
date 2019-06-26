@@ -13,7 +13,6 @@ interface
 uses
   Classes,
   UFileNames,
-  UAbstractYRCModelDataObject,
   UYRCGraphDataObject,
   UYRCModelDataObject,
   USumOutFileManager,
@@ -30,7 +29,6 @@ type
     function ReadYRCDataFromDB(AYRCGraphDataObject : TYRCGraphDataObject):boolean;virtual;
     function SaveYRCDataToDB(AYRCGraphDataObject : TYRCGraphDataObject):boolean;virtual;
     function DeleteYRCDataFromDB(AYRCGraphDataObject : TYRCGraphDataObject):boolean;virtual;
-
   end;
 
 implementation
@@ -177,7 +175,7 @@ begin
                     try
                       LDialog.PopulateData(AYRCGraphDataObject.TargetDraftValuesCommaText,
                                            LYRCGraphDataObject.TargetDraftValuesCommaText);
-                      LDialog.ShowModal;                     
+                      LDialog.ShowModal;
                       if (LDialog.ModalResult = mrCancel) then Exit;
                       //load data from dialog
                       LDialog.GetSeletedData(LTDToBeDeleteCommaText,LTDToBeAddedCommaText);

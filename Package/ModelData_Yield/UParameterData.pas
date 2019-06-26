@@ -19,7 +19,7 @@ uses
 type
 
   TMatrixArray = array of array of double;
-  TParamReference = class(TAbstractAppObject,IParamReference)
+  TParamReference = class(TAbstractAppObject, IParamReference)
   protected
     FCatchReference : Integer;
     FGaugeName      : WideString;
@@ -163,8 +163,9 @@ type
   end;
 
 
-  TParamSetup = class(TAbstractAppObject,IParamSetup)
+  TParamSetup = class(TAbstractAppObject, IParamSetup)
   protected
+    FHydrologyFolder : WideString;
     FReferenceData   : TObjectList;
     FValidReferences : TStringList;
     FMatrixB         : TMatrixArray;
@@ -177,8 +178,10 @@ type
     function _AddRef: Integer; stdcall;
     function _Release: Integer; stdcall;
 
-    function GetAllReferenceData:TObjectList;
-    function GetValidReferences : TStringList;
+    function Get_HydrologyFolder: WideString; safecall;
+    procedure Set_HydrologyFolder(const AFolder: WideString); safecall;
+    function GetAllReferenceData: TObjectList;
+    function GetValidReferences: TStringList;
     function GetReferenceDataByCatchNumberCast(ACatchReferenceNumber:integer):TParamReference;
     function GetReferenceDataByIndexCast(AIndex:integer):TParamReference;
 
@@ -197,7 +200,7 @@ type
     property CastReferenceDataByCatchNumber[ARefNumber: Integer]: TParamReference read GetReferenceDataByCatchNumberCast;
 
     property AllReferenceData: TObjectList read GetAllReferenceData;
-    property ValidReferences : TStringList read GetValidReferences;
+    property ValidReferences: TStringList read GetValidReferences;
 
     function ReferenceNumberValid(ANumber: Integer): WordBool; safecall;
     function Get_ReferenceCount: Integer; safecall;
@@ -221,8 +224,6 @@ type
     property MatrixC[ARow: Integer; ACol: Integer]: Double read Get_MatrixC;
     property KeyGaugeCount: Integer read Get_KeyGaugeCount;
     property KeyGaugeNoByIndex[AIndex: Integer]: Integer read Get_KeyGaugeNoByIndex;
-
-
   end;
 
 implementation
@@ -2023,6 +2024,23 @@ begin
     LParamReference.FGaugeName  := 'UnAssigned';
     LParamReference.FCatchmentArea  := 0.0;}
   except on E : Exception do HandleError(E,OPNAME); end;
+end;
+
+function TParamSetup.Get_HydrologyFolder: WideString;
+const OPNAME = 'TChannelPenalty.Get_HydrologyFolder';
+begin
+  Result := '';
+  try
+    Result := FHydrologyFolder;
+  except on E: Exception do HandleError(E, OPNAME); end;
+end;
+
+procedure TParamSetup.Set_HydrologyFolder(const AFolder: WideString);
+const OPNAME = 'TParamSetup.Set_HydrologyFolder';
+begin
+  try
+    FHydrologyFolder := AFolder;
+  except on E: Exception do HandleError(E, OPNAME); end;
 end;
 
 function TParamSetup.GetAllReferenceData: TObjectList;

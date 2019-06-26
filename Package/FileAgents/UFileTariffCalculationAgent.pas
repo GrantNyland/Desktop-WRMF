@@ -23,22 +23,21 @@ uses
 Type
   TFileTariffCalculationAgent = class(TAbstractFileAgent)
   public
-    function ReadModelDataFromFile(AFileName:TAbstractModelFileName;ADataObject: TDataFileObjects;
-             AProgressFunction:TProgressUpdateFuntion): Boolean; override;
-    function WriteModelDataToFile(AFilename: TAbstractModelFileName;ADataObject: TDataFileObjects;
+    function ReadModelDataFromFile(AFileName: TAbstractModelFileName; ADataObject: TDataFileObjects;
+             AProgressFunction: TProgressUpdateFuntion): Boolean; override;
+    function WriteModelDataToFile(AFilename: TAbstractModelFileName; ADataObject: TDataFileObjects;
              AProgressFunction: TProgressUpdateFuntion): Boolean; override;
   end;
 
 implementation
 uses
    UUtilities,
-   UFilesLineTypeObject,
-   UErrorHandlingOperations,
    UBasicObjects,
+   UErrorHandlingOperations,
    UFilesActionYieldManager;
 
 function TFileTariffCalculationAgent.ReadModelDataFromFile(AFileName: TAbstractModelFileName;
-         ADataObject: TDataFileObjects;AProgressFunction: TProgressUpdateFuntion): Boolean;
+         ADataObject: TDataFileObjects; AProgressFunction: TProgressUpdateFuntion): Boolean;
 const OPNAME = 'TFileTariffCalculationAgent.ReadModelDataFromFile';
 Var
   LFileData  : TStringList;

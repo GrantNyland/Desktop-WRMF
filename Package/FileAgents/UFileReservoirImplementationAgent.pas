@@ -40,8 +40,8 @@ implementation
 uses
   UBasicObjects,
   UUtilities,
-  UFilesLineTypeObject,
   VoaimsCom_TLB,
+  UFilesLineTypeObject,
   UErrorHandlingOperations;
 
 function TFileReservoirImplementationAgent.ReadModelDataFromFile(AFileName: TAbstractModelFileName; ADataObject: TDataFileObjects;

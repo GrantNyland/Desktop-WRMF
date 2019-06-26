@@ -58,8 +58,9 @@ implementation
 uses
   Math,
   SysUtils,
-  UAbstractYRCModelDataObject,
-  UErrorHandlingOperations, UYRCContainerAbstractSeries;
+  UYRCModelDataObject,
+  UErrorHandlingOperations,
+  UYRCContainerAbstractSeries;
 
 
 { TYRCContainerTransformPointSeries }
@@ -240,7 +241,7 @@ begin
 
     for LCount := 0 to FPointSeriesList.Count -1 do
     begin
-      LPlane := TAbstractYRCModelDataObject(FAppModules.Model.ModelData).YRCGraphDataObject.YRCPlane[LCount];
+      LPlane := TYRCModelDataObject(FAppModules.Model.ModelData).YRCGraphDataObject.YRCPlane[LCount];
       if Assigned(LPlane) then
       begin
         LCurrentPointSeries := PointSeriesByIndex[LCount];
@@ -285,7 +286,7 @@ var
 begin
   Result := inherited ShowPlotPlaneSelection;
   try
-    FPlaneIndex := FYRCGraphDataObject.PlaneIndex;  
+    FPlaneIndex := FYRCGraphDataObject.PlaneIndex;
     if(FPlaneIndex > 0) and (FPlaneIndex <= FYRCGraphDataObject.PlanesCount) then
     begin
       LTargetDraftCount := FYRCGraphDataObject.YRCPlane[FPlaneIndex].TargetDraftCount;
@@ -302,7 +303,7 @@ var
 begin
   Result := inherited ApplySelectedPlotPlane;
   try
-    FPlaneIndex := FYRCGraphDataObject.PlaneIndex;  
+    FPlaneIndex := FYRCGraphDataObject.PlaneIndex;
     if(FPlaneIndex > 0) and (FPlaneIndex <= FYRCGraphDataObject.PlanesCount) then
     begin
       LTargetDraftCount := FYRCGraphDataObject.YRCPlane[FPlaneIndex].TargetDraftCount;
@@ -319,7 +320,7 @@ var
 begin
   Result := inherited ManiplateTargetDraftDeterministic;
   try
-    FPlaneIndex := FYRCGraphDataObject.PlaneIndex;  
+    FPlaneIndex := FYRCGraphDataObject.PlaneIndex;
     LTargetDraftCount := FYRCGraphDataObject.YRCPlane[FPlaneIndex].TargetDraftCount;
     Result := Result and HideAllSeries(FPlaneIndex, LTargetDraftCount);
   // Handle exceptions.
@@ -333,7 +334,7 @@ var
 begin
   Result := inherited ManiplateTargetDraftRegression;
   try
-    FPlaneIndex := FYRCGraphDataObject.PlaneIndex;  
+    FPlaneIndex := FYRCGraphDataObject.PlaneIndex;
     LTargetDraftCount := FYRCGraphDataObject.YRCPlane[FPlaneIndex].TargetDraftCount;
     Result := Result and HideAllSeries(FPlaneIndex, LTargetDraftCount);
   // Handle exceptions.

@@ -15,8 +15,8 @@ uses
   SysUtils,
   Contnrs,
   UAbstractModelData,
-  UViewModelDataObject,
   UFilesLineTypeObject,
+  UViewModelDataObject,
   UAbstractFileNamesObject,
   UFileNames,
   UDDTSData,
@@ -28,15 +28,13 @@ type
   protected
     FDDTSDamDataList : TDDTSDamDataList;
     FDDTSOutputDataList : TDDTSOutputDataList;
-    FFileNamesObject : TModelFileNames;
-    FFilesLineTypes  : TFilesLineTypes;
     procedure CreateMemberObjects; override;
     procedure DestroyMemberObjects; override;
     function _AddRef: Integer; stdcall;
     function _Release: Integer; stdcall;
     function GetDDTSControlViewDataItems(AViewID : string;AItemsList : TViewModelDataItemsList): boolean;
-    function GetFilesLineTypes: TAbstractFilesLineTypes; override;
-    function GetFileNamesObject: TAbstractModelFileNameList; override;
+    function GetCastFilesLineTypes: TFilesLineTypes;
+    function GetCastFileNamesObject: TModelFileNames;
   public
     procedure Reset;
     function Validate(var AErrors: WideString; const AContext: WideString): WordBool; safecall;
@@ -44,10 +42,11 @@ type
     function ClearModelData : boolean;
 
     function Initialise: boolean; override;
-    function GetViewDataItems(AViewId : string; AItemsList : TViewModelDataItemsList; var AHandled : boolean): boolean; override;
-    property CastFileNamesObject : TModelFileNames read FFileNamesObject;
-    property DDTSDamDataList  : TDDTSDamDataList read FDDTSDamDataList;
-    property DDTSOutputDataList  : TDDTSOutputDataList read FDDTSOutputDataList;
+    function GetViewDataItems(AViewId: string; AItemsList: TViewModelDataItemsList; var AHandled: boolean): boolean; override;
+    property CastFilesLineTypes: TFilesLineTypes read GetCastFilesLineTypes;
+    property CastFileNamesObject: TModelFileNames read GetCastFileNamesObject;
+    property DDTSDamDataList: TDDTSDamDataList read FDDTSDamDataList;
+    property DDTSOutputDataList: TDDTSOutputDataList read FDDTSOutputDataList;
 
 end;
 implementation
@@ -114,9 +113,7 @@ const OPNAME = 'TDDTSDataObject.CreateMemberObjects';
 begin
   inherited CreateMemberObjects;
   try
-    FFileNamesObject    := TModelFileNames.Create(FAppModules);
     FDDTSOutputDataList := TDDTSOutputDataList.Create(FAppModules);
-    FFilesLineTypes     := TFilesLineTypes.Create;
     FDDTSDamDataList    := TDDTSDamDataList.Create(FAppModules);
   except on E: Exception do HandleError(E, OPNAME) end;
 end;
@@ -126,10 +123,26 @@ const OPNAME = 'TDDTSDataObject.DestroyMemberObjects';
 begin
   inherited DestroyMemberObjects;
   try
-    FreeAndNil(FFileNamesObject);
     FreeAndNil(FDDTSOutputDataList);
-    FreeAndNil(FFilesLineTypes);
     FreeandNil(FDDTSDamDataList);
+  except on E: Exception do HandleError(E, OPNAME) end;
+end;
+
+function TDDTSDataObject.GetCastFilesLineTypes: TFilesLineTypes;
+const OPNAME = 'TDDTSDataObject.GetCastFilesLineTypes';
+begin
+  Result := nil;
+  try
+    Result := TFilesLineTypes(FFilesLineTypes);
+  except on E: Exception do HandleError(E, OPNAME) end;
+end;
+
+function TDDTSDataObject.GetCastFileNamesObject: TModelFileNames;
+const OPNAME = 'TDDTSDataObject.GetCastFileNamesObject';
+begin
+  Result := nil;
+  try
+    Result := TModelFileNames(FFileNamesObject);
   except on E: Exception do HandleError(E, OPNAME) end;
 end;
 
@@ -229,24 +242,6 @@ begin
   Result := False;
   try
     Result := FDDTSDamDataList.Validate(AErrors,AContext);
-  except on E: Exception do HandleError ( E, OPNAME ) end;
-end;
-
-function TDDTSDataObject.GetFileNamesObject: TAbstractModelFileNameList;
-const OPNAME = 'TDDTSDataObject.GetFileNamesObject';
-begin
-  Result := nil;
-  try
-    Result := FFileNamesObject;
-  except on E: Exception do HandleError ( E, OPNAME ) end;
-end;
-
-function TDDTSDataObject.GetFilesLineTypes: TAbstractFilesLineTypes;
-const OPNAME = 'TDDTSDataObject.GetFilesLineTypes';
-begin
-  Result := nil;
-  try
-    Result := FFilesLineTypes;
   except on E: Exception do HandleError ( E, OPNAME ) end;
 end;
 

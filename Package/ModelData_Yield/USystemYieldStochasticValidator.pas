@@ -215,52 +215,18 @@ end;
 
 procedure TSystemYieldStochasticValidator.PopulateStochasticGraph(AIndex : integer;ATargetDraftData,AReliability : TStrings);
 const OPNAME = 'TSystemYieldStochasticValidator.PopulateStochasticGraph';
-//var
-  //LIndex : integer;
-  //LInc : double;
 begin
   try
-    if not TYieldModelDataObject(FAppModules.Model.ModelData).YRCGraphDataObject.Loaded then
+    if not TYieldModelDataObject(FAppModules.Model.ModelData).CastYRCGraphDataObject.Loaded then
     begin
-      if TYieldModelDataObject(FAppModules.Model.ModelData).YRCGraphDataObject.SavedToDB then
+      if TYieldModelDataObject(FAppModules.Model.ModelData).CastYRCGraphDataObject.SavedToDB then
         FAppModules.Model.ProcessEvent(CmeYRCLoadFromDB,nil)
       else
         FAppModules.Model.ProcessEvent(CmeYRCLoadFromFile,nil)
     end;
-
     SystemYieldStochasticDialog.StochasticGraph.Initialise;
     SystemYieldStochasticDialog.StochasticGraph.LanguageHasChanged;
     SystemYieldStochasticDialog.StochasticGraph.StudyHasChanged;
-
-    {if (AIndex >= 0) and (Assigned(ATargetDraftData)) and (Assigned(AReliability)) then
-    begin
-      if (ATargetDraftData.Count>0) and (AReliability.Count>0) then
-      begin
-        for LIndex := 0 to ATargetDraftData.Count-1 do
-        begin
-          SystemYieldStochasticDialog.StochasticLineSeries[AIndex].AddXY(StrToFloat(AReliability[LIndex]),
-                                                                         StrToFloat(ATargetDraftData[LIndex]));
-          SystemYieldStochasticDialog.StochasticLineSeries[LIndex].Title  := 'TD - '+ATargetDraftData[LIndex];
-        end;
-        for LIndex := 0 to ATargetDraftData.Count-1 do
-          SystemYieldStochasticDialog.StochasticPointSeries.AddXY(StrToFloat(AReliability[LIndex]),
-                                                                  StrToFloat(ATargetDraftData[LIndex]));
-        LInc := StrToFloat(ATargetDraftData[ATargetDraftData.Count-1]);
-        SystemYieldStochasticDialog.StochasticGraph.LeftAxis.Minimum := 0;
-        SystemYieldStochasticDialog.StochasticGraph.LeftAxis.Increment := LInc;
-        SystemYieldStochasticDialog.StochasticGraph.LeftAxis.SetMinMax
-        (0,SystemYieldStochasticDialog.StochasticLineSeries[AIndex].MaxYValue + LInc);
-        SystemYieldStochasticDialog.StochasticGraph.Legend.Alignment := laBottom;
-        for LIndex := 0 to SystemYieldStochasticDialog.StochasticGraph.SeriesCount-1 do
-        begin
-          if (SystemYieldStochasticDialog.StochasticGraph.Series[LIndex] is TLineSeries) then
-            SystemYieldStochasticDialog.StochasticGraph.Series[LIndex].ShowInLegend := True
-          else
-            SystemYieldStochasticDialog.StochasticGraph.Series[LIndex].ShowInLegend := False;
-        end;
-
-      end;
-    end;}
   except on E: Exception do HandleError(E, OPNAME) end;
 end;
 

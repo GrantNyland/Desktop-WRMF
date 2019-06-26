@@ -135,13 +135,11 @@ type
     FIFRSiteDataList  : TIFRSiteDataList;
     procedure CreateMemberObjects; override;
     procedure DestroyMemberObjects; override;
-    function GetFilesLineTypes: TAbstractFilesLineTypes; override;
     function GetFileNamesObject: TAbstractModelFileNameList; override;
   public
     function Validate(var AErrors: WideString; const AContext: WideString): WordBool; safecall;
     function Initialise: boolean; override;
     function GetViewDataItems(AViewId: string; AItemsList:TViewModelDataItemsList; var AHandled:boolean): boolean; override;
-    property FilesLineTypes: TAbstractFilesLineTypes read GetFilesLineTypes;
     property FileNamesObject: TAbstractModelFileNameList read GetFileNamesObject;
     property IFRSiteDataList  : TIFRSiteDataList read FIFRSiteDataList;
   end;
@@ -1110,14 +1108,6 @@ end;
 
 function TIFRModelData.GetFileNamesObject: TAbstractModelFileNameList;
 const OPNAME = 'TIFRModelData.GetFileNamesObject';
-begin
-  Result := nil;
-  try
-  except on E: Exception do HandleError(E, OPNAME); end;
-end;
-
-function TIFRModelData.GetFilesLineTypes: TAbstractFilesLineTypes;
-const OPNAME = 'TIFRModelData.GetFilesLineTypes';
 begin
   Result := nil;
   try

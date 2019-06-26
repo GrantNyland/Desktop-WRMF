@@ -42,7 +42,6 @@ uses
   VCL.Controls,
   VCL.Dialogs,
   UUtilities,
-  UFilesLineTypeObject,
   VoaimsCom_TLB,
   UDailyDiversionDataObject,
   UErrorHandlingOperations, UBasicObjects;
@@ -242,7 +241,7 @@ begin
                 Exit;
               LNegativeValueFound := True;
             end;
-            
+
             if LReplaceNegativeWithZero then
               LReadReal := 0;
           end;

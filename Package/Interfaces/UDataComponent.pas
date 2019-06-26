@@ -755,7 +755,7 @@ uses
   UUtilities,
   UDBConstants,
   UMainMenuEventType,
-  UAbstractYRCModelDataObject,
+  UYRCModelDataObject,
   UErrorHandlingOperations;
 
 
@@ -2679,7 +2679,7 @@ begin
             LFieldProperty := TFieldRadioGroup(Sender).FieldProperty;
             if not Assigned(LFieldProperty) then
               LGridHintText := TFieldRadioGroup(Sender).Hint;
-          end;    
+          end;
         end;
         FActiveControl := TFieldRadioGroup(Sender);
       end;
@@ -2870,7 +2870,7 @@ begin
   except on E: Exception do HandleError(E, OPNAME) end;
 end;
 
-procedure TAbstractDataDialogValidator.ShowWizardStep (ASequence : integer = 0); 
+procedure TAbstractDataDialogValidator.ShowWizardStep (ASequence : integer = 0);
 const OPNAME = 'TAbstractDataDialogValidator.ShowWizardStep';
 begin
   try
@@ -3162,7 +3162,7 @@ begin
           Result := True;
           Break;
         end;
-      end;  
+      end;
     end;
 
   except on E: Exception do HandleError(E, OPNAME) end;
@@ -3486,7 +3486,7 @@ begin
       LGrandTotal := LGrandTotal + LAnnualTotal;
       AGrid.Cells[13,LRow] := FormatFloat('##0.000',LAnnualTotal);
     end;
-    
+
     LTotal := FAppModules.Language.GetString('GridHeading.Total');
     AGrid.Cells[13,0] := LTotal;
     AGrid.Cells[0,AGrid.RowCount-1] := 'Average'; //LTotal;
@@ -4165,8 +4165,7 @@ const OPNAME = 'TRISelector.YRCGraphDataObject';
 begin
   Result := nil;
   try
-    Result := TAbstractYRCModelDataObject(FAppModules.Model.ModelData).YRCGraphDataObject;
-  // Handle exceptions.
+    Result := TYRCModelDataObject(FAppModules.Model.ModelData).YRCGraphDataObject;
   except on E: Exception do HandleError(E, OPNAME); end;
 end;
 
@@ -4500,7 +4499,7 @@ begin
     FBtnCancel.Caption := FAppModules.Language.GetString('ButtonCaption.Cancel');
     FLblSeriesSelector.Caption := FAppModules.Language.GetString('LabelCaption.SeriesSelecter');
     FLblSeriesLoadCase.Caption := FAppModules.Language.GetString('LabelCaption.SeriesLoadCase');
-    
+
     FSeriesSelector.Items.Add('Min');
     FSeriesSelector.Items.Add('0.5%');
     FSeriesSelector.Items.Add('1%');
@@ -4682,7 +4681,7 @@ begin
       begin
         Result := LIndex + 1;
         Break;
-      end;  
+      end;
     end;
   except on E: Exception do HandleError ( E, OPNAME ) end;
 end;

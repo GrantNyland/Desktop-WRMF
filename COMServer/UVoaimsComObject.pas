@@ -4,26 +4,22 @@ unit UVoaimsComObject;
 interface
 
 uses
-  Windows, ActiveX, Classes, ComObj, VoaimsCom_TLB, RainfallCom_TLB, StdVcl, psapi,UUtilities,
-  UAppModulesConstructionMain;
+  Windows, ActiveX, Classes, ComObj, StdVcl, psapi,
+  VoaimsCom_TLB,
+  RainfallCom_TLB;
 
 type
   TVoaimsComObject = class(TTypedComObject, IVoaimsComObject)
   private
-    //FYieldModelIntf: IYieldModel;
     function FrameworkAvailable: boolean;
   protected
-    function Logon(const AUserID: WideString; const APassword: WideString): WordBool; safecall;
-    function SelectStudy(const AModel: WideString; const AStudy: WideString;
-                         const ASubArea: WideString; const AScenario: WideString): WordBool; safecall;
-    function Get_YieldModel: IYieldModel; safecall;
+    function Logon(const AUserID, APassword: WideString): WordBool; safecall;
+    function SelectStudy(const AModel, AStudy, ASubArea, AScenario: WideString): WordBool; safecall;
     function Initialise: WordBool; safecall;
     function Get_INIFileName: WideString; safecall;
-    function Get_RainfallModel: IRainfallModel; safecall;
-    function HandleVNVEvent(const AVisioApp, AVisioDoc: IUnknown;
-      AVisioEventCode_: Integer; const ASourceObj: IUnknown; AEventID,
-      AEventSeqNum: Integer; const ASubjectObj: IUnknown;
-      AMoreInfo: OleVariant): WordBool; safecall;
+    function HandleVNVEvent(const AVisioApp, AVisioDoc: IUnknown; AVisioEventCode: Integer;
+          const ASourceObj: IUnknown; AEventID, AEventSeqNum: Integer;
+          const ASubjectObj: IUnknown; AMoreInfo: OleVariant): WordBool; safecall;
     function ProcessVNVSpecial(const AParameter: WideString): WordBool; safecall;
     function IsServerInitialised: WordBool; safecall;
     function IsStudySelected: WordBool; safecall;
@@ -31,12 +27,12 @@ type
     function LoggedOnUserName: WideString; safecall;
     function SelectedStudyKeys: WideString; safecall;
     function CloseScenario: WordBool; safecall;
-    function UnlockScenario(const AStudyAreaCode, AModelCode, ASubAreaCode,AScenarioCode: WideString): WordBool; safecall;
+    function UnlockScenario(const AStudyAreaCode, AModelCode, ASubAreaCode, AScenarioCode: WideString): WordBool; safecall;
     function Logoff: WordBool; safecall;
-    //function Get_HydrologyModel: IHydrologyModel; safecall;
-  
-    function IVoaimsComObject_Get_HydrologyModel: IUnknown; safecall;
-    function IVoaimsComObject_Get_RainfallModel: IUnknown; safecall;
+
+    function Get_RainfallModel: IRainfallModel; safecall;
+    function Get_StomsaModel: IStomsaModel; safecall;
+    function Get_YieldModel: IYieldModel; safecall;
     function Get_PlanningModel: IPlanningModel; safecall;
   public
     procedure AfterConstruction; override;
@@ -51,6 +47,8 @@ uses
   SysUtils,
   Dialogs,
   UAbstractObject,
+  UUtilities,
+  UAppModulesConstructionMain,
   UAppModulesConstructionGeneric,
   UErrorHandlingOperations;
 
@@ -70,7 +68,7 @@ var
 begin
   inherited;
   try
-    if(GAppModules <> nil) then
+    if (GAppModules <> nil) then
     begin
       LEventHandle := OpenEvent(EVENT_ALL_ACCESS,True,'EditingFinished');
       if (LEventHandle <> 0) then
@@ -82,8 +80,7 @@ end;
 
 function TVoaimsComObject.Initialise: WordBool;
 const OPNAME = 'TVoaimsComObject.Initialise';
-var
-  LCanProceed: boolean;
+var LCanProceed: boolean;
 begin
   Result := False;
   try
@@ -120,105 +117,51 @@ begin
   except on E: Exception do HandleError(E, OPNAME) end;
 end;
 
-function TVoaimsComObject.Logon(const AUserID: WideString;
-         const APassword: WideString): WordBool;
+function TVoaimsComObject.Logon(const AUserID, APassword: WideString): WordBool;
 const OPNAME = 'TVoaimsComObject.Logon';
 begin
-  //Result := 0;
   Result := False;
   try
     if FrameworkAvailable then
     begin
-      Result := GAppModules.Com_Logon(AUserID,APassword);
+      Result := GAppModules.Com_Logon(AUserID, APassword);
     end;
   except on E: Exception do HandleError(E, OPNAME) end;
 end;
 
-function TVoaimsComObject.SelectStudy(const AModel: WideString; const AStudy: WideString;
-                         const ASubArea: WideString; const AScenario: WideString): WordBool;
+function TVoaimsComObject.SelectStudy(const AModel, AStudy, ASubArea, AScenario: WideString): WordBool;
 const OPNAME = 'TVoaimsComObject.SelectStudy';
 begin
-  //Result := 0;
   Result := False;
   try
     if FrameworkAvailable then
     begin
       Result := GAppModules.Com_SelectStudy(AModel,AStudy,ASubArea,AScenario);
-      //if GAppModules.Model.ModelName = CYield then
-      //  FYieldModelIntf := GAppModules.Model as IYieldModel
     end;
   except on E: Exception do HandleError(E, OPNAME) end;
 end;
 
-function TVoaimsComObject.Get_YieldModel: IYieldModel;
-const OPNAME = 'TVoaimsComObject.Get_YieldModel';
-begin
-  //Result := 0;
-  Result := nil;
-  try
-    if FrameworkAvailable then
-    begin
-      if GAppModules.Model.ModelName = CYield then
-        Result := GAppModules.Model as IYieldModel
-      else
-      raise Exception.CreateFmt('The yield model is not currently loaded. The currently loaded model is (%s)',
-            [GAppModules.Model.ModelName]);
-
-    end;
-  except on E: Exception do HandleError(E, OPNAME) end;
-end;
-
-function TVoaimsComObject.Get_RainfallModel: IRainfallModel;
-const OPNAME = 'TVoaimsComObject.Get_RainfallModel';
-begin
-  //Result := 0;
-  Result := nil;
-  try
-    if FrameworkAvailable then
-    begin
-      if GAppModules.Model.ModelName = CRainfall then
-        Result := GAppModules.Model as IRainfallModel
-      else
-      raise Exception.CreateFmt('The rainfall model is not currently loaded. The currently loaded model is (%s)',
-            [GAppModules.Model.ModelName]);
-
-    end;
-  except on E: Exception do HandleError(E, OPNAME) end;
-end;
-
-function TVoaimsComObject.HandleVNVEvent(const AVisioApp,
-  AVisioDoc: IUnknown; AVisioEventCode_: Integer;
-  const ASourceObj: IUnknown; AEventID, AEventSeqNum: Integer;
-  const ASubjectObj: IUnknown; AMoreInfo: OleVariant): WordBool;
+function TVoaimsComObject.HandleVNVEvent(const AVisioApp, AVisioDoc: IUnknown; AVisioEventCode: Integer;
+          const ASourceObj: IUnknown; AEventID, AEventSeqNum: Integer;
+          const ASubjectObj: IUnknown; AMoreInfo: OleVariant): WordBool;
 const OPNAME = 'TVoaimsComObject.HandleVNVEvent';
-var
-  LYieldModel: IYieldModel;
-  //LHydrologyModel : IHydrologyModel;
+var LYieldModel: IYieldModel;
 begin
-  Result := false;       
+  Result := false;
   try
-    if(GAppModules.Model.ModelName = CYield) then
+    if (GAppModules.Model.ModelName = CYield) then
     begin
       LYieldModel := Get_YieldModel;
       if (LYieldModel <> nil) then
-        Result := LYieldModel.HandleVNVEvent(AVisioApp,AVisioDoc,AVisioEventCode_,
+        Result := LYieldModel.HandleVNVEvent(AVisioApp,AVisioDoc,AVisioEventCode,
                   ASourceObj, AEventID, AEventSeqNum,ASubjectObj,AMoreInfo);
     end;
-    {else if(GAppModules.Model.ModelName = CHydrology) then //RianaHydro
-    begin
-      LHydrologyModel := Get_HydrologyModel;
-      if (LHydrologyModel <> nil) then
-        Result := LHydrologyModel.HandleVNVEvent(AVisioApp,AVisioDoc,AVisioEventCode_,
-                  ASourceObj, AEventID, AEventSeqNum,ASubjectObj,AMoreInfo);
-    end}
   except on E: Exception do HandleError(E, OPNAME) end;
 end;
 
-function TVoaimsComObject.ProcessVNVSpecial (const AParameter: WideString): WordBool;
+function TVoaimsComObject.ProcessVNVSpecial(const AParameter: WideString): WordBool;
 const OPNAME = 'TVoaimsComObject.ProcessVNVSpecial';
-var
-  LYieldModel: IYieldModel;
-  //LHydrologyModel : IHydrologyModel;
+var LYieldModel: IYieldModel;
 begin
   Result := false;
   try
@@ -228,18 +171,11 @@ begin
       if (LYieldModel <> nil) then
         Result := LYieldModel.ProcessVNVSpecial(AParameter);
     end;
-    {else if(GAppModules.Model.ModelName = CHydrology) then //RianaHydro
-    begin
-      LHydrologyModel := Get_HydrologyModel;
-      if (LHydrologyModel <> nil) then
-        Result := LHydrologyModel.ProcessVNVSpecial(AParameter);
-    end;}
   except on E: Exception do HandleError(E, OPNAME) end;
 end;
 
-function GetLongPathNameA(strTemp: PChar; strTemp1: PChar; size:DWORD): DWORD; stdcall; external 'kernel32.dll';
+function GetLongPathNameA(strTemp: PChar; strTemp1: PChar; size: DWORD): DWORD; stdcall; external 'kernel32.dll';
 const OPNAME = 'GetLongPathNameA';
-
 function TVoaimsComObject.Get_INIFileName: WideString;
 const OPNAME = 'TVoaimsComObject.Get_INIFileName';
 var strTemp: string;
@@ -256,7 +192,6 @@ begin
     strTemp := GetAppDataLocalDir;
     strTemp := IncludeTrailingPathDelimiter(strTemp);
     Result := ChangeFileExt(strTemp+LFileName,'.INI');
-
   except on E: Exception do HandleError(E, OPNAME) end;
 end;
 
@@ -347,7 +282,7 @@ begin
   try
     if FrameworkAvailable then
     begin
-      Result :=  GAppModules.ScenarioLockManager.RequestScenarioUnlock(AStudyAreaCode, AModelCode, ASubAreaCode, AScenarioCode);
+      Result := GAppModules.ScenarioLockManager.RequestScenarioUnlock(AStudyAreaCode, AModelCode, ASubAreaCode, AScenarioCode);
     end;
   except on E: Exception do HandleError(E, OPNAME) end;
 end;
@@ -355,7 +290,6 @@ end;
 function TVoaimsComObject.Logoff: WordBool;
 const OPNAME = 'TVoaimsComObject.Logoff';
 begin
-  //Result := 0;
   Result := False;
   try
     if FrameworkAvailable then
@@ -365,38 +299,70 @@ begin
   except on E: Exception do HandleError(E, OPNAME) end;
 end;
 
-{function TVoaimsComObject.Get_HydrologyModel: IHydrologyModel;
-const OPNAME = 'TVoaimsComObject.Get_HydrologyModel';
+function TVoaimsComObject.Get_RainfallModel: IRainfallModel;
+const OPNAME = 'TVoaimsComObject.Get_RainfallModel';
 begin
   Result := nil;
   try
     if FrameworkAvailable then
     begin
-      if GAppModules.Model.ModelName = CHydrology then
-        Result := GAppModules.Model as IHydrologyModel
+      if GAppModules.Model.ModelName = CRainfall then
+        Result := GAppModules.Model as IRainfallModel
       else
-      raise Exception.CreateFmt('The hydrology model is not currently loaded. The currently loaded model is (%s)',
+      raise Exception.CreateFmt('The rainfall model is not currently loaded. The currently loaded model is (%s)',
             [GAppModules.Model.ModelName]);
-
     end;
   except on E: Exception do HandleError(E, OPNAME) end;
-end;}
-
-function TVoaimsComObject.IVoaimsComObject_Get_HydrologyModel: IUnknown;
-begin
-
 end;
 
-function TVoaimsComObject.IVoaimsComObject_Get_RainfallModel: IUnknown;
+function TVoaimsComObject.Get_StomsaModel: IStomsaModel;
+const OPNAME = 'TVoaimsComObject.Get_StomsaModel';
 begin
+  Result := nil;
+  try
+    if FrameworkAvailable then
+    begin
+      if GAppModules.Model.ModelName = CStomsa then
+        Result := GAppModules.Model as IStomsaModel
+      else
+      raise Exception.CreateFmt('The Stomsa model is not currently loaded. The currently loaded model is (%s)',
+            [GAppModules.Model.ModelName]);
+    end;
+  except on E: Exception do HandleError(E, OPNAME) end;
+end;
 
+function TVoaimsComObject.Get_YieldModel: IYieldModel;
+const OPNAME = 'TVoaimsComObject.Get_YieldModel';
+begin
+  Result := nil;
+  try
+    if FrameworkAvailable then
+    begin
+      if GAppModules.Model.ModelName = CYield then
+        Result := GAppModules.Model as IYieldModel
+      else
+      raise Exception.CreateFmt('The yield model is not currently loaded. The currently loaded model is (%s)',
+            [GAppModules.Model.ModelName]);
+    end;
+  except on E: Exception do HandleError(E, OPNAME) end;
 end;
 
 function TVoaimsComObject.Get_PlanningModel: IPlanningModel;
 begin
-
+  Result := nil;
+  try
+    if FrameworkAvailable then
+    begin
+      if GAppModules.Model.ModelName = CPlanning then
+        Result := GAppModules.Model as IPlanningModel
+      else
+      raise Exception.CreateFmt('The Planning model is not currently loaded. The currently loaded model is (%s)',
+            [GAppModules.Model.ModelName]);
+    end;
+  except on E: Exception do HandleError(E, OPNAME) end;
 end;
 
 initialization
-  TTypedComObjectFactory.Create(ComServer, TVoaimsComObject, Class_VoaimsComObject,ciMultiInstance, tmApartment);
+  TTypedComObjectFactory.Create(ComServer, TVoaimsComObject, Class_VoaimsComObject, ciMultiInstance, tmApartment);
+
 end.

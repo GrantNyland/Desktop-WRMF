@@ -33,10 +33,9 @@ implementation
 uses
    SysUtils,
    UUtilities,
-   UFilesLineTypeObject,
-   UErrorHandlingOperations,
    UBasicObjects,
-   UFilesActionYieldManager;
+   UFilesActionYieldManager,
+   UErrorHandlingOperations;
 
 function TFileReclamationPlantAgent.ReadModelDataFromFile(AFileName: TAbstractModelFileName;
          ADataObject: TDataFileObjects;AProgressFunction: TProgressUpdateFuntion): Boolean;

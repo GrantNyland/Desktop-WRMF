@@ -32,8 +32,8 @@ end;
 implementation
 uses
    UUtilities,
-   UFilesLineTypeObject,
-   UErrorHandlingOperations, UBasicObjects,
+   UBasicObjects,
+   UErrorHandlingOperations,
    UFilesActionYieldManager;
 
 function TFileControlledReleaseStructureAgent.ReadModelDataFromFile(AFileName: TAbstractModelFileName;
@@ -179,4 +179,3 @@ end;
 end.
 
 
- 

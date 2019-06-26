@@ -3,7 +3,7 @@
 //  UNIT      : Contains TDataObjectRainfall Class
 //  AUTHOR    : VGN(Arivia)
 //  DATE      : 2003/09/18
-//  COPYRIGHT : Copyright © 2004 DWAF                 
+//  COPYRIGHT : Copyright © 2004 DWAF
 //
 //
 
@@ -50,7 +50,6 @@ type
     FFileData           : TStringList;
     FHydroMonthValue    : array[1..12] of double;
     FHydroPatchSign     : array[1..12] of char;
-//    FHydroMonthYear     : integer;
     FCurrentCatchment   : integer;
     FDefaultDir         : string;
     FHydroStartMonth    : integer;
@@ -115,10 +114,7 @@ type
     function UpdateSAWSDWAFRawDataSQL : string;
 
     function StationYearVerified(AStationID : integer; AYear : string) : boolean;
-    function GetFilesLineTypes: TAbstractFilesLineTypes; override;
     function GetFileNamesObject: TAbstractModelFileNameList; override;
-
-
   public
 
     function PopulateTreeviewWithSelectedProjectGauges(ATreeView: TTreeview): boolean;
@@ -354,7 +350,7 @@ begin
     if Assigned(FRAWFlags) then
       FreeAndNil(FRAWFlags);
     if Assigned(FCatchmentZoneList) then
-      FreeAndNil(FCatchmentZoneList);  
+      FreeAndNil(FCatchmentZoneList);
     inherited DestroyMemberObjects;
   except on E: Exception do HandleError(E, OPNAME); end;
 end;
@@ -1445,7 +1441,7 @@ begin
         end
         else
         begin
-          lStation.SaveMPFile(lStartYear, lEndYear, lDirectory);  
+          lStation.SaveMPFile(lStartYear, lEndYear, lDirectory);
         end;
       end;
     end;
@@ -4051,7 +4047,7 @@ begin
         end;
         Result := True;
       end;
-    end;  
+    end;
   except on E: Exception do HandleError ( E, OPNAME ) end;
 end;
 
@@ -4204,15 +4200,6 @@ begin
   except on E: Exception do HandleError(E, OPNAME) end;
 end;
 
-function TDataObjectRainfall.GetFilesLineTypes: TAbstractFilesLineTypes;
-const OPNAME = 'TDataObjectRainfall.GetFilesLineTypes';
-begin
-  Result := nil;
-  try
-
-  except on E: Exception do HandleError ( E, OPNAME ) end;
-end;
-
 function TDataObjectRainfall.GetFileNamesObject: TAbstractModelFileNameList;
 const OPNAME = 'TDataObjectRainfall.GetFileNamesObject';
 begin
@@ -4221,7 +4208,6 @@ begin
 
   except on E: Exception do HandleError ( E, OPNAME ) end;
 end;
-
 
 function TDataObjectRainfall.WriteSAWSDWAFRawDataToDB(AStationNumber : integer;AYear : string;ASource : integer; AMonth : array of double;
                                                       APatchSign : array of char): boolean;
@@ -4955,7 +4941,7 @@ begin
               ' AND CatchmentID = '   + IntToStr(ACatchmentZone.CatchmentID);
           LDataset.SetSQL(LSQL);
           LDataset.ExecSQL;
-          
+
           LDataset.ClearSQL;
           LDataset.DataSet.Close;
           LSQL := ' INSERT INTO RainfallCatchmentFileData ( '+

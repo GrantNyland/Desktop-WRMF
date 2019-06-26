@@ -38,9 +38,9 @@ type
 
 implementation
 
-uses UUtilities,
-     UFilesLineTypeObject,
-     UErrorHandlingOperations;
+uses
+  UUtilities,
+  UErrorHandlingOperations;
 
 function TFileSaltWashOffAgent.ReadModelDataFromFile(AFileName:TAbstractModelFileName; ADataObject: TDataFileObjects;
              AProgressFunction: TProgressUpdateFuntion): boolean;

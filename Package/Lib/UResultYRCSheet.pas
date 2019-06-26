@@ -3,7 +3,7 @@
 //  UNIT      : Contains TResultYRCSheet Class
 //  AUTHOR    : Dziedzi Ramulondi (PDNA)
 //  DATE      : 2002/08/22
-//  COPYRIGHT : Copyright © 2002 DWAF                         
+//  COPYRIGHT : Copyright © 2002 DWAF
 //
 //
 unit UResultYRCSheet;
@@ -36,8 +36,7 @@ uses
   UYRCMenuItemManager,
   UAbstractModelData,
   UAbstractFileNamesObject,
-  UAbstractYRCSheet,
-  UAbstractYRCModelDataObject;
+  UAbstractYRCSheet;
 
 type
   TResultYRCSheet = class(TAbstractYRCSheet)
@@ -139,6 +138,7 @@ uses
   UUtilities,
   VoaimsCom_TLB,
   UMainMenuEventType,
+  UYRCModelDataObject,
   UGenericModelLinkClasses,
   UTargetDraftSelector,
   UErrorHandlingOperations,
@@ -235,8 +235,7 @@ const OPNAME = 'TResultYRCSheet.YRCGraphDataObject';
 begin
   Result := nil;
   try
-    Result := TAbstractYRCModelDataObject(FAppModules.Model.ModelData).YRCGraphDataObject;
-  // Handle exceptions.
+    Result := TYRCModelDataObject(FAppModules.Model.ModelData).YRCGraphDataObject;
   except on E: Exception do HandleError(E, OPNAME); end;
 end;
 
@@ -351,7 +350,7 @@ begin
     begin
       DeleteChart;
       FYRCSelectorsPanel.Height := 125;
-      DisplayYRCSettings('CaptionNormal');      
+      DisplayYRCSettings('CaptionNormal');
     end;
     if(AContext = sdccSaveData) and (AFieldName = 'YRCData') then
        if (FMenuItemManager <> nil) then
@@ -796,7 +795,7 @@ begin
       LValue := InputBox(FAppModules.Language.GetString('YieldReliability.InputEditYvalue'), 'Y-Value', FLoatToStr(LTargetDraft.YValueAt100));
 
     LReturnValue := StrToFloatDef(LValue,0.0);
-    
+
     if LTargetDraft.YValueAt100Added  then
     begin
       if (LReturnValue = LTargetDraft.YValueAt100) then Exit;

@@ -224,6 +224,7 @@ var
   LContinue                : boolean;
   LMaxID : integer;
   LChannelNoToDam : integer;
+  LYieldModel: IYieldModel;
 begin
   Result := Nil;
   try
@@ -258,7 +259,8 @@ begin
       //Create channel to PCD min-max feature
       if LContinue  then
       begin
-        LMinMaxFeature :=  (FAppModules.Model as IYieldModel).DoCreateMinMaxFlowFeature(LChannelToUndergroundDam.ChannelNumber);
+        LYieldModel := (FAppModules.Model as IYieldModel);
+        LMinMaxFeature := LYieldModel.DoCreateMinMaxFlowFeature(LChannelToUndergroundDam.ChannelNumber);
         LChannelToUndergroundDam.ChannelType          := ctMineToUndergroundChannel;
         LChannelToUndergroundDam.UpStreamNodeNumber   := LMineNode.ReservoirConfigurationData.ReservoirIdentifier;
         LChannelToUndergroundDam.DownStreamNodeNumber := LUndergroundDam.ReservoirConfigurationData.ReservoirIdentifier;

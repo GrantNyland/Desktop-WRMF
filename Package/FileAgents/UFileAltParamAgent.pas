@@ -37,8 +37,7 @@ implementation
 
 uses UUtilities,
      UFileNameConstants,
-     UErrorHandlingOperations,
-     UFilesLineTypeObject;
+     UErrorHandlingOperations;
 
 function TFileAltParamAgent.ReadModelDataFromFile(AFileName:TAbstractModelFileName; ADataObject: TDataFileObjects;
          AProgressFunction: TProgressUpdateFuntion): boolean;

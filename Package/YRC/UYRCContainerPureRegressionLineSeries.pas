@@ -42,8 +42,8 @@ implementation
 uses
   Math,
   SysUtils,
-  UAbstractYRCModelDataObject,
-  UErrorHandlingOperations, UYRCContainerAbstractSeries;
+  UYRCContainerAbstractSeries,
+  UErrorHandlingOperations;
 
 { TYRCContainerPureRegressionLineSeries }
 

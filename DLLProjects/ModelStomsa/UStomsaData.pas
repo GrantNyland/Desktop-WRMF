@@ -3,8 +3,7 @@ unit UStomsaData;
 interface
 
 uses SysUtils, Classes, VCL.Dialogs, Windows, VCL.Controls,Contnrs,
-     UFlowCorrelation, UFileNames,  UAbstractModelData, UAbstractFileNamesObject,UViewModelDataObject,
-     UFilesLineTypeObject;
+     UFlowCorrelation, UFileNames,  UAbstractModelData, UAbstractFileNamesObject, UViewModelDataObject;
 
 const
   TheMonths : Array[1..13] of string = ('OCTOBER', 'NOVEMBER', 'DECEMBER', 'JANUARY',
@@ -324,13 +323,11 @@ type
 
     FIncDataList        : TObjectList;
     FCurrentIncPosition : integer;
-    FFileNamesObject    : TModelFileNames;
-    FFilesLineTypes     : TFilesLineTypes;
     FErrorList          : TStringList;
     FRunReference       : string;
     FParamFileName      : string;
     FProjectFileName    : string;
-    FBoxPlotDataSelection : TStringList;
+    FBoxPlotDataSelection: TStringList;
 
     //Data change flags
     FIncFilesHaveChanged,
@@ -364,8 +361,7 @@ type
 
     procedure SetPARAMFileCreated(Status : Boolean);
     function LoadProjectData(AFileName : string) : boolean;
-    function GetFilesLineTypes: TAbstractFilesLineTypes; override;
-    function GetFileNamesObject: TAbstractModelFileNameList; override;
+    function GetCastFileNamesObject: TModelFileNames;
     function Get_CurrentIncData   : TIncData;
     function Get_IncFileCount: integer;
     function Get_KeyGaugeCount: integer;
@@ -401,7 +397,6 @@ type
     function Last: boolean;
     function GotoIndex(APosition : integer): boolean;
 
-    property FileNamesObject : TModelFileNames read FFileNamesObject;
     property RunReference: String read FRunReference write FRunReference;
     property IncFileCount: Integer read Get_IncFileCount;
     property KeyGaugeCount: Integer read Get_KeyGaugeCount;
@@ -409,6 +404,7 @@ type
     property TimeSeriesFittedCount: Integer read Get_TimeSeriesFittedCount;
     property StatisticsCalculatedCount: Integer read Get_StatisticsCalculatedCount;
     property IncFileByIndex[AIndex : Integer] : TIncData read Get_IncFileByIndex;
+    property CastFileNamesObject: TModelFileNames read GetCastFileNamesObject;
 
     //Data change flags
     property IncFilesHaveChanged: Boolean read FIncFilesHaveChanged write FIncFilesHaveChanged;
@@ -471,14 +467,12 @@ const OPNAME = 'TStomsaData.CreateMemberObjects';
 begin
   inherited;
   try
-    FFileNamesObject    := TModelFileNames.Create(FAppModules);
-    FFilesLineTypes     := TFilesLineTypes.Create;
+    inherited CreateMemberObjects;
     FIncDataList        := TObjectList.Create(True);
     FCurrentIncPosition := -1;
     FBoxPlotDataSelection            := TStringList.Create;
     FBoxPlotDataSelection.Sorted     := True;
     FBoxPlotDataSelection.Duplicates := dupIgnore;
-    Initialise;
   except on E: Exception do HandleError(E, OPNAME); end;
 end;
 
@@ -487,10 +481,9 @@ const OPNAME = 'TStomsaData.DestroyMemberObjects';
 begin
   inherited;
   try
-    FreeAndNil(FFileNamesObject);
-    FreeAndNil(FFilesLineTypes);
     FreeAndNil(FIncDataList);
     FreeAndNil(FBoxPlotDataSelection);
+    inherited DestroyMemberObjects;
   except on E: Exception do HandleError(E, OPNAME); end;
 end;
 
@@ -1921,8 +1914,8 @@ begin
       Result := True;
       if Assigned(FOnIncAdd) then FOnIncAdd(Self,AFileName,ADirectory);
       LIndex := FFileNamesObject.HydrologyFileNames.Count+1;
-      FFileNamesObject.PopulateHydrologyPaths(ExtractFilePath(ADirectory));
-      FFileNamesObject.AddHydrologyFileName(LIndex,AFileName,False,0.0,FileLastWriteDate(AFileName));
+      CastFileNamesObject.PopulateHydrologyPaths(ExtractFilePath(ADirectory));
+      CastFileNamesObject.AddHydrologyFileName(LIndex,AFileName,False,0.0,FileLastWriteDate(AFileName));
     end;
   except on E: Exception do HandleError(E, OPNAME); end;
 end;
@@ -2628,8 +2621,8 @@ begin
       Close(fyle);
 
       FParamFileName := FileName;
-      FFileNamesObject.PopulateHydrologyPaths(ExtractFilePath(FParamFileName));
-      FFileNamesObject.UpdateParamFileName(00,FParamFileName,False,0.0,FileLastWriteDate(FParamFileName));
+      CastFileNamesObject.PopulateHydrologyPaths(ExtractFilePath(FParamFileName));
+      CastFileNamesObject.UpdateParamFileName(00,FParamFileName,False,0.0,FileLastWriteDate(FParamFileName));
       Result := True;
     except on E: EInOutError do
     begin
@@ -2773,24 +2766,6 @@ begin
   except on E: Exception do HandleError(E, OPNAME); end;
 end;
 
-function TStomsaData.GetFileNamesObject: TAbstractModelFileNameList;
-const OPNAME = 'TStomsaData.GetFileNamesObject';
-begin
-  Result := nil;
-  try
-    Result := FFileNamesObject;
-  except on E: Exception do HandleError(E, OPNAME); end;
-end;
-
-function TStomsaData.GetFilesLineTypes: TAbstractFilesLineTypes;
-const OPNAME = 'TStomsaData.GetFilesLineTypes';
-begin
-  Result := nil;
-  try
-    Result := FFilesLineTypes;
-  except on E: Exception do HandleError(E, OPNAME); end;
-end;
-
 function TStomsaData.GetViewDataItems(AViewId: string;AItemsList: TViewModelDataItemsList; var AHandled: boolean): boolean;
 const OPNAME = 'TStomsaData.GetViewDataItems';
 begin
@@ -2816,8 +2791,8 @@ begin
     if not FileExists(FParamFileName) then Exit;
 
     LParamFilePath :=  ExtractFilePath(FParamFileName);
-    FFileNamesObject.PopulateHydrologyPaths(LParamFilePath);
-    FFileNamesObject.UpdateParamFileName(00,FParamFileName,False,0.0,FileLastWriteDate(FParamFileName));
+    CastFileNamesObject.PopulateHydrologyPaths(LParamFilePath);
+    CastFileNamesObject.UpdateParamFileName(00,FParamFileName,False,0.0,FileLastWriteDate(FParamFileName));
 
     LFileList := TstringList.Create;
     try
@@ -2863,11 +2838,11 @@ begin
         end;
       end;
 
-      FFileNamesObject.CastHydrologyFileNames.Clear;
+      CastFileNamesObject.CastHydrologyFileNames.Clear;
       for LIndex := 0 to LFileList.Count -1 do
       begin
         LFileName := LFileList[LIndex];
-        FFileNamesObject.AddHydrologyFileName(LIndex,LFileName,False,0.0,FileLastWriteDate(LFileName));
+        CastFileNamesObject.AddHydrologyFileName(LIndex,LFileName,False,0.0,FileLastWriteDate(LFileName));
       end;
     finally
       LFileList.Free;
@@ -3132,6 +3107,15 @@ begin
   try
     if(AIndex >= 0) and (AIndex < FIncDataList.Count) then
        Result :=  TIncData(FIncDataList.Items[AIndex]);
+  except on E: Exception do HandleError(E, OPNAME); end;
+end;
+
+function TStomsaData.GetCastFileNamesObject: TModelFileNames;
+const OPNAME = 'TStomsaData.GetCastFileNamesObject';
+begin
+  Result := nil;
+  try
+    Result := TModelFileNames(FFileNamesObject);
   except on E: Exception do HandleError(E, OPNAME); end;
 end;
 

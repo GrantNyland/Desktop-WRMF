@@ -1,10 +1,8 @@
 library VoaimsCom;
 
 uses
-  ShareMem,
-  ComServ,
-  VoaimsCom_TLB in 'VoaimsCom_TLB.pas',
-  UVoaimsComObject in 'UVoaimsComObject.pas' {VoaimsComObject: CoClass};
+  ShareMem, ComServ,
+  UVoaimsComObject;
 
 exports
   DllGetClassObject,

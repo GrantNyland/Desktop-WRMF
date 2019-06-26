@@ -27,7 +27,7 @@ uses
   UYRCGraphDataObject,
   UAbstractYRCData,
   UStringListOfStringLists,
-  UAbstractYRCModelDataObject,
+  UYRCModelDataObject,
   UAbstractModelData,
   UYieldModelCalendar,
   UParameterData,
@@ -40,14 +40,12 @@ uses
 
 type
 
-  TYieldModelDataObject = class(TAbstractYRCModelDataObject,IYieldModelData)
+  TYieldModelDataObject = class(TAbstractModelData, IYieldModelData)
   protected
     FNetworkElementData         : TNetworkElementData;
     FNetworkFeaturesData        : TNetworkFeaturesData;
     FYieldModelCalendar         : TYieldModelCalendar;
     FParamSetup                 : TParamSetup;
-    FFilesLineTypes             : TFilesLineTypes;
-    FFileNamesObject            : TModelFileNames;
     FRunConfigurationData       : TRunConfigurationData;
     FYRCGraphDataObject         : TYRCGraphDataObject;
     FYieldModelViews            : TModelViews;
@@ -63,14 +61,14 @@ type
     function _AddRef: Integer; stdcall;
     function _Release: Integer; stdcall;
 
-    function GetFilesLineTypes: TAbstractFilesLineTypes; override;
-    function GetFileNamesObject: TAbstractModelFileNameList; override;
-    function GetYRCGraphDataObject: TAbstractYRCGraphDataObject; override;
+    function GetYRCGraphDataObject: TAbstractYRCGraphDataObject;
     function GetYieldModelCapability:IYieldModelCapability;
     function Get_ImplementedNetworkFeatures: IImplementedNetworkFeatures; safecall;
 
     function GetCastRunConfigurationData: TRunConfigurationData;
     function GetCastParameterData: TParamSetup;
+    function GetCastFilesLineTypes: TFilesLineTypes;
+    function GetCastFileNamesObject: TModelFileNames;
     function GetScenarioWhereClause: string;
   public
     function Initialise: boolean; override;
@@ -94,7 +92,7 @@ type
     function Get_DataFilePaths: IDataFilePaths; safecall;
     function Get_YieldModelCapability: IYieldModelCapability; safecall;
     function Get_ModelCalendar: IModelCalendar;safecall;
-    function Get_ParamSetup: IParamSetup;safecall;
+    function Get_ParamSetup: IParamSetup; safecall;
     function Get_HydrologyFileData(const AFileName: WideString) : WideString; safecall;
     function Get_DemandFileData(const AFileName: WideString) : WideString; safecall;
 
@@ -119,8 +117,8 @@ type
     property CastCastParameterData      : TParamSetup                 read GetCastParameterData;
     property CastNetworkFeaturesData    : TNetworkFeaturesData        read FNetworkFeaturesData;
     property CastYRCGraphDataObject     : TYRCGraphDataObject         read FYRCGraphDataObject;
-    property CastFileNamesObject        : TModelFileNames             read FFileNamesObject;
-    property CastFilesLineTypes         : TFilesLineTypes             read FFilesLineTypes;
+    property CastFilesLineTypes         : TFilesLineTypes             read GetCastFilesLineTypes;
+    property CastFileNamesObject        : TModelFileNames             read GetCastFileNamesObject;
     property OutputData                 : TOutputData                 read FOutputData;
     property OutputComparisonData       : TOutputComparisonList       read FOutputComparisonData;
     property ImplementedNetworkFeatures : TImplementedNetworkFeatures read FImplementedNetworkFeatures;
@@ -140,12 +138,11 @@ procedure TYieldModelDataObject.CreateMemberObjects;
 const OPNAME = 'TYieldModelDataObject.CreateMemberObjects';
 begin
   try
+    inherited CreateMemberObjects;
     FNetworkFeaturesData        := TNetworkFeaturesData.Create(FAppModules);
     FNetworkElementData         := TNetworkElementData.Create(FAppModules);
     FDataFilePaths              := TDataFilePaths.Create(FAppModules);
-    FFileNamesObject            := TModelFileNames.Create(FAppModules);
     FYRCGraphDataObject         := TYRCGraphDataObject.Create(FAppModules);
-    FFilesLineTypes             := TFilesLineTypes.Create;
     FParamSetup                 := TParamSetup.Create(FAppModules);
     FRunConfigurationData       := TRunConfigurationData.Create(FAppModules);
     FYieldModelCalendar         := TYieldModelCalendar.Create(FAppModules);
@@ -165,9 +162,7 @@ begin
     FreeAndNil(FNetworkElementData);
     FreeAndNil(FNetworkFeaturesData);
     FreeAndNil(FDataFilePaths);
-    FreeAndNil(FFileNamesObject);
     FreeAndNil(FYRCGraphDataObject);
-    FreeAndNil(FFilesLineTypes);
     FreeAndNil(FParamSetup);
     FreeAndNil(FRunConfigurationData);
     FreeAndNil(FYieldModelCalendar);
@@ -177,6 +172,7 @@ begin
     FreeAndNil(FOutputComparisonData);
     FreeAndNil(FImplementedNetworkFeatures);
     FreeAndNil(FStudyMetaDataList);
+    inherited DestroyMemberObjects;
   except on E: Exception do HandleError(E, OPNAME) end;
 end;
 
@@ -206,24 +202,6 @@ begin
   Result := nil;
   try
     Result := FRunConfigurationData;
-  except on E: Exception do HandleError(E, OPNAME) end;
-end;
-
-function TYieldModelDataObject.GetFileNamesObject: TAbstractModelFileNameList;
-const OPNAME = 'TYieldModelDataObject.GetFileNamesObject';
-begin
-  Result := nil;
-  try
-    Result := FFileNamesObject;
-  except on E: Exception do HandleError(E, OPNAME) end;
-end;
-
-function TYieldModelDataObject.GetFilesLineTypes: TAbstractFilesLineTypes;
-const OPNAME = 'TYieldModelDataObject.GetFilesLineTypes';
-begin
-  Result := nil;
-  try
-    Result := FFilesLineTypes;
   except on E: Exception do HandleError(E, OPNAME) end;
 end;
 
@@ -260,10 +238,10 @@ begin
         AHandled := GetChannelViewDataItems(AViewId,AItemsList,FNetworkElementData.CastChannelList)
       else
       if(Pos('DEMANDFILENUMBERS',LUpperViewId) = 1) then
-        AHandled := GetDemandFilesViewDataItems(AViewId,AItemsList,FFileNamesObject)
+        AHandled := GetDemandFilesViewDataItems(AViewId,AItemsList, CastFileNamesObject)
       else
       if(Pos('HYDROLOGYFILENAMES',LUpperViewId) = 1) then
-        AHandled := GetHydrologyFilesViewDataItems(AViewId,AItemsList,FFileNamesObject)
+        AHandled := GetHydrologyFilesViewDataItems(AViewId, AItemsList, CastFileNamesObject)
       else
       if(Pos('POWERPLANTS',LUpperViewId) = 1) then
         AHandled := GetPowerPlantsViewDataItems(AViewId,AItemsList,FNetworkFeaturesData.CastPowerPlantList)
@@ -362,6 +340,24 @@ begin
   Result := nil;
   try
     Result := FParamSetup;
+  except on E: Exception do HandleError(E, OPNAME) end;
+end;
+
+function TYieldModelDataObject.GetCastFilesLineTypes: TFilesLineTypes;
+const OPNAME = 'TYieldModelDataObject.GetCastFilesLineTypes';
+begin
+  Result := nil;
+  try
+    Result := TFilesLineTypes(FFilesLineTypes);
+  except on E: Exception do HandleError(E, OPNAME) end;
+end;
+
+function TYieldModelDataObject.GetCastFileNamesObject: TModelFileNames;
+const OPNAME = 'TYieldModelDataObject.GetCastFileNamesObject';
+begin
+  Result := nil;
+  try
+    Result := TModelFileNames(FFileNamesObject);
   except on E: Exception do HandleError(E, OPNAME) end;
 end;
 
@@ -467,7 +463,7 @@ const OPNAME = 'TYieldModelDataObject.Get_ModelCalendar';
 begin
   Result := nil;
   try
-    Result := FYieldModelCalendar; 
+    Result := FYieldModelCalendar;
   except on E: Exception do HandleError(E, OPNAME) end;
 end;
 
@@ -730,18 +726,18 @@ const OPNAME = 'TYieldModelDataObject.Initialise';
 begin
   Result := False;
   try
-    FFileNamesObject.Reset;
-    FYRCGraphDataObject.Reset;
-    Result := FNetworkElementData.Initialise;
-    Result := Result AND FNetworkFeaturesData.Initialise;
-    Result := Result and FDataFilePaths.Initialise;
-    Result := Result and  FFileNamesObject.Initialise;
-    //Result := Result and FYRCGraphDataObject.Initialise;
-    Result := Result and FParamSetup.Initialise;
-    Result := Result and FOutputData.Initialise;
-    Result := Result and FOutputComparisonData.Initialise;
-    Result := Result and FImplementedNetworkFeatures.Initialise;
-    Result := Result and FStudyMetaDataList.Initialise;
+    if (inherited Initialise) then
+    begin
+      FYRCGraphDataObject.Reset;
+      Result := FNetworkElementData.Initialise;
+      Result := Result AND FNetworkFeaturesData.Initialise;
+      Result := Result and FDataFilePaths.Initialise;
+      Result := Result and FParamSetup.Initialise;
+      Result := Result and FOutputData.Initialise;
+      Result := Result and FOutputComparisonData.Initialise;
+      Result := Result and FImplementedNetworkFeatures.Initialise;
+      Result := Result and FStudyMetaDataList.Initialise;
+    end;
   except on E: Exception do HandleError(E, OPNAME) end;
 end;
 

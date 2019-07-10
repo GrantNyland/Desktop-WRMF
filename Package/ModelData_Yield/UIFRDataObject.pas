@@ -135,12 +135,10 @@ type
     FIFRSiteDataList  : TIFRSiteDataList;
     procedure CreateMemberObjects; override;
     procedure DestroyMemberObjects; override;
-    function GetFileNamesObject: TAbstractModelFileNameList; override;
   public
     function Validate(var AErrors: WideString; const AContext: WideString): WordBool; safecall;
     function Initialise: boolean; override;
     function GetViewDataItems(AViewId: string; AItemsList:TViewModelDataItemsList; var AHandled:boolean): boolean; override;
-    property FileNamesObject: TAbstractModelFileNameList read GetFileNamesObject;
     property IFRSiteDataList  : TIFRSiteDataList read FIFRSiteDataList;
   end;
 implementation
@@ -151,7 +149,6 @@ uses
   UConstants,
   UUtilities,
   UIFRDataSQLAgent,
-//  UIFRDataLoadAgent,
   UErrorHandlingOperations;
 
 { TIFRSiteDataObject }
@@ -1075,7 +1072,8 @@ const OPNAME = 'TIFRModelData.CreateMemberObjects';
 begin
   inherited;
   try
-    FIFRSiteDataList  := TIFRSiteDataList.Create(FAppModules);
+    inherited CreateMemberObjects;
+    FIFRSiteDataList := TIFRSiteDataList.Create(FAppModules);
   except on E: Exception do HandleError(E, OPNAME); end;
 end;
 
@@ -1085,6 +1083,7 @@ begin
   inherited;
   try
     FreeAndNil(FIFRSiteDataList);
+    inherited DestroyMemberObjects;
   except on E: Exception do HandleError(E, OPNAME); end;
 end;
 
@@ -1093,7 +1092,8 @@ const OPNAME = 'TIFRModelData.Initialise';
 begin
   Result := False;
   try
-    Result := FIFRSiteDataList.Initialise;
+    if (inherited Initialise) then
+      Result := FIFRSiteDataList.Initialise;
   except on E: Exception do HandleError(E, OPNAME); end;
 end;
 
@@ -1103,14 +1103,6 @@ begin
   Result := False;
   try
     Result := FIFRSiteDataList.Validate(AErrors,AContext);
-  except on E: Exception do HandleError(E, OPNAME); end;
-end;
-
-function TIFRModelData.GetFileNamesObject: TAbstractModelFileNameList;
-const OPNAME = 'TIFRModelData.GetFileNamesObject';
-begin
-  Result := nil;
-  try
   except on E: Exception do HandleError(E, OPNAME); end;
 end;
 

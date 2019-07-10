@@ -177,8 +177,8 @@ begin
     FYRCSelectorsPanel.Align := alTop;
     if Assigned(FChart) then
     begin
-      FChart.Align             := alNone;
-      FChart.Align             := alClient;
+      FChart.Align := alNone;
+      FChart.Align := alClient;
     end;
   except on E : Exception do HandleError(E,OPNAME); end;
 end;
@@ -188,8 +188,8 @@ const OPNAME = 'TYRCFirmYieldSheet.YRCGraphDataObject';
 begin
   Result := nil;
   try
-    Result := TYRCModelDataObject(FAppModules.Model.ModelData).YRCGraphDataObject;
-  // Handle exceptions.
+    if (FAppModules.Model.ModelData is TYRCModelDataObject) then
+      Result := TYRCModelDataObject(FAppModules.Model.ModelData).YRCGraphDataObject;
   except on E: Exception do HandleError(E, OPNAME); end;
 end;
 
@@ -470,35 +470,35 @@ procedure TYRCFirmYieldSheet.SetMenuInitialState;
 const OPNAME = 'TYRCFirmYieldSheet.SetMenuInitialState';
 begin
   try
-    if(YRCGraphDataObject = nil) or (YRCGraphDataObject.PlanesCount = 0) or
-      (not (FAppModules.User.UserRights in CUR_EditData)) then
-      //(FAppModules.StudyArea.ScenarioLocked) then
+    if (Assigned(FMenuItemManager) and Assigned(FYRCSelectorsPanel) and (YRCGraphDataObject <> nil)) then
     begin
-      if Assigned(FChart) then
-        FChart.Enabled := False;
-      FMenuItemManager.SetMenuNewChart(msDisable);
-      FMenuItemManager.SetMenuOpenChart(msDisable);
-      FMenuItemManager.SetMenuSaveChart(msDisable);
-      FMenuItemManager.SetMenuAddSeries(msDisable);
-      FMenuItemManager.SetMenuDeleteSeries(msDisable);
-      FYRCSelectorsPanel.btnSetYMax.Enabled := False;
-      FYRCSelectorsPanel.ChartZoom.Enabled := False;
-      FYRCSelectorsPanel.btnAssuranceInterval.Enabled := False;
-      FYRCSelectorsPanel.ChartZoomLabel.Enabled := False;
-    end
-    else
-    begin
-      if Assigned(FChart) then
-        FChart.Enabled := True;
-      FMenuItemManager.SetMenuNewChart(msEnable);
-      FMenuItemManager.SetMenuOpenChart(msEnable);
-      FMenuItemManager.SetMenuSaveChart(msEnable);
-      FMenuItemManager.SetMenuAddSeries(msEnable);
-      FMenuItemManager.SetMenuDeleteSeries(msDisable);
-      FYRCSelectorsPanel.btnSetYMax.Enabled := True;
-      FYRCSelectorsPanel.ChartZoom.Enabled := True;
-      FYRCSelectorsPanel.btnAssuranceInterval.Enabled := True;
-      FYRCSelectorsPanel.ChartZoomLabel.Enabled := True;
+      if (YRCGraphDataObject.PlanesCount = 0) or (YRCGraphDataObject.PlanesCount = 0) or
+        (not (FAppModules.User.UserRights in CUR_EditData)) then
+      begin
+        if Assigned(FChart) then
+          FChart.Enabled := False;
+        FMenuItemManager.SetMenuNewChart(msDisable);
+        FMenuItemManager.SetMenuOpenChart(msDisable);
+        FMenuItemManager.SetMenuSaveChart(msDisable);
+        FMenuItemManager.SetMenuAddSeries(msDisable);
+        FMenuItemManager.SetMenuDeleteSeries(msDisable);
+        FYRCSelectorsPanel.btnSetYMax.Enabled := False;
+        FYRCSelectorsPanel.ChartZoom.Enabled := False;
+        FYRCSelectorsPanel.btnAssuranceInterval.Enabled := False;
+        FYRCSelectorsPanel.ChartZoomLabel.Enabled := False;
+      end else begin
+        if Assigned(FChart) then
+          FChart.Enabled := True;
+        FMenuItemManager.SetMenuNewChart(msEnable);
+        FMenuItemManager.SetMenuOpenChart(msEnable);
+        FMenuItemManager.SetMenuSaveChart(msEnable);
+        FMenuItemManager.SetMenuAddSeries(msEnable);
+        FMenuItemManager.SetMenuDeleteSeries(msDisable);
+        FYRCSelectorsPanel.btnSetYMax.Enabled := True;
+        FYRCSelectorsPanel.ChartZoom.Enabled := True;
+        FYRCSelectorsPanel.btnAssuranceInterval.Enabled := True;
+        FYRCSelectorsPanel.ChartZoomLabel.Enabled := True;
+      end;
     end;
   except on E: Exception do HandleError(E, OPNAME) end;
 end;

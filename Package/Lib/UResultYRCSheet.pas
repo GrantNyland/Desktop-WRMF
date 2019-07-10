@@ -291,36 +291,31 @@ const OPNAME = 'TResultYRCSheet.LoadChart';
 begin
   inherited;
   try
-    FBusyPopulating := True;
-    try
-      DeleteChart;
-      if(Trim(YRCGraphDataObject.ErrorMsg) = '') and (not WasStochasticRan) then
-        YRCGraphDataObject.ErrorMsg := 'CaptionHistoric';
-
-      if(Trim(YRCGraphDataObject.ErrorMsg) <> '')  then
-      begin
-        DisplayYRCSettings(YRCGraphDataObject.ErrorMsg);
-        FYRCSelectorsPanel.Height := 125;
-        FYRCSelectorsPanel.ErrorMesg.Visible := True;
-      end
-      else
-      begin
-        DisplayYRCSettings('');
-        FYRCSelectorsPanel.Height := 64;
-        CreateChart;
-        FYRCSelectorsPanel.TargetDraftSelectorMode := smSingleSelect;
-        FYRCSelectorsPanel.SelectPlane(YRCGraphDataObject.PeriodLength);
-        FYRCSelectorsPanel.SelectPlottingBase(YRCGraphDataObject.PlottingBase);
-        //FYRCSelectorsPanel.TargetDraftSelector.SelectByIndex(YRCGraphDataObject.SelectedTargetDraftIndex);
-        FYRCSelectorsPanel.ShowTargetDrafts.ItemIndex := ord(YRCGraphDataObject.YRCChartProperties.ShowTargetDrafts);
-        OnShowTargetDraftsSelectionChanged(FYRCSelectorsPanel.ShowTargetDrafts);
-      end;
-    finally
-      FBusyPopulating := False;
-    end;
-
+    DeleteChart;
     if Assigned(FChart) then
     begin
+      FBusyPopulating := True;
+      try
+        if (Trim(YRCGraphDataObject.ErrorMsg) = '') and (not WasStochasticRan) then
+          YRCGraphDataObject.ErrorMsg := 'CaptionHistoric';
+        if(Trim(YRCGraphDataObject.ErrorMsg) <> '')  then
+        begin
+          DisplayYRCSettings(YRCGraphDataObject.ErrorMsg);
+          FYRCSelectorsPanel.Height := 125;
+          FYRCSelectorsPanel.ErrorMesg.Visible := True;
+        end else begin
+          DisplayYRCSettings('');
+          FYRCSelectorsPanel.Height := 64;
+          CreateChart;
+          FYRCSelectorsPanel.TargetDraftSelectorMode := smSingleSelect;
+          FYRCSelectorsPanel.SelectPlane(YRCGraphDataObject.PeriodLength);
+          FYRCSelectorsPanel.SelectPlottingBase(YRCGraphDataObject.PlottingBase);
+          FYRCSelectorsPanel.ShowTargetDrafts.ItemIndex := ord(YRCGraphDataObject.YRCChartProperties.ShowTargetDrafts);
+          OnShowTargetDraftsSelectionChanged(FYRCSelectorsPanel.ShowTargetDrafts);
+        end;
+      finally
+        FBusyPopulating := False;
+      end;
       SetChartMode(YRCGraphDataObject.YRCChartProperties.ChartMode);
       SetChartEditMode(YRCGraphDataObject.YRCChartProperties.ChartEditMode);
       SetZoomIndex(YRCGraphDataObject.YRCChartProperties.ZoomIndex);

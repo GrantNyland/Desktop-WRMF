@@ -114,7 +114,6 @@ type
     function UpdateSAWSDWAFRawDataSQL : string;
 
     function StationYearVerified(AStationID : integer; AYear : string) : boolean;
-    function GetFileNamesObject: TAbstractModelFileNameList; override;
   public
 
     function PopulateTreeviewWithSelectedProjectGauges(ATreeView: TTreeview): boolean;
@@ -4198,15 +4197,6 @@ begin
       FreeAndNil(LDataset);
     end;
   except on E: Exception do HandleError(E, OPNAME) end;
-end;
-
-function TDataObjectRainfall.GetFileNamesObject: TAbstractModelFileNameList;
-const OPNAME = 'TDataObjectRainfall.GetFileNamesObject';
-begin
-  Result := nil;
-  try
-
-  except on E: Exception do HandleError ( E, OPNAME ) end;
 end;
 
 function TDataObjectRainfall.WriteSAWSDWAFRawDataToDB(AStationNumber : integer;AYear : string;ASource : integer; AMonth : array of double;

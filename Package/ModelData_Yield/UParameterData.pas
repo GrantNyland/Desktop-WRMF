@@ -165,7 +165,6 @@ type
 
   TParamSetup = class(TAbstractAppObject, IParamSetup)
   protected
-    FHydrologyFolder : WideString;
     FReferenceData   : TObjectList;
     FValidReferences : TStringList;
     FMatrixB         : TMatrixArray;
@@ -178,11 +177,15 @@ type
     function _AddRef: Integer; stdcall;
     function _Release: Integer; stdcall;
 
-    function Get_HydrologyFolder: WideString; safecall;
-    procedure Set_HydrologyFolder(const AFolder: WideString); safecall;
+    function Get_ReferenceCount: Integer; safecall;
+    function Get_ReferenceDataByIndex(AIndex: Integer): IParamReference; safecall;
+    function Get_ReferenceDataByCatchNumber(ARefNumber: Integer): IParamReference; safecall;
+    function Get_ReferenceDataByFileName(AFileNameInclPath: WideString): IParamReference; safecall;
+
+    procedure ClearArrays; virtual;
     function GetAllReferenceData: TObjectList;
     function GetValidReferences: TStringList;
-    function GetReferenceDataByCatchNumberCast(ACatchReferenceNumber:integer):TParamReference;
+    function GetReferenceDataByCatchNumberCast(ACatchReferenceNumber:integer): TParamReference;
     function GetReferenceDataByIndexCast(AIndex:integer):TParamReference;
 
   public
@@ -203,9 +206,6 @@ type
     property ValidReferences: TStringList read GetValidReferences;
 
     function ReferenceNumberValid(ANumber: Integer): WordBool; safecall;
-    function Get_ReferenceCount: Integer; safecall;
-    function Get_ReferenceDataByIndex(AIndex: Integer): IParamReference; safecall;
-    function Get_ReferenceDataByCatchNumber(ARefNumber: Integer): IParamReference; safecall;
     function Validate(var AErrors: WideString; const AContext: WideString): WordBool; safecall;
     function Get_MatrixB(ARow: Integer; ACol: Integer): Double; safecall;
     function Get_MatrixB0(ARow: Integer; ACol: Integer): Double; safecall;
@@ -217,6 +217,7 @@ type
     property ReferenceCount: Integer read Get_ReferenceCount;
     property ReferenceDataByIndex[AIndex: Integer]: IParamReference read Get_ReferenceDataByIndex;
     property ReferenceDataByCatchNumber[ARefNumber: Integer]: IParamReference read Get_ReferenceDataByCatchNumber;
+    property ReferenceDataByFileName[AFileNameInclPath: WideString]: IParamReference read Get_ReferenceDataByFileName;
     property MatrixB[ARow: Integer; ACol: Integer]: Double read Get_MatrixB;
     property MatrixB0[ARow: Integer; ACol: Integer]: Double read Get_MatrixB0;
     property MatrixB1[ARow: Integer; ACol: Integer]: Double read Get_MatrixB1;
@@ -237,7 +238,6 @@ uses
   UYieldModelDataObject,
   UErrorHandlingOperations,
   UParameterDataSQLAgent;
-
 
 { TParamReference }
 
@@ -568,8 +568,12 @@ begin
   Result := '';
   try
     Result := FGaugeName;
-    if(TYieldModelDataObject(FAppModules.Model.ModelData).FileNamesObject  <> nil) then
-      Result := TYieldModelDataObject(FAppModules.Model.ModelData).FileNamesObject.HydrologyFilesPath + FGaugeName;
+    if (FAppModules <> nil) then
+      if (FAppModules.Model <> nil) then
+        if (FAppModules.Model.ModelData <> nil) then
+          if (FAppModules.Model.ModelData is TYieldModelDataObject) then
+            if (TYieldModelDataObject(FAppModules.Model.ModelData).FileNamesObject <> nil) then
+              Result := TYieldModelDataObject(FAppModules.Model.ModelData).FileNamesObject.HydrologyFilesPath + FGaugeName;
   except on E : Exception do HandleError(E,OPNAME); end;
 end;
 
@@ -643,11 +647,14 @@ var
 begin
   Result := NullInteger;
   try
-    LNumberOfYears := TYieldModelDataObject(FAppModules.Model.ModelData).RunConfigurationData.YearsInAnalysis;
-    if(LNumberOfYears < FNumberOfYears) then
-      Result :=  LNumberOfYears
-    else
-      Result := FNumberOfYears;
+    LNumberOfYears := FNumberOfYears;
+    if (FAppModules <> nil) then
+      if (FAppModules.Model <> nil) then
+        if (FAppModules.Model.ModelData <> nil) then
+          if (FAppModules.Model.ModelData is TYieldModelDataObject) then
+            if (TYieldModelDataObject(FAppModules.Model.ModelData).RunConfigurationData <> nil) then
+              LNumberOfYears := TYieldModelDataObject(FAppModules.Model.ModelData).RunConfigurationData.YearsInAnalysis;
+    Result := LNumberOfYears
   except on E : Exception do HandleError(E,OPNAME); end;
 end;
 
@@ -734,16 +741,18 @@ end;
 
 function TParamReference.Get_StartYear: Integer;
 const OPNAME = 'TParamReference.Get_StartYear';
-var
-  LStartYearOther : Integer;
+var LStartYearOther: Integer;
 begin
   Result := NullInteger;
   try
-    LStartYearOther := TYieldModelDataObject(FAppModules.Model.ModelData).RunConfigurationData.StartYearOther;
-    if(LStartYearOther > FStartYear) then
-      Result :=  LStartYearOther
-    else
-      Result := FStartYear;
+    LStartYearOther := FStartYear;
+    if (FAppModules <> nil) then
+      if (FAppModules.Model <> nil) then
+        if (FAppModules.Model.ModelData <> nil) then
+          if (FAppModules.Model.ModelData is TYieldModelDataObject) then
+            if (TYieldModelDataObject(FAppModules.Model.ModelData).RunConfigurationData <> nil) then
+              LStartYearOther := TYieldModelDataObject(FAppModules.Model.ModelData).RunConfigurationData.StartYearOther;
+    Result := LStartYearOther;
   except on E : Exception do HandleError(E,OPNAME); end;
 end;
 
@@ -1985,25 +1994,28 @@ begin
   try
     FreeAndNil(FReferenceData);
     FreeAndNil(FValidReferences);
-    Finalize(FMatrixB);
-    Finalize(FMatrixB0);
-    Finalize(FMatrixB1);
-    Finalize(FMatrixA);
-    Finalize(FMatrixC);
-    FMatrixB   := nil;
-    FMatrixB0  := nil;
-    FMatrixB1  := nil;
-    FMatrixA   := nil;
-    FMatrixC   := nil;
+    ClearArrays;
   except on E : Exception do HandleError(E,OPNAME); end;
 end;
 
 function TParamSetup.Initialise: boolean;
 const OPNAME = 'TParamSetup.Initialise';
-//var
-//  LParamReference: TParamReference;
 begin
-  Result := inherited Initialise;
+  Result := False;
+  try
+    if (inherited Initialise) then
+    begin
+      ClearArrays;
+      FReferenceData.Clear;
+      FValidReferences.Clear;
+      Result := True;
+    end;
+  except on E : Exception do HandleError(E,OPNAME); end;
+end;
+
+procedure TParamSetup.ClearArrays;
+const OPNAME = 'TParamSetup.ClearArrays';
+begin
   try
     Finalize(FMatrixB);
     Finalize(FMatrixB0);
@@ -2015,32 +2027,7 @@ begin
     FMatrixB1  := nil;
     FMatrixA   := nil;
     FMatrixC   := nil;
-    FReferenceData.Clear;
-    FValidReferences.Clear;
-    {LParamReference := TParamReference.Create(FAppModules);
-    LParamReference.Initialise;
-    FReferenceData.Add(LParamReference);
-    LParamReference.FCatchReference := 0;
-    LParamReference.FGaugeName  := 'UnAssigned';
-    LParamReference.FCatchmentArea  := 0.0;}
   except on E : Exception do HandleError(E,OPNAME); end;
-end;
-
-function TParamSetup.Get_HydrologyFolder: WideString;
-const OPNAME = 'TChannelPenalty.Get_HydrologyFolder';
-begin
-  Result := '';
-  try
-    Result := FHydrologyFolder;
-  except on E: Exception do HandleError(E, OPNAME); end;
-end;
-
-procedure TParamSetup.Set_HydrologyFolder(const AFolder: WideString);
-const OPNAME = 'TParamSetup.Set_HydrologyFolder';
-begin
-  try
-    FHydrologyFolder := AFolder;
-  except on E: Exception do HandleError(E, OPNAME); end;
 end;
 
 function TParamSetup.GetAllReferenceData: TObjectList;
@@ -2090,7 +2077,7 @@ begin
   except on E : Exception do HandleError(E,OPNAME); end;
 end;
 
-function TParamSetup.LoadKeyGaugeDataFromDataset (ADataSet : TAbstractModelDataset): boolean;
+function TParamSetup.LoadKeyGaugeDataFromDataset(ADataSet: TAbstractModelDataset): boolean;
 const OPNAME = 'TParamSetup.LoadKeyGaugeDataFromDataset';
 begin
   Result := False;
@@ -2107,12 +2094,11 @@ end;
 
 function TParamSetup.Get_ReferenceDataByCatchNumber(ARefNumber: Integer): IParamReference;
 const OPNAME = 'TParamSetup.Get_ReferenceDataByCatchNumber';
-var
-  LIndex: integer;
+var LIndex: integer;
 begin
   Result := nil;
   try
-    if(ARefNumber > 0) then
+    if (ARefNumber > 0) then
     begin
       for LIndex := 0 to FReferenceData.Count -1 do
       begin
@@ -2123,7 +2109,24 @@ begin
         end;
       end;
     end;
-  except on E : Exception do HandleError(E,OPNAME); end;
+  except on E : Exception do HandleError(E, OPNAME); end;
+end;
+
+function TParamSetup.Get_ReferenceDataByFileName(AFileNameInclPath: WideString): IParamReference;
+const OPNAME = 'TParamSetup.Get_ReferenceDataByFileName';
+var I: integer;
+begin
+  Result := nil;
+  try
+    for I := 0 to FReferenceData.Count - 1 do
+    begin
+      if (LowerCase(CastReferenceDataByIndex[I].FileReference) = LowerCase(AFileNameInclPath)) then
+      begin
+        Result := TParamReference(FReferenceData.Items[I]);
+        Break;
+      end;
+    end;
+  except on E : Exception do HandleError(E, OPNAME); end;
 end;
 
 function TParamSetup.Get_ReferenceCount: integer;

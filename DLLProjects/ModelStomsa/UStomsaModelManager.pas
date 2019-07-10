@@ -17,13 +17,11 @@ uses
   UStomsaDLLManager,
   UStomsaGUIManager,
   UStomsaMenuItemManager,
-  UStomsaModelDataObject,
   USystemModelManager;
 
 type
   TStomsaModelManager = class(TSystemModelManager)
   protected
-    FModelData                  : TStomsaModelDataObject;
     FDLLManager                 : TStomsaDLLManager;
     FMenuItemManager            : TStomsaMenuItemManager;
     FModelGUIManager            : TStomsaGUIManager;
@@ -91,7 +89,6 @@ const OPNAME = 'TStomsaModelManager.CreateMemberObjects';
 begin
   try
     inherited CreateMemberObjects;
-    FModelData := TStomsaModelDataObject.Create(FAppModules);
     FDLLManager := TStomsaDLLManager.Create;
     if (not FAppModules.GlobalData.COMServerMode) then
     begin
@@ -109,7 +106,6 @@ const OPNAME = 'TStomsaModelManager.DestroyMemberObjects';
 begin
   inherited DestroyMemberObjects;
   try
-    FreeAndNil(FModelData);
     FreeAndNil(FDLLManager);
     FreeAndNil(FMenuItemManager);
     FreeAndNil(FModelGUIManager);
@@ -177,8 +173,7 @@ const OPNAME = 'TStomsaModelManager.ModelData';
 begin
   Result := nil;
   try
-    Result := FModelData;
-//    Result := fmData.DataStorage;
+    Result := fmData.DataStorage;
   except on E: Exception do HandleError ( E, OPNAME ) end;
 end;
 
@@ -388,7 +383,6 @@ const OPNAME = 'TStomsaModelManager.LoadModelData';
 begin
   Result := False;
   try
-    ShowMessage(FAppModules.StudyArea.DataFilesPath);
     if Assigned(fmData) then
     begin
       fmData.DataStorage.CastFileNamesObject.PopulateHydrologyPaths(FAppModules.StudyArea.DataFilesPath);
@@ -471,7 +465,6 @@ var
   LLoadAgent: TStomsaDataLoadAgent;
 begin
   try
-    ShowMessage(OPNAME);
     LLoadAgent := TStomsaDataLoadAgent.Create(FAppModules);
     try
       LLoadAgent.LoadDataFromDB(fmData.DataStorage);
@@ -487,7 +480,6 @@ var
   LLoadAgent: TStomsaDataLoadAgent;
 begin
   try
-    ShowMessage(OPNAME);
     LLoadAgent := TStomsaDataLoadAgent.Create(FAppModules);
     try
       LLoadAgent.SaveDataToDB(fmData.DataStorage);

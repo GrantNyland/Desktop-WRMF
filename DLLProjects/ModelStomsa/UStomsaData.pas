@@ -361,7 +361,6 @@ type
 
     procedure SetPARAMFileCreated(Status : Boolean);
     function LoadProjectData(AFileName : string) : boolean;
-    function GetCastFileNamesObject: TModelFileNames;
     function Get_CurrentIncData   : TIncData;
     function Get_IncFileCount: integer;
     function Get_KeyGaugeCount: integer;
@@ -404,7 +403,6 @@ type
     property TimeSeriesFittedCount: Integer read Get_TimeSeriesFittedCount;
     property StatisticsCalculatedCount: Integer read Get_StatisticsCalculatedCount;
     property IncFileByIndex[AIndex : Integer] : TIncData read Get_IncFileByIndex;
-    property CastFileNamesObject: TModelFileNames read GetCastFileNamesObject;
 
     //Data change flags
     property IncFilesHaveChanged: Boolean read FIncFilesHaveChanged write FIncFilesHaveChanged;
@@ -3107,15 +3105,6 @@ begin
   try
     if(AIndex >= 0) and (AIndex < FIncDataList.Count) then
        Result :=  TIncData(FIncDataList.Items[AIndex]);
-  except on E: Exception do HandleError(E, OPNAME); end;
-end;
-
-function TStomsaData.GetCastFileNamesObject: TModelFileNames;
-const OPNAME = 'TStomsaData.GetCastFileNamesObject';
-begin
-  Result := nil;
-  try
-    Result := TModelFileNames(FFileNamesObject);
   except on E: Exception do HandleError(E, OPNAME); end;
 end;
 

@@ -7,7 +7,7 @@
         <AppType>Library</AppType>
         <FrameworkType>VCL</FrameworkType>
         <ProjectVersion>18.1</ProjectVersion>
-        <Config Condition="'$(Config)'==''">MergedDLLs</Config>
+        <Config Condition="'$(Config)'==''">Release</Config>
         <Platform Condition="'$(Platform)'==''">Win64</Platform>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Config)'=='Base' or '$(Base)'!=''">
@@ -76,17 +76,13 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="VoaimsCom_TLB.pas"/>
-        <DCCReference Include="UVoaimsComObject.pas">
-            <CoClasses>VoaimsComObject</CoClasses>
-        </DCCReference>
         <RcCompile Include="..\WRMFVersion.rc">
             <Form>WRMFVersion.res</Form>
         </RcCompile>
         <RcCompile Include="..\DLLProjects\ModelStomsa\StomsaSQL.rc">
             <Form>StomsaSQL.res</Form>
         </RcCompile>
-        <RidlCompile Include="VoaimsCom.ridl"/>
+        <RidlCompile Include="..\Package\Interfaces\VoaimsCom.ridl"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

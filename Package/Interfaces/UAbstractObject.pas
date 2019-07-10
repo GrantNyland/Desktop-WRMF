@@ -417,7 +417,7 @@ type
     FOwnedAppObjects: TAbstractAppObjectList;
     FDLLHandle: longword;
     procedure DestroyMemberObjects; override;
-    function GetDefaultKey : string;
+    function GetDefaultKey: string;
   public
     constructor Create(AAppModules: TAppModules); reintroduce;
     function Initialise: boolean; override;
@@ -425,7 +425,7 @@ type
     function ResetState: boolean; virtual;
     function LanguageHasChanged: boolean; virtual;
     function StudyHasChanged: boolean; virtual;
-    function StudyDataHasChanged(AContext: TChangeContext; AFieldName,AOldValue,ANewValue: string): boolean; virtual;
+    function StudyDataHasChanged(AContext: TChangeContext; AFieldName, AOldValue, ANewValue: string): boolean; virtual;
     property AppModules: TAppModules read FAppModules;
     property DLLHandle: longword read FDLLHandle;
   end;
@@ -964,7 +964,7 @@ type
     function Rollback: boolean;virtual; abstract;
     function StartTransaction: boolean;virtual; abstract;
     function InTransaction: boolean;virtual; abstract;
-    function GetTableNames ( AContainer : TStrings ) : boolean; virtual; abstract;    
+    function GetTableNames ( AContainer : TStrings ) : boolean; virtual; abstract;
     function UpdateMemoField(ATableName,AFieldName,AWhereClause,AMemoText: string): boolean; virtual; abstract;
     function UpdateBlobField(ATableName,AFieldName,AWhereClause: string; ABlobStream : TStream): boolean; virtual; abstract;
     property Connected: boolean read GetConnected write SetConnected;
@@ -1627,14 +1627,17 @@ begin
     inherited DestroyMemberObjects;
 
     // Destroy the list last.
-    for LIndex := FOwnedAppObjects.Count - 1 downto 0 do
+    if Assigned(FOwnedAppObjects) then
     begin
-      LDLLHandle := TAbstractAppObject(FOwnedAppObjects.AppObject[LIndex]).FDLLHandle;
-      FOwnedAppObjects.AppObject[LIndex].Free;
-      if (LDLLHandle <> 0) then
-        FreeLibrary(LDLLHandle);
+      for LIndex := FOwnedAppObjects.Count - 1 downto 0 do
+      begin
+        LDLLHandle := TAbstractAppObject(FOwnedAppObjects.AppObject[LIndex]).FDLLHandle;
+        FOwnedAppObjects.AppObject[LIndex].Free;
+        if (LDLLHandle <> 0) then
+          FreeLibrary(LDLLHandle);
+      end;
+      FreeAndNil(FOwnedAppObjects);
     end;
-    FreeAndNil(FOwnedAppObjects);
   except on E: Exception do HandleError(E, OPNAME) end;
 end;
 
@@ -1643,7 +1646,8 @@ const OPNAME = 'TAbstractAppObject.Initialise';
 begin
   Result := True;
   try
-    FOwnedAppObjects.Initialise;
+    if Assigned(FOwnedAppObjects) then
+      Result := FOwnedAppObjects.Initialise;
   except on E: Exception do HandleError(E, OPNAME) end;
 end;
 
@@ -1725,7 +1729,8 @@ begin
   Result := True;
   try
     for LIndex := 0 to Count - 1 do
-      AppObject[LIndex].Initialise;
+      if (not AppObject[LIndex].Initialise) then
+        Result := False;
   except on E: Exception do HandleError(E, OPNAME) end;
 end;
 
@@ -1848,7 +1853,7 @@ end;
 //
 // Opens a database query.
 //
-function TAbstractSQLAgent.CleanSQL(ASQL, OPNAME: string): string;
+function TAbstractSQLAgent.CleanSQL(ASQL, OPNAME: String): String;
 var
   LSQL: string;
   I, LPos: integer;
@@ -1977,15 +1982,15 @@ begin
   try
     ReplaceSQLParameterList(
       ['Model',
-      'StudyAreaName',
-      'SubArea',
-      'Scenario'],
+       'StudyAreaName',
+       'SubArea',
+       'Scenario'],
       [FAppModules.StudyArea.ModelCode,
        FAppModules.StudyArea.StudyAreaCode,
        FAppModules.StudyArea.SubAreaCode,
        FAppModules.StudyArea.ScenarioCode],
        ASQL,
-       OPNAME);
+      OPNAME);
   except on E: Exception do HandleError(E, OPNAME) end;
 end;
 
@@ -2516,9 +2521,9 @@ begin
 
   FStudyShapeFileName := '';
   FSubAreaShapeFileName := '';
-  
+
   FEditable := True;
-  
+
 
 end;
 

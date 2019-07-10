@@ -513,6 +513,7 @@ library VoaimsCom
     uuid(E32AC184-D23F-486C-B868-55DD59687AEF),
     version(1.0),
     helpstring("Interface for VoaimsComObject Object"),
+    dual,
     oleautomation
   ]
   interface IVoaimsComObject: IUnknown
@@ -554,6 +555,7 @@ library VoaimsCom
   [
     uuid(17E8AE84-5FF8-4703-9131-EC8BC8D964B8),
     version(1.0),
+    dual,
     oleautomation
   ]
   interface IYieldModel: IUnknown
@@ -3266,21 +3268,23 @@ library VoaimsCom
     HRESULT _stdcall ReferenceDataByIndex([in] long AIndex, [out, retval] IParamReference** Value);
     [propget, id(0x00000068)]
     HRESULT _stdcall ReferenceDataByCatchNumber([in] long ARefNumber, [out, retval] IParamReference** Value);
-    [id(0x00000069)]
+    [propget, id(0x00000069)]
+    HRESULT _stdcall ReferenceDataByFileName([in] BSTR FileNameInclPath, [out, retval] IParamReference* Value);
+    [id(0x0000006A)]
     HRESULT _stdcall Validate([in, out] BSTR* AErrors, [in] BSTR AContext, [out, retval] VARIANT_BOOL* Value);
-    [propget, id(0x0000006A)]
-    HRESULT _stdcall MatrixB([in] long ARow, [in] long ACol, [out, retval] double* Value);
     [propget, id(0x0000006B)]
-    HRESULT _stdcall MatrixB0([in] long ARow, [in] long ACol, [out, retval] double* Value);
+    HRESULT _stdcall MatrixB([in] long ARow, [in] long ACol, [out, retval] double* Value);
     [propget, id(0x0000006C)]
-    HRESULT _stdcall MatrixB1([in] long ARow, [in] long ACol, [out, retval] double* Value);
+    HRESULT _stdcall MatrixB0([in] long ARow, [in] long ACol, [out, retval] double* Value);
     [propget, id(0x0000006D)]
-    HRESULT _stdcall MatrixA([in] long ARow, [in] long ACol, [out, retval] double* Value);
+    HRESULT _stdcall MatrixB1([in] long ARow, [in] long ACol, [out, retval] double* Value);
     [propget, id(0x0000006E)]
-    HRESULT _stdcall MatrixC([in] long ARow, [in] long ACol, [out, retval] double* Value);
+    HRESULT _stdcall MatrixA([in] long ARow, [in] long ACol, [out, retval] double* Value);
     [propget, id(0x0000006F)]
-    HRESULT _stdcall KeyGaugeCount([out, retval] long* Value);
+    HRESULT _stdcall MatrixC([in] long ARow, [in] long ACol, [out, retval] double* Value);
     [propget, id(0x00000070)]
+    HRESULT _stdcall KeyGaugeCount([out, retval] long* Value);
+    [propget, id(0x00000071)]
     HRESULT _stdcall KeyGaugeNoByIndex([in] long AIndex, [out, retval] long* Value);
   };
 

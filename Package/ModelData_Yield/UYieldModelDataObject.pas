@@ -67,8 +67,6 @@ type
 
     function GetCastRunConfigurationData: TRunConfigurationData;
     function GetCastParameterData: TParamSetup;
-    function GetCastFilesLineTypes: TFilesLineTypes;
-    function GetCastFileNamesObject: TModelFileNames;
     function GetScenarioWhereClause: string;
   public
     function Initialise: boolean; override;
@@ -117,8 +115,6 @@ type
     property CastCastParameterData      : TParamSetup                 read GetCastParameterData;
     property CastNetworkFeaturesData    : TNetworkFeaturesData        read FNetworkFeaturesData;
     property CastYRCGraphDataObject     : TYRCGraphDataObject         read FYRCGraphDataObject;
-    property CastFilesLineTypes         : TFilesLineTypes             read GetCastFilesLineTypes;
-    property CastFileNamesObject        : TModelFileNames             read GetCastFileNamesObject;
     property OutputData                 : TOutputData                 read FOutputData;
     property OutputComparisonData       : TOutputComparisonList       read FOutputComparisonData;
     property ImplementedNetworkFeatures : TImplementedNetworkFeatures read FImplementedNetworkFeatures;
@@ -238,7 +234,7 @@ begin
         AHandled := GetChannelViewDataItems(AViewId,AItemsList,FNetworkElementData.CastChannelList)
       else
       if(Pos('DEMANDFILENUMBERS',LUpperViewId) = 1) then
-        AHandled := GetDemandFilesViewDataItems(AViewId,AItemsList, CastFileNamesObject)
+        AHandled := GetDemandFilesViewDataItems(AViewId, AItemsList, CastFileNamesObject)
       else
       if(Pos('HYDROLOGYFILENAMES',LUpperViewId) = 1) then
         AHandled := GetHydrologyFilesViewDataItems(AViewId, AItemsList, CastFileNamesObject)
@@ -340,24 +336,6 @@ begin
   Result := nil;
   try
     Result := FParamSetup;
-  except on E: Exception do HandleError(E, OPNAME) end;
-end;
-
-function TYieldModelDataObject.GetCastFilesLineTypes: TFilesLineTypes;
-const OPNAME = 'TYieldModelDataObject.GetCastFilesLineTypes';
-begin
-  Result := nil;
-  try
-    Result := TFilesLineTypes(FFilesLineTypes);
-  except on E: Exception do HandleError(E, OPNAME) end;
-end;
-
-function TYieldModelDataObject.GetCastFileNamesObject: TModelFileNames;
-const OPNAME = 'TYieldModelDataObject.GetCastFileNamesObject';
-begin
-  Result := nil;
-  try
-    Result := TModelFileNames(FFileNamesObject);
   except on E: Exception do HandleError(E, OPNAME) end;
 end;
 

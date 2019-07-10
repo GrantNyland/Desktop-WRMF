@@ -4283,6 +4283,7 @@ type
     function Get_ReferenceCount: Integer; safecall;
     function Get_ReferenceDataByIndex(AIndex: Integer): IParamReference; safecall;
     function Get_ReferenceDataByCatchNumber(ARefNumber: Integer): IParamReference; safecall;
+    function Get_ReferenceDataByFileName(AFileNameInclPath: WideString): IParamReference; safecall;
     function Validate(var AErrors: WideString; const AContext: WideString): WordBool; safecall;
     function Get_MatrixB(ARow: Integer; ACol: Integer): Double; safecall;
     function Get_MatrixB0(ARow: Integer; ACol: Integer): Double; safecall;
@@ -4291,11 +4292,10 @@ type
     function Get_MatrixC(ARow: Integer; ACol: Integer): Double; safecall;
     function Get_KeyGaugeCount: Integer; safecall;
     function Get_KeyGaugeNoByIndex(AIndex: Integer): Integer; safecall;
-    function Get_HydrologyFolder: WideString; safecall;
-    procedure Set_HydrologyFolder(const Value: WideString); safecall;
     property ReferenceCount: Integer read Get_ReferenceCount;
     property ReferenceDataByIndex[AIndex: Integer]: IParamReference read Get_ReferenceDataByIndex;
     property ReferenceDataByCatchNumber[ARefNumber: Integer]: IParamReference read Get_ReferenceDataByCatchNumber;
+    property ReferenceDataByFileName[AFileNameInclPath: WideString]: IParamReference read Get_ReferenceDataByFileName;
     property MatrixB[ARow: Integer; ACol: Integer]: Double read Get_MatrixB;
     property MatrixB0[ARow: Integer; ACol: Integer]: Double read Get_MatrixB0;
     property MatrixB1[ARow: Integer; ACol: Integer]: Double read Get_MatrixB1;
@@ -4303,7 +4303,6 @@ type
     property MatrixC[ARow: Integer; ACol: Integer]: Double read Get_MatrixC;
     property KeyGaugeCount: Integer read Get_KeyGaugeCount;
     property KeyGaugeNoByIndex[AIndex: Integer]: Integer read Get_KeyGaugeNoByIndex;
-    property HydrologyFolder: WideString read Get_HydrologyFolder write Set_HydrologyFolder;
   end;
 
 // *********************************************************************//
@@ -4325,7 +4324,6 @@ type
     property MatrixC[ARow: Integer; ACol: Integer]: Double readonly dispid 110;
     property KeyGaugeCount: Integer readonly dispid 111;
     property KeyGaugeNoByIndex[AIndex: Integer]: Integer readonly dispid 112;
-    property HydrologyFolder: WideString dispid 113;
   end;
 
 // *********************************************************************//

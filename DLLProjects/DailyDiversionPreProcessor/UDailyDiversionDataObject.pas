@@ -20,14 +20,13 @@ uses
 type
   TDailyDiversionDataObject = class(TAbstractModelData)
   protected
-    FDailyIFRDataList : TDailyIFRDataList;
+    FDailyIFRDataList: TDailyIFRDataList;
     FDailyDiversionGaugeDataList: TDailyDiversionGaugeDataList;
     procedure CreateMemberObjects; override;
     procedure DestroyMemberObjects; override;
     function _AddRef: Integer; stdcall;
     function _Release: Integer; stdcall;
     function GetDailyDiversionControlViewDataItems(AViewID: string; AItemsList: TViewModelDataItemsList): boolean;
-    function GetCastFileNamesObject: TModelFileNames;
     function GetDailyIFRDataByStationNo(AStationNo: string) : TDailyIFRData;
   public
     procedure Reset;
@@ -35,9 +34,7 @@ type
     function RefreshDailyInstreamFlowData(ADiversionGauge : TDiversionGauge)  : boolean;
     function Validate(var AErrors: WideString; const AContext: WideString): WordBool; safecall;
     function LoadData: boolean;
-
     function RefreshDailyReferenceData(AStationID : integer) : boolean;
-
     function ClearFile14(AStationID:integer) : boolean;
     function RefreshFlowDiversionRelationship(ADiversionGauge : TDiversionGauge; AStartDate, AEndDate : TDateTime) : boolean;
     function ClearDailyFlowDataFromCSVFile(AStationID : integer) : boolean;
@@ -51,7 +48,6 @@ type
     function ExportFlowDiversionRelationship(AStationID : integer) : boolean;
     function GenerateDailyIFR(ADiversionGauge : TDiversionGauge;ADailyIFRData : TDailyIFRData) : boolean;
     function GetViewDataItems(AViewId : string; AItemsList : TViewModelDataItemsList; var AHandled : boolean): boolean; override;
-    property CastFileNamesObject : TModelFileNames read GetCastFileNamesObject;
     property DailyDiversionGaugeDataList : TDailyDiversionGaugeDataList read FDailyDiversionGaugeDataList;
     property DailyIFRDataList : TDailyIFRDataList read FDailyIFRDataList;
     property DailyIFRData[AstationNo : string] : TDailyIFRData read GetDailyIFRDataByStationNo;
@@ -105,15 +101,6 @@ begin
   try
     FreeAndNil(FDailyDiversionGaugeDataList);
     FreeandNil(FDailyIFRDataList);
-  except on E: Exception do HandleError(E, OPNAME) end;
-end;
-
-function TDailyDiversionDataObject.GetCastFileNamesObject: TModelFileNames;
-const OPNAME = 'TDailyDiversionDataObject.GetCastFileNamesObject';
-begin
-  Result := nil;
-  try
-    Result := TModelFileNames(FFileNamesObject);
   except on E: Exception do HandleError(E, OPNAME) end;
 end;
 

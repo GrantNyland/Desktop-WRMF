@@ -33,8 +33,6 @@ type
     function _AddRef: Integer; stdcall;
     function _Release: Integer; stdcall;
     function GetDDTSControlViewDataItems(AViewID : string;AItemsList : TViewModelDataItemsList): boolean;
-    function GetCastFilesLineTypes: TFilesLineTypes;
-    function GetCastFileNamesObject: TModelFileNames;
   public
     procedure Reset;
     function Validate(var AErrors: WideString; const AContext: WideString): WordBool; safecall;
@@ -43,8 +41,6 @@ type
 
     function Initialise: boolean; override;
     function GetViewDataItems(AViewId: string; AItemsList: TViewModelDataItemsList; var AHandled: boolean): boolean; override;
-    property CastFilesLineTypes: TFilesLineTypes read GetCastFilesLineTypes;
-    property CastFileNamesObject: TModelFileNames read GetCastFileNamesObject;
     property DDTSDamDataList: TDDTSDamDataList read FDDTSDamDataList;
     property DDTSOutputDataList: TDDTSOutputDataList read FDDTSOutputDataList;
 
@@ -56,6 +52,7 @@ uses
   UConstants,
   UDDTSDamDataLoadAgent,
   UErrorHandlingOperations;
+
 { TDDTSDataObject }
 
 function TDDTSDataObject._AddRef: Integer;
@@ -125,24 +122,6 @@ begin
   try
     FreeAndNil(FDDTSOutputDataList);
     FreeandNil(FDDTSDamDataList);
-  except on E: Exception do HandleError(E, OPNAME) end;
-end;
-
-function TDDTSDataObject.GetCastFilesLineTypes: TFilesLineTypes;
-const OPNAME = 'TDDTSDataObject.GetCastFilesLineTypes';
-begin
-  Result := nil;
-  try
-    Result := TFilesLineTypes(FFilesLineTypes);
-  except on E: Exception do HandleError(E, OPNAME) end;
-end;
-
-function TDDTSDataObject.GetCastFileNamesObject: TModelFileNames;
-const OPNAME = 'TDDTSDataObject.GetCastFileNamesObject';
-begin
-  Result := nil;
-  try
-    Result := TModelFileNames(FFileNamesObject);
   except on E: Exception do HandleError(E, OPNAME) end;
 end;
 

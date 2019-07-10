@@ -3,7 +3,7 @@
         <ProjectGuid>{20D00A2F-4429-45AB-A675-BE3501A05AFC}</ProjectGuid>
         <MainSource>AccessControl.dpr</MainSource>
         <Base>True</Base>
-        <Config Condition="'$(Config)'==''">Debug</Config>
+        <Config Condition="'$(Config)'==''">Release</Config>
         <TargetedPlatforms>2</TargetedPlatforms>
         <AppType>Library</AppType>
         <FrameworkType>VCL</FrameworkType>

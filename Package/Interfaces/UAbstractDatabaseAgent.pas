@@ -187,8 +187,7 @@ end;
 
 function TAbstractDatabaseAgent.DeleteFileName(AFileNamesObject: TFileNameObject): boolean;
 const OPNAME = 'TAbstractDatabaseAgent.DeleteFileName';
-var
-  LDataSet : TAbstractModelDataset;
+var LDataSet: TAbstractModelDataset;
 begin
   Result := False;
   try

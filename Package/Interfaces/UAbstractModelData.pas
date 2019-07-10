@@ -16,7 +16,9 @@ uses
   Classes, SysUtils,
 
   // WRMF
+  UFileNames,
   UAbstractObject,
+  UFilesLineTypeObject,
   UAbstractFileNamesObject,
   UViewModelDataObject;
 
@@ -33,8 +35,8 @@ type
     procedure DestroyMemberObjects; override;
 
     // Introduced in this class.
-    function GetFilesLineTypes: TAbstractFilesLineTypes; virtual;
-    function GetFileNamesObject: TAbstractModelFileNameList; virtual;
+    function GetCastFilesLineTypes: TFilesLineTypes; virtual;
+    function GetCastFileNamesObject: TModelFileNames; virtual;
   public
 
     // Overriden from TAbstractAppObject.
@@ -45,15 +47,15 @@ type
     function ViewDataItemExist(AItemType, AItemName: string): boolean; virtual;
 
     // Properties
-    property FilesLineTypes: TAbstractFilesLineTypes read GetFilesLineTypes;
-    property FileNamesObject: TAbstractModelFileNameList read GetFileNamesObject;
+    property FilesLineTypes: TAbstractFilesLineTypes read FFilesLineTypes;
+    property FileNamesObject: TAbstractModelFileNameList read FFileNamesObject;
+    property CastFilesLineTypes: TFilesLineTypes read GetCastFilesLineTypes;
+    property CastFileNamesObject: TModelFileNames read GetCastFileNamesObject;
   end;
 
 implementation
 
 uses
-  UFileNames,
-  UFilesLineTypeObject,
   UErrorHandlingOperations;
 
 { TAbstractModelData }
@@ -108,21 +110,21 @@ begin
   except on E: Exception do HandleError(E, OPNAME); end;
 end;
 
-function TAbstractModelData.GetFilesLineTypes: TAbstractFilesLineTypes;
+function TAbstractModelData.GetCastFilesLineTypes: TFilesLineTypes;
 const OPNAME = 'TAbstractModelData.GetFilesLineTypes';
 begin
   Result := nil;
   try
-    Result := FFilesLineTypes;
+    Result := TFilesLineTypes(FFilesLineTypes);
   except on E: Exception do HandleError(E, OPNAME) end;
 end;
 
-function TAbstractModelData.GetFileNamesObject: TAbstractModelFileNameList;
+function TAbstractModelData.GetCastFileNamesObject: TModelFileNames;
 const OPNAME = 'TAbstractModelData.GetFileNamesObject';
 begin
   Result := nil;
   try
-    Result := FFileNamesObject;
+    Result := TModelFileNames(FFileNamesObject);
   except on E: Exception do HandleError(E, OPNAME) end;
 end;
 

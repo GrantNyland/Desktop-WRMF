@@ -1,7 +1,7 @@
 object frmMain: TfrmMain
   Left = 234
   Top = 138
-  ActiveControl = Stomsa
+  ActiveControl = edtStudy
   Caption = 'Test COM Server'
   ClientHeight = 515
   ClientWidth = 951

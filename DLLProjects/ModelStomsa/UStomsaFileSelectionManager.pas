@@ -55,8 +55,6 @@ begin
   inherited PopulateFileNames(ADataFileObjects,AFileNamesObject);
   Result := False;
   try
-    ShowMessage(OPNAME);
-
     if not Assigned(AFileNamesObject) then
       raise Exception.Create('File name object parameter is not yet assigned.');
 

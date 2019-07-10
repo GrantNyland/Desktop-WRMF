@@ -3,7 +3,7 @@
         <ProjectGuid>{22EE7DB2-5615-49E9-9A50-1D09D2229716}</ProjectGuid>
         <MainSource>ModelStomsa.dpr</MainSource>
         <Base>True</Base>
-        <Config Condition="'$(Config)'==''">Debug</Config>
+        <Config Condition="'$(Config)'==''">Release</Config>
         <TargetedPlatforms>2</TargetedPlatforms>
         <AppType>Library</AppType>
         <FrameworkType>VCL</FrameworkType>
@@ -32,6 +32,7 @@
     <Import Project="..\..\BaseWRMF_Release.optset" Condition="'$(Cfg_1)'!='' And Exists('..\..\BaseWRMF_Release.optset')"/>
     <Import Project="..\..\BaseWRMF_DLL.optset" Condition="'$(Cfg_1)'!='' And Exists('..\..\BaseWRMF_DLL.optset')"/>
     <PropertyGroup Condition="'$(Cfg_1)'!=''">
+        <DCC_ExeOutput>..\..\Deployment\$(Config)\Stomsa</DCC_ExeOutput>
         <CfgDependentOn>..\..\BaseWRMF.optset;..\..\BaseWRMF_Release.optset;..\..\BaseWRMF_DLL.optset</CfgDependentOn>
     </PropertyGroup>
     <Import Project="..\..\BaseWRMF.optset" Condition="'$(Cfg_2)'!='' And Exists('..\..\BaseWRMF.optset')"/>

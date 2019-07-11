@@ -51,11 +51,11 @@ uses
   UErrorHandlingOperations;
 
 const
-  CIFRSiteData                : array[0..0] of string = ('Data');
-  CCreateIFRSite              : array[0..1] of string = ('Data','CreateIFRSite');
-  CDeleteIFRSite              : array[0..1] of string = ('Data','DeleteIFRSite');
-  CSaveIFRSite                : array[0..1] of string = ('Data','SaveIFRSite');
-  CHelpIFRUserGuide           : array[0..1] of string = ('Help','HelpIFRUserGuide');
+  CIFRSiteData                : array[0..0] of WideString = ('Data');
+  CCreateIFRSite              : array[0..1] of WideString = ('Data','CreateIFRSite');
+  CDeleteIFRSite              : array[0..1] of WideString = ('Data','DeleteIFRSite');
+  CSaveIFRSite                : array[0..1] of WideString = ('Data','SaveIFRSite');
+  CHelpIFRUserGuide           : array[0..1] of WideString = ('Help','HelpIFRUserGuide');
 
 procedure IFRMenuItemManager.AddMenuItems;
 const OPNAME = 'IFRMenuItemManager.AddMenuItems';

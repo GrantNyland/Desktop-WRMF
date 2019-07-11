@@ -24,7 +24,7 @@ uses
   protected
     FToolBar: TYieldModelToolBar;
     FIsResultsLoaded: boolean;
-    procedure CreateToolBar;override;
+    procedure CreateToolBar; override;
     procedure DestroyMemberObjects; override;
 
     procedure SetCreateReservoir(AAction: TMenuSetAction);
@@ -175,168 +175,168 @@ uses
   UErrorHandlingOperations;
 
 const
-  CModel                        : array[0..0] of string = ('Model');
-  CValidateFiles                : array[0..1] of string = ('Model','ValidateFiles');
-  CExportFiles                  : array[0..1] of string = ('Model','ExportFiles');
-  CImportFiles                  : array[0..1] of string = ('Model','ImportFiles');
-  CClearModelData               : array[0..1] of string = ('Model','ClearModelData');
-  CValidateModelData            : array[0..1] of string = ('Model','ValidateModelData');
-  CGenerateSysConfigFiles       : array[0..1] of string = ('Model','GenerateSystemConfigDataFiles');  
-  CRunModel                     : array[0..1] of string = ('Model','RunModel');
+  CModel                        : array[0..0] of WideString = ('Model');
+  CValidateFiles                : array[0..1] of WideString = ('Model','ValidateFiles');
+  CExportFiles                  : array[0..1] of WideString = ('Model','ExportFiles');
+  CImportFiles                  : array[0..1] of WideString = ('Model','ImportFiles');
+  CClearModelData               : array[0..1] of WideString = ('Model','ClearModelData');
+  CValidateModelData            : array[0..1] of WideString = ('Model','ValidateModelData');
+  CGenerateSysConfigFiles       : array[0..1] of WideString = ('Model','GenerateSystemConfigDataFiles');
+  CRunModel                     : array[0..1] of WideString = ('Model','RunModel');
 
-  CScenarioCopy                 : array[0..1] of string = ('Data','ScenarioCopy');
-  CScenarioCopyReservoir        : array[0..2] of string = ('Data','ScenarioCopy','ScenarioCopyReservoir');
-  CScenarioCopyChannel          : array[0..2] of string = ('Data','ScenarioCopy','ScenarioCopyChannel');
+  CScenarioCopy                 : array[0..1] of WideString = ('Data','ScenarioCopy');
+  CScenarioCopyReservoir        : array[0..2] of WideString = ('Data','ScenarioCopy','ScenarioCopyReservoir');
+  CScenarioCopyChannel          : array[0..2] of WideString = ('Data','ScenarioCopy','ScenarioCopyChannel');
 
-  CScenarioCopyNetworkFeature   : array[0..2] of string = ('Data','ScenarioCopy','ScenarioCopyNetworkFeature');
-  CScenarioCopyIrrigationArea   : array[0..3] of string = ('Data','ScenarioCopy','ScenarioCopyNetworkFeature','ScenarioCopyIrrigationArea');
-  CScenarioCopyIrrigationBlock  : array[0..3] of string = ('Data','ScenarioCopy','ScenarioCopyNetworkFeature','ScenarioCopyIrrigationBlock');
-  CScenarioCopyPowerPlant       : array[0..3] of string = ('Data','ScenarioCopy','ScenarioCopyNetworkFeature','ScenarioCopyPowerPlant');
-  CScenarioCopyWetland          : array[0..3] of string = ('Data','ScenarioCopy','ScenarioCopyNetworkFeature','ScenarioCopyWetland');
-  CScenarioCopyYMDemandCentre   : array[0..3] of string = ('Data','ScenarioCopy','ScenarioCopyNetworkFeature','ScenarioCopyYMDemandCentre');
-  CScenarioCopySFRSubCatchment  : array[0..3] of string = ('Data','ScenarioCopy','ScenarioCopyNetworkFeature','ScenarioCopySFRSubCatchment');
-  CScenarioCopyMine             : array[0..3] of string = ('Data','ScenarioCopy','ScenarioCopyNetworkFeature','ScenarioCopyMine');
-  CScenarioCopyGroundWater      : array[0..3] of string = ('Data','ScenarioCopy','ScenarioCopyNetworkFeature','ScenarioCopyGroundWater');
+  CScenarioCopyNetworkFeature   : array[0..2] of WideString = ('Data','ScenarioCopy','ScenarioCopyNetworkFeature');
+  CScenarioCopyIrrigationArea   : array[0..3] of WideString = ('Data','ScenarioCopy','ScenarioCopyNetworkFeature','ScenarioCopyIrrigationArea');
+  CScenarioCopyIrrigationBlock  : array[0..3] of WideString = ('Data','ScenarioCopy','ScenarioCopyNetworkFeature','ScenarioCopyIrrigationBlock');
+  CScenarioCopyPowerPlant       : array[0..3] of WideString = ('Data','ScenarioCopy','ScenarioCopyNetworkFeature','ScenarioCopyPowerPlant');
+  CScenarioCopyWetland          : array[0..3] of WideString = ('Data','ScenarioCopy','ScenarioCopyNetworkFeature','ScenarioCopyWetland');
+  CScenarioCopyYMDemandCentre   : array[0..3] of WideString = ('Data','ScenarioCopy','ScenarioCopyNetworkFeature','ScenarioCopyYMDemandCentre');
+  CScenarioCopySFRSubCatchment  : array[0..3] of WideString = ('Data','ScenarioCopy','ScenarioCopyNetworkFeature','ScenarioCopySFRSubCatchment');
+  CScenarioCopyMine             : array[0..3] of WideString = ('Data','ScenarioCopy','ScenarioCopyNetworkFeature','ScenarioCopyMine');
+  CScenarioCopyGroundWater      : array[0..3] of WideString = ('Data','ScenarioCopy','ScenarioCopyNetworkFeature','ScenarioCopyGroundWater');
 
-  CReservoirs                   : array[0..1] of string = ('Data','Reservoirs');
-  CCreateReservoir              : array[0..2] of string = ('Data','Reservoirs','CreateReservoir');
-  CDeleteReservoir              : array[0..2] of string = ('Data','Reservoirs','DeleteReservoir');
-  CCopyReservoir                : array[0..2] of string = ('Data','Reservoirs','CopyReservoir');
-  CCreateResReplacement         : array[0..2] of string = ('Data','Reservoirs','CreateResReplacement');
+  CReservoirs                   : array[0..1] of WideString = ('Data','Reservoirs');
+  CCreateReservoir              : array[0..2] of WideString = ('Data','Reservoirs','CreateReservoir');
+  CDeleteReservoir              : array[0..2] of WideString = ('Data','Reservoirs','DeleteReservoir');
+  CCopyReservoir                : array[0..2] of WideString = ('Data','Reservoirs','CopyReservoir');
+  CCreateResReplacement         : array[0..2] of WideString = ('Data','Reservoirs','CreateResReplacement');
 
-  CNodes                        : array[0..1] of string = ('Data','Nodes');
-  CCreateNodeWithInflow         : array[0..2] of string = ('Data','Nodes','CreateNodeWithInflow');
-  CDeleteNodeWithInflow         : array[0..2] of string = ('Data','Nodes','DeleteNodeWithInflow');
-  CCreateNodeWithoutInflow      : array[0..2] of string = ('Data','Nodes','CreateNodeWithoutInflow');
-  CDeleteNodeWithoutInflow      : array[0..2] of string = ('Data','Nodes','DeleteNodeWithoutInflow');
+  CNodes                        : array[0..1] of WideString = ('Data','Nodes');
+  CCreateNodeWithInflow         : array[0..2] of WideString = ('Data','Nodes','CreateNodeWithInflow');
+  CDeleteNodeWithInflow         : array[0..2] of WideString = ('Data','Nodes','DeleteNodeWithInflow');
+  CCreateNodeWithoutInflow      : array[0..2] of WideString = ('Data','Nodes','CreateNodeWithoutInflow');
+  CDeleteNodeWithoutInflow      : array[0..2] of WideString = ('Data','Nodes','DeleteNodeWithoutInflow');
 
-  CChannels                     : array[0..1] of string = ('Data','Channels');
-  CCreateChannel                : array[0..2] of string = ('Data','Channels','CreateChannel');
-  CCopyChannel                  : array[0..2] of string = ('Data','Channels','CopyChannel');
-  CDeleteChannel                : array[0..2] of string = ('Data','Channels','DeleteChannel');
-  CConvertChannel               : array[0..2] of string = ('Data','Channels','ConvertChannel');
+  CChannels                     : array[0..1] of WideString = ('Data','Channels');
+  CCreateChannel                : array[0..2] of WideString = ('Data','Channels','CreateChannel');
+  CCopyChannel                  : array[0..2] of WideString = ('Data','Channels','CopyChannel');
+  CDeleteChannel                : array[0..2] of WideString = ('Data','Channels','DeleteChannel');
+  CConvertChannel               : array[0..2] of WideString = ('Data','Channels','ConvertChannel');
 
-  CChannelFeatures              : array[0..1] of string = ('Data','ChannelFeatures');
-  CCreateMinimumFlowFeature     : array[0..2] of string = ('Data','ChannelFeatures','CreateMinimumFlowFeature');
-  CCreateMinMaxFlowFeature      : array[0..2] of string = ('Data','ChannelFeatures','CreateMinMaxFlowFeature');
-  CCreatePumpingFeature         : array[0..2] of string = ('Data','ChannelFeatures','CreatePumpingFeature');
-  CCopyPumpingFeature           : array[0..2] of string = ('Data','ChannelFeatures','CopyPumpingFeature');
-  CDeletePumpingFeature         : array[0..2] of string = ('Data','ChannelFeatures','DeletePumpingFeature');
-  CCreateYMDemandCentreReturnFlowFeature  : array[0..2] of string = ('Data','ChannelFeatures','CreateYMDemandCentreReturnFlowFeature');
-  CDeleteYMDemandCentreReturnFlowFeature  : array[0..2] of string = ('Data','ChannelFeatures','DeleteYMDemandCentreReturnFlowFeature');
-  CCreateLossFeature            : array[0..2] of string = ('Data','ChannelFeatures','CreateLossFeature');
-  CCreateSpecifiedDemandFeature : array[0..2] of string = ('Data','ChannelFeatures','CreateSpecifiedDemandFeature');
-  CCreateDiversionFeature       : array[0..2] of string = ('Data','ChannelFeatures','CreateDiversionFeature');
-  CCreateSpecifiedInflowFeature : array[0..2] of string = ('Data','ChannelFeatures','CreateSpecifiedInflowFeature');
-  CCreateIFRFeature             : array[0..2] of string = ('Data','ChannelFeatures','CreateIFRFeature');
-  CCopyIFRFeature               : array[0..2] of string = ('Data','ChannelFeatures','CopyIFRFeature');
-  CDeleteIFRFeature             : array[0..2] of string = ('Data','ChannelFeatures','DeleteIFRFeature');
+  CChannelFeatures              : array[0..1] of WideString = ('Data','ChannelFeatures');
+  CCreateMinimumFlowFeature     : array[0..2] of WideString = ('Data','ChannelFeatures','CreateMinimumFlowFeature');
+  CCreateMinMaxFlowFeature      : array[0..2] of WideString = ('Data','ChannelFeatures','CreateMinMaxFlowFeature');
+  CCreatePumpingFeature         : array[0..2] of WideString = ('Data','ChannelFeatures','CreatePumpingFeature');
+  CCopyPumpingFeature           : array[0..2] of WideString = ('Data','ChannelFeatures','CopyPumpingFeature');
+  CDeletePumpingFeature         : array[0..2] of WideString = ('Data','ChannelFeatures','DeletePumpingFeature');
+  CCreateYMDemandCentreReturnFlowFeature  : array[0..2] of WideString = ('Data','ChannelFeatures','CreateYMDemandCentreReturnFlowFeature');
+  CDeleteYMDemandCentreReturnFlowFeature  : array[0..2] of WideString = ('Data','ChannelFeatures','DeleteYMDemandCentreReturnFlowFeature');
+  CCreateLossFeature            : array[0..2] of WideString = ('Data','ChannelFeatures','CreateLossFeature');
+  CCreateSpecifiedDemandFeature : array[0..2] of WideString = ('Data','ChannelFeatures','CreateSpecifiedDemandFeature');
+  CCreateDiversionFeature       : array[0..2] of WideString = ('Data','ChannelFeatures','CreateDiversionFeature');
+  CCreateSpecifiedInflowFeature : array[0..2] of WideString = ('Data','ChannelFeatures','CreateSpecifiedInflowFeature');
+  CCreateIFRFeature             : array[0..2] of WideString = ('Data','ChannelFeatures','CreateIFRFeature');
+  CCopyIFRFeature               : array[0..2] of WideString = ('Data','ChannelFeatures','CopyIFRFeature');
+  CDeleteIFRFeature             : array[0..2] of WideString = ('Data','ChannelFeatures','DeleteIFRFeature');
 
-  CCreatePhysicalFlowConstraint : array[0..2] of string = ('Data','ChannelFeatures','CreatePhysicalFlowConstraint');
-  CCopyPhysicalFlowConstraint   : array[0..2] of string = ('Data','ChannelFeatures','CopyPhysicalFlowConstraint');
-  CDeletePhysicalFlowConstraint : array[0..2] of string = ('Data','ChannelFeatures','DeletePhysicalFlowConstraint');
+  CCreatePhysicalFlowConstraint : array[0..2] of WideString = ('Data','ChannelFeatures','CreatePhysicalFlowConstraint');
+  CCopyPhysicalFlowConstraint   : array[0..2] of WideString = ('Data','ChannelFeatures','CopyPhysicalFlowConstraint');
+  CDeletePhysicalFlowConstraint : array[0..2] of WideString = ('Data','ChannelFeatures','DeletePhysicalFlowConstraint');
 
-  CDroughtRestriction           : array[0..1] of string = ('Data','DroughtRestriction');
-  CCreateDroughtRestriction     : array[0..2] of string = ('Data','DroughtRestriction','CreateDroughtRestriction');
-  CDeleteDroughtRestriction     : array[0..2] of string = ('Data','DroughtRestriction','DeleteDroughtRestriction');
+  CDroughtRestriction           : array[0..1] of WideString = ('Data','DroughtRestriction');
+  CCreateDroughtRestriction     : array[0..2] of WideString = ('Data','DroughtRestriction','CreateDroughtRestriction');
+  CDeleteDroughtRestriction     : array[0..2] of WideString = ('Data','DroughtRestriction','DeleteDroughtRestriction');
 
-  CNetworkFeatures              : array[0..1] of string = ('Data','NetworkFeatures');
-  CCreatePowerPlant             : array[0..2] of string = ('Data','NetworkFeatures','CreatePowerPlant');
-  CCopyPowerPlant               : array[0..2] of string = ('Data','NetworkFeatures','CopyPowerPlant');
-  CDeletePowerPlant             : array[0..2] of string = ('Data','NetworkFeatures','DeletePowerPlant');
+  CNetworkFeatures              : array[0..1] of WideString = ('Data','NetworkFeatures');
+  CCreatePowerPlant             : array[0..2] of WideString = ('Data','NetworkFeatures','CreatePowerPlant');
+  CCopyPowerPlant               : array[0..2] of WideString = ('Data','NetworkFeatures','CopyPowerPlant');
+  CDeletePowerPlant             : array[0..2] of WideString = ('Data','NetworkFeatures','DeletePowerPlant');
 
-  CCreateIrrigationArea         : array[0..2] of string = ('Data','NetworkFeatures','CreateIrrigationArea');
-  CCopyIrrigationArea           : array[0..2] of string = ('Data','NetworkFeatures','CopyIrrigationArea');
-  CDeleteIrrigationArea         : array[0..2] of string = ('Data','NetworkFeatures','DeleteIrrigationArea');
+  CCreateIrrigationArea         : array[0..2] of WideString = ('Data','NetworkFeatures','CreateIrrigationArea');
+  CCopyIrrigationArea           : array[0..2] of WideString = ('Data','NetworkFeatures','CopyIrrigationArea');
+  CDeleteIrrigationArea         : array[0..2] of WideString = ('Data','NetworkFeatures','DeleteIrrigationArea');
 
-  CCreateIrrigationBlock        : array[0..2] of string = ('Data','NetworkFeatures','CreateIrrigationBlock');
-  CCopyIrrigationBlock          : array[0..2] of string = ('Data','NetworkFeatures','CopyIrrigationBlock');
-  CDeleteIrrigationBlock        : array[0..2] of string = ('Data','NetworkFeatures','DeleteIrrigationBlock');
+  CCreateIrrigationBlock        : array[0..2] of WideString = ('Data','NetworkFeatures','CreateIrrigationBlock');
+  CCopyIrrigationBlock          : array[0..2] of WideString = ('Data','NetworkFeatures','CopyIrrigationBlock');
+  CDeleteIrrigationBlock        : array[0..2] of WideString = ('Data','NetworkFeatures','DeleteIrrigationBlock');
 
-  CCreateWetland                : array[0..2] of string = ('Data','NetworkFeatures','CreateWetland');
-  CCopyWetland                  : array[0..2] of string = ('Data','NetworkFeatures','CopyWetland');
-  CDeleteWetland                : array[0..2] of string = ('Data','NetworkFeatures','DeleteWetland');
+  CCreateWetland                : array[0..2] of WideString = ('Data','NetworkFeatures','CreateWetland');
+  CCopyWetland                  : array[0..2] of WideString = ('Data','NetworkFeatures','CopyWetland');
+  CDeleteWetland                : array[0..2] of WideString = ('Data','NetworkFeatures','DeleteWetland');
 
-  CCreateSFRSubCatchment        : array[0..2] of string = ('Data','NetworkFeatures','CreateSFRSubCatchment');
-  CCopySFRSubCatchment          : array[0..2] of string = ('Data','NetworkFeatures','CopySFRSubCatchment');
-  CDeleteSFRSubCatchment        : array[0..2] of string = ('Data','NetworkFeatures','DeleteSFRSubCatchment');
+  CCreateSFRSubCatchment        : array[0..2] of WideString = ('Data','NetworkFeatures','CreateSFRSubCatchment');
+  CCopySFRSubCatchment          : array[0..2] of WideString = ('Data','NetworkFeatures','CopySFRSubCatchment');
+  CDeleteSFRSubCatchment        : array[0..2] of WideString = ('Data','NetworkFeatures','DeleteSFRSubCatchment');
 
-  CCreateYMDemandCentre         : array[0..2] of string = ('Data','NetworkFeatures','CreateYMDemandCentre');
-  CCopyYMDemandCentre           : array[0..2] of string = ('Data','NetworkFeatures','CopyYMDemandCentre');
-  CDeleteYMDemandCentre         : array[0..2] of string = ('Data','NetworkFeatures','DeleteYMDemandCentre');
+  CCreateYMDemandCentre         : array[0..2] of WideString = ('Data','NetworkFeatures','CreateYMDemandCentre');
+  CCopyYMDemandCentre           : array[0..2] of WideString = ('Data','NetworkFeatures','CopyYMDemandCentre');
+  CDeleteYMDemandCentre         : array[0..2] of WideString = ('Data','NetworkFeatures','DeleteYMDemandCentre');
 
-  CCreateMine                   : array[0..2] of string = ('Data','NetworkFeatures','CreateMine');
-  CCopyMine                     : array[0..2] of string = ('Data','NetworkFeatures','CopyMine');
-  CDeleteMine                   : array[0..2] of string = ('Data','NetworkFeatures','DeleteMine');
+  CCreateMine                   : array[0..2] of WideString = ('Data','NetworkFeatures','CreateMine');
+  CCopyMine                     : array[0..2] of WideString = ('Data','NetworkFeatures','CopyMine');
+  CDeleteMine                   : array[0..2] of WideString = ('Data','NetworkFeatures','DeleteMine');
 
-  CCreateGroundWater            : array[0..2] of string = ('Data','NetworkFeatures','CreateGroundWater');
-  CCopyGroundWater              : array[0..2] of string = ('Data','NetworkFeatures','CopyGroundWater');
-  CDeleteGroundWater            : array[0..2] of string = ('Data','NetworkFeatures','DeleteGroundWater');
+  CCreateGroundWater            : array[0..2] of WideString = ('Data','NetworkFeatures','CreateGroundWater');
+  CCopyGroundWater              : array[0..2] of WideString = ('Data','NetworkFeatures','CopyGroundWater');
+  CDeleteGroundWater            : array[0..2] of WideString = ('Data','NetworkFeatures','DeleteGroundWater');
 
-  CCreateMasterControlFeature   : array[0..2] of string = ('Data','ChannelFeatures','CreateMasterControlFeature');
-  CDeleteMasterControlFeature   : array[0..2] of string = ('Data','ChannelFeatures','DeleteMasterControlFeature');
-  CCreateWaterDemandFeature     : array[0..2] of string = ('Data','ChannelFeatures','CreateWaterDemandFeature');
-  CDeleteWaterDemandFeature     : array[0..2] of string = ('Data','ChannelFeatures','DeleteWaterDemandFeature');
+  CCreateMasterControlFeature   : array[0..2] of WideString = ('Data','ChannelFeatures','CreateMasterControlFeature');
+  CDeleteMasterControlFeature   : array[0..2] of WideString = ('Data','ChannelFeatures','DeleteMasterControlFeature');
+  CCreateWaterDemandFeature     : array[0..2] of WideString = ('Data','ChannelFeatures','CreateWaterDemandFeature');
+  CDeleteWaterDemandFeature     : array[0..2] of WideString = ('Data','ChannelFeatures','DeleteWaterDemandFeature');
 
-  CWizards                      : array[0..0] of string = ('Wizards');
-  CWizardNewReservoir           : array[0..1] of string = ('Wizards','CreateReservoir');
-  CWizardNewNodeWithInflow      : array[0..1] of string = ('Wizards','CreateNodeWithInflow');
-  CWizardNewChannel             : array[0..1] of string = ('Wizards','CreateChannel');
-  CWizardSeparator1             : array[0..1] of string = ('Wizards','WizardSeparator1');
-  CWizardInvoke                 : array[0..1] of string = ('Wizards','InvokeWizard');
-  CWizardSeparator2             : array[0..1] of string = ('Wizards','WizardSeparator2');
-  CWizardRunYieldHistoric       : array[0..1] of string = ('Wizards','RunYieldHistoric');
-  CWizardRunYieldStochastic     : array[0..1] of string = ('Wizards','RunYieldStochastic');
-  CWizardRunYieldYRC            : array[0..1] of string = ('Wizards','RunYieldYRC');
-
-
-//  CPlanningStudy                : array[0..1] of string = ('Data','Planning');
-
-  CAllocationControl            : array[0..1] of string = ('Data','AllocationControl');
-  CCreateAllocDef               : array[0..2] of string = ('Data','AllocationControl','CreateAllocDef');
-  CDeleteAllocDef               : array[0..2] of string = ('Data','AllocationControl','DeleteAllocDef');
-
-  CSwitchControl                : array[0..1] of string = ('Data','SwitchControl');
-  CCreateSwitchDef              : array[0..2] of string = ('Data','SwitchControl','CreateSwitchDef');
-  CDeleteSwitchDef              : array[0..2] of string = ('Data','SwitchControl','DeleteSwitchDef');
-  CCreateChannelSwitchCntrl     : array[0..2] of string = ('Data','SwitchControl','CreateChannelSwitchCntrl');
-  CDeleteChannelSwitchCntrl     : array[0..2] of string = ('Data','SwitchControl','DeleteChannelSwitchCntrl');
-
-  CTimeControl                  : array[0..1] of string = ('Data','TimeControl');
-  CCreateResTimeCntrl           : array[0..2] of string = ('Data','TimeControl','CreateResTimeCntrl');
-  CDeleteResTimeCntrl           : array[0..2] of string = ('Data','TimeControl','DeleteResTimeCntrl');
-  CCreateChannelTimeCntrl       : array[0..2] of string = ('Data','TimeControl','CreateChannelTimeCntrl');
-  CDeleteChannelTimeCntrl       : array[0..2] of string = ('Data','TimeControl','DeleteChannelTimeCntrl');
+  CWizards                      : array[0..0] of WideString = ('Wizards');
+  CWizardNewReservoir           : array[0..1] of WideString = ('Wizards','CreateReservoir');
+  CWizardNewNodeWithInflow      : array[0..1] of WideString = ('Wizards','CreateNodeWithInflow');
+  CWizardNewChannel             : array[0..1] of WideString = ('Wizards','CreateChannel');
+  CWizardSeparator1             : array[0..1] of WideString = ('Wizards','WizardSeparator1');
+  CWizardInvoke                 : array[0..1] of WideString = ('Wizards','InvokeWizard');
+  CWizardSeparator2             : array[0..1] of WideString = ('Wizards','WizardSeparator2');
+  CWizardRunYieldHistoric       : array[0..1] of WideString = ('Wizards','RunYieldHistoric');
+  CWizardRunYieldStochastic     : array[0..1] of WideString = ('Wizards','RunYieldStochastic');
+  CWizardRunYieldYRC            : array[0..1] of WideString = ('Wizards','RunYieldYRC');
 
 
-  CDisbenefitFunction           : array[0..1] of string = ('Data','DisbenefitFunction');
-  CCreateDisbenefitFunction     : array[0..2] of string = ('Data','DisbenefitFunction','CreateDisbenefitFunction');
-  CDeleteDisbenefitFunction     : array[0..2] of string = ('Data','DisbenefitFunction','DeleteDisbenefitFunction');
+//  CPlanningStudy                : array[0..1] of WideString = ('Data','Planning');
 
-  CCreateReturnFlowChannel      : array[0..2] of string = ('Data','Channels','CreateReturnFlowChannel');
-  CDeleteReturnFlowChannel      : array[0..2] of string = ('Data','Channels','DeleteReturnFlowChannel');
+  CAllocationControl            : array[0..1] of WideString = ('Data','AllocationControl');
+  CCreateAllocDef               : array[0..2] of WideString = ('Data','AllocationControl','CreateAllocDef');
+  CDeleteAllocDef               : array[0..2] of WideString = ('Data','AllocationControl','DeleteAllocDef');
+
+  CSwitchControl                : array[0..1] of WideString = ('Data','SwitchControl');
+  CCreateSwitchDef              : array[0..2] of WideString = ('Data','SwitchControl','CreateSwitchDef');
+  CDeleteSwitchDef              : array[0..2] of WideString = ('Data','SwitchControl','DeleteSwitchDef');
+  CCreateChannelSwitchCntrl     : array[0..2] of WideString = ('Data','SwitchControl','CreateChannelSwitchCntrl');
+  CDeleteChannelSwitchCntrl     : array[0..2] of WideString = ('Data','SwitchControl','DeleteChannelSwitchCntrl');
+
+  CTimeControl                  : array[0..1] of WideString = ('Data','TimeControl');
+  CCreateResTimeCntrl           : array[0..2] of WideString = ('Data','TimeControl','CreateResTimeCntrl');
+  CDeleteResTimeCntrl           : array[0..2] of WideString = ('Data','TimeControl','DeleteResTimeCntrl');
+  CCreateChannelTimeCntrl       : array[0..2] of WideString = ('Data','TimeControl','CreateChannelTimeCntrl');
+  CDeleteChannelTimeCntrl       : array[0..2] of WideString = ('Data','TimeControl','DeleteChannelTimeCntrl');
+
+
+  CDisbenefitFunction           : array[0..1] of WideString = ('Data','DisbenefitFunction');
+  CCreateDisbenefitFunction     : array[0..2] of WideString = ('Data','DisbenefitFunction','CreateDisbenefitFunction');
+  CDeleteDisbenefitFunction     : array[0..2] of WideString = ('Data','DisbenefitFunction','DeleteDisbenefitFunction');
+
+  CCreateReturnFlowChannel      : array[0..2] of WideString = ('Data','Channels','CreateReturnFlowChannel');
+  CDeleteReturnFlowChannel      : array[0..2] of WideString = ('Data','Channels','DeleteReturnFlowChannel');
   //Added by Karabo
-  CCreateMultiChannelCurtailRule  : array[0..2] of string = ('Data','ChannelFeatures','CreateMultiChannelCurtailRestriction');
-  CDeleteMultiChannelCurtailRule  : array[0..2] of string = ('Data','ChannelFeatures','DeleteMultiChannelCurtailRestriction');
+  CCreateMultiChannelCurtailRule  : array[0..2] of WideString = ('Data','ChannelFeatures','CreateMultiChannelCurtailRestriction');
+  CDeleteMultiChannelCurtailRule  : array[0..2] of WideString = ('Data','ChannelFeatures','DeleteMultiChannelCurtailRestriction');
 
-  CViewStandardUser             : array[0..1] of string = ('View','ViewStandardUser');
-  CViewExpertUser               : array[0..1] of string = ('View','ViewExpertUser');
-  CViewModeSep                  : array[0..1] of string = ('View','ViewModeSep');
+  CViewStandardUser             : array[0..1] of WideString = ('View','ViewStandardUser');
+  CViewExpertUser               : array[0..1] of WideString = ('View','ViewExpertUser');
+  CViewModeSep                  : array[0..1] of WideString = ('View','ViewModeSep');
 
-  CViewResults                  : array[0..1] of string = ('View','ViewResults');
-  CViewTabSheetsSep             : array[0..1] of string = ('View','ViewTabSheetsSep1');
+  CViewResults                  : array[0..1] of WideString = ('View','ViewResults');
+  CViewTabSheetsSep             : array[0..1] of WideString = ('View','ViewTabSheetsSep1');
 
-  CHelpWRMFReleaseNote          : array[0..1] of string = ('Help','HelpWRMFReleaseNote');
-  CHelpWRYMUserGuide            : array[0..1] of string = ('Help','HelpWRYMUserGuide');
-  CHelpWRYMProceduralManual     : array[0..1] of string = ('Help','HelpWRYMProceduralManual');
-  CHelpWRYMTrainingMaterial     : array[0..1] of string = ('Help','HelpWRYMTrainingMaterial');
-  CHelpWRYMParameterTables      : array[0..1] of string = ('Help','HelpWRYMParameterTables');
+  CHelpWRMFReleaseNote          : array[0..1] of WideString = ('Help','HelpWRMFReleaseNote');
+  CHelpWRYMUserGuide            : array[0..1] of WideString = ('Help','HelpWRYMUserGuide');
+  CHelpWRYMProceduralManual     : array[0..1] of WideString = ('Help','HelpWRYMProceduralManual');
+  CHelpWRYMTrainingMaterial     : array[0..1] of WideString = ('Help','HelpWRYMTrainingMaterial');
+  CHelpWRYMParameterTables      : array[0..1] of WideString = ('Help','HelpWRYMParameterTables');
 
-  CHelpWRPMReleaseNote          : array[0..1] of string = ('Help','HelpWRPMReleaseNote');
-  CHelpWRPMUserGuide            : array[0..1] of string = ('Help','HelpWRPMUserGuide');
-  CHelpWRPMParameterTables      : array[0..1] of string = ('Help','HelpWRPMParameterTables');
+  CHelpWRPMReleaseNote          : array[0..1] of WideString = ('Help','HelpWRPMReleaseNote');
+  CHelpWRPMUserGuide            : array[0..1] of WideString = ('Help','HelpWRPMUserGuide');
+  CHelpWRPMParameterTables      : array[0..1] of WideString = ('Help','HelpWRPMParameterTables');
 
-  CHelpHydrologyParameterTables : array[0..1] of string = ('Help','HelpHydrologyParameterTables');
+  CHelpHydrologyParameterTables : array[0..1] of WideString = ('Help','HelpHydrologyParameterTables');
 
 { TYieldModelMenuItemManager }
 
@@ -353,8 +353,10 @@ end;
 procedure TYieldModelMenuItemManager.AddMenuItems;
 const OPNAME = 'TYieldModelMenuItemManager.AddMenuItems';
 begin
-  inherited;
   try
+    DeleteMenuItems;
+    inherited AddMenuItems;
+
     AddMenuItemEntry(CModel,            600);
     AddMenuItemEntry(CValidateFiles,    610, CmeValidateFiles,nil);
     AddMenuItemEntry(CImportFiles,      620, CmeImportFiles,nil);
@@ -519,15 +521,13 @@ end;
 procedure TYieldModelMenuItemManager.DestroyMemberObjects;
 const OPNAME = 'TYieldModelMenuItemManager.DestroyMemberObjects';
 begin
-  inherited;
   try
     if Assigned(FAppModules.MainForm()) then
       FAppModules.MainForm.RemoveSystemChildToolBar(FToolBar)
     else
-    FToolBar.Parent := nil;
-
+      FToolBar.Parent := nil;
     FreeAndNil(FToolBar);
-  // Handle exceptions.
+    inherited DestroyMemberObjects;
   except on E: Exception do HandleError(E, OPNAME) end;
 end;
 
@@ -590,7 +590,7 @@ begin
     SetCopyYMDemandCentre(msDisable);
     SetDeleteYMDemandCentre(msDisable);
     SetCreateSFRSubCatchment(msEnable);
-    SetCopySFRSubCatchment(msDisable);    
+    SetCopySFRSubCatchment(msDisable);
     SetDeleteSFRSubCatchment(msDisable);
     SetCreateMine(msEnable);
     SetCopyMine(msDisable);
@@ -657,15 +657,14 @@ begin
   except on E: Exception do HandleError(E, OPNAME) end;
 end;
 
-function TYieldModelMenuItemManager.StudyHasChanged: boolean;
+function TYieldModelMenuItemManager.StudyHasChanged: Boolean;
 const OPNAME = 'TYieldModelMenuItemManager.StudyHasChanged';
-var
-  LYieldModelDataObject : TYieldModelDataObject;
+var LYieldModelDataObject: TYieldModelDataObject;
 begin
   Result := inherited StudyHasChanged;
   try
     Initialise;
-    if(FAppModules.StudyArea.ModelVersion <> '7') then
+    if (FAppModules.StudyArea.ModelVersion <> '7') then
     begin
       FAppModules.SetMenuItem(CCreateIrrigationBlock, msHide);
       FAppModules.SetMenuItem(CCopyIrrigationBlock, msHide);
@@ -694,9 +693,8 @@ begin
       FAppModules.SetMenuItem(CCreateGroundWater, msHide);
       FAppModules.SetMenuItem(CCopyGroundWater, msHide);
       FAppModules.SetMenuItem(CDeleteGroundWater, msHide);
-    end
-    else
-    begin
+    end else begin
+
       FAppModules.SetMenuItem(CCreateIrrigationBlock, msShow);
       FAppModules.SetMenuItem(CCopyIrrigationBlock, msShow);
       FAppModules.SetMenuItem(CDeleteIrrigationBlock, msShow);
@@ -715,7 +713,6 @@ begin
       FAppModules.SetMenuItem(CDroughtRestriction, msShow);
       FAppModules.SetMenuItem(CCreateDroughtRestriction, msShow);
       FAppModules.SetMenuItem(CDeleteDroughtRestriction, msShow);
-
 
       LYieldModelDataObject := TYieldModelDataObject(FAppModules.Model.ModelData);
       if LYieldModelDataObject <> nil then
@@ -923,7 +920,7 @@ begin
   FAppModules.SetMenuItem(CCreateDiversionFeature, LAction);
   FAppModules.SetMenuItem(CCreateSpecifiedInflowFeature, LAction);
   FAppModules.SetMenuItem(CCreateIFRFeature, LAction);
-  FAppModules.SetMenuItem(CCopyIFRFeature, LAction);  
+  FAppModules.SetMenuItem(CCopyIFRFeature, LAction);
   FAppModules.SetMenuItem(CDeleteIFRFeature, LAction);
   FAppModules.SetMenuItem(CCreatePhysicalFlowConstraint, LAction);
   FAppModules.SetMenuItem(CCopyPhysicalFlowConstraint, LAction);
@@ -931,7 +928,7 @@ begin
   FAppModules.SetMenuItem(CCreateMultiChannelCurtailRule, LAction);
   FAppModules.SetMenuItem(CDeleteMultiChannelCurtailRule, LAction);
   FAppModules.SetMenuItem(CCreateIrrigationArea, LAction);
-  FAppModules.SetMenuItem(CCopyIrrigationArea, LAction); 
+  FAppModules.SetMenuItem(CCopyIrrigationArea, LAction);
   FAppModules.SetMenuItem(CDeleteIrrigationArea, LAction);
   FAppModules.SetMenuItem(CCreatePowerPlant, LAction);
   FAppModules.SetMenuItem(CCopyPowerPlant, LAction);
@@ -1159,7 +1156,7 @@ begin
       FAppModules.SetMenuItem(CCopyChannel, AAction);
   except on E: Exception do HandleError(E, OPNAME) end;
 end;
- 
+
 procedure TYieldModelMenuItemManager.SetCopyReservoir(AAction: TMenuSetAction);
 const OPNAME = 'TYieldModelMenuItemManager.SetCopyReservoir';
 begin
@@ -2077,12 +2074,12 @@ begin
               SetCreateChannelTimeCntrl(msDisable)
             else
               SetCreateChannelTimeCntrl(msEnable);
-              
+
             if (lChannel.ChannelType = 2) then
               SetCreateChannelSwitchCntrl(msDisable)
             else
               SetCreateChannelSwitchCntrl(msEnable);
-              
+
             SetDeleteChannelTimeCntrl(msDisable);
             SetDeleteChannelSwitchCntrl(msDisable);
           end

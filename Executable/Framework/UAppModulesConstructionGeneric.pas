@@ -92,16 +92,16 @@ type
     procedure DoLogOn; override;
     procedure DoUserAdministration; override;
     function StudyDocumentManager: TAbstractStudyDocumentManager; override;
-    function StudyArea : TAbstractStudyArea; override;
+    function StudyArea: TAbstractStudyArea; override;
     procedure SetStudyArea(ANewStudyArea: TAbstractStudyArea); override;
     function InitialiseStudy: boolean;
     procedure SelectStudyArea; override;
     procedure SelectStudyDetails(AData: TObject); override;
     function Model: TAbstractModelManager; override;
-    function AddMenuItem(AMainMenuKeys: array of string; ASortWeight: integer; AEvent: integer; AData: TObject): TObject; override;
-    function SetMenuItem(AMainMenuKeys: array of string; AnAction: TMenuSetAction; AStatusReason: string = ''): boolean; override;
-    function SetMenuItemCaption(AMainMenuKeys: array of string; ACaption : string): boolean; override;
-    function GetMenuItemProperties(AMenuKeys: array of string) : TSetOfMenuAction; override;
+    function AddMenuItem(AMainMenuKeys: array of WideString; ASortWeight: integer; AEvent: integer; AData: TObject): TObject; override;
+    function SetMenuItem(AMainMenuKeys: array of WideString; AnAction: TMenuSetAction; AStatusReason: string = ''): boolean; override;
+    function SetMenuItemCaption(AMainMenuKeys: array of WideString; ACaption: WideString): Boolean; override;
+    function GetMenuItemProperties(AMenuKeys: array of WideString): TSetOfMenuAction; override;
 
     function MainForm: TAbstractMainFormManager; override;
     function GetExportFilename(const ADefaultExt, AFilter: string; var AFileName: string): boolean; override;
@@ -414,7 +414,7 @@ begin
 end;
 
 function TAppModulesConstructionGeneric.AddMenuItem(
-  AMainMenuKeys: array of string; ASortWeight: integer; AEvent: integer; AData: TObject): TObject;
+  AMainMenuKeys: array of WideString; ASortWeight: integer; AEvent: integer; AData: TObject): TObject;
 const OPNAME = 'TAppModulesConstructionGeneric.AddMenuItem';
 begin
   Result := nil;
@@ -425,13 +425,15 @@ begin
 end;
 
 function TAppModulesConstructionGeneric.SetMenuItem(
-  AMainMenuKeys: array of string; AnAction: TMenuSetAction; AStatusReason: string = ''): boolean;
+  AMainMenuKeys: array of WideString; AnAction: TMenuSetAction; AStatusReason: string = ''): boolean;
 const OPNAME = 'TAppModulesConstructionGeneric.SetMenuItem';
 begin
   Result := False;
   try
     if Assigned(FMainForm) and Assigned(FMainForm.Menu) then
+    begin
       Result := TAbstractMainMenu(FMainForm.Menu).SetMenuItem(AMainMenuKeys, AnAction, AStatusReason);
+    end;
   except on E: Exception do HandleError(E, OPNAME) end;
 end;
 
@@ -544,8 +546,7 @@ begin
   except on E: Exception do HandleError(E, OPNAME) end;
 end;
 
-function TAppModulesConstructionGeneric.SetMenuItemCaption(
-  AMainMenuKeys: array of string; ACaption: string): boolean;
+function TAppModulesConstructionGeneric.SetMenuItemCaption(AMainMenuKeys: array of WideString; ACaption: WideString): boolean;
 const OPNAME = 'TAppModulesConstructionGeneric.SetMenuItemCaption';
 begin
   Result := False;
@@ -730,8 +731,7 @@ begin
   except on E: Exception do HandleError(E, OPNAME) end;
 end;
 
-function TAppModulesConstructionGeneric.GetMenuItemProperties(
-  AMenuKeys: array of string): TSetOfMenuAction;
+function TAppModulesConstructionGeneric.GetMenuItemProperties(AMenuKeys: array of WideString): TSetOfMenuAction;
 const OPNAME = 'TAppModulesConstructionGeneric.GetMenuItemProperties';
 begin
   Result := [];

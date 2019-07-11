@@ -125,9 +125,9 @@ uses
 
 const
   // File menu items.
-  CSelectStudy         : array[0..1] of string = ('File','SelectStudyArea');
-  //CLicenceModels         : array[0..1] of string = ('File','LicenceModels');
-  CSelectStudyAreaSep  : array[0..1] of string = ('File','SelectStudyAreaSep');
+  CSelectStudy         : array[0..1] of WideString = ('File','SelectStudyArea');
+  //CLicenceModels         : array[0..1] of WideString = ('File','LicenceModels');
+  CSelectStudyAreaSep  : array[0..1] of WideString = ('File','SelectStudyAreaSep');
 
 { TStudyAreaMenuItemManager }
 
@@ -636,7 +636,7 @@ begin
       end;
     finally
       FreeAndNil(LStudyFields);
-    end;      
+    end;
   except on E: Exception do HandleError(E, OPNAME) end;
 end;
 

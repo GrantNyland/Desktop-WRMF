@@ -45,14 +45,14 @@ uses
   UErrorHandlingOperations;
 
 const
-  CRainfallData                           : array[0..0] of string = ('Data');
-  CHelpRainfallUserGuide                  : array[0..1] of string = ('Help','HelpRainfallUserGuide');
-  CHelpRainfallTrainingMaterial           : array[0..1] of string = ('Help','HelpRainfallTrainingMaterial');
-  CHelpRainfallUserGuideFile              : array[0..2] of string = ('Help','HelpRainfallUserGuide','HelpUserManual');
-  CHelpRainfallPatchROutput               : array[0..2] of string = ('Help','HelpRainfallUserGuide','HelpRainfallPatchROutput');
-  CHelpRainfallClassROutput               : array[0..2] of string = ('Help','HelpRainfallUserGuide','HelpRainfallClassROutput');
-  CHelpRainfallSAWSNumbering              : array[0..2] of string = ('Help','HelpRainfallUserGuide','HelpRainfallSAWSNumbering');
-  CHelpRainfallCLASSRAndPATCHRMethodology : array[0..2] of string = ('Help','HelpRainfallUserGuide','HelpRainfallCLASSRAndPATCHRMethodology');
+  CRainfallData                           : array[0..0] of WideString = ('Data');
+  CHelpRainfallUserGuide                  : array[0..1] of WideString = ('Help','HelpRainfallUserGuide');
+  CHelpRainfallTrainingMaterial           : array[0..1] of WideString = ('Help','HelpRainfallTrainingMaterial');
+  CHelpRainfallUserGuideFile              : array[0..2] of WideString = ('Help','HelpRainfallUserGuide','HelpUserManual');
+  CHelpRainfallPatchROutput               : array[0..2] of WideString = ('Help','HelpRainfallUserGuide','HelpRainfallPatchROutput');
+  CHelpRainfallClassROutput               : array[0..2] of WideString = ('Help','HelpRainfallUserGuide','HelpRainfallClassROutput');
+  CHelpRainfallSAWSNumbering              : array[0..2] of WideString = ('Help','HelpRainfallUserGuide','HelpRainfallSAWSNumbering');
+  CHelpRainfallCLASSRAndPATCHRMethodology : array[0..2] of WideString = ('Help','HelpRainfallUserGuide','HelpRainfallCLASSRAndPATCHRMethodology');
 
 procedure TRainfallMenuItemManager.AddMenuItems;
 const OPNAME = 'TRainfallMenuItemManager.AddMenuItems';

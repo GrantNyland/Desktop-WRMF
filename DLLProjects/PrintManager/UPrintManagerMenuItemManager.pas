@@ -46,9 +46,9 @@ uses
 
 const
   // Printing menu items.
-  CPrintSettings : array[0..1] of string = ('File','PrintSettings');
-  CPrint         : array[0..1] of string = ('File','Print');
-  CPrintSep      : array[0..1] of string = ('File','PrintSep');
+  CPrintSettings : array[0..1] of WideString = ('File','PrintSettings');
+  CPrint         : array[0..1] of WideString = ('File','Print');
+  CPrintSep      : array[0..1] of WideString = ('File','PrintSep');
 
 { TPrintManagerMenuItemManager }
 

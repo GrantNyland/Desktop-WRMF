@@ -16,14 +16,14 @@ uses
   UMenuItemManager;
 
 const
-  CCreatePatch          : array[0..1] of string = ('Data','RDCreatePatch');
-  CDeletePatch          : array[0..1] of string = ('Data','RDDeletePatch');
-  CRenamePatch          : array[0..1] of string = ('Data','RDRenamePatch');
-  CAddGaugeToPatch      : array[0..1] of string = ('Data','RDAddGaugeToPatch');
-  CRemoveGaugeFromPatch : array[0..1] of string = ('Data','RDRemoveGaugeFromPatch');
-  CToggleGrid           : array[0..1] of string = ('View','RDAdminToggleGrid');
-  CToggleGraph          : array[0..1] of string = ('View','RDAdminToggleGraph');
-  CToggleTree           : array[0..1] of string = ('View','RDAdminToggleTree');
+  CCreatePatch          : array[0..1] of WideString = ('Data','RDCreatePatch');
+  CDeletePatch          : array[0..1] of WideString = ('Data','RDDeletePatch');
+  CRenamePatch          : array[0..1] of WideString = ('Data','RDRenamePatch');
+  CAddGaugeToPatch      : array[0..1] of WideString = ('Data','RDAddGaugeToPatch');
+  CRemoveGaugeFromPatch : array[0..1] of WideString = ('Data','RDRemoveGaugeFromPatch');
+  CToggleGrid           : array[0..1] of WideString = ('View','RDAdminToggleGrid');
+  CToggleGraph          : array[0..1] of WideString = ('View','RDAdminToggleGraph');
+  CToggleTree           : array[0..1] of WideString = ('View','RDAdminToggleTree');
 
 type
 

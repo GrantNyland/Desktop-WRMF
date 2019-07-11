@@ -22,16 +22,15 @@ type
   protected
     function GetDocumentDetailByIndex(AIndex: integer): TStudyDocumentDetail;
   public
-    function Delete(AReportType: TReportTypes;ACategoryKey,AFilename: string): boolean; overload;
-    function GetDocument(ACategoryKey,AFilename: string):TStudyDocumentDetail;
+    function Delete(AReportType: TReportTypes; ACategoryKey, AFilename: string): boolean; overload;
+    function GetDocument(ACategoryKey, AFilename: string): TStudyDocumentDetail;
     function GetDocumentFileNames(AReportType: TReportTypes;ACategoryKey: string; ADocuments: TStrings):boolean;
     property DocumentByIndex[AIndex: integer]: TStudyDocumentDetail read GetDocumentDetailByIndex;
   end;
   TStudyDocumentsMenuItemManager = class(TMenuItemManager)
   public
     procedure AddMenuItems(ADocuments: TStudyDocumentDetailList); reintroduce;
-    procedure AddMenuItemItem(AMenuKeys: array of string; ASortWeight: integer;
-      AEvent: integer = CmeNull; AData: TObject = nil); virtual;
+    procedure AddMenuItemItem(AMenuKeys: array of WideString; ASortWeight: Integer; AEvent: Integer = CmeNull; AData: TObject = nil); virtual;
   end;
 
 implementation
@@ -41,6 +40,11 @@ uses
   UConstants,
   UErrorHandlingOperations;
 
+const
+  CReports     : array[0..0] of WideString = ('Reports');
+  CAddReport   : array[0..1] of WideString = ('Reports','AddReport');
+  CDeleteReport: array[0..1] of WideString = ('Reports','DeleteReport');
+  CEditReport  : array[0..1] of WideString = ('Reports','EditReport');
 
 { TStudyDocumentDetailList }
 
@@ -122,8 +126,7 @@ end;
 
 { TStudyDocumentsMenuItemManager }
 
-procedure TStudyDocumentsMenuItemManager.AddMenuItemItem(AMenuKeys: array of string;
-          ASortWeight, AEvent: integer; AData: TObject);
+procedure TStudyDocumentsMenuItemManager.AddMenuItemItem(AMenuKeys: array of WideString; ASortWeight, AEvent: Integer; AData: TObject);
 const OPNAME = 'TStudyDocumentsMenuItemManager.AddMenuItemItem';
 begin
   try
@@ -136,17 +139,17 @@ const OPNAME = 'TStudyDocumentsMenuItemManager.AddMenuItems';
 var
   LIndex: integer;
   LCategories: TStringList;
-  LMenuKeys: array of string;
+  LMenuKeys: array of WideString;
 begin
   try
 
     // Add the reports main menu item.
     if(FAppModules.Model <> nil) and (FAppModules.Model.ModelName <> CSystem) then
     begin
-      AddMenuItemEntry(['Reports'], 800,CmeNull,nil);
-      AddMenuItemEntry(['Reports','AddReport'], 1,CmeAddReport,nil);
-      AddMenuItemEntry(['Reports','DeleteReport'], 2,CmeDeleteReport,nil);
-      AddMenuItemEntry(['Reports','EditReport'], 3,CmeEditReport,nil);
+      AddMenuItemEntry(CReports,    800, CmeNull,nil);
+      AddMenuItemEntry(CAddReport,    1, CmeAddReport,nil);
+      AddMenuItemEntry(CDeleteReport, 2, CmeDeleteReport,nil);
+      AddMenuItemEntry(CEditReport,   3, CmeEditReport,nil);
 
       // Check if any document items are loaded.
       if Assigned(ADocuments) and (ADocuments.Count > 0) then
@@ -203,15 +206,15 @@ begin
 
       if (not Assigned(ADocuments)) or (ADocuments.Count = 0) then
       begin
-         FAppModules.SetMenuItem(['Reports','DeleteReport'], msDisable, 'DeleteReportDisabled');
-         FAppModules.SetMenuItem(['Reports','EditReport'], msDisable, 'EditReportDisabled');
+         FAppModules.SetMenuItem(CDeleteReport, msDisable, 'DeleteReportDisabled');
+         FAppModules.SetMenuItem(CEditReport, msDisable, 'EditReportDisabled');
       end;
       if(not (FAppModules.User.UserRights in CUR_EditData)) or
         FAppModules.StudyArea.ScenarioLocked then
       begin
-         FAppModules.SetMenuItem(['Reports','AddReport'], msDisable, 'AddReportDisabled');
-         FAppModules.SetMenuItem(['Reports','DeleteReport'], msDisable, 'DeleteReportDisabled');
-         FAppModules.SetMenuItem(['Reports','EditReport'], msDisable, 'EditReportDisabled');
+         FAppModules.SetMenuItem(CAddReport, msDisable, 'AddReportDisabled');
+         FAppModules.SetMenuItem(CDeleteReport, msDisable, 'DeleteReportDisabled');
+         FAppModules.SetMenuItem(CEditReport, msDisable, 'EditReportDisabled');
       end;
 
     end;

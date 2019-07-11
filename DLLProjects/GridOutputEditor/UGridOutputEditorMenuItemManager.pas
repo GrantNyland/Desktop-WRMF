@@ -49,8 +49,8 @@ uses
 
 const
 
-//  CData : array[0..0] of string = ('Data');
-  CPivot: array[0..1] of string = ('Data','RotateView');
+//  CData : array[0..0] of WideString = ('Data');
+  CPivot: array[0..1] of WideString = ('Data','RotateView');
 
 constructor TGridOutputEditorMenuData.Create(AAction: TGridOutputEditorMenuAction);
 const OPNAME = 'TGridOutputEditorMenuItemManager.Create';

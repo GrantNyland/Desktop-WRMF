@@ -718,6 +718,8 @@ begin
 //
 end;
 
+const LMenu: array[0..1] of WideString = ('View','ViewFileSelection');
+
 procedure TFileEditTabSheet.HideTabsheet;
 const OPNAME = 'TFileEditTabSheet.HideTabsheet';
 begin
@@ -726,7 +728,7 @@ begin
     TFileEditMenuItemManager(FMenuItemManager).SetMenuValidateFile(msHide);
     TFileEditMenuItemManager(FMenuItemManager).SetMenuImportFile(msHide);
     TFileEditMenuItemManager(FMenuItemManager).SetMenuExportFile(msHide);
-    FAppModules.SetMenuItem(['View','ViewFileSelection'],msHide);
+    FAppModules.SetMenuItem(LMenu,msHide);
   // Handle exceptions.
   except on E : Exception do HandleError(E,OPNAME); end;
 end;
@@ -739,7 +741,7 @@ begin
     TFileEditMenuItemManager(FMenuItemManager).SetMenuValidateFile(msShow);
     TFileEditMenuItemManager(FMenuItemManager).SetMenuImportFile(msShow);
     TFileEditMenuItemManager(FMenuItemManager).SetMenuExportFile(msShow);
-    FAppModules.SetMenuItem(['View','ViewFileSelection'],msShow);
+    FAppModules.SetMenuItem(LMenu,msShow);
   // Handle exceptions.
   except on E : Exception do HandleError(E,OPNAME); end;
 end;

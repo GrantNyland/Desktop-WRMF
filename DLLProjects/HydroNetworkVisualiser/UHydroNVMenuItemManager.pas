@@ -49,13 +49,13 @@ uses
 
 const
   // Model menu items.
-  CDrawingSep         : array[0..1] of string = ('Edit','VNVDrawingSep');
-  CNewDrawing         : array[0..1] of string = ('Edit','VNVNewDrawing');
-  CDeleteDrawing      : array[0..1] of string = ('Edit','VNVDeleteDrawing');
-  CRenameDrawing      : array[0..1] of string = ('Edit','VNVRenameDrawing');
-  CViewDrawing        : array[0..1] of string = ('Edit','VNVViewDrawing');
-  CEditDrawing        : array[0..1] of string = ('Edit','VNVEditDrawing');
-  CCopyDrawing        : array[0..1] of string = ('Edit','VNVCopyDrawing');
+  CDrawingSep         : array[0..1] of WideString = ('Edit','VNVDrawingSep');
+  CNewDrawing         : array[0..1] of WideString = ('Edit','VNVNewDrawing');
+  CDeleteDrawing      : array[0..1] of WideString = ('Edit','VNVDeleteDrawing');
+  CRenameDrawing      : array[0..1] of WideString = ('Edit','VNVRenameDrawing');
+  CViewDrawing        : array[0..1] of WideString = ('Edit','VNVViewDrawing');
+  CEditDrawing        : array[0..1] of WideString = ('Edit','VNVEditDrawing');
+  CCopyDrawing        : array[0..1] of WideString = ('Edit','VNVCopyDrawing');
 
 {* THydroNVMenuItemManager ****************************************************}
 

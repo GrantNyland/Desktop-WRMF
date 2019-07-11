@@ -122,24 +122,24 @@ uses
 
 const
   // View menu items.
-  CYRCChartSep                : array[0..1] of string = ('View','YRCChartSep');
-  CYRCResetChartData          : array[0..1] of string = ('View','YRCResetChartData');
-  CYRCTogglePlaneMode         : array[0..1] of string = ('View','YRCTogglePlaneMode');
-  CYRCToggleChartMode         : array[0..1] of string = ('View','YRCToggleChartMode');
-  CYRCSaveChart               : array[0..1] of string = ('View','YRCSaveChart');
-  CYRCDeleteChart             : array[0..1] of string = ('View','YRCDeleteChart');
-  CYRCLoadFromDB              : array[0..1] of string = ('View','YRCLoadFromDB');
-  CYRCLoadFromFile            : array[0..1] of string = ('View','YRCLoadFromFile');
-  CYRCLoadCoefFile            : array[0..1] of string = ('View','YRCLoadCoefFile');
-  CYRCToggleCurveManipulation : array[0..1] of string = ('View','YRCToggleCurveManipulation');
+  CYRCChartSep                : array[0..1] of WideString = ('View','YRCChartSep');
+  CYRCResetChartData          : array[0..1] of WideString = ('View','YRCResetChartData');
+  CYRCTogglePlaneMode         : array[0..1] of WideString = ('View','YRCTogglePlaneMode');
+  CYRCToggleChartMode         : array[0..1] of WideString = ('View','YRCToggleChartMode');
+  CYRCSaveChart               : array[0..1] of WideString = ('View','YRCSaveChart');
+  CYRCDeleteChart             : array[0..1] of WideString = ('View','YRCDeleteChart');
+  CYRCLoadFromDB              : array[0..1] of WideString = ('View','YRCLoadFromDB');
+  CYRCLoadFromFile            : array[0..1] of WideString = ('View','YRCLoadFromFile');
+  CYRCLoadCoefFile            : array[0..1] of WideString = ('View','YRCLoadCoefFile');
+  CYRCToggleCurveManipulation : array[0..1] of WideString = ('View','YRCToggleCurveManipulation');
 
-  CYRCDeleteTargetDraft       : array[0..1] of string = ('Edit','YRCDeleteTargetDraft');
-  //CYRCChartPrintMode          : array[0..1] of string = ('Edit','YRCChartPrintMode');
-  CYRCEditYValue              : array[0..1] of string = ('Edit','YRCEditYValue');
-  CYRCStartRegressionEdit     : array[0..1] of string = ('Edit','YRCStartRegressionEdit');
-  CYRCEndRegressionEdit       : array[0..1] of string = ('Edit','YRCEndRegressionEdit');
-  CYRCStartDeterministicEdit  : array[0..1] of string = ('Edit','YRCStartDeterministicEdit');
-  CYRCEndDeterministicEdit    : array[0..1] of string = ('Edit','YRCEndDeterministicEdit');
+  CYRCDeleteTargetDraft       : array[0..1] of WideString = ('Edit','YRCDeleteTargetDraft');
+  //CYRCChartPrintMode          : array[0..1] of WideString = ('Edit','YRCChartPrintMode');
+  CYRCEditYValue              : array[0..1] of WideString = ('Edit','YRCEditYValue');
+  CYRCStartRegressionEdit     : array[0..1] of WideString = ('Edit','YRCStartRegressionEdit');
+  CYRCEndRegressionEdit       : array[0..1] of WideString = ('Edit','YRCEndRegressionEdit');
+  CYRCStartDeterministicEdit  : array[0..1] of WideString = ('Edit','YRCStartDeterministicEdit');
+  CYRCEndDeterministicEdit    : array[0..1] of WideString = ('Edit','YRCEndDeterministicEdit');
 
 
 { TYRCMenuItemManager }

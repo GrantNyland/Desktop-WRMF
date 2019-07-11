@@ -19,7 +19,7 @@ uses
 type
   TMenuItemEntry = class(TObject)
   public
-    MenuKeys: array of string;
+    MenuKeys: array of WideString;
   end;
   TMenuItemManager = class(TAbstractAppObject, IMenuItemManager)
   protected
@@ -27,8 +27,8 @@ type
     FMenuItemPtr : TList;
     procedure CreateMemberObjects; override;
     procedure DestroyMemberObjects; override;
-    function GetMenuKeysCommaText(AMenuKeys: array of string): string;
-    procedure AddMenuItemEntry(AMenuKeys: array of string; ASortWeight: integer;
+    function GetMenuKeysCommaText(AMenuKeys: array of WideString): string;
+    procedure AddMenuItemEntry(AMenuKeys: array of WideString; ASortWeight: integer;
       AEvent: integer = CmeNull; AData: TObject = nil); virtual;
     procedure SetMenuItems(AnAction: TMenuSetAction; AStatusReason: string = ''); virtual;
   public
@@ -53,7 +53,6 @@ begin
     FItems := TObjectList.Create;
     FMenuItemPtr := TList.Create;
     AddMenuItems;
-   // Hide;
   except on E: Exception do HandleError(E, OPNAME); end;
 end;
 
@@ -68,7 +67,7 @@ begin
   except on E: Exception do HandleError(E, OPNAME) end;
 end;
 
-function TMenuItemManager.GetMenuKeysCommaText(AMenuKeys: array of string): string;
+function TMenuItemManager.GetMenuKeysCommaText(AMenuKeys: array of WideString): string;
 const OPNAME = 'TMenuItemManager.GetMenuKeysCommaText';
 var LIndex: integer;
 begin
@@ -80,7 +79,7 @@ begin
   except on E: Exception do HandleError(E, OPNAME) end;
 end;
 
-procedure TMenuItemManager.AddMenuItemEntry(AMenuKeys: array of string;
+procedure TMenuItemManager.AddMenuItemEntry(AMenuKeys: array of WideString;
   ASortWeight: integer; AEvent: integer = CmeNull; AData: TObject = nil);
 const OPNAME = 'TMenuItemManager.AddMenuItemEntry';
 var

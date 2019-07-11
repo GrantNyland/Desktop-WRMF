@@ -81,9 +81,9 @@ uses
   UErrorHandlingOperations, VCL.ComCtrls;
 
 const
-  CCopyToClipboard     : array[0..1] of string = ('Edit','CopyToClipboard');
-  CExportToFile        : array[0..1] of string = ('Edit','ExportToFile');
-  CPrint               : array[0..1] of string = ('File','Print');
+  CCopyToClipboard     : array[0..1] of WideString = ('Edit','CopyToClipboard');
+  CExportToFile        : array[0..1] of WideString = ('Edit','ExportToFile');
+  CPrint               : array[0..1] of WideString = ('File','Print');
 
 { TDDTSGUIManager }
 
@@ -429,7 +429,7 @@ begin
       begin
 
 
-    
+
         LReservoir := TDDTSDataObject(FAppModules.Model.ModelData).DDTSDamDataList.CastReservoirList.ReservoirByIdentifier[LIdentifier];
         if LReservoir <> nil then
         begin

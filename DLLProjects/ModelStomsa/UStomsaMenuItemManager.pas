@@ -59,22 +59,22 @@ uses
   UErrorHandlingOperations;
 
 const
-  CStomsaData                : array[0..0] of string = ('StomsaData');
-  CStomsaFileNew             : array[0..1] of string = ('StomsaData','StomsaFileNew');
-  CStomsaFileOpen            : array[0..1] of string = ('StomsaData','StomsaFileOpen');
-  CStomsaFileOpenParam       : array[0..1] of string = ('StomsaData','StomsaFileOpenParam');
-  CStomsaSeparator1          : array[0..1] of string = ('StomsaData','StomsaSeparator1');
-  CStomsaFileSave            : array[0..1] of string = ('StomsaData','StomsaFileSave');
-  CStomsaFileSaveAs          : array[0..1] of string = ('StomsaData','StomsaFileSaveAs');
-  CStomsaFileSaveANS         : array[0..1] of string = ('StomsaData','StomsaFileSaveANS');
-  CStomsaSeparator2          : array[0..1] of string = ('StomsaData','StomsaSeparator2');
-  CStomsaFileMerge           : array[0..1] of string = ('StomsaData','StomsaFileMerge');
-  CStomsaFileClose           : array[0..1] of string = ('StomsaData','StomsaFileClose');
-  CStomsaSeparator3          : array[0..1] of string = ('StomsaData','StomsaSeparator3');
-  CStomsaFileExport          : array[0..1] of string = ('StomsaData','StomsaFileExport');
-  CStomsaFileImport          : array[0..1] of string = ('StomsaData','StomsaFileImport');
+  CStomsaData                : array[0..0] of WideString = ('StomsaData');
+  CStomsaFileNew             : array[0..1] of WideString = ('StomsaData','StomsaFileNew');
+  CStomsaFileOpen            : array[0..1] of WideString = ('StomsaData','StomsaFileOpen');
+  CStomsaFileOpenParam       : array[0..1] of WideString = ('StomsaData','StomsaFileOpenParam');
+  CStomsaSeparator1          : array[0..1] of WideString = ('StomsaData','StomsaSeparator1');
+  CStomsaFileSave            : array[0..1] of WideString = ('StomsaData','StomsaFileSave');
+  CStomsaFileSaveAs          : array[0..1] of WideString = ('StomsaData','StomsaFileSaveAs');
+  CStomsaFileSaveANS         : array[0..1] of WideString = ('StomsaData','StomsaFileSaveANS');
+  CStomsaSeparator2          : array[0..1] of WideString = ('StomsaData','StomsaSeparator2');
+  CStomsaFileMerge           : array[0..1] of WideString = ('StomsaData','StomsaFileMerge');
+  CStomsaFileClose           : array[0..1] of WideString = ('StomsaData','StomsaFileClose');
+  CStomsaSeparator3          : array[0..1] of WideString = ('StomsaData','StomsaSeparator3');
+  CStomsaFileExport          : array[0..1] of WideString = ('StomsaData','StomsaFileExport');
+  CStomsaFileImport          : array[0..1] of WideString = ('StomsaData','StomsaFileImport');
+  CHelpStomsaUserGuide       : array[0..1] of WideString = ('Help','HelpStomsaUserGuide');
 
-  CHelpStomsaUserGuide       : array[0..1] of string = ('Help','HelpStomsaUserGuide');
 procedure TStomsaMenuItemManager.AddMenuItems;
 const OPNAME = 'TStomsaMenuItemManager.AddMenuItems';
 begin

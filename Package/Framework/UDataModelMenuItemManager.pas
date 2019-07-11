@@ -19,7 +19,7 @@ type
   TDataModelMenuItemManager = class(TMenuItemManager)
   protected
     FIsNetworkLoaded, FIsGridLoaded, FIsGraphLoaded, FIsFileSelectionLoaded: boolean;
-    procedure CreateToolBar;virtual;
+    procedure CreateToolBar; virtual;
   public
     constructor Create(AAppModules: TAppModules;
       AIsNetworkLoaded, AIsGridLoaded, AIsGraphLoaded, AIsFileSelectionLoaded: boolean); reintroduce;
@@ -35,11 +35,11 @@ uses
   UErrorHandlingOperations;
 
 const
-  CViewNetworkVisualiser:  array[0..1] of string = ('View','ViewNetworkVisualiser');
-  CViewEditGrid:           array[0..1] of string = ('View','ViewEditGrid');
-  CViewFileSelection:      array[0..1] of string = ('View','ViewFileSelection');
-  CViewGraph:              array[0..1] of string = ('View','ViewGraph');
-  CViewTabSheetsSep:       array[0..1] of string = ('View','ViewTabSheetsSep');
+  CViewNetworkVisualiser:  array[0..1] of WideString = ('View','ViewNetworkVisualiser');
+  CViewEditGrid:           array[0..1] of WideString = ('View','ViewEditGrid');
+  CViewFileSelection:      array[0..1] of WideString = ('View','ViewFileSelection');
+  CViewGraph:              array[0..1] of WideString = ('View','ViewGraph');
+  CViewTabSheetsSep:       array[0..1] of WideString = ('View','ViewTabSheetsSep');
 
 constructor TDataModelMenuItemManager.Create(AAppModules: TAppModules;
   AIsNetworkLoaded, AIsGridLoaded, AIsGraphLoaded, AIsFileSelectionLoaded: boolean);
@@ -59,6 +59,7 @@ procedure TDataModelMenuItemManager.AddMenuItems;
 const OPNAME = 'TDataModelMenuItemManager.AddMenuItems';
 begin
   try
+    inherited AddMenuItems;
     if FIsNetworkLoaded then
       AddMenuItemEntry(CViewNetworkVisualiser, 200, CmeViewNetworkVisualiser);
     if FIsGridLoaded then

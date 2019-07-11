@@ -42,11 +42,11 @@ uses
   UErrorHandlingOperations;
 
 const
-  CDamSedimentationData                : array[0..0] of string = ('Data');
-  CCreateDamSedimentation              : array[0..1] of string = ('Data','CreateDamSedimentation');
-  CDeleteDamSedimentation              : array[0..1] of string = ('Data','DeleteDamSedimentation');
-  CSaveDamSedimentation                : array[0..1] of string = ('Data','SaveDamSedimentation');
-  CHelpDamSedimentationUserGuide       : array[0..1] of string = ('Help','HelpSediUserGuide');
+  CDamSedimentationData                : array[0..0] of WideString = ('Data');
+  CCreateDamSedimentation              : array[0..1] of WideString = ('Data','CreateDamSedimentation');
+  CDeleteDamSedimentation              : array[0..1] of WideString = ('Data','DeleteDamSedimentation');
+  CSaveDamSedimentation                : array[0..1] of WideString = ('Data','SaveDamSedimentation');
+  CHelpDamSedimentationUserGuide       : array[0..1] of WideString = ('Help','HelpSediUserGuide');
 
 procedure TSedimentationMenuItemManager.AddMenuItems;
 const OPNAME = 'TSedimentationMenuItemManager.AddMenuItems';

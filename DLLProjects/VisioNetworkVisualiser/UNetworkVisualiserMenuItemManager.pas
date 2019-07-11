@@ -55,16 +55,16 @@ uses
 
 const
   // Model menu items.
-  CDrawingSep         : array[0..1] of string = ('Edit','VNVDrawingSep');
-  CNewDrawingGroup    : array[0..1] of string = ('Edit','VNVNewDrawingGroup');
-  CDeleteDrawingGroup : array[0..1] of string = ('Edit','VNVDeleteDrawingGroup');
-  CRenameDrawingGroup : array[0..1] of string = ('Edit','VNVRenameDrawingGroup');
-  CNewDrawing         : array[0..1] of string = ('Edit','VNVNewDrawing');
-  CDeleteDrawing      : array[0..1] of string = ('Edit','VNVDeleteDrawing');
-  CRenameDrawing      : array[0..1] of string = ('Edit','VNVRenameDrawing');
-  CViewDrawing        : array[0..1] of string = ('Edit','VNVViewDrawing');
-  CEditDrawing        : array[0..1] of string = ('Edit','VNVEditDrawing');
-  CCopyDrawing        : array[0..1] of string = ('Edit','VNVCopyDrawing');
+  CDrawingSep         : array[0..1] of WideString = ('Edit','VNVDrawingSep');
+  CNewDrawingGroup    : array[0..1] of WideString = ('Edit','VNVNewDrawingGroup');
+  CDeleteDrawingGroup : array[0..1] of WideString = ('Edit','VNVDeleteDrawingGroup');
+  CRenameDrawingGroup : array[0..1] of WideString = ('Edit','VNVRenameDrawingGroup');
+  CNewDrawing         : array[0..1] of WideString = ('Edit','VNVNewDrawing');
+  CDeleteDrawing      : array[0..1] of WideString = ('Edit','VNVDeleteDrawing');
+  CRenameDrawing      : array[0..1] of WideString = ('Edit','VNVRenameDrawing');
+  CViewDrawing        : array[0..1] of WideString = ('Edit','VNVViewDrawing');
+  CEditDrawing        : array[0..1] of WideString = ('Edit','VNVEditDrawing');
+  CCopyDrawing        : array[0..1] of WideString = ('Edit','VNVCopyDrawing');
 
 { TNetworkVisualiserMenuItemManager }
 
@@ -139,7 +139,6 @@ begin
   except on E: Exception do HandleError(E, OPNAME) end;
 end;
 
- 
 procedure TNetworkVisualiserMenuItemManager.SetMenuDeleteDrawing(AAction: TMenuSetAction);
 const OPNAME = 'TNetworkVisualiserMenuItemManager.SetMenuDeleteDrawing';
 begin

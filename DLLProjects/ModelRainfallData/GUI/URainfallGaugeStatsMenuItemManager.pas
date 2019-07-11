@@ -14,14 +14,14 @@ uses
   UMenuItemManager;
 
 const
-  CRainCreateFiles : array[0..1] of string = ('Data','RDCreateFiles');
-  CCreateSplit     : array[0..1] of string = ('Data','RDCreateSplit');
-  CDeleteSplit     : array[0..1] of string = ('Data','RDDeleteSplit');
-  CUpdateSplit     : array[0..1] of string = ('Data','RDUpdateSplit');
+  CRainCreateFiles : array[0..1] of WideString = ('Data','RDCreateFiles');
+  CCreateSplit     : array[0..1] of WideString = ('Data','RDCreateSplit');
+  CDeleteSplit     : array[0..1] of WideString = ('Data','RDDeleteSplit');
+  CUpdateSplit     : array[0..1] of WideString = ('Data','RDUpdateSplit');
 
-  CToggleGrid      : array[0..1] of string = ('View','RDStatsToggleGrid');
-  CToggleGraph     : array[0..1] of string = ('View','RDStatsToggleGraph');
-  CToggleTree      : array[0..1] of string = ('View','RDStatsToggleTree');
+  CToggleGrid      : array[0..1] of WideString = ('View','RDStatsToggleGrid');
+  CToggleGraph     : array[0..1] of WideString = ('View','RDStatsToggleGraph');
+  CToggleTree      : array[0..1] of WideString = ('View','RDStatsToggleTree');
 
 type
   TRainfallGaugeStatsMenuItemManager = class(TMenuItemManager)

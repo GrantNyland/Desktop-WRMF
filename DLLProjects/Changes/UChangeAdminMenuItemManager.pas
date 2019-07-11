@@ -53,20 +53,20 @@ uses
   UErrorHandlingOperations;
 
 const
-  CChanges                 : array[0..0] of string = ('Changes');
-  CCreateChangeGroup       : array[0..1] of string = ('Changes','CGCreateNew');
-  CDeleteChangeGroup       : array[0..1] of string = ('Changes','CGDelete');
-  CCreateChangeList        : array[0..1] of string = ('Changes','CLCreateNew');
-  CDeleteChangeList        : array[0..1] of string = ('Changes','CLDelete');
-  CCopyChangeList          : array[0..1] of string = ('Changes','CLCopy');
-  CMoveUpChangeElement     : array[0..1] of string = ('Changes','CLMoveUp');
-  CMoveDownChangeElement   : array[0..1] of string = ('Changes','CLMoveDown');
-  CActivateChangeElement   : array[0..1] of string = ('Changes','CEActivate');
-  CDeactivateChangeElement : array[0..1] of string = ('Changes','CEDeactivate');
-  CApplyChangeList         : array[0..1] of string = ('Changes','CLApply');
-  CImportChangeList        : array[0..1] of string = ('Changes','CLImport');
-  CExportChangeList        : array[0..1] of string = ('Changes','CLExport');
-  CChangeStationFilter     : array[0..1] of string = ('Changes','CStationFilter');
+  CChanges                 : array[0..0] of WideString = ('Changes');
+  CCreateChangeGroup       : array[0..1] of WideString = ('Changes','CGCreateNew');
+  CDeleteChangeGroup       : array[0..1] of WideString = ('Changes','CGDelete');
+  CCreateChangeList        : array[0..1] of WideString = ('Changes','CLCreateNew');
+  CDeleteChangeList        : array[0..1] of WideString = ('Changes','CLDelete');
+  CCopyChangeList          : array[0..1] of WideString = ('Changes','CLCopy');
+  CMoveUpChangeElement     : array[0..1] of WideString = ('Changes','CLMoveUp');
+  CMoveDownChangeElement   : array[0..1] of WideString = ('Changes','CLMoveDown');
+  CActivateChangeElement   : array[0..1] of WideString = ('Changes','CEActivate');
+  CDeactivateChangeElement : array[0..1] of WideString = ('Changes','CEDeactivate');
+  CApplyChangeList         : array[0..1] of WideString = ('Changes','CLApply');
+  CImportChangeList        : array[0..1] of WideString = ('Changes','CLImport');
+  CExportChangeList        : array[0..1] of WideString = ('Changes','CLExport');
+  CChangeStationFilter     : array[0..1] of WideString = ('Changes','CStationFilter');
 
 { TChangeAdminMenuItemManager }
 

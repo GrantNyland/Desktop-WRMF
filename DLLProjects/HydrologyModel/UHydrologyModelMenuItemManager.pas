@@ -44,8 +44,8 @@ uses
   UErrorHandlingOperations;
 
 const
-  CModel                        : array[0..0] of string = ('Model');
-  CValidateFiles                : array[0..1] of string = ('Model','ValidateFiles');
+  CModel                        : array[0..0] of WideString = ('Model');
+  CValidateFiles                : array[0..1] of WideString = ('Model','ValidateFiles');
 
 {* THydrologyModelMenuItemManager *********************************************}
 

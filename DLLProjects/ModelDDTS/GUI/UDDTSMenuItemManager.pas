@@ -64,17 +64,17 @@ uses
   UErrorHandlingOperations;
 
 const
- // CDDTSData                        : array[0..0] of string = ('Data');
-  //CCreateDDTSDam                   : array[0..1] of string = ('Data','CreateDDTSDam');
+ // CDDTSData                        : array[0..0] of WideString = ('Data');
+  //CCreateDDTSDam                   : array[0..1] of WideString = ('Data','CreateDDTSDam');
 
-  CModel                        : array[0..0] of string = ('Model');
-  CValidateFiles                : array[0..1] of string = ('Model','ValidateFiles');
-  CExportFiles                  : array[0..1] of string = ('Model','ExportFiles');
-  CImportFiles                  : array[0..1] of string = ('Model','ImportFiles');
-  CClearModelData               : array[0..1] of string = ('Model','ClearModelData');
-  CValidateModelData            : array[0..1] of string = ('Model','ValidateModelData');
-  CGenerateSysConfigFiles       : array[0..1] of string = ('Model','GenerateSystemConfigDataFiles');
-  CRunModel                     : array[0..1] of string = ('Model','RunModel');
+  CModel                        : array[0..0] of WideString = ('Model');
+  CValidateFiles                : array[0..1] of WideString = ('Model','ValidateFiles');
+  CExportFiles                  : array[0..1] of WideString = ('Model','ExportFiles');
+  CImportFiles                  : array[0..1] of WideString = ('Model','ImportFiles');
+  CClearModelData               : array[0..1] of WideString = ('Model','ClearModelData');
+  CValidateModelData            : array[0..1] of WideString = ('Model','ValidateModelData');
+  CGenerateSysConfigFiles       : array[0..1] of WideString = ('Model','GenerateSystemConfigDataFiles');
+  CRunModel                     : array[0..1] of WideString = ('Model','RunModel');
 
 procedure TDDTSMenuItemManager.AddMenuItems;
 const OPNAME = 'TDDTSMenuItemManager.AddMenuItems';

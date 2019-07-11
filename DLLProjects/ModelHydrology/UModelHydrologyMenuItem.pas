@@ -50,10 +50,10 @@ uses
   UErrorHandlingOperations;
 
 const
-  CHydrology :             array [ 0..1 ] of string = ( 'View','Hydrology' );
-//  CViewEditGrid:           array[0..1] of string = ( 'View','ViewEditGrid' );
-  CViewGraph:              array[0..1] of string = ( 'View','ViewGraph' );
-  CViewTabSheetsSep:       array[0..1] of string = ( 'View','ViewTabSheetsSep' );
+  CHydrology :             array [ 0..1 ] of WideString = ( 'View','Hydrology' );
+//  CViewEditGrid:           array[0..1] of WideString = ( 'View','ViewEditGrid' );
+  CViewGraph:              array[0..1] of WideString = ( 'View','ViewGraph' );
+  CViewTabSheetsSep:       array[0..1] of WideString = ( 'View','ViewTabSheetsSep' );
 
 { TModelHydrologyMenuItem }
 

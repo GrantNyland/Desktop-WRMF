@@ -14,11 +14,11 @@ uses
   UMenuItemManager;
 
 const
-  CCreateCatchmentZone : array[0..1] of string = ('Data','RDCreateCatchmentZone');
-  CDeleteCatchmentZone : array[0..1] of string = ('Data','RDDeleteCatchmentZone');
-  CAddGaugeToZone      : array[0..1] of string = ('Data','RDAddGaugeToZone');
-  CRemoveGaugeFromZone : array[0..1] of string = ('Data','RDRemoveGaugeFromZone');
-  CToggleTree          : array[0..1] of string = ('View','RDZoneToggleTree');
+  CCreateCatchmentZone : array[0..1] of WideString = ('Data','RDCreateCatchmentZone');
+  CDeleteCatchmentZone : array[0..1] of WideString = ('Data','RDDeleteCatchmentZone');
+  CAddGaugeToZone      : array[0..1] of WideString = ('Data','RDAddGaugeToZone');
+  CRemoveGaugeFromZone : array[0..1] of WideString = ('Data','RDRemoveGaugeFromZone');
+  CToggleTree          : array[0..1] of WideString = ('View','RDZoneToggleTree');
 
 type
   TRainfallZoneMenuItemManager = class(TMenuItemManager)

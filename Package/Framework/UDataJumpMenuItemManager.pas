@@ -35,9 +35,9 @@ uses
 const
 
   // Help menu items.
-  CViewGotoSep : array[0..1] of string = ('View', 'ViewGotoSep');
-  CViewGoto    : array[0..1] of string = ('View', 'ViewGoto');
-  CViewGotoJump: array[0..2] of string = ('View', 'ViewGoto', '_To_Add_');
+  CViewGotoSep : array[0..1] of WideString = ('View', 'ViewGotoSep');
+  CViewGoto    : array[0..1] of WideString = ('View', 'ViewGoto');
+  CViewGotoJump: array[0..2] of WideString = ('View', 'ViewGoto', '_To_Add_');
 
 procedure TDataJumpMenuItemManager.RefreshContext(AJumpList: TStringList; AGridLoaded, AGraphLoaded: boolean;
   ACurrentNodeName: string = ''; ACurrentIDValues: string = '');

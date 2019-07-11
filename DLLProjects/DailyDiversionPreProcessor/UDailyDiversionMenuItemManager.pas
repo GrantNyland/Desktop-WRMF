@@ -82,26 +82,26 @@ uses
   UErrorHandlingOperations;
 
 const
-  CDailyDiversionData                : array[0..0] of string = ('Data');
-  CCreateDailyDiversion              : array[0..1] of string = ('Data','CreateDailyDiversion');
-  CRenameDailyDiversion              : array[0..1] of string = ('Data','RenameDailyDiversion');
-  CDeleteDailyDiversion              : array[0..1] of string = ('Data','DeleteDailyDiversion');
-  CImportDailyFlowDataFromCSVFile    : array[0..1] of string = ('Data','ImportDailyFlowDataFromCSVFile');
-  CClearDailyFlowDataFromCSVFile     : array[0..1] of string = ('Data','ClearDailyFlowDataFromCSVFile');
-  CImportDailyInstreamFlowFile       : array[0..1] of string = ('Data','ImportDailyInstreamFlowFile');
-  CClearDailyInstreamFlowFile        : array[0..1] of string = ('Data','ClearDailyInstreamFlowFile');
-  CImportFile14                      : array[0..1] of string = ('Data','ImportFile14');
-  CClearFile14                       : array[0..1] of string = ('Data','ClearFile14');
-  CGenerateFlowDiversionRelation     : array[0..1] of string = ('Data','GenerateFlowDiversionRelation');
-  CClearFlowDiversionRelation        : array[0..1] of string = ('Data','ClearFlowDiversionRelation');
+  CDailyDiversionData                : array[0..0] of WideString = ('Data');
+  CCreateDailyDiversion              : array[0..1] of WideString = ('Data','CreateDailyDiversion');
+  CRenameDailyDiversion              : array[0..1] of WideString = ('Data','RenameDailyDiversion');
+  CDeleteDailyDiversion              : array[0..1] of WideString = ('Data','DeleteDailyDiversion');
+  CImportDailyFlowDataFromCSVFile    : array[0..1] of WideString = ('Data','ImportDailyFlowDataFromCSVFile');
+  CClearDailyFlowDataFromCSVFile     : array[0..1] of WideString = ('Data','ClearDailyFlowDataFromCSVFile');
+  CImportDailyInstreamFlowFile       : array[0..1] of WideString = ('Data','ImportDailyInstreamFlowFile');
+  CClearDailyInstreamFlowFile        : array[0..1] of WideString = ('Data','ClearDailyInstreamFlowFile');
+  CImportFile14                      : array[0..1] of WideString = ('Data','ImportFile14');
+  CClearFile14                       : array[0..1] of WideString = ('Data','ClearFile14');
+  CGenerateFlowDiversionRelation     : array[0..1] of WideString = ('Data','GenerateFlowDiversionRelation');
+  CClearFlowDiversionRelation        : array[0..1] of WideString = ('Data','ClearFlowDiversionRelation');
 
-  CExportDailyIFR                    : array[0..1] of string = ('Data','ExportDailyIFR');
-  CExportMonthlyIFR                  : array[0..1] of string = ('Data','ExportMonthlyIFR');
-  CExportFlowDiversionRelationship   : array[0..1] of string = ('Data','ExportFlowDiversionRelationship');
+  CExportDailyIFR                    : array[0..1] of WideString = ('Data','ExportDailyIFR');
+  CExportMonthlyIFR                  : array[0..1] of WideString = ('Data','ExportMonthlyIFR');
+  CExportFlowDiversionRelationship   : array[0..1] of WideString = ('Data','ExportFlowDiversionRelationship');
 
-  //CGenerateWRYMData                  : array[0..1] of string = ('Data','GenerateWRYMData');
-//  CClearWRYMData                     : array[0..1] of string = ('Data','ClearWRYMData');
-  CHelpDailyDiversionUserGuide       : array[0..1] of string = ('Help','HelpDailyDiversionUserGuide');
+  //CGenerateWRYMData                  : array[0..1] of WideString = ('Data','GenerateWRYMData');
+//  CClearWRYMData                     : array[0..1] of WideString = ('Data','ClearWRYMData');
+  CHelpDailyDiversionUserGuide       : array[0..1] of WideString = ('Help','HelpDailyDiversionUserGuide');
 
 procedure TDailyDiversionMenuItemManager.AddMenuItems;
 const OPNAME = 'TDailyDiversionMenuItemManager.AddMenuItems';

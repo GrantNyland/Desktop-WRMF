@@ -15,18 +15,18 @@ uses
   UMenuItemManager;
 
 const
-  CToggleGrid      : array[0..1] of string = ('View', 'RDGraphToggleGrid');
-  CToggleGraph     : array[0..1] of string = ('View', 'RDGraphToggleGraph');
-  CToggleTree      : array[0..1] of string = ('View', 'RDGraphToggleTree');
-  CCreatePATFiles  : array[0..1] of string = ('Data', 'RDCreatePATFiles');
-  CHighLight       : array[0..1] of string = ('Data', 'RDHighLightOutliers');
-  CSelectRAWFlags  : array[0..1] of string = ('Data', 'RDSelectRAWFlags');
-  CFlagDataBlock   : array[0..1] of string = ('Data', 'RDFlagDataBlock');
-  CUnFlagDataBlock : array[0..1] of string = ('Data', 'RDUnFlagDataBlock');
-  CFlagSetup       : array[0..1] of string = ('Data', 'RDFlagSetup');
-  CFlagClick       : array[0..1] of string = ('Data', 'RDFlagClick');
-  CWeatherEvents   : array[0..1] of string = ('Data', 'RDWeatherEvents');
-  CPatchChangeList : array[0..1] of string = ('Data', 'CLPatchParameter');
+  CToggleGrid      : array[0..1] of WideString = ('View', 'RDGraphToggleGrid');
+  CToggleGraph     : array[0..1] of WideString = ('View', 'RDGraphToggleGraph');
+  CToggleTree      : array[0..1] of WideString = ('View', 'RDGraphToggleTree');
+  CCreatePATFiles  : array[0..1] of WideString = ('Data', 'RDCreatePATFiles');
+  CHighLight       : array[0..1] of WideString = ('Data', 'RDHighLightOutliers');
+  CSelectRAWFlags  : array[0..1] of WideString = ('Data', 'RDSelectRAWFlags');
+  CFlagDataBlock   : array[0..1] of WideString = ('Data', 'RDFlagDataBlock');
+  CUnFlagDataBlock : array[0..1] of WideString = ('Data', 'RDUnFlagDataBlock');
+  CFlagSetup       : array[0..1] of WideString = ('Data', 'RDFlagSetup');
+  CFlagClick       : array[0..1] of WideString = ('Data', 'RDFlagClick');
+  CWeatherEvents   : array[0..1] of WideString = ('Data', 'RDWeatherEvents');
+  CPatchChangeList : array[0..1] of WideString = ('Data', 'CLPatchParameter');
 
 type
 

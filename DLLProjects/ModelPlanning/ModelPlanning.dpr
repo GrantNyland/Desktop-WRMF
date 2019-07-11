@@ -9,18 +9,15 @@ uses
   UPlanningModelManager,
   UErrorHandlingOperations;
 
-function ConstructDLLObject(var pao_Object: TObject; AAppModules: TAppModules; AImagesInstance: integer): boolean;  export; stdcall;
+function ConstructDLLObject(var AObject: TObject; AAppModules: TAppModules; AImagesInstance: Integer): Boolean;  export; stdcall;
 const OPNAME = 'ModelPlanning.ConstructDLLObject';
 begin
-  pao_Object := nil;
+  AObject := nil;
   Result := False;
   try
-    //if(AAppModules.LicenceManager.ModelIsLicenced('PLANN')) then
-    //begin
-      HImagesInstance := AImagesInstance;
-      pao_Object := TPlanningModelManager.Create(AAppModules);
-      Result := True;
-    //end;
+    HImagesInstance := AImagesInstance;
+    AObject := TPlanningModelManager.Create(AAppModules);
+    Result := True;
   except on E: Exception do HandleErrorFunction(E, OPNAME, Result); end;
 end;
 

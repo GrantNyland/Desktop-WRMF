@@ -66,9 +66,9 @@ uses
   //URWHSiteValidator,
   UErrorHandlingOperations;
 const
-  CCopyToClipboard     : array[0..1] of string = ('Edit','CopyToClipboard');
-  CExportToFile        : array[0..1] of string = ('Edit','ExportToFile');
-  CPrint               : array[0..1] of string = ('File','Print');
+  CCopyToClipboard     : array[0..1] of WideString = ('Edit','CopyToClipboard');
+  CExportToFile        : array[0..1] of WideString = ('Edit','ExportToFile');
+  CPrint               : array[0..1] of WideString = ('File','Print');
 
 { TRWHGUIManager }
 
@@ -352,7 +352,7 @@ begin
 
     if (Trim(ACommaTextContextData) = '') then
       Exit;
-      
+
     LOldCursor := Screen.Cursor;
     Screen.Cursor := crHourGlass;
     LockWindowUpdate(AParent.Handle);

@@ -13,10 +13,10 @@ uses
   Classes,
   Windows;
 const
-  CExportCatchmentData         : array[0..1] of string = ('Data','RDEXPORTDATA');
-  CToggleStationUsedGrid       : array[0..1] of string = ('View','RDAVRGRAINFALL');
-  CToggleCatchmentInputGrid    : array[0..1] of string = ('View','RDINPUTRAINFALL');
-  CToggleRunGrid               : array[0..1] of string = ('View','RDRESULT');
+  CExportCatchmentData         : array[0..1] of WideString = ('Data','RDEXPORTDATA');
+  CToggleStationUsedGrid       : array[0..1] of WideString = ('View','RDAVRGRAINFALL');
+  CToggleCatchmentInputGrid    : array[0..1] of WideString = ('View','RDINPUTRAINFALL');
+  CToggleRunGrid               : array[0..1] of WideString = ('View','RDRESULT');
 
 type
   TRainfallMenuState = (

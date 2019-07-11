@@ -40,6 +40,7 @@ requires
   TeeUI924;
 
 contains
+  ShareMem,
   WordXP,
   VBIDEXP,
   OfficeXP,

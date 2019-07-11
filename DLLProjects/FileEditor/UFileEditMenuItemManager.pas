@@ -48,11 +48,11 @@ uses
 
 const
   // Model menu items.
-  CSaveFile      : array[0..1] of string = ('File','SaveFile');
-  CValidateFile  : array[0..1] of string = ('File','ValidateFile');
-  CExportFile    : array[0..1] of string = ('File','ExportFile');
-  CImportFile    : array[0..1] of string = ('File','ImportFile');
-  CSaveFileSep   : array[0..1] of string = ('File','SaveFileSep');
+  CSaveFile      : array[0..1] of WideString = ('File','SaveFile');
+  CValidateFile  : array[0..1] of WideString = ('File','ValidateFile');
+  CExportFile    : array[0..1] of WideString = ('File','ExportFile');
+  CImportFile    : array[0..1] of WideString = ('File','ImportFile');
+  CSaveFileSep   : array[0..1] of WideString = ('File','SaveFileSep');
 
 { TFileEditMenuItemManager }
 

@@ -55,34 +55,34 @@ uses
 const
 
   // Top line menu items.
-  CFile                : array[0..0] of string = ('File');
-  CEdit                : array[0..0] of string = ('Edit');
-  CView                : array[0..0] of string = ('View');
-  CHelp                : array[0..0] of string = ('Help');
+  CFile                : array[0..0] of WideString = ('File');
+  CEdit                : array[0..0] of WideString = ('Edit');
+  CView                : array[0..0] of WideString = ('View');
+  CHelp                : array[0..0] of WideString = ('Help');
 
-  CExit                : array[0..1] of string = ('File','Exit');
+  CExit                : array[0..1] of WideString = ('File','Exit');
 
   // Edit menu items.
-  CCopyToClipboard     : array[0..1] of string = ('Edit','CopyToClipboard');
-  CExportToFile        : array[0..1] of string = ('Edit','ExportToFile');
+  CCopyToClipboard     : array[0..1] of WideString = ('Edit','CopyToClipboard');
+  CExportToFile        : array[0..1] of WideString = ('Edit','ExportToFile');
 
   // View menu items.
-  CViewToolBar         : array[0..1] of string = ('View','ViewToolBar');
-  CViewStudyPanel      : array[0..1] of string = ('View','ViewStudyPanel');
-  CViewStudyPanelSep   : array[0..1] of string = ('View','ViewStudyPanelSep');
-  CViewReset           : array[0..1] of string = ('View','ViewReset');
+  CViewToolBar         : array[0..1] of WideString = ('View','ViewToolBar');
+  CViewStudyPanel      : array[0..1] of WideString = ('View','ViewStudyPanel');
+  CViewStudyPanelSep   : array[0..1] of WideString = ('View','ViewStudyPanelSep');
+  CViewReset           : array[0..1] of WideString = ('View','ViewReset');
 
   // Help menu items.
-  CHelpContents             : array[0..1] of string = ('Help','HelpContents');
-  CHelpReadMe               : array[0..1] of string = ('Help','ReadMe');
-  CHelpReleaseNote          : array[0..1] of string = ('Help','ReleaseNote');
-  CHelpContentsSep1         : array[0..1] of string = ('Help','HelpContentsSep');
-//  CHelpUserManual           : array[0..1] of string = ('Help','HelpUserManual');
-  CHelpExampleFile          : array[0..1] of string = ('Help','HelpExampleFiles');
-  CHelpManualSep            : array[0..1] of string = ('Help','HelpManualSep');
-  CHelpAbout                : array[0..1] of string = ('Help','HelpAbout');
-  CHelpWhatIsThis           : array[0..1] of string = ('Help','HelpWhatIsThis');
-  CHelpOpenFile             : array[0..1] of string = ('Help','HelpOpenFile');
+  CHelpContents             : array[0..1] of WideString = ('Help','HelpContents');
+  CHelpReadMe               : array[0..1] of WideString = ('Help','ReadMe');
+  CHelpReleaseNote          : array[0..1] of WideString = ('Help','ReleaseNote');
+  CHelpContentsSep1         : array[0..1] of WideString = ('Help','HelpContentsSep');
+//  CHelpUserManual           : array[0..1] of WideString = ('Help','HelpUserManual');
+  CHelpExampleFile          : array[0..1] of WideString = ('Help','HelpExampleFiles');
+  CHelpManualSep            : array[0..1] of WideString = ('Help','HelpManualSep');
+  CHelpAbout                : array[0..1] of WideString = ('Help','HelpAbout');
+  CHelpWhatIsThis           : array[0..1] of WideString = ('Help','HelpWhatIsThis');
+  CHelpOpenFile             : array[0..1] of WideString = ('Help','HelpOpenFile');
 
 
 procedure TMainFormMenuItemManager.CreateMemberObjects;

@@ -42,7 +42,7 @@ uses
   UErrorHandlingOperations;
 
 const
-  CChangeParameter : array[0..1] of string = ('View','CLParameter');
+  CChangeParameter : array[0..1] of WideString = ('View','CLParameter');
 
 procedure TChangeMenuItemManager.AddMenuItems;
 const OPNAME = 'TChangeMenuItemManager.AddMenuItems';

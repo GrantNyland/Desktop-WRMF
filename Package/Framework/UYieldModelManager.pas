@@ -1,5 +1,5 @@
 //
-//                                                         
+//
 //  UNIT      : Contains TYieldModelManager Class
 //  AUTHOR    : Dziedzi Ramulondi(PDNA)
 //  DATE      : 04/12/2001
@@ -119,7 +119,7 @@ type
     function LoadStudyMetaData: boolean;
     function LoadIFRSiteData: boolean;
     function LoadFieldFileReferencesData: Boolean;virtual;
-    
+
     function InitialiseYearsInAnalysisFromParamDFile: boolean; virtual;
     function ImportParamAndPathsFile: boolean; virtual;
     function AddTreeViewsSubNodes: boolean; virtual;
@@ -274,10 +274,10 @@ type
     function DoValidateModelData: boolean;
     function DoGenerateSystemConfigDataFiles : Boolean;
     function DoRunModel: WordBool; safecall;
-    function DoRunStorageVsYield(AReservoirNumber: Integer; 
-                                 const AStartingStorageCommaText: WideString; 
-                                 var AMinTargetDraftCommaText: WideString; 
-                                 var AMaxTargetDraftCommaText: WideString; 
+    function DoRunStorageVsYield(AReservoirNumber: Integer;
+                                 const AStartingStorageCommaText: WideString;
+                                 var AMinTargetDraftCommaText: WideString;
+                                 var AMaxTargetDraftCommaText: WideString;
                                  var AYieldCommaText: WideString): WordBool; safecall;
     function DoExportAllFilesAndRunModel(ASilent: WordBool): WordBool; safecall;
     function GetYieldChannelYield: Double; safecall;
@@ -613,7 +613,6 @@ begin
 
     if Assigned(FTimeSeriesComparitorManager) then
       Result := Result and FTimeSeriesComparitorManager.Initialise;
-
 
     if Assigned(FAppModules.MainForm()) then
         FAppModules.MainForm.ApplyPreviousTabIndex;
@@ -2433,7 +2432,7 @@ begin
         if Result then
           DeleteTabSheetTreeNode(lNode);
         SetSystemMenuState;
-      end;  
+      end;
     end;
   except on E: Exception do HandleError(E, OPNAME) end;
 end;
@@ -5492,7 +5491,7 @@ var
   lIrrigationArea     : IIrrigationArea;
   lIrrigationBlock    : IIrrigationBlock;
   lWetland            : IWetland;
-  lYMDemandCentre     : IYMDemandCentre;  
+  lYMDemandCentre     : IYMDemandCentre;
   lPowerPlant         : IPowerPlant;
   lFieldProperty      : TAbstractFieldProperty;
   lKeyValue           : string;
@@ -6354,7 +6353,7 @@ begin
           begin
             lPenalty.ReservoirPenaltyValueByIndex[lZoneIdx] := StrToFloat(ANewValue);
             Result := TRUE;
-          end;  
+          end;
         except
         end;
       end;
@@ -6728,7 +6727,7 @@ begin
       end
       else
         TYieldModelMenuItemManager(FModelMenuItemManager).TabHasChanged(FALSE);
-    end;    
+    end;
     inherited;
   except on E: Exception do HandleError(E, OPNAME); end;
 end;

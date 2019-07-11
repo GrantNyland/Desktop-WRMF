@@ -49,15 +49,15 @@ uses
   UErrorHandlingOperations;
 
 const
-  CModel:                  array[0..0] of string = ('Model');
-  CValidateFiles:          array[0..1] of string = ('Model','ValidateFiles');
-  CExportFiles:            array[0..1] of string = ('Model','ExportFiles');
-  CImportFiles:            array[0..1] of string = ('Model','ImportFiles');
-  CClearModelData:         array[0..1] of string = ('Model','ClearModelData');
-  CRunModel:               array[0..1] of string = ('Model','RunModel');
+  CModel:                  array[0..0] of WideString = ('Model');
+  CValidateFiles:          array[0..1] of WideString = ('Model','ValidateFiles');
+  CExportFiles:            array[0..1] of WideString = ('Model','ExportFiles');
+  CImportFiles:            array[0..1] of WideString = ('Model','ImportFiles');
+  CClearModelData:         array[0..1] of WideString = ('Model','ClearModelData');
+  CRunModel:               array[0..1] of WideString = ('Model','RunModel');
 
-  CViewResults:      array[0..1] of string = ('View','ViewResults');
-  CViewTabSheetsSep: array[0..1] of string = ('View','ViewTabSheetsSep');
+  CViewResults:      array[0..1] of WideString = ('View','ViewResults');
+  CViewTabSheetsSep: array[0..1] of WideString = ('View','ViewTabSheetsSep');
 
 { TYRCModelMenuItemManager }
 

@@ -51,11 +51,11 @@ uses
   UErrorHandlingOperations;
 
 const
-  CRWHSiteData                : array[0..0] of string = ('Data');
-  //CCreateRWHSite              : array[0..1] of string = ('Data','CreateIFRSite');
-  //CDeleteRWHSite              : array[0..1] of string = ('Data','DeleteIFRSite');
-  //CSaveRWHSite                : array[0..1] of string = ('Data','SaveIFRSite');
-  CHelpRWHUserGuide           : array[0..1] of string = ('Help','HelpRWHUserGuide');
+  CRWHSiteData                : array[0..0] of WideString = ('Data');
+  //CCreateRWHSite              : array[0..1] of WideString = ('Data','CreateIFRSite');
+  //CDeleteRWHSite              : array[0..1] of WideString = ('Data','DeleteIFRSite');
+  //CSaveRWHSite                : array[0..1] of WideString = ('Data','SaveIFRSite');
+  CHelpRWHUserGuide           : array[0..1] of WideString = ('Help','HelpRWHUserGuide');
 
 procedure RWHMenuItemManager.AddMenuItems;
 const OPNAME = 'RWHMenuItemManager.AddMenuItems';

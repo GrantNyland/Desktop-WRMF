@@ -43,8 +43,8 @@ uses
   UErrorHandlingOperations;
 
 const
-//  CChangeParameter : array[0..1] of string = ('Changes','CLParameter');
-  CMetaData : array[0..1] of string = ('View','MetaData');
+//  CChangeParameter : array[0..1] of WideString = ('Changes','CLParameter');
+  CMetaData : array[0..1] of WideString = ('View','MetaData');
 
 procedure TMetaDataMenuItemManager.AddMenuItems;
 const OPNAME = 'TMetaDataMenuItemManager.AddMenuItems';

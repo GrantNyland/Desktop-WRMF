@@ -385,18 +385,18 @@ type
     procedure SetStudyArea(ANewStudyArea: TAbstractStudyArea); virtual;
     procedure SelectStudyArea; virtual;
     procedure SelectStudyDetails(AData: TObject); virtual;
-    function CanApplicationClose : boolean; virtual;
+    function CanApplicationClose: boolean; virtual;
     procedure ApplicationIsClosing; virtual;
     function ViewData : TAbstractViewDataList; virtual;
-    function AddMenuItem(AMainMenuKeys: array of string; ASortWeight: integer; AEvent: integer = 0; AData: TObject = nil): TObject; virtual;
-    function SetMenuItem(AMainMenuKeys: array of string; AnAction: TMenuSetAction; AStatusReason: string = ''): boolean; virtual;
-    function SetMenuItemCaption(AMainMenuKeys: array of string; ACaption : string): boolean; virtual;
-    function GetMenuItemProperties(AMenuKeys: array of string) : TSetOfMenuAction; virtual;
+    function AddMenuItem(AMainMenuKeys: array of WideString; ASortWeight: integer; AEvent: integer = 0; AData: TObject = nil): TObject; virtual;
+    function SetMenuItem(AMainMenuKeys: array of WideString; AnAction: TMenuSetAction; AStatusReason: string = ''): boolean; virtual;
+    function SetMenuItemCaption(AMainMenuKeys: array of WideString; ACaption: WideString): Boolean; virtual;
+    function GetMenuItemProperties(AMenuKeys: array of WideString): TSetOfMenuAction; virtual;
     function LoadModel(AModel: TModelManagerType): boolean; virtual;
     function GetExportFilename(const ADefaultExt, AFilter: string; var AFileName: string): boolean; virtual;
     function LanguageHasChanged: boolean; virtual;
     function ProcessEvent(AEventType: integer; AData: TObject): boolean; virtual; abstract;
-    function GetModelViewItems(AModelName: string;AItems: TStringListOfStringLists): boolean; virtual;
+    function GetModelViewItems(AModelName: string; AItems: TStringListOfStringLists): boolean; virtual;
 
   end;
 
@@ -1362,7 +1362,7 @@ begin
   Result := nil;
 end;
 
-function TAppModules.AddMenuItem(AMainMenuKeys: array of string;
+function TAppModules.AddMenuItem(AMainMenuKeys: array of WideString;
   ASortWeight: integer; AEvent: integer; AData: TObject): TObject;
 const OPNAME = 'TAppModules.AddMenuItem';
 begin
@@ -1393,7 +1393,7 @@ begin
   Result := True;
 end;
 
-function TAppModules.SetMenuItem(AMainMenuKeys: array of string; AnAction: TMenuSetAction; AStatusReason: string = ''): boolean;
+function TAppModules.SetMenuItem(AMainMenuKeys: array of WideString; AnAction: TMenuSetAction; AStatusReason: string = ''): boolean;
 const OPNAME = 'TAppModules.SetMenuItem';
 begin
   Result := True;
@@ -1502,8 +1502,7 @@ const OPNAME = 'TAppModules.DoAbout';
 begin
 end;
 
-function TAppModules.SetMenuItemCaption(AMainMenuKeys: array of string;
-  ACaption: string): boolean;
+function TAppModules.SetMenuItemCaption(AMainMenuKeys: array of WideString; ACaption: WideString): Boolean;
 const OPNAME = 'TAppModules.SetMenuItemCaption';
 begin
   Result := true;
@@ -1522,8 +1521,7 @@ begin
   Result := true;
 end;}
 
-function TAppModules.GetMenuItemProperties(
-  AMenuKeys: array of string): TSetOfMenuAction;
+function TAppModules.GetMenuItemProperties(AMenuKeys: array of WideString): TSetOfMenuAction;
 const OPNAME = 'TAppModules.GetMenuItemProperties';
 begin
   Result := [];

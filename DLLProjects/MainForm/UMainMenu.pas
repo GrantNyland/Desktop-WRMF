@@ -19,20 +19,19 @@ uses
 type
   TMainMenu = class(TAbstractMainMenu)
   protected
-    function GetMenuKeysCommaText(AMenuKeys: array of string): string;
-    function FindMenuItem(AMenuKeys: array of string): TAbstractMenuItem;
-    function FindMenuItemChild(AParentMenuItem: TMenuItem; AKey: string): TAbstractMenuItem;
-    function FindMenuItemParent(AMainMenuKeys: array of string): TAbstractMenuItem;
-    function CreateCustomMenuItem(AParent: TMenuItem; AMenuCaptionKey: string; ASortWeight: integer;
+    function GetMenuKeysCommaText(AMenuKeys: array of WideString): WideString;
+    function FindMenuItem(AMenuKeys: array of WideString): TAbstractMenuItem;
+    function FindMenuItemChild(AParentMenuItem: TMenuItem; AKey: WideString): TAbstractMenuItem;
+    function FindMenuItemParent(AMainMenuKeys: array of WideString): TAbstractMenuItem;
+    function CreateCustomMenuItem(AParent: TMenuItem; AMenuCaptionKey: WideString; ASortWeight: integer;
                             AMenuEvent: integer = 0; AData: TObject = nil): TAbstractMenuItem;
     procedure DoMenuClick(ASender: TObject);
   public
-    function AddMenuItem(AMenuKeys: array of string;
-      ASortWeight: integer; AEvent: integer; AData: TObject): TAbstractMenuItem; override;
-    function SetMenuItem(AMenuKeys: array of string; AnAction: TMenuSetAction; AStatusReason: string): boolean; override;
-    function SetMenuItemCaption(AMenuKeys: array of string; ACaption: string): boolean; override;
-    function SetMenuItemHelpContext(AMenuKeys: array of string; AHelpContextID : THelpContext): boolean; override;
-    function GetMenuItemProperties(AMenuKeys: array of string) : TSetOfMenuAction; override;
+    function AddMenuItem(AMenuKeys: array of WideString; ASortWeight, AEvent: Integer; AData: TObject): TAbstractMenuItem; override;
+    function SetMenuItem(AMenuKeys: array of WideString; AnAction: TMenuSetAction; AStatusReason: WideString): Boolean; override;
+    function SetMenuItemCaption(AMenuKeys: array of WideString; ACaption: WideString): Boolean; override;
+    function SetMenuItemHelpContext(AMenuKeys: array of WideString; AHelpContextID: THelpContext): boolean; override;
+    function GetMenuItemProperties(AMenuKeys: array of WideString): TSetOfMenuAction; override;
   end;
 
 implementation
@@ -43,8 +42,8 @@ uses
   SysUtils,
   UErrorHandlingOperations;
 
-function TMainMenu.CreateCustomMenuItem(AParent: TMenuItem; AMenuCaptionKey: string; ASortWeight: integer;
-                                      AMenuEvent: integer; AData: TObject): TAbstractMenuItem;
+function TMainMenu.CreateCustomMenuItem(AParent: TMenuItem; AMenuCaptionKey: WideString; ASortWeight: Integer;
+                                      AMenuEvent: Integer; AData: TObject): TAbstractMenuItem;
 const OPNAME = 'TMainMenu.CreateMenuItem';
 var LIndex, LPlace: integer;
 begin
@@ -82,7 +81,7 @@ begin
   except on E: Exception do HandleError(E, OPNAME) end;
 end;
 
-function TMainMenu.GetMenuKeysCommaText(AMenuKeys: array of string): string;
+function TMainMenu.GetMenuKeysCommaText(AMenuKeys: array of WideString): WideString;
 const OPNAME = 'TMainMenu.GetMenuKeysCommaText';
 var LIndex: integer;
 begin
@@ -94,7 +93,7 @@ begin
   except on E: Exception do HandleError(E, OPNAME) end;
 end;
 
-function TMainMenu.FindMenuItem(AMenuKeys: array of string): TAbstractMenuItem;
+function TMainMenu.FindMenuItem(AMenuKeys: array of WideString): TAbstractMenuItem;
 const OPNAME = 'TMainMenu.FindMenuItem';
 var
   LIndex: integer;
@@ -114,7 +113,7 @@ begin
   except on E: Exception do HandleError(E, OPNAME) end;
 end;
 
-function TMainMenu.FindMenuItemChild(AParentMenuItem: TMenuItem; AKey: string): TAbstractMenuItem;
+function TMainMenu.FindMenuItemChild(AParentMenuItem: TMenuItem; AKey: WideString): TAbstractMenuItem;
 const OPNAME = 'TMainMenu.FindMenuItemChild';
 var LIndex: integer;
 begin
@@ -131,7 +130,7 @@ begin
   except on E: Exception do HandleError(E, OPNAME) end;
 end;
 
-function TMainMenu.FindMenuItemParent(AMainMenuKeys: array of string): TAbstractMenuItem;
+function TMainMenu.FindMenuItemParent(AMainMenuKeys: array of WideString): TAbstractMenuItem;
 const OPNAME = 'TMainMenu.FindMenuItemParent';
 var
   LIndex: integer;
@@ -151,46 +150,40 @@ begin
   except on E: Exception do HandleError(E, OPNAME) end;
 end;
 
-function TMainMenu.AddMenuItem(AMenuKeys: array of string;
-  ASortWeight: integer; AEvent: integer; AData: TObject): TAbstractMenuItem;
+function TMainMenu.AddMenuItem(AMenuKeys: array of WideString; ASortWeight, AEvent: Integer; AData: TObject): TAbstractMenuItem;
 const OPNAME = 'TMainMenu.AddMenuItem';
-var
-  LMenuItem: TAbstractMenuItem;
+var LMenuItem: TAbstractMenuItem;
 begin
   Result := nil;
   try
-    if Assigned(FindMenuItem(AMenuKeys)) then
+    if (Trim(AMenuKeys[0]) <> '') then
     begin
-      raise Exception.CreateFmt('Menu item already exists [%s].', [GetMenuKeysCommaText(AMenuKeys)]);
-    end
-    else
-    begin
-      if (Length(AMenuKeys) > 1) then
+      if Assigned(FindMenuItem(AMenuKeys)) then
       begin
-        LMenuItem := FindMenuItemParent(AMenuKeys);
-        if Assigned(LMenuItem) then
+        raise Exception.CreateFmt('Menu item already exists [%s] sort [%d] for event [%d].',
+                                  [GetMenuKeysCommaText(AMenuKeys),ASortWeight,AEvent]);
+      end else begin
+        if (Length(AMenuKeys) > 1) then
         begin
-          Result := CreateCustomMenuItem(LMenuItem, AMenuKeys[High(AMenuKeys)], ASortWeight, AEvent, AData);
-          // Result := True;
-        end
-        else
-        begin
-          raise Exception.CreateFmt('Parent menu item not created [%s].', [GetMenuKeysCommaText(AMenuKeys)]);
+          LMenuItem := FindMenuItemParent(AMenuKeys);
+          if Assigned(LMenuItem) then
+          begin
+            Result := CreateCustomMenuItem(LMenuItem, AMenuKeys[High(AMenuKeys)], ASortWeight, AEvent, AData);
+          end else begin
+            raise Exception.CreateFmt('Parent menu item not created [%s] sort [%d] for event [%d].',
+                                      [GetMenuKeysCommaText(AMenuKeys), ASortWeight, AEvent]);
+          end;
+        end else begin
+          Result := CreateCustomMenuItem(Items, AMenuKeys[High(AMenuKeys)], ASortWeight, AEvent, AData);
         end;
-      end
-      else
-      begin
-        Result := CreateCustomMenuItem(Items, AMenuKeys[High(AMenuKeys)], ASortWeight, AEvent, AData);
-        // Result := True;
       end;
     end;
   except on E: Exception do HandleError(E, OPNAME) end;
 end;
 
-function TMainMenu.SetMenuItem(AMenuKeys: array of string; AnAction: TMenuSetAction; AStatusReason: string): boolean;
+function TMainMenu.SetMenuItem(AMenuKeys: array of WideString; AnAction: TMenuSetAction; AStatusReason: WideString): Boolean;
 const OPNAME = 'TMainMenu.SetMenuItem';
-var
-  LMenuItem: TAbstractMenuItem;
+var LMenuItem: TAbstractMenuItem;
 begin
   Result := False;
   try
@@ -256,7 +249,7 @@ begin
   except on E: Exception do HandleError(E, OPNAME) end;
 end;
 
-function TMainMenu.SetMenuItemCaption(AMenuKeys: array of string; ACaption: string): boolean;
+function TMainMenu.SetMenuItemCaption(AMenuKeys: array of WideString; ACaption: WideString): Boolean;
 const OPNAME = 'TMainMenu.SetMenuItemCaption';
 var LMenuItem: TAbstractMenuItem;
 begin
@@ -274,8 +267,7 @@ begin
   except on E: Exception do HandleError(E, OPNAME) end;
 end;
 
-function TMainMenu.SetMenuItemHelpContext(AMenuKeys: array of string;
-  AHelpContextID : THelpContext): boolean;
+function TMainMenu.SetMenuItemHelpContext(AMenuKeys: array of WideString; AHelpContextID: THelpContext): Boolean;
 const OPNAME = 'TMainMenu.SetMenuItemHelpContext';
 var LMenuItem: TAbstractMenuItem;
 begin
@@ -292,11 +284,9 @@ begin
   except on E: Exception do HandleError(E, OPNAME) end;
 end;
 
-function TMainMenu.GetMenuItemProperties(
-  AMenuKeys: array of string): TSetOfMenuAction;
+function TMainMenu.GetMenuItemProperties(AMenuKeys: array of WideString): TSetOfMenuAction;
 const OPNAME = 'TMainMenu.GetMenuItemProperties';
-var
-  LMenuItem : TAbstractMenuItem;
+var LMenuItem: TAbstractMenuItem;
 begin
   Result := [];
   try

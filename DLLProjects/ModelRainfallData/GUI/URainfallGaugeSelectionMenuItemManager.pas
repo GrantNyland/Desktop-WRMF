@@ -24,24 +24,24 @@ uses
   Windows;
 
 const
-  CCreateReport            : array[0..1] of string = ('Data','RDCreateReport' );
-  CImportUserData          : array[0..1] of string = ('Data','RDImportUserData');
-  CClearUserData           : array[0..1] of string = ('Data','RDClearUserData');
-  CImportSawsDwafData      : array[0..1] of string = ('Data','RDImportSawsDwafData');
+  CCreateReport            : array[0..1] of WideString = ('Data','RDCreateReport' );
+  CImportUserData          : array[0..1] of WideString = ('Data','RDImportUserData');
+  CClearUserData           : array[0..1] of WideString = ('Data','RDClearUserData');
+  CImportSawsDwafData      : array[0..1] of WideString = ('Data','RDImportSawsDwafData');
 
-  CSelectionSepEnd         : array[0..1] of string = ('View','RDSelectionSepEnd');
-  CSelectUnSelectAll       : array[0..1] of string = ('View','RDSelectUnSelectAll');
-  CSelectUnSelect          : array[0..1] of string = ('View','RDSelectUnSelect');
-  CSelectFromSelectionFile : array[0..1] of string = ('View','RDFromSelectionFile');
-  CSelectByRectangle       : array[0..1] of string = ('View','RDSelectByRectangle');
-  CSelectByDistance        : array[0..1] of string = ('View','RDSelectByDistance');
-  CSelectByStationName     : array[0..1] of string = ('View','RDSelectByStationName');
-  CSelectByStationNumber   : array[0..1] of string = ('View','RDSelectByStationNumber');
-  CSelectToggle            : array[0..1] of string = ('View','RDOptions');
-  CSelectReplaceSelection  : array[0..2] of string = ('View','RDOptions','RDOptionsReplaceSelection');
-  CSelectUpdateGISLive     : array[0..2] of string = ('View','RDOptions','RDOptionsUpdateGISLive');
-  CViewStatusBar           : array[0..1] of string = ('View','RDViewStatusBar');
-  CToggleTree              : array[0..1] of string = ('View','RDGaugeToggleTree');
+  CSelectionSepEnd         : array[0..1] of WideString = ('View','RDSelectionSepEnd');
+  CSelectUnSelectAll       : array[0..1] of WideString = ('View','RDSelectUnSelectAll');
+  CSelectUnSelect          : array[0..1] of WideString = ('View','RDSelectUnSelect');
+  CSelectFromSelectionFile : array[0..1] of WideString = ('View','RDFromSelectionFile');
+  CSelectByRectangle       : array[0..1] of WideString = ('View','RDSelectByRectangle');
+  CSelectByDistance        : array[0..1] of WideString = ('View','RDSelectByDistance');
+  CSelectByStationName     : array[0..1] of WideString = ('View','RDSelectByStationName');
+  CSelectByStationNumber   : array[0..1] of WideString = ('View','RDSelectByStationNumber');
+  CSelectToggle            : array[0..1] of WideString = ('View','RDOptions');
+  CSelectReplaceSelection  : array[0..2] of WideString = ('View','RDOptions','RDOptionsReplaceSelection');
+  CSelectUpdateGISLive     : array[0..2] of WideString = ('View','RDOptions','RDOptionsUpdateGISLive');
+  CViewStatusBar           : array[0..1] of WideString = ('View','RDViewStatusBar');
+  CToggleTree              : array[0..1] of WideString = ('View','RDGaugeToggleTree');
 
 type
   TRainfallMenuState = (

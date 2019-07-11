@@ -64,26 +64,26 @@ uses
   UErrorHandlingOperations;
 
 const
-  CTimeComparitorSep               : array[0..1] of string = ('View','TimeComparitorSep');
+  CTimeComparitorSep               : array[0..1] of WideString = ('View','TimeComparitorSep');
 
-  CTimeComparitorCreateChart       : array[0..1] of string = ('View','TimeComparitorCreateChart');
-  CTimeComparitorRenameChart       : array[0..1] of string = ('View','TimeComparitorRenameChart');
-  CTimeComparitorDeleteChart       : array[0..1] of string = ('View','TimeComparitorDeleteChart');
-  CTimeComparitorAddChart          : array[0..1] of string = ('View','TimeComparitorAddChart');
-  CTimeComparitorRemoveChart       : array[0..1] of string = ('View','TimeComparitorRemoveChart');
+  CTimeComparitorCreateChart       : array[0..1] of WideString = ('View','TimeComparitorCreateChart');
+  CTimeComparitorRenameChart       : array[0..1] of WideString = ('View','TimeComparitorRenameChart');
+  CTimeComparitorDeleteChart       : array[0..1] of WideString = ('View','TimeComparitorDeleteChart');
+  CTimeComparitorAddChart          : array[0..1] of WideString = ('View','TimeComparitorAddChart');
+  CTimeComparitorRemoveChart       : array[0..1] of WideString = ('View','TimeComparitorRemoveChart');
 
-  CTimeComparitorCreateView        : array[0..1] of string = ('View','TimeComparitorCreateView');
-  CTimeComparitorRenameView        : array[0..1] of string = ('View','TimeComparitorRenameView');
-  CTimeComparitorDeleteView        : array[0..1] of string = ('View','TimeComparitorDeleteView');
+  CTimeComparitorCreateView        : array[0..1] of WideString = ('View','TimeComparitorCreateView');
+  CTimeComparitorRenameView        : array[0..1] of WideString = ('View','TimeComparitorRenameView');
+  CTimeComparitorDeleteView        : array[0..1] of WideString = ('View','TimeComparitorDeleteView');
 
-  CTimeComparitorAddSeries         : array[0..1] of string = ('View','TimeComparitorAddSeries');
-  CTimeComparitorRemoveSeries      : array[0..1] of string = ('View','TimeComparitorRemoveSeries');
-  CTimeComparitorSeriesColor       : array[0..1] of string = ('View','TimeComparitorSeriesColor');
+  CTimeComparitorAddSeries         : array[0..1] of WideString = ('View','TimeComparitorAddSeries');
+  CTimeComparitorRemoveSeries      : array[0..1] of WideString = ('View','TimeComparitorRemoveSeries');
+  CTimeComparitorSeriesColor       : array[0..1] of WideString = ('View','TimeComparitorSeriesColor');
 
-  CTimeComparitorChartName         : array[0..1] of string = ('View','TimeComparitorChartName');
-  CTimeComparitorChartLegendDialog : array[0..1] of string = ('View','TimeComparitorShowChartLegendDialog');
-  CTimeComparitorSaveView          : array[0..1] of string = ('View','TimeComparitorSaveView');
-  CTSCToggleIndividualSeries       : array[0..1] of string = ('View','TimeComparitorToggleIndividualSeries');
+  CTimeComparitorChartName         : array[0..1] of WideString = ('View','TimeComparitorChartName');
+  CTimeComparitorChartLegendDialog : array[0..1] of WideString = ('View','TimeComparitorShowChartLegendDialog');
+  CTimeComparitorSaveView          : array[0..1] of WideString = ('View','TimeComparitorSaveView');
+  CTSCToggleIndividualSeries       : array[0..1] of WideString = ('View','TimeComparitorToggleIndividualSeries');
 
 
 { TTimeSeriesComparitorMenuItemManager }

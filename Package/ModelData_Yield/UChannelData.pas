@@ -392,7 +392,7 @@ uses
   UChannelPenaltyStructureDataLoadAgent;
 
 const
-  CCreateSpecifiedInflowFeature : array[0..2] of string = ('Data','ChannelFeatures','CreateSpecifiedInflowFeature');
+  CCreateSpecifiedInflowFeature : array[0..2] of WideString = ('Data','ChannelFeatures','CreateSpecifiedInflowFeature');
 
 {******************************************************************************}
 {* TChannelPenalty                                                            *}
@@ -784,7 +784,7 @@ begin
 
     if (AParamField = 'Penalty') then
     begin
-      if (lFormatStr = '') then 
+      if (lFormatStr = '') then
         Result := FloatToStr(FPenaltyValues[StrToInt(AFieldIndex)])
       else
         Result := Format(lFormatStr, [FPenaltyValues[StrToInt(AFieldIndex)]]);
@@ -2887,7 +2887,7 @@ begin
   try
     if (FTimeControl <> nil) and (FTimeControlList.Count > 0) then
       FTimeControlList.Remove(FTimeControl);
-    Result := True;  
+    Result := True;
   except on E: Exception do HandleError(E, OPNAME); end;
 end;
 

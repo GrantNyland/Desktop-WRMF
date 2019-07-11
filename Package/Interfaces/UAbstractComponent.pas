@@ -196,11 +196,11 @@ type
     function Initialise: boolean; virtual;
     function SaveState: boolean; virtual;
     function ResetState: boolean; virtual;
-    function AddMenuItem(AMenuKeys: array of string; ASortWeight: integer; AEvent: integer; AData: TObject): TAbstractMenuItem; virtual; abstract;
-    function SetMenuItem(AMenuKeys: array of string; AnAction: TMenuSetAction; AStatusReason: string): boolean; virtual; abstract;
-    function SetMenuItemCaption(AMenuKeys: array of string; ACaption: string): boolean; virtual;
-    function SetMenuItemHelpContext(AMenuKeys: array of string; AHelpContextID : THelpContext): boolean; virtual;
-    function GetMenuItemProperties(AMenuKeys: array of string) : TSetOfMenuAction; virtual;
+    function AddMenuItem(AMenuKeys: array of WideString; ASortWeight, AEvent: Integer; AData: TObject): TAbstractMenuItem; virtual; abstract;
+    function SetMenuItem(AMenuKeys: array of WideString; AnAction: TMenuSetAction; AStatusReason: WideString): Boolean; virtual; abstract;
+    function SetMenuItemCaption(AMenuKeys: array of WideString; ACaption: WideString): Boolean; virtual;
+    function SetMenuItemHelpContext(AMenuKeys: array of WideString; AHelpContextID: THelpContext): Boolean; virtual;
+    function GetMenuItemProperties(AMenuKeys: array of WideString): TSetOfMenuAction; virtual;
   end;
 
   TAbstractToolBar = class(TAbstractPanel)
@@ -1317,8 +1317,7 @@ begin
   except on E: Exception do HandleError(E, OPNAME) end;
 end;
 
-function TAbstractMainMenu.GetMenuItemProperties(
-  AMenuKeys: array of string): TSetOfMenuAction;
+function TAbstractMainMenu.GetMenuItemProperties(AMenuKeys: array of WideString): TSetOfMenuAction;
 const OPNAME = 'TAbstractMainMenu.GetMenuItemProperties';
 begin
   Result := [];
@@ -1365,7 +1364,7 @@ begin
   except on E: Exception do HandleError(E, OPNAME) end;
 end;
 
-function TAbstractMainMenu.SetMenuItemCaption(AMenuKeys: array of string; ACaption: string): boolean;
+function TAbstractMainMenu.SetMenuItemCaption(AMenuKeys: array of WideString; ACaption: WideString): Boolean;
 const OPNAME = 'TAbstractMainMenu.SetMenuItemCaption';
 begin
   Result := False;
@@ -1374,8 +1373,7 @@ begin
   except on E: Exception do HandleError(E, OPNAME) end;
 end;
 
-function TAbstractMainMenu.SetMenuItemHelpContext(
-  AMenuKeys: array of string; AHelpContextID: THelpContext): boolean;
+function TAbstractMainMenu.SetMenuItemHelpContext(AMenuKeys: array of WideString; AHelpContextID: THelpContext): Boolean;
 const OPNAME = 'SetMenuItemHelpContext';
 begin
   Result := False;
@@ -2043,9 +2041,9 @@ begin
   Printer.BeginDoc;
 
   LPageWidth := GetDeviceCaps(Printer.Canvas.Handle, PHYSICALWIDTH) /
-    GetDeviceCaps(Printer.Canvas.Handle, LOGPIXELSX) * 25.4; 
-  LPageHeight := GetDeviceCaps(Printer.Canvas.Handle, PHYSICALHEIGHT) / 
-    GetDeviceCaps(Printer.Canvas.Handle, LOGPIXELSY) * 25.4; 
+    GetDeviceCaps(Printer.Canvas.Handle, LOGPIXELSX) * 25.4;
+  LPageHeight := GetDeviceCaps(Printer.Canvas.Handle, PHYSICALHEIGHT) /
+    GetDeviceCaps(Printer.Canvas.Handle, LOGPIXELSY) * 25.4;
 
   LVertSize := Trunc(LPageHeight) * 10;
   LHorzSize := Trunc(LPageWidth) * 10;
@@ -2301,9 +2299,9 @@ const
 
             StrPCopy(S, Text), Length(Text), nil);
 
-      end; 
+      end;
 
-    end; 
+    end;
 
   end;
 

@@ -45,8 +45,8 @@ uses
   UErrorHandlingOperations;
 
 const
-  COutputComparitorSep               : array[0..1] of string = ('View','OutputComparitorSep');
-  COutputComparitorChartLegendDialog : array[0..1] of string = ('View','OutputComparitorShowChartLegendDialog');
+  COutputComparitorSep               : array[0..1] of WideString = ('View','OutputComparitorSep');
+  COutputComparitorChartLegendDialog : array[0..1] of WideString = ('View','OutputComparitorShowChartLegendDialog');
 
 { TOutputComparitorMenuItemManager }
 

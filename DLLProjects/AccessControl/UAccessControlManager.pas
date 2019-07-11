@@ -72,10 +72,10 @@ uses
 { TAccessControlMenuItemManager }
 
 const
-  CUserAdministration : array[0..1] of string = ('File','UserAdministration');
-  CLogOn              : array[0..1] of string = ('File','LogOn');
-  CLogOff             : array[0..1] of string = ('File','LogOff');
-  CLogOffSep          : array[0..1] of string = ('File','LogOffSep');
+  CUserAdministration : array[0..1] of WideString = ('File','UserAdministration');
+  CLogOn              : array[0..1] of WideString = ('File','LogOn');
+  CLogOff             : array[0..1] of WideString = ('File','LogOff');
+  CLogOffSep          : array[0..1] of WideString = ('File','LogOffSep');
 
 procedure TAccessControlMenuItemManager.AddMenuItems;
 const OPNAME = 'TAccessControlMenuItemManager.AddMenuItems';
@@ -205,7 +205,7 @@ begin
       finally
         LUsersDataSet.Free;
       end;
-    end;  
+    end;
   except on E: Exception do HandleError(E, OPNAME) end;
 end;
 

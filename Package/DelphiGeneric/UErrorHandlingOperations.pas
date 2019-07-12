@@ -29,18 +29,18 @@ type
 //
 // A set of operations that assist with error handling.
 //
-procedure HandleError(AException: Exception; OPNAME: string; AShowDialog: boolean = True);
-procedure HandleErrorFunction(AException: Exception; OPNAME: string; var AResult: boolean; AShowDialog: boolean = True);
-procedure LogSilentError(AMessage, OPNAME: string); overload;
-procedure LogSilentError(AMessage: string; AData: array of const; OPNAME: string); overload;
-procedure ReportError(AMessage, OPNAME: string); overload;
-procedure ReportError(AMessage: string; AData: array of const; OPNAME: string); overload;
-function OpenTheFileForWrite(AFilename: string; var AFileStream: TFileStream; ALogSilent, AAlwaysCreate: boolean; ALocation: string): boolean;
-function AppendLine(AFilename, ARecord, OPNAME: string; ALogSilent: boolean = False): boolean;
-function LogToFile(AFileName: string; ANewRecords: TStrings): boolean; overload;
-function LogToFile(AFileName, ANewRecord: string): boolean; overload;
-function GetLastErrorText: string;
-function GetSystemErrorText(ASystemError: integer): string;
+procedure HandleError(AException: Exception; OPNAME: WideString; AShowDialog: Boolean = True);
+procedure HandleErrorFunction(AException: Exception; OPNAME: WideString; var AResult: Boolean; AShowDialog: Boolean = True);
+procedure LogSilentError(AMessage, OPNAME: WideString); overload;
+procedure LogSilentError(AMessage: WideString; AData: array of const; OPNAME: WideString); overload;
+procedure ReportError(AMessage, OPNAME: WideString); overload;
+procedure ReportError(AMessage: WideString; AData: array of const; OPNAME: WideString); overload;
+function OpenTheFileForWrite(AFilename: WideString; var AFileStream: TFileStream; ALogSilent, AAlwaysCreate: Boolean; ALocation: WideString): Boolean;
+function AppendLine(AFilename, ARecord, OPNAME: WideString; ALogSilent: Boolean = False): Boolean;
+function LogToFile(AFileName: WideString; ANewRecords: TStrings): Boolean; overload;
+function LogToFile(AFileName, ANewRecord: WideString): Boolean; overload;
+function GetLastErrorText: WideString;
+function GetSystemErrorText(ASystemError: Integer): WideString;
 function CleanString(AString: string; AAllowedChars: TSetOfChar): string;
 function StripString(AString: string; ACharsNotAllowed: TSetOfChar): string;
 function CompactStr(AString: string): string;
@@ -175,8 +175,8 @@ end;
 //
 // Adds error trapping to the internal function.
 //
-function OpenTheFileForWrite(AFilename: string; var AFileStream: TFileStream;
-                             ALogSilent, AAlwaysCreate: boolean; ALocation: string): boolean;
+function OpenTheFileForWrite(AFilename: WideString; var AFileStream: TFileStream;
+                             ALogSilent, AAlwaysCreate: Boolean; ALocation: WideString): Boolean;
 begin
   Result := False;
   try
@@ -194,7 +194,7 @@ end;
 //
 //  Returns True if successful. Returns False if an exception is raised.
 //
-function AppendLine(AFilename, ARecord, OPNAME: string; ALogSilent: boolean = False): boolean;
+function AppendLine(AFilename, ARecord, OPNAME: WideString; ALogSilent: Boolean = False): Boolean;
 var LFileStream: TFileStream;
 begin
   Result := False;
@@ -242,7 +242,7 @@ end;
 // There is no error logging because this function is used by the error logging.
 // An exception is raised if an error occurs.
 //
-function LogToFile(AFileName, ANewRecord: string): boolean;
+function LogToFile(AFileName, ANewRecord: WideString): Boolean;
 const OPNAME = 'UErrorHandlingOperations.LogToFile';
 var
   LLogFile: TStringList;
@@ -308,11 +308,11 @@ end;
 //
 // Converts the string list to a string and calls the main function.
 //
-function LogToFile(AFileName: string; ANewRecords: TStrings): boolean;
+function LogToFile(AFileName: WideString; ANewRecords: TStrings): Boolean;
 const OPNAME = 'UErrorHandlingOperations.LogToFile';
 var
-  LIndex: integer;
-  LNowStamp: string;
+  LIndex: Integer;
+  LNowStamp: WideString;
   LLogFile: TStringList;
 begin
   Result := False;
@@ -347,10 +347,10 @@ end;
 //
 // Handles a run time error by displaying an error dialog and logging the error.
 //
-procedure LogError(AMessage, OPNAME: string; AShowDialog: boolean = True);
+procedure LogError(AMessage, OPNAME: WideString; AShowDialog: Boolean = True);
 var
   LModule: array[0..100] of char;
-  LText, LVersion: string;
+  LText, LVersion: WideString;
 begin
   try
 
@@ -400,7 +400,7 @@ end;
 //
 // Handles a run time error by displaying an error dialog and logging the error.
 //
-procedure HandleError(AException: Exception; OPNAME: string; AShowDialog: boolean = True);
+procedure HandleError(AException: Exception; OPNAME: WideString; AShowDialog: Boolean = True);
 begin
   LogError(AException.Message, OPNAME, AShowDialog);
 end;
@@ -409,8 +409,8 @@ end;
 //
 // Forces the Result to False.
 //
-procedure HandleErrorFunction(AException: Exception; OPNAME: string;
-                              var AResult: boolean; AShowDialog: boolean = True);
+procedure HandleErrorFunction(AException: Exception; OPNAME: WideString;
+                              var AResult: Boolean; AShowDialog: Boolean = True);
 begin
   AResult := False;
   HandleError(AException, OPNAME, AShowDialog);
@@ -420,11 +420,11 @@ end;
 //
 // Logs a silent error.
 //
-procedure LogSilentError(AMessage, OPNAME: string);
+procedure LogSilentError(AMessage, OPNAME: WideString);
 begin
   LogError(AMessage, OPNAME, False)
 end;
-procedure LogSilentError(AMessage: string; AData: array of const; OPNAME: string);
+procedure LogSilentError(AMessage: WideString; AData: array of const; OPNAME: WideString);
 begin
   LogError(Format(AMessage, AData), OPNAME, False)
 end;
@@ -432,11 +432,11 @@ end;
 //
 // Shows the dialog and logs to file.
 //
-procedure ReportError(AMessage, OPNAME: string);
+procedure ReportError(AMessage, OPNAME: WideString);
 begin
   LogError(AMessage, OPNAME, True);
 end;
-procedure ReportError(AMessage: string; AData: array of const; OPNAME: string);
+procedure ReportError(AMessage: WideString; AData: array of const; OPNAME: WideString);
 begin
   LogError(Format(AMessage, AData), OPNAME, True)
 end;
@@ -445,7 +445,7 @@ end;
 //
 // Returns the text from GetLastError().
 //
-function GetLastErrorText: string;
+function GetLastErrorText: WideString;
 var LSystemError: Pointer;
 begin
 
@@ -477,7 +477,7 @@ end;
 //
 // Returns the text from the system for the passed error code.
 //
-function GetSystemErrorText(ASystemError: integer): string;
+function GetSystemErrorText(ASystemError: Integer): WideString;
 var LSystemError: Pointer;
 begin
 

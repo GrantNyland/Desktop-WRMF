@@ -240,7 +240,7 @@ begin
   AAdd('ViewData','ReviewMine','Mining');
   AAdd('ViewData','Groundwater','Groundwater');
   AAdd('ViewData','ReviewGroundwater','Groundwater');
-  AAdd('ViewData','GroundwaterSubcatchment','Groundwater SubCatchment');
+  AAdd('ViewData','GroundwaterSubcatchment','Mine Sub-catchments');
 
   AAdd('ViewData','NetworkMasterElementProp','Master Element Properties');
   AAdd('ViewData','NetworkVisualiser','Network Visualiser');

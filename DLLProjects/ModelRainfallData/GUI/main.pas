@@ -3,14 +3,14 @@ unit main;
 interface
 
 uses
-                                                          
+
   // Delphi
   Windows,
   SysUtils,
   Classes,
-  Controls,                                
+  Controls,
   Forms,
-  Dialogs,                                         
+  Dialogs,
   Menus,
   ExtCtrls,
   StdCtrls,
@@ -24,8 +24,8 @@ uses
   UAbstractGaugeList,
   UMenuItemManager,
   URaingaugeGISPanel,
-  URGProgressDialog,   
-  USearchDialog;
+  URGProgressDialog,
+  USearchDialog, System.ImageList;
 
 type
   TFrmMain = class(TForm)
@@ -404,7 +404,7 @@ begin
       begin
         FGaugeList.SelectAll;
         SelectionHasChanged(nil);
-      end; 
+      end;
   except on E : Exception do HandleError(E,OPNAME); end;
 end;
 
@@ -1057,7 +1057,7 @@ begin
   try
     FPanelForTreeView.Parent := Self;
     FPanelForSelectedList.Parent := Self;
-    FPanelForGISViewer.Parent := Self;                   
+    FPanelForGISViewer.Parent := Self;
 
     FSplTreeView.Parent := Self;
     FSplSelectedGauges.Parent := Self;

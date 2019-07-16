@@ -276,7 +276,7 @@ begin
           GrdMothlyData.AddFieldProperty(FAppModules.FieldProperties.FieldProperty('MineLakeEvaporationFactors'));
 
         MineMonthlyDataDialog.GrdMothlyData.Cells[0,0] := FAppModules.Language.GetString('GridHeading.Month');
-        MineMonthlyDataDialog.GrdMothlyData.Cells[1,0]   := 'Mine' + ' ' + EvaporationType + ' ' + 'Evaporation';
+        MineMonthlyDataDialog.GrdMothlyData.Cells[1,0]   := {'Mine' + ' ' + }EvaporationType + ' ' + 'Evaporation Conversion Factors';
 
         for LCol := 1 to GrdMothlyData.ColCount-1 do
         begin
@@ -310,7 +310,7 @@ var
 begin
   try
     LRunConfigurationData := TYieldModelDataObject(FAppModules.Model.ModelData).RunConfigurationData;
-    MineMonthlyDataDialog.ChtMonthlyData.Title.Text.Text := 'Mine '+ FEvaporationType + ' Evaporation';
+    MineMonthlyDataDialog.ChtMonthlyData.Title.Text.Text := {'Mine '+ }FEvaporationType + ' Evaporation Conversion Factors';
     MineMonthlyDataDialog.ChtMonthlyData.AxisVisible := True;
     MineMonthlyDataDialog.ChtMonthlyData.ClipPoints := True;
     MineMonthlyDataDialog.ChtMonthlyData.Frame.Visible := True;

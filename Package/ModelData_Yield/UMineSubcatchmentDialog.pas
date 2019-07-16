@@ -129,9 +129,9 @@ begin
     FCatchmentRefNrLabel.Caption := FAppModules.Language.GetString('TField.NrOfGroundwaterSubCatchment');
     FMinimunGroundwaterFlowVolumeGrid.Cells[0,0] := 'Catchment ref name';
     FMinimunGroundwaterFlowVolumeGrid.Cells[1,0] := 'Proportion antecedent flow';
-    FMinimunGroundwaterFlowVolumeGrid.Cells[2,0] := 'Groundwater flow volume(million m3)';
+    FMinimunGroundwaterFlowVolumeGrid.Cells[2,0] := 'Groundwater flow at start(million m³)';
     FMinimunGroundwaterFlowVolumeGrid.Cells[3,0] := 'Antecedent runoff decay factor';
-    FMinimunGroundwaterFlowVolumeGrid.Cells[4,0] := 'Monthly flow volume(million m3)';
+    FMinimunGroundwaterFlowVolumeGrid.Cells[4,0] := 'Minimum Groundwater Flow(million m³)';
     Result := True;
   except on E: Exception do HandleError(E, OPNAME) end;
 end;

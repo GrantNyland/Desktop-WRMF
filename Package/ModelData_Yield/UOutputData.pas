@@ -1900,7 +1900,7 @@ begin
     try
       ADataContainer := '';
       Result := GetBlockData(LData,ADataType,ANetworkElementID,LErrors);
-      AErrors := LErrors; 
+      AErrors := LErrors;
       ADataContainer := LData.CommaText;
     finally
       FreeandNil(LData);
@@ -2075,7 +2075,7 @@ begin
   try
     AErrors := '';
     LYieldModelData := (FAppModules.Model.ModelData as IYieldModelData);
-    
+
     if(FDBItemsList.Count = 0) then
     begin
       AErrors := FAppModules.Language.GetString('ErrorString.ChannelSUMOutFileNotImported')
@@ -2925,7 +2925,8 @@ var
   LAverage} : double;
   LDemand,
   LChannelDemandValues : TStringList;
-  LApplySensitivity: boolean;
+  LApplySensitivity,
+  LFoundDeficit : boolean;
 begin
   Result := False;
   try
@@ -2948,6 +2949,7 @@ begin
           LDemand.CommaText := LChannelDemandValues[LCount];
           LCompliance.Clear;
           LTotal := 0.0;
+          LFoundDeficit := False;
           for LIndex := 0 to 13 do
           begin
             if(LIndex = 0) then
@@ -2981,6 +2983,7 @@ begin
             if not (LApplySensitivity) and (LValue < LMonthFactor) then
             begin
               LDeficits.Strings[LIndex] := FormatFloat('######0.000',LNewValue);
+              LFoundDeficit := True;
               LCompliance.Add('Y');
             end
             else
@@ -2993,7 +2996,7 @@ begin
           AComplyContainer.Add(LCompliance.CommaText);
           ADataContainer.Strings[LCount] := LDeficits.CommaText;
         end;
-      end;  
+      end;
       Result := True;
     finally
       LDeficits.Free;
@@ -3054,7 +3057,7 @@ begin
             LInputDemands.CommaText  := LDemandFileData.Strings[LIndex];
             LInputYear  := StrToInt(LInputDemands.Strings[0]);
             LOutputYear := StrToInt(LOutputDemands.Strings[0]);
-            
+
             while (LInputYear < LOutputYear) do
             begin
               LIndex := LIndex + 1;
@@ -3097,7 +3100,7 @@ begin
                     LValue := LInputValue - LOutputValue
                   else
                     LValue := LOutputValue - LInputValue;
-                    
+
                   LOutputDemands.Strings[LCount2] := FormatFloat('######0.000',LValue);
                   LDeficits.Add('N');
                 end;
@@ -4875,7 +4878,7 @@ begin
           LStartYear := LStartYear + 1;
           AChannelDemandValues.Add(LLineData.CommaText);
         end;
-      end;  
+      end;
       Result := True;
     finally
       FreeAndNil(LLineData);

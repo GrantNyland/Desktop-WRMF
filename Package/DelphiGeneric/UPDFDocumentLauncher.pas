@@ -11,15 +11,15 @@ unit UPDFDocumentLauncher;
 interface
 
 uses
-  Vcl.Forms, AcroPDFLib_TLB;
+  Vcl.Forms , ShellApi;
 
 type
   TPDFDocumentLauncher = class(TObject)
   protected
-    FMainForm: TForm;
-    FPDF: TAcroPDF;
+    //FMainForm: TForm;
+    //FPDF: TAcroPDF;
     FFileName: string;
-    procedure GotoPageNumber(APageNumber: integer);
+    //procedure GotoPageNumber(APageNumber: integer);
   public
     constructor Create;
     destructor Destroy; override;
@@ -32,6 +32,7 @@ type
 implementation
 
 uses
+  Winapi.Windows,
   SysUtils,
   Vcl.Controls,
   UWaitScreen,
@@ -78,8 +79,8 @@ const OPNAME = 'TPDFDocumentLauncher.Create';
 begin
   try
     inherited Create;
-    FMainForm := nil;
-    FPDF      := nil;
+    //FMainForm := nil;
+    //FPDF      := nil;
     FFileName := '';
   except on E: Exception do HandleError(E, OPNAME) end;
 end;
@@ -88,8 +89,8 @@ destructor TPDFDocumentLauncher.Destroy;
 const OPNAME = 'TPDFDocumentLauncher.Destroy';
 begin
   try
-    FreeAndNil(FMainForm);
-    FreeAndNil(FPDF);
+   // FreeAndNil(FMainForm);
+    //FreeAndNil(FPDF);
     inherited Destroy;
   except on E: Exception do HandleError(E, OPNAME) end;
 end;
@@ -104,10 +105,10 @@ begin
     end else begin
 
       // Make sure the form is destroyed.
-      FreeAndNil(FMainForm);
+  //    FreeAndNil(FMainForm);
 
       // Create the form.
-      FMainForm := TForm.CreateNew(nil);
+{      FMainForm := TForm.CreateNew(nil);
       try
         FMainForm.BorderStyle := bsDialog;
         FMainForm.Width  := Screen.WorkAreaWidth;
@@ -136,7 +137,10 @@ begin
           end;
         finally
           FreeAndNil(FMainForm);
-        end;
+ }
+      try
+        ShellExecute(Application.Handle, 'open', 'AcroRd32.exe' , PChar(FFileName),
+                 PChar(ExtractFilePath(FFileName)), SW_SHOW);
 
       // Trap the exception and raise a more usefull one.
       except on E: Exception do
@@ -145,7 +149,7 @@ begin
     end;
   except on E: Exception do HandleError(E, OPNAME) end;
 end;
-
+{
 procedure TPDFDocumentLauncher.GotoPageNumber(APageNumber: integer);
 const OPNAME = 'TPDFDocumentLauncher.GotoPageNumber';
 begin
@@ -159,7 +163,7 @@ begin
     end;
   except on E: Exception do HandleError(E, OPNAME) end;
 end;
-
+ }
 initialization
   GLauncher := nil;
 

@@ -3384,7 +3384,8 @@ begin
       begin
         LMinMaxFeature :=  (FAppModules.Model as IYieldModel).DoCreateMinMaxFlowFeature(LChannelToUndergroundDam.ChannelNumber);
         LChannelToUndergroundDam.ChannelType          := ctMineToUndergroundChannel;
-        LChannelToUndergroundDam.UpStreamNodeNumber   := LMineNode.ReservoirConfigurationData.ReservoirIdentifier;
+        //hannelToUndergroundDam.UpStreamNodeNumber := LMineNode.ReservoirConfigurationData.ReservoirIdentifier;
+        LChannelToUndergroundDam.UpStreamNodeNumber := 0;
         LChannelToUndergroundDam.DownStreamNodeNumber := LUndergroundDam.ReservoirConfigurationData.ReservoirIdentifier;
         LChannelToUndergroundDam.ChannelName          := IntToStr(LChannelToUndergroundDam.ChannelNumber)+ ' - '+ FMineName + ' To '+
                                                           LUndergroundDam.ReservoirConfigurationData.ReservoirName;
@@ -4299,7 +4300,7 @@ begin
         //Create channel to River min-max feature
         if LContinue  then
         begin
-          LMineToRiver.UpStreamNodeNumber   := LMineNode.ReservoirConfigurationData.ReservoirIdentifier;
+          LMineToRiver.UpStreamNodeNumber   := 0; //LMineNode.ReservoirConfigurationData.ReservoirIdentifier;
           LMinMaxFeature :=  (FAppModules.Model as IYieldModel).DoCreateMinMaxFlowFeature(LMineToRiver.ChannelNumber);
           LMineToRiver.ChannelType := ctMineToRiverDChannel;
           LMineToRiver.ChannelName := IntToStr(LMineToRiver.ChannelNumber)+ ' - Mine '+ IntToStr(LMineNodeNumber) +' To River';
@@ -4448,9 +4449,9 @@ begin
   try
     if FAppModules.Model.ModelName = CPlanning then
     begin
-         Result := TPlanningMine.Create(FAppModules);
-          Result.Initialise;
-          FMinesObjectContainer.Add(Result);
+      Result := TPlanningMine.Create(FAppModules);
+      Result.Initialise;
+      FMinesObjectContainer.Add(Result);
     end;
     if FAppModules.Model.ModelName = CYield then
     begin
@@ -5037,7 +5038,7 @@ begin
     for LIndex := 1 to 12 do
       if ASource.WorkingAreaRechargeFactor[LIndex] <> nullfloat then
         WorkingAreaRechargeFactor[LIndex]:= ASource.WorkingAreaRechargeFactor[LIndex];
-        
+
   except on E: Exception do HandleError ( E, OPNAME ) end;
 end;
 
@@ -5677,7 +5678,7 @@ begin
         LIndex := LIndex + 1;
     end;
   except on E: Exception do HandleError(E, OPNAME); end;
-end;       
+end;
 
 function TMineSubCatchmentList.CheckMineSubCatchmentExist(ACatchmentRefNr: integer): boolean;
 const OPNAME = 'TMineSubCatchmentList.CheckMineSubCatchmentExist';

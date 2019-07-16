@@ -145,37 +145,37 @@ begin
 
 //Grid Headings
 
-  AAdd('GridHeading','BoardPillarCatchmentArea','BoardPillar Catchmen Area');
+  AAdd('GridHeading','BoardPillarCatchmentArea','Board & Pillar Catchment Area (km²)');
 
   AAdd('GridHeading','CoalReserveArea','Coal Reserve Area (km²)');
   AAdd('GridHeading','ChannelNumberToUGDam','Channel Number To UG Dam');
 
   AAdd('GridHeading','DownStreamMineNode'    ,'Downstream Mine Node');
   AAdd('GridHeading','DownStreamPCDNode'    ,'Downstream PCD Node');
-  AAdd('GridHeading','DisturbedWorkingsArea','Disturbed Workings Area');
-  AAdd('GridHeading','DisturbedArea','Disturbed Area');
+  AAdd('GridHeading','DisturbedWorkingsArea','Disturbed Area Contr. to Workings (km²)');
+  AAdd('GridHeading','DisturbedArea','Disturbed Area (km²)');
   AAdd('GridHeading','DisturbedAreaRunOff','Disturbed Area RunOff Factor');
-  AAdd('GridHeading','DisturbedWorkingsAreaRunOff','Disturbed Workings Area RunOff Factor');
-  AAdd('GridHeading','DisturbedMonthlyRecharge', 'Disturbed Monthly Recharge Factors');
-  AAdd('GridHeading','DisturbedWorkingsMonthlyRecharge', 'Disturbed Workings Recharge Factors');
+  AAdd('GridHeading','DisturbedWorkingsAreaRunOff','Disturbed Area to Workings Runoff Factor');
+  AAdd('GridHeading','DisturbedMonthlyRecharge', 'Recharge Factors for Disturbed Area');
+  AAdd('GridHeading','DisturbedWorkingsMonthlyRecharge', 'Recharge Factor for Disturbed Area to Workings');
   AAdd('GridHeading','DumpID','Dump ID');
 
   AAdd('GridHeading','HighExtractionCatchmentArea','High Extraction Catchment Area');
   AAdd('GridHeading','HighExtractionAreaRunoffFactor','High Extraction Area Runoff Factor');
-  AAdd('GridHeading','MineUGUpstreamRunoff','Mine UG Upstream Runoff');
+  AAdd('GridHeading','MineUGUpstreamRunoff','Portion Upstream Runoff to UG Dam');
 
-  AAdd('GridHeading','PCDAnalysisStartVolume','PCD Analysis Start Volume');
-  AAdd('GridHeading','PCDStorageCapacity','PCD Storage Capacity');
-  AAdd('GridHeading','PCDSurfaceArea', 'PCD Surface Area');
+  AAdd('GridHeading','PCDAnalysisStartVolume','Start Volume of PCD (million m³)');
+  AAdd('GridHeading','PCDStorageCapacity','PCD Storage Capacity (million m³)');
+  AAdd('GridHeading','PCDSurfaceArea', 'PCD  Surface Area (km²)');
   AAdd('GridHeading','PitID','Pit ID');
 
-  AAdd('GridHeading','RunoffFactorToPCD', 'Runoff Factor To PCD');
+  AAdd('GridHeading','RunoffFactorToPCD', 'Dump to PCD Runoff Factor');
 
-  AAdd('GridHeading','UGBoardPillarRechargeFactors','UG BoardPillar Recharge Factors');
-  AAdd('GridHeading','UGHighExtractionRechargeFactors','UG High Extraction Recharge Factors');
+  AAdd('GridHeading','UGBoardPillarRechargeFactors','Board & Pillar Recharge Factors');
+  AAdd('GridHeading','UGHighExtractionRechargeFactors','High Extraction Recharge Factors');
   AAdd('GridHeading','UndergroundMineID','Underground Mine ID');
   AAdd('GridHeading','UnderGroundSectionName','UnderGround Section Name');
-  AAdd('GridHeading','UpstreamCatchmentArea','Upstream Catchment Area');
+  AAdd('GridHeading','UpstreamCatchmentArea','Upstream Catchment Area (km²)');
   AAdd('GridHeading','UpStreamMineNode'    ,'Upstream Mine Node');
   AAdd('GridHeading','UpStreamNode'    ,'UpStream Node');
 
@@ -1703,7 +1703,7 @@ begin
   //
 
   AAdd('GridHeading','AcceptableValues', 'Acceptable Values');
-  AAdd('GridHeading','AnalysisStartVolume','Analysis Start Volume');
+  AAdd('GridHeading','AnalysisStartVolume','Start Volume of Spoils Storage (million m³)');
   AAdd('GridHeading','ArcNumber','Arc Number');
   AAdd('GridHeading','ArrayLength', 'Length Of Array');
 
@@ -1723,10 +1723,10 @@ begin
 
   AAdd('GridHeading','DatasetID','DatasetID');
   AAdd('GridHeading','Depth', 'Depth (m)');
-  AAdd('GridHeading','DecantVolume', 'Decant Volume');
+  AAdd('GridHeading','DecantVolume', 'Decant Volume of Spoils Storage (million m³)');
   AAdd('GridHeading','DrawDownZone', 'Draw Down Zone');
   AAdd('GridHeading','DownStreamNode','Downstream Node');
-  AAdd('GridHeading','DumpSurfaceArea','Dump Surface Area');
+  AAdd('GridHeading','DumpSurfaceArea','Dump Surface Area (km²)');
   AAdd('GridHeading','DSL', 'DSL');
 
   AAdd('GridHeading','Elevation', 'Elevation (masl)');
@@ -1756,13 +1756,13 @@ begin
 
   AAdd('GridHeading','Institutions','Institutions');
 
-  AAdd('GridHeading','MaximumSeepageRate','Maximum Seepage Rate');
+  AAdd('GridHeading','MaximumSeepageRate','Max. Seepage from Spoils Storage (million m³/m)');
   AAdd('GridHeading','MaximumValue', 'Maximum Value');
   AAdd('GridHeading','MinimumValue', 'Minimum Value');
   AAdd('GridHeading','ModelFieldDescription', 'Model Field Description');
   AAdd('GridHeading','ModelFieldName', 'Model Field Name');
   AAdd('GridHeading','Month', 'Month');
-  AAdd('GridHeading','MonthlyRecharge', 'Monthly Recharge Factors');
+  AAdd('GridHeading','MonthlyRecharge', 'Recharge Factors Dump Seepage to River/PCD');
 
   AAdd('GridHeading','Number'          ,'#');
 
@@ -1770,10 +1770,10 @@ begin
   AAdd('GridHeading','PitName','Pit Name');
   AAdd('GridHeading','PrintOutput'     ,'Print Output?');
 
-  AAdd('GridHeading','SeepageExponent', 'Seepage Exponent');
-  AAdd('GridHeading','SeepageVolume', 'Seepage Volume');
+  AAdd('GridHeading','SeepageExponent', 'Seepage Equation Exponent');
+  AAdd('GridHeading','SeepageVolume', 'Seepage Volume of Spoils Storage (million m³)');
   AAdd('GridHeading','DumpName', 'Dump Name');
-  AAdd('GridHeading','SeepageSplitFactor', 'Seepage Split Factor');
+  AAdd('GridHeading','SeepageSplitFactor', 'Split Dump Seepage to River/PCD');
   AAdd('GridHeading','SourceFileName', 'Source File Name');
   AAdd('GridHeading','StartPeriod', 'Start Period');
   AAdd('GridHeading','SurfaceArea', 'Surface Area (km²)');
@@ -1786,10 +1786,10 @@ begin
   AAdd('GridHeading','UnitType'        ,'Unit Type');
 
   AAdd('GridHeading','Volume', 'Volume (m³ x 10^6)');
-  AAdd('GridHeading','VolumeInPCDAnalysis', 'PCD Analysis Start Volume');
+  AAdd('GridHeading','VolumeInPCDAnalysis', 'Start Volume of PCD (million m³)');
 
   AAdd('GridHeading','Water Users','Water Users');
-  AAdd('GridHeading','WaterSurfaceEvapArea','Water Surface Evaporation Area');
+  AAdd('GridHeading','WaterSurfaceEvapArea','Evap. area of in-spoils water  (km²)');
 
   AAdd('GridHeading','Zone', 'Level');
   AAdd('GridHeading','ZoneName', 'Zone Name');

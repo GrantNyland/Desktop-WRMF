@@ -1182,7 +1182,7 @@ begin
   AAdd('TField','CurtailmentSummaryOut'           ,'Curtailment summary out');
 
   AAdd('TField','DecantVolume'                    ,'Decant volume');
-  AAdd('TField','DecantVolumeDescr'               ,'Volume of spoils storage at which decant occurs (million m3)');
+  AAdd('TField','DecantVolumeDescr'               ,'Volume of spoils storage at which decant occurs (million m³)');
   AAdd('TField','DisturbedWorkingsArea'           ,'Disturbed area of workings');
   AAdd('TField','DisturbedWorkingsAreaDescr'      ,'Disturbed area of workings (km2)');
   AAdd('TField','DisturbedArea'                   ,'Disturbed area');
@@ -1236,8 +1236,8 @@ begin
   AAdd('TField','IFRSiteFlowDescr'                ,'IFR Associated flow');
   AAdd('TField','IFRUnits'                        ,'Units');
   AAdd('TField','IFRUnitsOption'                  ,'Units option');
-  AAdd('TField','IFRUnitsOptionDescr'             ,'Units option (1 = m3/s, 2 = million m3/month)');
-  AAdd('TField','IFRUnitOptionM3PerSec'           ,'m3/s');
+  AAdd('TField','IFRUnitsOptionDescr'             ,'Units option (1 = m3/s, 2 = million m³/month)');
+  AAdd('TField','IFRUnitOptionM3PerSec'           ,'m³/s');
   AAdd('TField','IFRUnitOptionM3PerSecDescr'      ,'Cubic metres per second');
   AAdd('TField','IFRUnitOptionM3PerMonth'         ,'Million m3/month');
   AAdd('TField','IFRUnitOptionM3PerMonthDescr'    ,'Million cubic metres per month');
@@ -1273,13 +1273,13 @@ begin
   AAdd('TField','ProportionAntecedentFlow'         ,'Proportion of antecedent flows');
   AAdd('TField','ProportionAntecedentFlowDescr'    ,'Proportion of antecedent flows');
   AAdd('TField','GroundwaterFlowVolume'            ,'Groundwater Flow Volume');
-  AAdd('TField','GroundwaterFlowVolumeDescr'       ,'Groundwater flow volume at the start of the analysis (million m3)');
+  AAdd('TField','GroundwaterFlowVolumeDescr'       ,'Groundwater flow volume at the start of the analysis (million m³)');
   AAdd('TField','AntecedentRunoffDecayFactor'      ,'Antecedent runoff decay factor');
   AAdd('TField','AntecedentRunoffDecayFactorDescr' ,'Antecedent runoff decay factor');
   AAdd('TField','MinimunGroundwaterFlowVolume'     ,'minimun Groundwater flow volume');
-  AAdd('TField','MinimunGroundwaterFlowVolumeDescr','Monthly minimum groundwater flow volume (million m3)');
+  AAdd('TField','MinimunGroundwaterFlowVolumeDescr','Monthly minimum groundwater flow volume (million m³)');
   AAdd('TField','MineSubCatchmentFlowVolume'       ,'Mine subcatchment flow volume');
-  AAdd('TField','MineSubCatchmentFlowVolumeDescr'  ,'Groundwater flow volume at the start of the analysis (million m3)');
+  AAdd('TField','MineSubCatchmentFlowVolumeDescr'  ,'Groundwater flow volume at the start of the analysis (million m³)');
 
   AAdd('TField','MaximumDischargeRate'            ,'Maximum Aquifer recharge (mm):');
   AAdd('TField','MaximumDischargeRateDescr'       ,'Maximum Aquifer recharge(mm)');
@@ -1309,7 +1309,7 @@ begin
   AAdd('TField','NrOfMineCastPitsDescr'           ,'Number of Opencast Mining Pits on the mine (= 10)');
   AAdd('TField','NrOfGroundwaterSubCatchment'     ,'Number of Groundwater Subcatchment : ');
   AAdd('TField','NrOfMineSubcatchment'            ,'Number of Mine Subcatchment');
-  AAdd('TField','MineNodeNrDescr'                 ,'Number of Mine Node Number');
+  AAdd('TField','MineNodeNrDescr'                 ,'Number of mine sub-catchments');
 
   AAdd('TField','NrOfGroundwaterSubCatchmentDescr','Number of Groundater Subcatchment');
   AAdd('TField','NrOfResInSummaryDescr'           ,'Total number of reservoirs and nodes included in summary output and plotted output.');
@@ -1317,15 +1317,15 @@ begin
   AAdd('TField','NrOfChanInSummaryDescr'          ,'Total number of channels and nodes included in summary output.');
   AAdd('TField','NrOfChanInFirmYieldDescr'        ,'Total number of channels selected for inclusion in summary output.');
 
-  AAdd('TField','OpenCastPCDStorageCapacity'      ,'PCD Storage Capacity (million m3)');
+  AAdd('TField','OpenCastPCDStorageCapacity'      ,'PCD Storage Capacity (million m³)');
   AAdd('TField','DumpPCDStorageCapacity'          ,'Dump PCD storage capacity');
-  AAdd('TField','PCDStorageCapacityDescr'         ,'Storage capacity of pollution control dam (PCD) for discard / slurry dump (million m3)');
+  AAdd('TField','PCDStorageCapacityDescr'         ,'Storage capacity of CPD for opencast mining pit (million m³)');
   AAdd('TField','OpenCastPCDSurfaceArea'          ,'PCD Surface area (km2)');
   AAdd('TField','DumpPCDSurfaceArea'              ,'Dump PCD surface area');
   AAdd('TField','PCDSurfaceAreaDescr'             ,'Surface area of PCD (km2)');
-  AAdd('TField','OpenCastPCDAnalysisStartVolume'  ,'PCD Analysis Start Volume (million m3)');
+  AAdd('TField','OpenCastPCDAnalysisStartVolume'  ,'PCD Analysis Start Volume (million m³)');
   AAdd('TField','DumpPCDAnalysisStartVolume'      ,'Dump PCD analysis start volume');
-  AAdd('TField','PCDAnalysisStartVolumeDescr'     ,'Volume in PCD at the start of the analysis (million m3)');
+  AAdd('TField','PCDAnalysisStartVolumeDescr'     ,'Volume in PCD at the start of the analysis (million m³)');
   AAdd('TField','PCDChannelNumber'                ,'PCD channel number');
 
   AAdd('TField','PitName'                         ,'Opencast mining pit name');
